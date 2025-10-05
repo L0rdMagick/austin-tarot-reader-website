@@ -4,8 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 // --- Configuration ---
-// DEBUG: This is where you list your image files.
-// The path must start with a '/' and point to the file inside your `public` folder.
+// CHANGED: Added the `/images/` prefix to correctly point to your files.
 const cardImages = [
   { src: '/images/19-TheSun.jpg', alt: 'The Sun Tarot Card' },
   { src: '/images/17-TheStar.jpg', alt: 'The Star Tarot Card' },
@@ -33,7 +32,7 @@ const cardVariants = {
 export function TarotCardAnimation() {
   return (
     <motion.div
-      // CHANGED: Adjusted margin for mobile vs. desktop
+      // Responsive margin for mobile vs. desktop
       className="relative h-64 w-full flex items-center justify-center -mt-8 md:-mt-16"
       variants={containerVariants}
       initial="hidden"
@@ -42,11 +41,11 @@ export function TarotCardAnimation() {
       {cardImages.map((card, index) => (
         <motion.div
           key={card.src}
-          // CHANGED: Adjusted card size for mobile vs. desktop
+          // Responsive card size for mobile vs. desktop
           className="absolute w-32 h-56 md:w-36 md:h-60 rounded-lg shadow-2xl shadow-black/50 overflow-hidden border-2 border-primary/50"
           style={{
             rotate: `${(index - 1) * 15}deg`,
-            translateX: `${(index - 1) * 50}px`, // Adjusted for smaller mobile size
+            translateX: `${(index - 1) * 50}px`,
             zIndex: index === 1 ? 10 : 1,
           }}
           variants={cardVariants}

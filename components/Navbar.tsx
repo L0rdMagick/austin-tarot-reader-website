@@ -1,11 +1,9 @@
-'use client'; // This is a client component because it uses hooks (usePathname)
+'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 
-// DEBUG: To add or change navigation links, edit this array.
-// The `href` is the URL path, and `label` is the text that appears.
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
@@ -16,50 +14,42 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-[rgb(var(--secondary-rgb))] bg-opacity-80 backdrop-blur-sm border-b border-white/10">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between p-4">
+    <header className="w-full sticky top-0 z-50 bg-secondary/80 backdrop-blur-sm border-b border-white/10">
+      {/* CHANGED: Added flex-wrap and gap to allow items to stack gracefully on small screens */}
+      <nav className="max-w-7xl mx-auto flex items-center justify-between p-4 flex-wrap gap-4">
         {/* Site Title/Logo */}
-        <Link href="/" className="font-cinzel text-xl font-bold text-[rgb(var(--primary-rgb))]">
+        <Link href="/" className="font-cinzel text-xl font-bold text-primary">
           Austin Tarot Reader
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center space-x-8">
+        {/* Navigation Links and CTA Button Container */}
+        {/* CHANGED: Grouped links and button together for better responsive control */}
+        <div className="flex items-center space-x-4 sm:space-x-8">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                // CHANGED: Hide text links on the very smallest screens to prevent clutter, showing them on `sm` and up.
                 className={twMerge(
-                  'font-sans text-lg hover:text-[rgb(var(--primary-rgb))] transition-colors',
-                  isActive ? 'text-[rgb(var(--primary-rgb))] font-semibold' : 'text-[rgb(var(--foreground-rgb))]'
+                  'font-sans text-md sm:text-lg hover:text-primary transition-colors hidden sm:inline-block',
+                  isActive ? 'text-primary font-semibold' : 'text-foreground'
                 )}
               >
                 {link.label}
               </Link>
             );
           })}
-        </div>
-        
-        {/* Call to Action Button */}
-        <a
-          href="YOUR_MAIN_BOOKING_LINK_HERE" // TODO: Add your primary booking link
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:inline-block bg-[rgb(var(--primary-rgb))] text-[rgb(var(--background-rgb))] font-bold py-2 px-6 rounded-lg text-md hover:opacity-90 transition-opacity duration-300 font-sans"
-        >
-          Book Now
-        </a>
-
-        {/* Mobile Menu Button Placeholder - Functionality to be added later if needed */}
-        <div className="md:hidden">
-            <Link 
-                href="/services" 
-                className="inline-block bg-[rgb(var(--primary-rgb))] text-[rgb(var(--background-rgb))] font-bold py-2 px-4 rounded-lg text-sm hover:opacity-90 transition-opacity duration-300 font-sans"
-            >
-                Book Now
-            </Link>
+          
+          <a
+            href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/BF72ZKQM74NPNZ3FTYZLARXT" // Using the 60-min reading as the primary link
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-primary text-background font-bold py-2 px-4 sm:px-6 rounded-lg text-sm sm:text-md hover:opacity-90 transition-opacity duration-300 font-sans"
+          >
+            Book Now
+          </a>
         </div>
       </nav>
     </header>
