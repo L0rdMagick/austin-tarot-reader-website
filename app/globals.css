@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  DEBUG NOTES: 
+  This :root block defines our entire color palette as CSS variables.
+  If you want to experiment with different colors, this is the place to do it.
+  For example, changing '--primary-rgb' will change the gold accent color across the site.
+  The colors are defined in RGB format to allow for opacity modifications later if needed.
+*/
+:root {
+  --background-rgb: 13, 12, 29; /* #0D0C1D - Deep Indigo */
+  --foreground-rgb: 234, 231, 220; /* #EAE7DC - Parchment */
+  --primary-rgb: 224, 201, 166; /* #E0C9A6 - Soft Gold */
+  --secondary-rgb: 63, 51, 81; /* #3F3351 - Dusky Purple */
+  --accent-rgb: 178, 164, 255; /* #B2A4FF - Mystical Lavender */
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-rgb));
+  min-height: 100vh;
+}
+
+/* This is a small utility class for better text wrapping in headings */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
