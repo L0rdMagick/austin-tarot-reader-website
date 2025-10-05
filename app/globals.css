@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  DEBUG NOTES: 
-  This :root block defines our entire color palette and now includes gradient definitions.
-  This is the control center for the site's magical aesthetic.
-*/
 :root {
   --background-rgb: 13, 12, 29; /* #0D0C1D - Deep Indigo */
   --foreground-rgb: 234, 231, 220; /* #EAE7DC - Parchment */
@@ -14,14 +9,12 @@
   --secondary-rgb: 63, 51, 81; /* #3F3351 - Dusky Purple */
   --accent-rgb: 178, 164, 255; /* #B2A4FF - Mystical Lavender */
 
-  /* NEW: Background Gradient */
-  --background-start-rgb: 24, 22, 48; /* A slightly lighter purple for the top */
-  --background-end-rgb: 13, 12, 29; /* Our original deep indigo for the bottom */
+  --background-start-rgb: 24, 22, 48;
+  --background-end-rgb: 13, 12, 29;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* NEW: Applied the subtle gradient background */
   background: linear-gradient(
     to bottom,
     rgb(var(--background-start-rgb)),
@@ -30,29 +23,40 @@ body {
   min-height: 100vh;
 }
 
-/* This is a small utility class for better text wrapping in headings */
+/* 
+  NEW: Page Load Animation 
+  This defines the keyframes for our "fade and slide up" effect.
+*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  /* NEW: We create a utility class to easily apply the animation */
+  .fade-in-on-load {
+    animation: fadeIn 1s ease-out forwards;
+  }
 }
 
-/* 
-  NEW: Magical Flair Section 
-  This adds the glowing effects to buttons and borders throughout the site.
-*/
 @layer components {
-  /* Add a subtle glow to the main CTA buttons on hover */
   .bg-primary:hover {
     box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5);
   }
 
-  /* Add a gentle glow to the borders of cards and sections */
   .border-white\/10 {
     box-shadow: 0 0 20px rgba(var(--secondary-rgb), 0.6);
   }
 
-  /* Add a glowing effect to the primary text color (e.g., headings) */
   .text-primary {
     text-shadow: 0 0 10px rgba(var(--primary-rgb), 0.3);
   }
