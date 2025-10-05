@@ -83,7 +83,12 @@ export async function getPostData(slug: string): Promise<Post> {
  */
 export function getAllCategories() {
     const posts = getSortedPostsData();
-    const categories = new Set(posts.map(post => post.category));
+    // CRITICAL FIX: Filter out posts without a category, then get unique categories.
+    const categories = new Set(
+        posts
+            .filter(post => post.category) // Only include posts that HAVE a category
+            .map(post => post.category)
+    );
     return Array.from(categories).map(category => {
         return {
             name: category,
@@ -98,6 +103,8 @@ export function getAllCategories() {
 export function getPostsByCategory(categorySlug: string): PostData[] {
     const posts = getSortedPostsData();
     return posts.filter(post => {
+        // Add a safety check here as well
+        if (!post.category) return false;
         const postCategorySlug = post.category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
         return postCategorySlug === categorySlug;
     });
