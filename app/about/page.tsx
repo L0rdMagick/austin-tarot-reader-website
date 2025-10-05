@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image'; // We can add an image of you later
+import Image from 'next/image';
 
 // SEO: This metadata focuses on you, Daniel, as the Austin Tarot Reader.
 export const metadata: Metadata = {
@@ -23,10 +23,17 @@ export default function AboutPage() {
 
       <div className="w-full max-w-3xl mx-auto space-y-16 px-4 sm:px-8 md:px-12 pb-24">
         
-        {/* We could add a professional photo of you here to build more connection */}
-        {/* <div className="w-full aspect-square max-w-md mx-auto relative rounded-xl overflow-hidden">
-          <Image src="/daniel-portrait.jpg" alt="Daniel, Austin Tarot Reader" layout="fill" objectFit="cover" />
-        </div> */}
+        {/* Your portrait image is now active */}
+        <div className="w-full max-w-sm mx-auto aspect-square relative rounded-full overflow-hidden shadow-2xl shadow-black/50 border-4 border-primary/50">
+          <Image 
+            src="/images/daxiel-austin-tarot-reader.png" 
+            alt="Daniel, Austin Tarot Reader" 
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            style={{ objectFit: 'cover' }}
+            priority // Prioritize loading this image as it's important
+          />
+        </div>
 
         {/* Section 2: My Story */}
         <section>
@@ -49,18 +56,10 @@ export default function AboutPage() {
               My approach is compassionate, intuitive, and grounded in practical wisdom. I see a tarot reading as a collaborative conversation—a safe, non-judgmental space where we can explore the energies surrounding you. My goal is to help you:
             </p>
             <ul className="list-disc list-inside pl-4 space-y-3">
-              <li>
-                <strong>Gain Empowering Perspective:</strong> See your situation from a new angle that highlights your strength and options.
-              </li>
-              <li>
-                <strong>Validate Your Intuition:</strong> Confirm those gut feelings you've been having and build trust in your own inner wisdom.
-              </li>
-              <li>
-                <strong>Navigate Your Crossroads:</strong> Explore the potential outcomes of your choices so you can move forward with confidence, not fear.
-              </li>
-              <li>
-                <strong>Find Actionable Clarity:</strong> You will leave our session not just with insight, but with a clearer understanding of your next steps.
-              </li>
+              <li><strong>Gain Empowering Perspective:</strong> See your situation from a new angle that highlights your strength and options.</li>
+              <li><strong>Validate Your Intuition:</strong> Confirm those gut feelings you've been having and build trust in your own inner wisdom.</li>
+              <li><strong>Navigate Your Crossroads:</strong> Explore the potential outcomes of your choices so you can move forward with confidence, not fear.</li>
+              <li><strong>Find Actionable Clarity:</strong> You will leave our session not just with insight, but with a clearer understanding of your next steps.</li>
             </ul>
           </div>
         </section>
