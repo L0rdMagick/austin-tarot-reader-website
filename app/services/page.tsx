@@ -16,52 +16,53 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main className="flex flex-col items-center">
-      <section className="w-full text-center py-20 md:py-28 flex flex-col items-center justify-center px-4">
-        {/* REVERTED to a stable h1 tag */}
-        <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-primary">
-          Tarot Readings & Coaching Services
-        </h1>
-        <p className="mt-4 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
-          Each session is a confidential, compassionate, and empowering experience. Choose the reading that best fits your needs.
-        </p>
-      </section>
+    // ADDED: Wrapper div with the fade-in animation class
+    <div className="fade-in-on-load">
+      <main className="flex flex-col items-center">
+        <section className="w-full text-center py-20 md:py-28 flex flex-col items-center justify-center px-4">
+          <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-primary">
+            Tarot Readings & Coaching Services
+          </h1>
+          <p className="mt-4 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
+            Each session is a confidential, compassionate, and empowering experience. Choose the reading that best fits your needs.
+          </p>
+        </section>
 
-      <div className="w-full max-w-4xl mx-auto space-y-16 px-4 sm:px-8 md:px-12 pb-24">
-        <section className="space-y-12">
-          {services.map((service) => (
-            <div key={service.title} className="bg-secondary p-8 rounded-xl border border-white/10 flex flex-col md:flex-row gap-8 items-center">
-              <div className="flex-grow">
-                <h2 className="font-cinzel text-3xl font-bold text-primary">{service.title}</h2>
-                <p className="font-sans text-lg text-accent mt-1">{service.duration} | {service.price}</p>
-                <p className="mt-4 font-sans text-foreground/90">{service.description}</p>
-                {service.details && (
-                  <ul className="mt-4 space-y-2 list-disc list-inside font-sans text-foreground/80">
-                    {service.details.map((detail, index) => (
-                      <li key={index}>{detail}</li>
-                    ))}
-                  </ul>
-                )}
+        <div className="w-full max-w-4xl mx-auto space-y-16 px-4 sm:px-8 md:px-12 pb-24">
+          <section className="space-y-12">
+            {services.map((service) => (
+              <div key={service.title} className="bg-secondary p-8 rounded-xl border border-white/10 flex flex-col md:flex-row gap-8 items-center">
+                <div className="flex-grow">
+                  <h2 className="font-cinzel text-3xl font-bold text-primary">{service.title}</h2>
+                  <p className="font-sans text-lg text-accent mt-1">{service.duration} | {service.price}</p>
+                  <p className="mt-4 font-sans text-foreground/90">{service.description}</p>
+                  {service.details && (
+                    <ul className="mt-4 space-y-2 list-disc list-inside font-sans text-foreground/80">
+                      {service.details.map((detail, index) => (
+                        <li key={index}>{detail}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                <div className="flex-shrink-0 w-full md:w-auto">
+                  <a href={service.bookingLink} target="_blank" rel="noopener noreferrer" className="inline-block text-center w-full md:w-auto bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans">
+                    Book Session
+                  </a>
+                </div>
               </div>
-              <div className="flex-shrink-0 w-full md:w-auto">
-                <a href={service.bookingLink} target="_blank" rel="noopener noreferrer" className="inline-block text-center w-full md:w-auto bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans">
-                  Book Session
-                </a>
-              </div>
+            ))}
+          </section>
+
+          <section>
+            <h2 className="font-cinzel text-3xl font-bold text-center text-accent">
+              How to Prepare for Your Reading
+            </h2>
+            <div className="mt-6 font-sans text-md sm:text-lg text-foreground/90 max-w-2xl mx-auto space-y-4">
+              <p>To make the most of our time together, I recommend thinking about your questions or the area of your life you'd like to focus on beforehand. Come with an open mind and a quiet space where you won't be disturbed. Remember, there are no 'silly' questions. This is your space to seek clarity.</p>
             </div>
-          ))}
-        </section>
-
-        <section>
-          {/* REVERTED to a stable h2 tag */}
-          <h2 className="font-cinzel text-3xl font-bold text-center text-accent">
-            How to Prepare for Your Reading
-          </h2>
-          <div className="mt-6 font-sans text-md sm:text-lg text-foreground/90 max-w-2xl mx-auto space-y-4">
-            <p>To make the most of our time together, I recommend thinking about your questions or the area of your life you'd like to focus on beforehand. Come with an open mind and a quiet space where you won't be disturbed. Remember, there are no 'silly' questions. This is your space to seek clarity.</p>
-          </div>
-        </section>
-      </div>
-    </main>
+          </section>
+        </div>
+      </main>
+    </div>
   );
 }
