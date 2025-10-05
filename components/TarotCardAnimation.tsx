@@ -7,9 +7,9 @@ import { motion } from 'framer-motion';
 // DEBUG: This is where you list your image files.
 // The path must start with a '/' and point to the file inside your `public` folder.
 const cardImages = [
-  { src: '/19-TheSun.jpg', alt: 'The Sun Tarot Card' },
-  { src: '/17-TheStar.jpg', alt: 'The Star Tarot Card' },
-  { src: '/01-TheMagician.jpg', alt: 'The Magician Tarot Card' },
+  { src: '/images/19-TheSun.jpg', alt: 'The Sun Tarot Card' },
+  { src: '/images/17-TheStar.jpg', alt: 'The Star Tarot Card' },
+  { src: '/images/01-TheMagician.jpg', alt: 'The Magician Tarot Card' },
 ];
 
 // Animation variants for the container to orchestrate the children's animations
