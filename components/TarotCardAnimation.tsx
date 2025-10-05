@@ -7,9 +7,9 @@ import { motion } from 'framer-motion';
 // DEBUG: Replace these with the actual filenames of your tarot card images.
 // The `alt` text is important for SEO and accessibility.
 const cardImages = [
-  { src: '/images/the-sun.png', alt: 'The Sun Tarot Card' },
-  { src: '/images/the-star.png', alt: 'The Star Tarot Card' },
-  { src: '/images/the-magician.png', alt: 'The Magician Tarot Card' },
+  { src: '/images/19-TheSun.jpg', alt: 'The Sun Tarot Card' },
+  { src: '/images/17-TheStar.jpg', alt: 'The Star Tarot Card' },
+  { src: '/images/01-TheMagician.jpg', alt: 'The Magician Tarot Card' },
 ];
 
 // Animation variants for the container to orchestrate the children's animations
