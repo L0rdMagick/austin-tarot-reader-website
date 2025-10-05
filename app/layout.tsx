@@ -5,10 +5,6 @@ import { twMerge } from "tailwind-merge";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
-// DEBUG: Font selection is crucial for the site's feel.
-// Cinzel is an elegant, mystical font for headings.
-// Quicksand is a clean, approachable font for body text.
-// If these don't feel right, Google Fonts is the best place to find alternatives.
 const cinzel = Cinzel({ 
   subsets: ["latin"], 
   variable: '--font-cinzel',
@@ -20,9 +16,6 @@ const quicksand = Quicksand({
   display: 'swap',
 });
 
-// DEBUG: This Metadata object is CRITICAL for SEO.
-// We are setting a template for the title that can be used on other pages.
-// The description is the first thing people see on Google. It needs to be compelling and include keywords.
 export const metadata: Metadata = {
   title: {
     template: "%s | Austin Tarot Reader",
@@ -33,15 +26,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Austin Tarot Reader | Intuitive Guidance & Clarity",
     description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings.",
-    url: "https://www.austintarotreader.com", // Replace with your actual domain later
+    url: "https://www.austintarotreader.com",
     siteName: "Austin Tarot Reader",
-    images: [
-      {
-        url: "/og-image.jpg", // We will create this image later
-        width: 1200,
-        height: 630,
-      },
-    ],
+    images: [ { url: "/og-image.jpg", width: 1200, height: 630 } ],
     locale: "en_US",
     type: "website",
   }
