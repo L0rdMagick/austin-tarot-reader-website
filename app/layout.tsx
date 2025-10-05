@@ -16,7 +16,10 @@ const quicksand = Quicksand({
   display: 'swap',
 });
 
+// DEBUG: This Metadata object is CRITICAL for SEO.
 export const metadata: Metadata = {
+  // This new line fixes the metadataBase warning.
+  metadataBase: new URL('https://www.austintarotreader.com'),
   title: {
     template: "%s | Austin Tarot Reader",
     default: "Austin Tarot Reader | Intuitive Guidance & Clarity",
@@ -28,7 +31,13 @@ export const metadata: Metadata = {
     description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings.",
     url: "https://www.austintarotreader.com",
     siteName: "Austin Tarot Reader",
-    images: [ { url: "/og-image.jpg", width: 1200, height: 630 } ],
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
     locale: "en_US",
     type: "website",
   }
@@ -41,7 +50,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={twMerge(cinzel.variable, quicksand.variable, 'font-sans bg-[rgb(var(--background-rgb))] flex flex-col min-h-screen')}>
+      <body className={twMerge(cinzel.variable, quicksand.variable, 'font-sans bg-background flex flex-col min-h-screen')}>
         <Navbar />
         <div className="flex-grow">
           {children}
