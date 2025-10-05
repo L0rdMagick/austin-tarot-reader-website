@@ -61,13 +61,13 @@ export default function AboutPage() {
         <section className="text-center bg-[rgb(var(--secondary-rgb))] p-8 rounded-xl border border-white/10">
           <h2 className="font-cinzel text-3xl font-bold text-[rgb(var(--primary-rgb))]">Ready to Find Your Clarity?</h2>
           <p className="mt-2 font-sans text-lg text-[rgb(var(--foreground-rgb))] opacity-90">
-            If my approach resonates with you, I invite you to explore the readings I offer.
+            If my approach resonates with you I invite you to explore the readings I offer.
           </p>
           <Link
             href="/services"
             className="mt-6 inline-block bg-[rgb(var(--primary-rgb))] text-[rgb(var(--background-rgb))] font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans"
           >
-            View My Services
+            View My Services 
           </Link>
         </section>
         
