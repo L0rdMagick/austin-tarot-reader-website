@@ -1,73 +1,81 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image'; // We can add an image of you later
 
-// SEO: This metadata is specific to the About page.
-// It tells Google what this page is about, focusing on your personal approach and location.
+// SEO: This metadata focuses on you, Daniel, as the Austin Tarot Reader.
 export const metadata: Metadata = {
-  title: 'About Me | Austin Tarot Reader',
-  description: 'Learn about my personal approach to tarot reading in Austin, TX. I offer compassionate, empowering guidance to help you find clarity on your unique journey.',
+  title: 'About Daniel | Austin Tarot Reader',
+  description: 'Learn about Daniel, an esteemed Austin tarot reader known for a compassionate and intuitive approach. Discover my philosophy on using tarot for clarity and empowerment.',
 };
 
 export default function AboutPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-4 sm:p-8 md:p-12">
-      <div className="w-full max-w-3xl mx-auto space-y-16">
-        
-        {/* Section 1: Page Header */}
-        <section className="text-center">
-          <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-balance text-[rgb(var(--primary-rgb))]">
-            My Philosophy & Journey
-          </h1>
-          <p className="mt-4 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-[rgb(var(--foreground-rgb))]">
-            Connecting with the cards is connecting with ourselves.
-          </p>
-        </section>
+    <main className="flex flex-col items-center">
+      {/* Section 1: Page Header */}
+      <section className="w-full text-center py-20 md:py-28 flex flex-col items-center justify-center px-4">
+        <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-balance text-primary">
+          My Journey & Philosophy
+        </h1>
+        <p className="mt-4 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
+          I believe tarot is a profound tool for unlocking the wisdom we already hold within.
+        </p>
+      </section>
 
-        {/* Section 2: Personal Introduction */}
-        {/* TODO: Replace the placeholder content below with your own story. */}
+      <div className="w-full max-w-3xl mx-auto space-y-16 px-4 sm:px-8 md:px-12 pb-24">
+        
+        {/* We could add a professional photo of you here to build more connection */}
+        {/* <div className="w-full aspect-square max-w-md mx-auto relative rounded-xl overflow-hidden">
+          <Image src="/daniel-portrait.jpg" alt="Daniel, Austin Tarot Reader" layout="fill" objectFit="cover" />
+        </div> */}
+
+        {/* Section 2: My Story */}
         <section>
-          <h2 className="font-cinzel text-3xl font-bold text-[rgb(var(--accent-rgb))]">Welcome, Seeker</h2>
-          <div className="mt-4 space-y-4 font-sans text-md sm:text-lg text-[rgb(var(--foreground-rgb))] opacity-90">
+          <h2 className="font-cinzel text-3xl font-bold text-accent">An Intuitive Path</h2>
+          <div className="mt-4 space-y-4 font-sans text-md sm:text-lg text-foreground/90">
             <p>
-              My name is [Your Name], and I'm the heart behind Austin Tarot Reader. My journey with tarot didn't begin with a sudden mystical vision, but with a quiet curiosity about the stories these cards could tell. I discovered they weren't about predicting a rigid, unchangeable future, but about unlocking the wisdom we already hold within.
+              I'm Daniel, and for years I've had the honor of guiding individuals from all walks of life through thousands of tarot readings. With a deep understanding of the intricacies of the human experience, I've helped people navigate countless situations, offering insight where there was confusion and clarity where there was doubt.
             </p>
             <p>
-              Here in Austin, a city buzzing with creative and spiritual energy, I've found a home for my practice. My goal is to create a grounded, welcoming space for you to explore your questions without judgment.
+              My journey began not with a mystical vision, but with a quiet curiosity about the stories these 78 cards could tell. I quickly learned they weren't about predicting a rigid, unchangeable future. Instead, they are a powerful language for our own intuition—a way to see our circumstances with a fresh perspective and make decisions from a place of empowerment.
             </p>
           </div>
         </section>
 
         {/* Section 3: My Approach to Tarot */}
-        {/* TODO: This is a key section to build trust. Explain your approach clearly. */}
         <section>
-          <h2 className="font-cinzel text-3xl font-bold text-[rgb(var(--accent-rgb))]">Tarot as a Tool for Empowerment</h2>
-           <div className="mt-4 space-y-4 font-sans text-md sm:text-lg text-[rgb(var(--foreground-rgb))] opacity-90">
+          <h2 className="font-cinzel text-3xl font-bold text-accent">Tarot for Modern Life</h2>
+           <div className="mt-4 space-y-4 font-sans text-md sm:text-lg text-foreground/90">
             <p>
-              I view the tarot as a deck of 78 mirrors, each reflecting a different facet of our human experience. A reading with me is a collaborative conversation. We use the cards to:
+              My approach is compassionate, intuitive, and grounded in practical wisdom. I see a tarot reading as a collaborative conversation—a safe, non-judgmental space where we can explore the energies surrounding you. My goal is to help you:
             </p>
-            <ul className="list-disc list-inside pl-4 space-y-2">
-              <li><strong>Gain Perspective:</strong> See your situation from a new, empowering angle.</li>
-              <li><strong>Clarify Your Intuition:</strong> Validate those gut feelings you've been having.</li>
-              <li><strong>Explore Possibilities:</strong> Brainstorm potential paths forward with confidence.</li>
-              <li><strong>Promote Self-Discovery:</strong> Understand your own patterns and strengths more deeply.</li>
+            <ul className="list-disc list-inside pl-4 space-y-3">
+              <li>
+                <strong>Gain Empowering Perspective:</strong> See your situation from a new angle that highlights your strength and options.
+              </li>
+              <li>
+                <strong>Validate Your Intuition:</strong> Confirm those gut feelings you've been having and build trust in your own inner wisdom.
+              </li>
+              <li>
+                <strong>Navigate Your Crossroads:</strong> Explore the potential outcomes of your choices so you can move forward with confidence, not fear.
+              </li>
+              <li>
+                <strong>Find Actionable Clarity:</strong> You will leave our session not just with insight, but with a clearer understanding of your next steps.
+              </li>
             </ul>
-            <p>
-              My readings are always delivered with compassion and are focused on actionable, empowering insights you can use in your daily life.
-            </p>
           </div>
         </section>
 
         {/* Section 4: Call to Action */}
-        <section className="text-center bg-[rgb(var(--secondary-rgb))] p-8 rounded-xl border border-white/10">
-          <h2 className="font-cinzel text-3xl font-bold text-[rgb(var(--primary-rgb))]">Ready to Find Your Clarity?</h2>
-          <p className="mt-2 font-sans text-lg text-[rgb(var(--foreground-rgb))] opacity-90">
-            If my approach resonates with you, I invite you to explore the readings I offer.
+        <section className="text-center bg-secondary p-8 rounded-xl border border-white/10">
+          <h2 className="font-cinzel text-3xl font-bold text-primary">Are You Ready to Find Clarity?</h2>
+          <p className="mt-2 font-sans text-lg text-foreground/90 max-w-lg mx-auto">
+            If my approach resonates with you, I would be honored to guide you on your journey.
           </p>
           <Link
             href="/services"
-            className="mt-6 inline-block bg-[rgb(var(--primary-rgb))] text-[rgb(var(--background-rgb))] font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans"
+            className="mt-6 inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans"
           >
-            View My Services 
+            Explore My Readings
           </Link>
         </section>
         
