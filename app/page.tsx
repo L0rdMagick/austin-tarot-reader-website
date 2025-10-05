@@ -1,12 +1,12 @@
 import { TestimonialCard } from '@/components/TestimonialCard';
+import { TarotCardAnimation } from '@/components/TarotCardAnimation';
 import Link from 'next/link';
 
 // --- Testimonials Data ---
-// DEBUG: I've updated this with the powerful reviews you provided.
 const testimonials = [
   {
     quote: "I’ve been seeing Daniel for close to two years now and he never misses! His foresight is amazing and his readings are always spot on!",
-    author: "A. C.", // Using initials for privacy unless full name is preferred
+    author: "A. C.",
   },
   {
     quote: "Daniel is amazing! His insight through his reads have had such a positive impact on my life. These aspects helped me with my current employment as well as my romantic life... I completely encourage anyone to use his services. He is the best!",
@@ -22,7 +22,7 @@ export default function HomePage() {
   return (
     <main className="flex flex-col items-center">
       {/* Section 1: Hero */}
-      <section className="w-full text-center py-24 md:py-32 flex flex-col items-center justify-center px-4">
+      <section className="w-full text-center pt-24 pb-12 md:pt-32 md:pb-20 flex flex-col items-center justify-center px-4">
         <h1 className="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-balance text-primary">
           Unlock Your Path with Austin's Tarot Reader
         </h1>
@@ -37,7 +37,10 @@ export default function HomePage() {
         </Link>
       </section>
 
-      <div className="w-full max-w-5xl mx-auto space-y-24 md:space-y-32 px-4 sm:px-8 md:px-12 pb-24">
+      {/* NEW: Tarot Card Animation */}
+      <TarotCardAnimation />
+
+      <div className="w-full max-w-5xl mx-auto space-y-24 md:space-y-32 px-4 sm:px-8 md:px-12 pb-24 pt-16">
         
         {/* Section 2: Brief About Me */}
         <section className="text-center max-w-3xl mx-auto">
@@ -88,18 +91,9 @@ export default function HomePage() {
         <section className="text-center">
             <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-accent">Guidance for Every Part of Your Life</h2>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="bg-secondary/50 p-8 rounded-xl border border-white/10">
-                    <h3 className="font-cinzel text-2xl font-bold text-primary">Career & Money</h3>
-                    <p className="mt-2 font-sans text-foreground/90">Gain clarity on your professional path and financial decisions.</p>
-                </div>
-                <div className="bg-secondary/50 p-8 rounded-xl border border-white/10">
-                    <h3 className="font-cinzel text-2xl font-bold text-primary">Intuitive Coaching</h3>
-                    <p className="mt-2 font-sans text-foreground/90">Combine tarot with life coaching for structured support.</p>
-                </div>
-                <div className="bg-secondary/50 p-8 rounded-xl border border-white/10">
-                    <h3 className="font-cinzel text-2xl font-bold text-primary">Personal Guidance</h3>
-                    <p className="mt-2 font-sans text-foreground/90">An in-depth reading for spiritual growth and transformation.</p>
-                </div>
+                <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Career & Money</h3><p className="mt-2 font-sans text-foreground/90">Gain clarity on your professional path and financial decisions.</p></div>
+                <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Intuitive Coaching</h3><p className="mt-2 font-sans text-foreground/90">Combine tarot with life coaching for structured support.</p></div>
+                <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Personal Guidance</h3><p className="mt-2 font-sans text-foreground/90">An in-depth reading for spiritual growth and transformation.</p></div>
             </div>
             <Link href="/services" className="mt-10 inline-block font-sans text-lg text-primary hover:underline">
                 Explore all readings →
