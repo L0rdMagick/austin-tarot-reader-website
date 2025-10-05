@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { AnimatedHeading } from '@/components/AnimatedHeading';
 
 // SEO: This metadata focuses on you, Daniel, as the Austin Tarot Reader.
 export const metadata: Metadata = {
@@ -14,10 +13,10 @@ export default function AboutPage() {
     <main className="flex flex-col items-center">
       {/* Section 1: Page Header */}
       <section className="w-full text-center py-20 md:py-28 flex flex-col items-center justify-center px-4">
-        {/* REPLACED with AnimatedHeading */}
-        <AnimatedHeading as="h1" className="text-4xl sm:text-5xl text-primary">
+        {/* REVERTED to a stable h1 tag */}
+        <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-balance text-primary">
           My Journey & Philosophy
-        </AnimatedHeading>
+        </h1>
         <p className="mt-4 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
           I believe tarot is a profound tool for unlocking the wisdom we already hold within.
         </p>
@@ -38,10 +37,10 @@ export default function AboutPage() {
 
         {/* Section 2: My Story */}
         <section>
-          {/* REPLACED with AnimatedHeading */}
-          <AnimatedHeading as="h2" className="text-3xl text-accent">
+          {/* REVERTED to a stable h2 tag */}
+          <h2 className="font-cinzel text-3xl font-bold text-accent">
             An Intuitive Path
-          </AnimatedHeading>
+          </h2>
           <div className="mt-4 space-y-4 font-sans text-md sm:text-lg text-foreground/90">
             <p>
               I'm Daniel, and for years I've had the honor of guiding individuals from all walks of life through thousands of tarot readings. With a deep understanding of the intricacies of the human experience, I've helped people navigate countless situations, offering insight where there was confusion and clarity where there was doubt.
@@ -54,10 +53,10 @@ export default function AboutPage() {
 
         {/* Section 3: My Approach to Tarot */}
         <section>
-          {/* REPLACED with AnimatedHeading */}
-          <AnimatedHeading as="h2" className="text-3xl text-accent">
+          {/* REVERTED to a stable h2 tag */}
+          <h2 className="font-cinzel text-3xl font-bold text-accent">
             Tarot for Modern Life
-          </AnimatedHeading>
+          </h2>
            <div className="mt-4 space-y-4 font-sans text-md sm:text-lg text-foreground/90">
             <p>
               My approach is compassionate, intuitive, and grounded in practical wisdom. I see a tarot reading as a collaborative conversation—a safe, non-judgmental space where we can explore the energies surrounding you. My goal is to help you:
@@ -73,10 +72,10 @@ export default function AboutPage() {
 
         {/* Section 4: Call to Action */}
         <section className="text-center bg-secondary p-8 rounded-xl border border-white/10">
-          {/* REPLACED with AnimatedHeading */}
-          <AnimatedHeading as="h2" className="text-3xl text-primary">
+          {/* REVERTED to a stable h2 tag */}
+          <h2 className="font-cinzel text-3xl font-bold text-primary">
             Are You Ready to Find Clarity?
-          </AnimatedHeading>
+          </h2>
           <p className="mt-2 font-sans text-lg text-foreground/90 max-w-lg mx-auto">
             If my approach resonates with you, I would be honored to guide you on your journey.
           </p>
