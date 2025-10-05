@@ -1,6 +1,5 @@
 import Link from 'next/link';
 
-// DEBUG: To edit your social or contact links, update the arrays below.
 const socialLinks = [
     { 
         name: 'Instagram', 
@@ -9,7 +8,6 @@ const socialLinks = [
     }
 ];
 
-// NEW: Contact information array
 const contactLinks = [
     { 
         name: '(773) 948-8925', 
@@ -36,7 +34,6 @@ export function Footer() {
             <h3 className="font-cinzel text-xl font-bold text-primary">
               Austin Tarot Reader
             </h3>
-            {/* NEW: Contact Info Section */}
             <div className="space-y-2 font-sans text-foreground/80">
                 {contactLinks.map((link) => (
                     <a key={link.name} href={link.href} className="flex items-center justify-center md:justify-start gap-3 hover:text-primary transition-colors">
@@ -57,10 +54,13 @@ export function Footer() {
           {/* Column 2: Quick Links */}
           <div className="space-y-4">
             <h4 className="font-cinzel text-lg font-semibold text-accent">Navigate</h4>
+            {/* CHANGED: Added FAQ and Contact links */}
             <ul className="space-y-2 font-sans">
               <li><Link href="/" className="hover:text-primary transition-colors text-foreground">Home</Link></li>
               <li><Link href="/about" className="hover:text-primary transition-colors text-foreground">About Me</Link></li>
               <li><Link href="/services" className="hover:text-primary transition-colors text-foreground">Services & Booking</Link></li>
+              <li><Link href="/faq" className="hover:text-primary transition-colors text-foreground">FAQ</Link></li>
+              <li><Link href="/contact" className="hover:text-primary transition-colors text-foreground">Contact</Link></li>
             </ul>
           </div>
 
