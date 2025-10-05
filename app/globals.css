@@ -1,9 +1,9 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities ;
 
 /* 
-  DEBUG NOTES: 
+  DEBUG NOTESs: 
   This :root block defines our entire color palette as CSS variables.
   If you want to experiment with different colors, this is the place to do it.
   For example, changing '--primary-rgb' will change the gold accent color across the site.
