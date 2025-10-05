@@ -3,11 +3,9 @@
 @tailwind utilities;
 
 /* 
-  DEBUG NOTESs: 
-  This :root block defines our entire color palette as CSS variables.
-  If you want to experiment with different colors, this is the place to do it.
-  For example, changing '--primary-rgb' will change the gold accent color across the site.
-  The colors are defined in RGB format to allow for opacity modifications later if needed.
+  DEBUG NOTES: 
+  This :root block defines our entire color palette and now includes gradient definitions.
+  This is the control center for the site's magical aesthetic.
 */
 :root {
   --background-rgb: 13, 12, 29; /* #0D0C1D - Deep Indigo */
@@ -15,11 +13,20 @@
   --primary-rgb: 224, 201, 166; /* #E0C9A6 - Soft Gold */
   --secondary-rgb: 63, 51, 81; /* #3F3351 - Dusky Purple */
   --accent-rgb: 178, 164, 255; /* #B2A4FF - Mystical Lavender */
+
+  /* NEW: Background Gradient */
+  --background-start-rgb: 24, 22, 48; /* A slightly lighter purple for the top */
+  --background-end-rgb: 13, 12, 29; /* Our original deep indigo for the bottom */
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: rgb(var(--background-rgb));
+  /* NEW: Applied the subtle gradient background */
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
   min-height: 100vh;
 }
 
@@ -27,5 +34,26 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* 
+  NEW: Magical Flair Section 
+  This adds the glowing effects to buttons and borders throughout the site.
+*/
+@layer components {
+  /* Add a subtle glow to the main CTA buttons on hover */
+  .bg-primary:hover {
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.5);
+  }
+
+  /* Add a gentle glow to the borders of cards and sections */
+  .border-white\/10 {
+    box-shadow: 0 0 20px rgba(var(--secondary-rgb), 0.6);
+  }
+
+  /* Add a glowing effect to the primary text color (e.g., headings) */
+  .text-primary {
+    text-shadow: 0 0 10px rgba(var(--primary-rgb), 0.3);
   }
 }
