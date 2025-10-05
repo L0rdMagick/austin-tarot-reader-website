@@ -54,11 +54,12 @@ export function Footer() {
           {/* Column 2: Quick Links */}
           <div className="space-y-4">
             <h4 className="font-cinzel text-lg font-semibold text-accent">Navigate</h4>
-            {/* CHANGED: Added FAQ and Contact links */}
+            {/* CHANGED: Added Blog link */}
             <ul className="space-y-2 font-sans">
               <li><Link href="/" className="hover:text-primary transition-colors text-foreground">Home</Link></li>
               <li><Link href="/about" className="hover:text-primary transition-colors text-foreground">About Me</Link></li>
               <li><Link href="/services" className="hover:text-primary transition-colors text-foreground">Services & Booking</Link></li>
+              <li><Link href="/blog" className="hover:text-primary transition-colors text-foreground">Blog</Link></li>
               <li><Link href="/faq" className="hover:text-primary transition-colors text-foreground">FAQ</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors text-foreground">Contact</Link></li>
             </ul>
