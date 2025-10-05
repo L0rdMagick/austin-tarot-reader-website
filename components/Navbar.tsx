@@ -6,10 +6,13 @@ import { twMerge } from 'tailwind-merge';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// CHANGED: Added FAQ and Contact to the navigation links array.
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
+  { href: '/faq', label: 'FAQ' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export function Navbar() {
@@ -32,7 +35,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6"> {/* Adjusted space for more links */}
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -52,7 +55,7 @@ export function Navbar() {
         
         {/* Desktop Call to Action Button */}
         <a
-          href="https://www.austintarotreader.com/services"
+          href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:inline-block bg-primary text-background font-bold py-2 px-6 rounded-lg text-md hover:opacity-90 transition-opacity duration-300 font-sans"
@@ -93,7 +96,7 @@ export function Navbar() {
                   </Link>
                 ))}
                 <a
-                  href="https://austin-tarot-reader-website.vercel.app/services"
+                  href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-8 bg-primary text-background font-bold py-3 px-12 rounded-lg text-xl hover:opacity-90 transition-opacity duration-300 font-sans"
