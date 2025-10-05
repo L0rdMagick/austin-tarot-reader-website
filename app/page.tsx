@@ -1,6 +1,5 @@
 import { TestimonialCard } from '@/components/TestimonialCard';
 import { TarotCardAnimation } from '@/components/TarotCardAnimation';
-import { AnimatedHeading } from '@/components/AnimatedHeading';
 import Link from 'next/link';
 
 // --- Testimonials Data ---
@@ -15,9 +14,10 @@ export default function HomePage() {
     <main className="flex flex-col items-center">
       {/* Section 1: Hero */}
       <section className="w-full text-center pt-24 pb-12 md:pt-32 md:pb-20 flex flex-col items-center justify-center px-4">
-        <AnimatedHeading as="h1" className="text-4xl sm:text-5xl md:text-6xl text-primary">
+        {/* REVERTED to a stable h1 tag */}
+        <h1 className="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-balance text-primary">
           Unlock Your Path with Austin's Tarot Reader
-        </AnimatedHeading>
+        </h1>
         <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
           Find clarity for your love life, career, and spiritual journey. Compassionate, intuitive readings that bring the guidance you seek.
         </p>
@@ -32,9 +32,10 @@ export default function HomePage() {
         
         {/* Section 2: Brief About Me */}
         <section className="text-center max-w-3xl mx-auto">
-          <AnimatedHeading as="h2" className="text-3xl sm:text-4xl text-accent">
+          {/* REVERTED to a stable h2 tag */}
+          <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-accent">
             A Trusted Guide for Your Journey
-          </AnimatedHeading>
+          </h2>
           <p className="mt-4 font-sans text-md sm:text-lg text-foreground/90">
             Welcome! I'm Daniel. Known for a compassionate and intuitive approach, I've conducted thousands of readings helping people from all walks of life navigate life's complexities. My goal is to offer insight and clarity, revealing the truth behind emotional confusion so you can make confident decisions from a place of self-worth.
           </p>
@@ -46,26 +47,17 @@ export default function HomePage() {
         {/* Section 3: Featured Service - Love Readings with VIDEO */}
         <section className="bg-secondary p-8 md:p-12 rounded-2xl border border-white/10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Video Column */}
-            {/* CHANGED: Styling is now on the container to enforce the correct shape. */}
             <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/50 border-2 border-primary/30">
-              <video
-                className="w-full h-full object-cover" // Video now fills its container
-                autoPlay
-                loop
-                muted
-                playsInline
-                key="/videos/austin-tarot-reader-wizard.mp4"
-              >
+              <video className="w-full h-full object-cover" autoPlay loop muted playsInline key="/videos/austin-tarot-reader-wizard.mp4">
                 <source src="/videos/austin-tarot-reader-wizard.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
-            {/* Text Content Column */}
             <div className="text-center md:text-left">
-              <AnimatedHeading as="h3" className="text-3xl sm:text-4xl text-primary">
+              {/* REVERTED to a stable h3 tag */}
+              <h3 className="font-cinzel text-3xl sm:text-4xl font-bold text-primary">
                 Tarot for Love & Relationships
-              </AnimatedHeading>
+              </h3>
               <p className="mt-4 font-sans text-lg text-foreground/90">
                 Feeling uncertain? My love readings are designed to meet you exactly where you are and illuminate the path forward. We'll explore hidden patterns, clarify your present, and uncover any obstacles to a deeper connection.
               </p>
@@ -80,9 +72,10 @@ export default function HomePage() {
 
         {/* Section 4: Other Services Overview */}
         <section className="text-center">
-            <AnimatedHeading as="h2" className="text-3xl sm:text-4xl text-accent">
+            {/* REVERTED to a stable h2 tag */}
+            <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-accent">
               Guidance for Every Part of Your Life
-            </AnimatedHeading>
+            </h2>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Career & Money</h3><p className="mt-2 font-sans text-foreground/90">Gain clarity on your professional path and financial decisions.</p></div>
                 <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Intuitive Coaching</h3><p className="mt-2 font-sans text-foreground/90">Combine tarot with life coaching for structured support.</p></div>
@@ -95,14 +88,14 @@ export default function HomePage() {
         
         {/* Section 5: Testimonials */}
         <section className="text-center">
-          <AnimatedHeading as="h2" className="text-3xl sm:text-4xl text-accent">
+          {/* REVERTED to a stable h2 tag */}
+          <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-accent">
             What Clients Are Saying
-          </AnimatedHeading>
+          </h2>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => ( <TestimonialCard key={index} quote={testimonial.quote} author={testimonial.author} /> ))}
           </div>
         </section>
-
       </div>
     </main>
   );
