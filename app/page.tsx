@@ -4,18 +4,9 @@ import Link from 'next/link';
 
 // --- Testimonials Data ---
 const testimonials = [
-  {
-    quote: "I’ve been seeing Daniel for close to two years now and he never misses! His foresight is amazing and his readings are always spot on!",
-    author: "A. C.",
-  },
-  {
-    quote: "Daniel is amazing! His insight through his reads have had such a positive impact on my life. These aspects helped me with my current employment as well as my romantic life... I completely encourage anyone to use his services. He is the best!",
-    author: "M. G.",
-  },
-  {
-    quote: "This was such a great experience! Daniel has such great energy that I felt safe as soon as I sat down. My reading and ceremony offered so much clarity and reassurance.",
-    author: "S. B.",
-  }
+  { quote: "I’ve been seeing Daniel for close to two years now and he never misses! His foresight is amazing and his readings are always spot on!", author: "A. C." },
+  { quote: "Daniel is amazing! His insight through his reads have had such a positive impact on my life... I completely encourage anyone to use his services. He is the best!", author: "M. G." },
+  { quote: "This was such a great experience! Daniel has such great energy that I felt safe as soon as I sat down. My reading and ceremony offered so much clarity and reassurance.", author: "S. B." }
 ];
 
 export default function HomePage() {
@@ -29,15 +20,11 @@ export default function HomePage() {
         <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
           Find clarity for your love life, career, and spiritual journey. Compassionate, intuitive readings that bring the guidance you seek.
         </p>
-        <Link
-          href="/services"
-          className="mt-10 inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans"
-        >
+        <Link href="/services" className="mt-10 inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans">
           Book a Reading
         </Link>
       </section>
 
-      {/* NEW: Tarot Card Animation */}
       <TarotCardAnimation />
 
       <div className="w-full max-w-5xl mx-auto space-y-24 md:space-y-32 px-4 sm:px-8 md:px-12 pb-24 pt-16">
@@ -53,37 +40,41 @@ export default function HomePage() {
           </Link>
         </section>
 
-        {/* Section 3: Featured Service - Love Readings */}
+        {/* Section 3: Featured Service - Love Readings with VIDEO */}
         <section className="bg-secondary p-8 md:p-12 rounded-2xl border border-white/10">
-          <div className="text-center">
-            <h3 className="font-cinzel text-3xl sm:text-4xl font-bold text-primary">Tarot for Love & Relationships</h3>
-            <p className="mt-4 max-w-2xl mx-auto font-sans text-lg text-foreground/90">
-              Whether you're single, healing, or at a romantic crossroads, my love readings are designed to meet you exactly where you are and illuminate your path forward.
-            </p>
-          </div>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="space-y-2">
-              <h4 className="font-cinzel text-xl text-accent font-semibold">Reveal Patterns</h4>
-              <p className="font-sans text-foreground/80">Understand past experiences that still affect your love life today.</p>
+          {/* CHANGED: This section is now a responsive grid to accommodate the video */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Video Column */}
+            <div className="w-full max-w-xs mx-auto">
+              <video
+                className="w-full h-auto rounded-xl shadow-2xl shadow-black/50 border-2 border-primary/30"
+                autoPlay
+                loop
+                muted
+                playsInline // Essential for autoplay on iOS
+                key="/videos/austin-tarot-reader-wizard.mp4" // A key helps React re-render if the source changes
+              >
+                <source src="/videos/austin-tarot-reader-wizard.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
-            <div className="space-y-2">
-              <h4 className="font-cinzel text-xl text-accent font-semibold">Clarify the Present</h4>
-              <p className="font-sans text-foreground/80">See the hidden truths in your current situation and find out where things are headed.</p>
+            {/* Text Content Column */}
+            <div className="text-center md:text-left">
+              <h3 className="font-cinzel text-3xl sm:text-4xl font-bold text-primary">Tarot for Love & Relationships</h3>
+              <p className="mt-4 font-sans text-lg text-foreground/90">
+                Feeling uncertain? My love readings are designed to meet you exactly where you are and illuminate the path forward. We'll explore hidden patterns, clarify your present, and uncover any obstacles to a deeper connection.
+              </p>
+              <div className="mt-8 text-left">
+                <a
+                  href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans"
+                >
+                  Book a Love Reading
+                </a>
+              </div>
             </div>
-            <div className="space-y-2">
-              <h4 className="font-cinzel text-xl text-accent font-semibold">Uncover Obstacles</h4>
-              <p className="font-sans text-foreground/80">Identify what's standing in the way of a deeper connection, both internally and externally.</p>
-            </div>
-          </div>
-          <div className="text-center mt-12">
-            <a
-              href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans"
-            >
-              Book a Love Reading
-            </a>
           </div>
         </section>
 
@@ -104,13 +95,7 @@ export default function HomePage() {
         <section className="text-center">
           <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-accent">What Clients Are Saying</h2>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard 
-                key={index}
-                quote={testimonial.quote}
-                author={testimonial.author}
-              />
-            ))}
+            {testimonials.map((testimonial, index) => ( <TestimonialCard key={index} quote={testimonial.quote} author={testimonial.author} /> ))}
           </div>
         </section>
 
