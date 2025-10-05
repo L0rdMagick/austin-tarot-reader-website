@@ -4,12 +4,12 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 // --- Configuration ---
-// DEBUG: Replace these with the actual filenames of your tarot card images.
-// The `alt` text is important for SEO and accessibility.
+// DEBUG: This is where you list your image files.
+// The path must start with a '/' and point to the file inside your `public` folder.
 const cardImages = [
-  { src: '/images/19-TheSun.jpg', alt: 'The Sun Tarot Card' },
-  { src: '/images/17-TheStar.jpg', alt: 'The Star Tarot Card' },
-  { src: '/images/01-TheMagician.jpg', alt: 'The Magician Tarot Card' },
+  { src: '/19-TheSun.jpg', alt: 'The Sun Tarot Card' },
+  { src: '/17-TheStar.jpg', alt: 'The Star Tarot Card' },
+  { src: '/01-TheMagician.jpg', alt: 'The Magician Tarot Card' },
 ];
 
 // Animation variants for the container to orchestrate the children's animations
@@ -18,8 +18,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3, // Each card will animate 0.3s after the previous one
-      delayChildren: 0.5,   // Wait 0.5s before starting the animation
+      staggerChildren: 0.3,
+      delayChildren: 0.5,
     },
   },
 };
@@ -33,7 +33,8 @@ const cardVariants = {
 export function TarotCardAnimation() {
   return (
     <motion.div
-      className="relative h-64 w-full flex items-center justify-center -mt-16"
+      // CHANGED: Adjusted margin for mobile vs. desktop
+      className="relative h-64 w-full flex items-center justify-center -mt-8 md:-mt-16"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -41,12 +42,12 @@ export function TarotCardAnimation() {
       {cardImages.map((card, index) => (
         <motion.div
           key={card.src}
-          className="absolute w-36 h-60 rounded-lg shadow-2xl shadow-black/50 overflow-hidden border-2 border-primary/50"
+          // CHANGED: Adjusted card size for mobile vs. desktop
+          className="absolute w-32 h-56 md:w-36 md:h-60 rounded-lg shadow-2xl shadow-black/50 overflow-hidden border-2 border-primary/50"
           style={{
-            // Arrange cards in a fan shape. Adjust rotation and position.
             rotate: `${(index - 1) * 15}deg`,
-            translateX: `${(index - 1) * 60}px`,
-            zIndex: index === 1 ? 10 : 1, // Make the middle card appear on top
+            translateX: `${(index - 1) * 50}px`, // Adjusted for smaller mobile size
+            zIndex: index === 1 ? 10 : 1,
           }}
           variants={cardVariants}
         >
@@ -56,7 +57,7 @@ export function TarotCardAnimation() {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             style={{ objectFit: 'cover' }}
-            priority={index < 2} // Prioritize loading the first two images
+            priority={index < 2}
           />
         </motion.div>
       ))}
