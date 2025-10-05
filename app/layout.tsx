@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Cinzel, Quicksand } from "next/font/google";
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 // DEBUG: Font selection is crucial for the site's feel.
 // Cinzel is an elegant, mystical font for headings.
@@ -51,9 +53,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={twMerge(cinzel.variable, quicksand.variable, 'font-sans bg-[rgb(var(--background-rgb))]')}>
-        {children}
+    <html lang="en" className="scroll-smooth">
+      <body className={twMerge(cinzel.variable, quicksand.variable, 'font-sans bg-[rgb(var(--background-rgb))] flex flex-col min-h-screen')}>
+        <Navbar />
+        <div className="flex-grow">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
