@@ -15,7 +15,6 @@ export default function HomePage() {
     <main className="flex flex-col items-center">
       {/* Section 1: Hero */}
       <section className="w-full text-center pt-24 pb-12 md:pt-32 md:pb-20 flex flex-col items-center justify-center px-4">
-        {/* REPLACED with AnimatedHeading */}
         <AnimatedHeading as="h1" className="text-4xl sm:text-5xl md:text-6xl text-primary">
           Unlock Your Path with Austin's Tarot Reader
         </AnimatedHeading>
@@ -33,7 +32,6 @@ export default function HomePage() {
         
         {/* Section 2: Brief About Me */}
         <section className="text-center max-w-3xl mx-auto">
-          {/* REPLACED with AnimatedHeading */}
           <AnimatedHeading as="h2" className="text-3xl sm:text-4xl text-accent">
             A Trusted Guide for Your Journey
           </AnimatedHeading>
@@ -48,14 +46,23 @@ export default function HomePage() {
         {/* Section 3: Featured Service - Love Readings with VIDEO */}
         <section className="bg-secondary p-8 md:p-12 rounded-2xl border border-white/10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="w-full max-w-xs mx-auto">
-              <video className="w-full h-auto rounded-xl shadow-2xl shadow-black/50 border-2 border-primary/30" autoPlay loop muted playsInline key="/videos/austin-tarot-reader-wizard.mp4">
+            {/* Video Column */}
+            {/* CHANGED: Styling is now on the container to enforce the correct shape. */}
+            <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/50 border-2 border-primary/30">
+              <video
+                className="w-full h-full object-cover" // Video now fills its container
+                autoPlay
+                loop
+                muted
+                playsInline
+                key="/videos/austin-tarot-reader-wizard.mp4"
+              >
                 <source src="/videos/austin-tarot-reader-wizard.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
+            {/* Text Content Column */}
             <div className="text-center md:text-left">
-              {/* REPLACED with AnimatedHeading */}
               <AnimatedHeading as="h3" className="text-3xl sm:text-4xl text-primary">
                 Tarot for Love & Relationships
               </AnimatedHeading>
@@ -73,7 +80,6 @@ export default function HomePage() {
 
         {/* Section 4: Other Services Overview */}
         <section className="text-center">
-            {/* REPLACED with AnimatedHeading */}
             <AnimatedHeading as="h2" className="text-3xl sm:text-4xl text-accent">
               Guidance for Every Part of Your Life
             </AnimatedHeading>
@@ -89,7 +95,6 @@ export default function HomePage() {
         
         {/* Section 5: Testimonials */}
         <section className="text-center">
-          {/* REPLACED with AnimatedHeading */}
           <AnimatedHeading as="h2" className="text-3xl sm:text-4xl text-accent">
             What Clients Are Saying
           </AnimatedHeading>

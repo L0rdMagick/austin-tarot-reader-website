@@ -1,93 +1,108 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
+import { TestimonialCard } from '@/components/TestimonialCard';
+import { TarotCardAnimation } from '@/components/TarotCardAnimation';
 import { AnimatedHeading } from '@/components/AnimatedHeading';
+import Link from 'next/link';
 
-// SEO: This metadata focuses on you, Daniel, as the Austin Tarot Reader.
-export const metadata: Metadata = {
-  title: 'About Daniel | Austin Tarot Reader',
-  description: 'Learn about Daniel, an esteemed Austin tarot reader known for a compassionate and intuitive approach. Discover my philosophy on using tarot for clarity and empowerment.',
-};
+// --- Testimonials Data ---
+const testimonials = [
+  { quote: "I’ve been seeing Daniel for close to two years now and he never misses! His foresight is amazing and his readings are always spot on!", author: "A. C." },
+  { quote: "Daniel is amazing! His insight through his reads have had such a positive impact on my life... I completely encourage anyone to use his services. He is the best!", author: "M. G." },
+  { quote: "This was such a great experience! Daniel has such great energy that I felt safe as soon as I sat down. My reading and ceremony offered so much clarity and reassurance.", author: "S. B." }
+];
 
-export default function AboutPage() {
+export default function HomePage() {
   return (
     <main className="flex flex-col items-center">
-      {/* Section 1: Page Header */}
-      <section className="w-full text-center py-20 md:py-28 flex flex-col items-center justify-center px-4">
-        {/* REPLACED with AnimatedHeading */}
-        <AnimatedHeading as="h1" className="text-4xl sm:text-5xl text-primary">
-          My Journey & Philosophy
+      {/* Section 1: Hero */}
+      <section className="w-full text-center pt-24 pb-12 md:pt-32 md:pb-20 flex flex-col items-center justify-center px-4">
+        <AnimatedHeading as="h1" className="text-4xl sm:text-5xl md:text-6xl text-primary">
+          Unlock Your Path with Austin's Tarot Reader
         </AnimatedHeading>
-        <p className="mt-4 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
-          I believe tarot is a profound tool for unlocking the wisdom we already hold within.
+        <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
+          Find clarity for your love life, career, and spiritual journey. Compassionate, intuitive readings that bring the guidance you seek.
         </p>
+        <Link href="/services" className="mt-10 inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans">
+          Book a Reading
+        </Link>
       </section>
 
-      <div className="w-full max-w-3xl mx-auto space-y-16 px-4 sm:px-8 md:px-12 pb-24">
+      <TarotCardAnimation />
+
+      <div className="w-full max-w-5xl mx-auto space-y-24 md:space-y-32 px-4 sm:px-8 md:px-12 pb-24 pt-16">
         
-        <div className="w-full max-w-sm mx-auto aspect-square relative rounded-full overflow-hidden shadow-2xl shadow-black/50 border-4 border-primary/50">
-          <Image 
-            src="/images/daxiel-austin-tarot-reader.png" 
-            alt="Daniel, Austin Tarot Reader" 
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            style={{ objectFit: 'cover' }}
-            priority
-          />
-        </div>
-
-        {/* Section 2: My Story */}
-        <section>
-          {/* REPLACED with AnimatedHeading */}
-          <AnimatedHeading as="h2" className="text-3xl text-accent">
-            An Intuitive Path
+        {/* Section 2: Brief About Me */}
+        <section className="text-center max-w-3xl mx-auto">
+          <AnimatedHeading as="h2" className="text-3xl sm:text-4xl text-accent">
+            A Trusted Guide for Your Journey
           </AnimatedHeading>
-          <div className="mt-4 space-y-4 font-sans text-md sm:text-lg text-foreground/90">
-            <p>
-              I'm Daniel, and for years I've had the honor of guiding individuals from all walks of life through thousands of tarot readings. With a deep understanding of the intricacies of the human experience, I've helped people navigate countless situations, offering insight where there was confusion and clarity where there was doubt.
-            </p>
-            <p>
-              My journey began not with a mystical vision, but with a quiet curiosity about the stories these 78 cards could tell. I quickly learned they weren't about predicting a rigid, unchangeable future. Instead, they are a powerful language for our own intuition—a way to see our circumstances with a fresh perspective and make decisions from a place of empowerment.
-            </p>
-          </div>
-        </section>
-
-        {/* Section 3: My Approach to Tarot */}
-        <section>
-          {/* REPLACED with AnimatedHeading */}
-          <AnimatedHeading as="h2" className="text-3xl text-accent">
-            Tarot for Modern Life
-          </AnimatedHeading>
-           <div className="mt-4 space-y-4 font-sans text-md sm:text-lg text-foreground/90">
-            <p>
-              My approach is compassionate, intuitive, and grounded in practical wisdom. I see a tarot reading as a collaborative conversation—a safe, non-judgmental space where we can explore the energies surrounding you. My goal is to help you:
-            </p>
-            <ul className="list-disc list-inside pl-4 space-y-3">
-              <li><strong>Gain Empowering Perspective:</strong> See your situation from a new angle that highlights your strength and options.</li>
-              <li><strong>Validate Your Intuition:</strong> Confirm those gut feelings you've been having and build trust in your own inner wisdom.</li>
-              <li><strong>Navigate Your Crossroads:</strong> Explore the potential outcomes of your choices so you can move forward with confidence, not fear.</li>
-              <li><strong>Find Actionable Clarity:</strong> You will leave our session not just with insight, but with a clearer understanding of your next steps.</li>
-            </ul>
-          </div>
-        </section>
-
-        {/* Section 4: Call to Action */}
-        <section className="text-center bg-secondary p-8 rounded-xl border border-white/10">
-          {/* REPLACED with AnimatedHeading */}
-          <AnimatedHeading as="h2" className="text-3xl text-primary">
-            Are You Ready to Find Clarity?
-          </AnimatedHeading>
-          <p className="mt-2 font-sans text-lg text-foreground/90 max-w-lg mx-auto">
-            If my approach resonates with you, I would be honored to guide you on your journey.
+          <p className="mt-4 font-sans text-md sm:text-lg text-foreground/90">
+            Welcome! I'm Daniel. Known for a compassionate and intuitive approach, I've conducted thousands of readings helping people from all walks of life navigate life's complexities. My goal is to offer insight and clarity, revealing the truth behind emotional confusion so you can make confident decisions from a place of self-worth.
           </p>
-          <Link
-            href="/services"
-            className="mt-6 inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans"
-          >
-            Explore My Readings
+          <Link href="/about" className="mt-6 inline-block font-sans text-lg text-primary hover:underline">
+            Learn more about my philosophy →
           </Link>
         </section>
+
+        {/* Section 3: Featured Service - Love Readings with VIDEO */}
+        <section className="bg-secondary p-8 md:p-12 rounded-2xl border border-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Video Column */}
+            {/* CHANGED: Styling is now on the container to enforce the correct shape. */}
+            <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/50 border-2 border-primary/30">
+              <video
+                className="w-full h-full object-cover" // Video now fills its container
+                autoPlay
+                loop
+                muted
+                playsInline
+                key="/videos/austin-tarot-reader-wizard.mp4"
+              >
+                <source src="/videos/austin-tarot-reader-wizard.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            {/* Text Content Column */}
+            <div className="text-center md:text-left">
+              <AnimatedHeading as="h3" className="text-3xl sm:text-4xl text-primary">
+                Tarot for Love & Relationships
+              </AnimatedHeading>
+              <p className="mt-4 font-sans text-lg text-foreground/90">
+                Feeling uncertain? My love readings are designed to meet you exactly where you are and illuminate the path forward. We'll explore hidden patterns, clarify your present, and uncover any obstacles to a deeper connection.
+              </p>
+              <div className="mt-8 text-left">
+                <a href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans">
+                  Book a Love Reading
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Other Services Overview */}
+        <section className="text-center">
+            <AnimatedHeading as="h2" className="text-3xl sm:text-4xl text-accent">
+              Guidance for Every Part of Your Life
+            </AnimatedHeading>
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Career & Money</h3><p className="mt-2 font-sans text-foreground/90">Gain clarity on your professional path and financial decisions.</p></div>
+                <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Intuitive Coaching</h3><p className="mt-2 font-sans text-foreground/90">Combine tarot with life coaching for structured support.</p></div>
+                <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Personal Guidance</h3><p className="mt-2 font-sans text-foreground/90">An in-depth reading for spiritual growth and transformation.</p></div>
+            </div>
+            <Link href="/services" className="mt-10 inline-block font-sans text-lg text-primary hover:underline">
+                Explore all readings →
+            </Link>
+        </section>
         
+        {/* Section 5: Testimonials */}
+        <section className="text-center">
+          <AnimatedHeading as="h2" className="text-3xl sm:text-4xl text-accent">
+            What Clients Are Saying
+          </AnimatedHeading>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => ( <TestimonialCard key={index} quote={testimonial.quote} author={testimonial.author} /> ))}
+          </div>
+        </section>
+
       </div>
     </main>
   );
