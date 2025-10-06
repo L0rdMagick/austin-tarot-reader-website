@@ -56,7 +56,7 @@ export function Navbar() {
         
         {/* Desktop Call to Action Button */}
         <a
-          href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services"
+          href="https://www.austintarotreader.com/services"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden lg:inline-block bg-primary text-background font-bold py-2 px-6 rounded-lg text-md hover:opacity-90 transition-opacity duration-300 font-sans"
