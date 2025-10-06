@@ -1,8 +1,7 @@
 import fs from 'fs';
+// CRITICAL FIX: Added the `.js` extension to the import path.
 import { getSortedPostsData, getAllCategories } from '../lib/posts.js';
 
-// This is a workaround because we're running this as a script
-// We need to tell it where to find the content folder.
 process.chdir(process.cwd());
 
 const siteUrl = 'https://www.austintarotreader.com';
