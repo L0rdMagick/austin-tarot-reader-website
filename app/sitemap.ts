@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getSortedPostsData();
   const postUrls = posts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: post.date, // This is already in YYYY-MM-DD format, which is perfect.
     priority: 0.9,
   }));
 
@@ -16,7 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const categories = getAllCategories();
   const categoryUrls = categories.map((category) => ({
     url: `${siteUrl}/blog/category/${category.slug}`,
-    lastModified: new Date(),
+    // CHANGED: Standardize date format to YYYY-MM-DD
+    lastModified: new Date().toISOString().split('T')[0],
     priority: 0.7,
   }));
 
@@ -32,7 +33,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticUrls = staticPages.map((route) => ({
     url: `${siteUrl}${route}`,
-    lastModified: new Date(),
+    // CHANGED: Standardize date format to YYYY-MM-DD
+    lastModified: new Date().toISOString().split('T')[0],
     priority: route === '/' ? 1.0 : 0.8,
   }));
 
