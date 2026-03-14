@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Tarot Reading Services & Booking | Austin Tarot Reader',
+  title: 'Tarot Reading Services & Booking',
   description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
 };
 

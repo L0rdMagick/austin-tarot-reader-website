@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'About Daniel | Austin Tarot Reader',
+  title: 'About Daniel',
   description: "Learn about Daniel, an Austin tarot reader known for an intuitive approach. Discover my philosophy on using tarot for clarity, guidance, and empowerment.",
 };
 
