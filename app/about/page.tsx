@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     title: 'About Daniel | Austin Tarot Reader',
     description: "Learn about Daniel, an Austin tarot reader known for an intuitive approach. Discover my philosophy on using tarot for clarity and guidance.",
   },
+  alternates: {
+    canonical: '/about',
+  },
 };
 
 export default function AboutPage() {

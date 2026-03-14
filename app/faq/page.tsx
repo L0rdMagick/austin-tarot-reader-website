@@ -5,6 +5,9 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'FAQ',
   description: "Frequently asked questions about tarot readings in Austin. Find answers on how to prepare, what to ask, love readings, career guidance, and more with Daniel.",
+  alternates: {
+    canonical: '/faq',
+  },
 };
 
 // SEO-rich FAQ content. Each answer is an opportunity for keywords.
@@ -96,6 +99,23 @@ export default function FaqPage() {
     <div className="fade-in-on-load">
       <main className="flex flex-col items-center">
         <section className="w-full text-center py-20 md:py-28 flex flex-col items-center justify-center px-4">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqData.map((faq) => ({
+                  "@type": "Question",
+                  "name": faq.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": typeof faq.answer === 'string' ? faq.answer : 'Visit our services page for more details.'
+                  }
+                }))
+              })
+            }}
+          />
           <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-primary">
             Frequently Asked Questions
           </h1>

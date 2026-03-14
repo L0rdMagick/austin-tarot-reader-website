@@ -67,7 +67,10 @@ export const metadata: Metadata = {
     title: "Austin Tarot Reader | Intuitive Guidance & Clarity",
     description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session now.",
     images: ["/og-image.jpg"],
-  }
+  },
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function RootLayout({
@@ -80,6 +83,33 @@ export default function RootLayout({
       <body className={twMerge(cinzel.variable, quicksand.variable, 'font-sans bg-background flex flex-col min-h-screen')}>
         <Navbar />
         <div className="flex-grow">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ProfessionalService",
+                "name": "Austin Tarot Reader",
+                "url": "https://www.austintarotreader.com",
+                "image": "https://www.austintarotreader.com/images/icon.png",
+                "description": "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings.",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Austin",
+                  "addressRegion": "TX",
+                  "addressCountry": "US"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 30.2672,
+                  "longitude": -97.7431
+                },
+                "telephone": "+17739488925",
+                "priceRange": "$$",
+                "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 09:00-21:00"
+              })
+            }}
+          />
           {children}
         </div>
         <Footer />

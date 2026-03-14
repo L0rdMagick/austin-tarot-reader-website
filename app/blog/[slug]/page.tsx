@@ -38,6 +38,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description: post.description,
       images: [`https://www.austintarotreader.com${post.image}`],
     },
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
   };
 }
 
@@ -59,6 +62,25 @@ export default async function Post({ params }: { params: { slug: string } }) {
     <div className="fade-in-on-load">
       <main className="flex flex-col items-center">
         <article className="w-full max-w-3xl mx-auto px-4 sm:px-8 md:px-12 py-16 sm:py-24">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                "headline": post.title,
+                "description": post.description,
+                "datePublished": post.date,
+                "url": `https://www.austintarotreader.com/blog/${post.slug}`,
+                "image": post.image ? `https://www.austintarotreader.com${post.image}` : undefined,
+                "author": {
+                  "@type": "Person",
+                  "name": "Daniel",
+                  "url": "https://www.austintarotreader.com/about"
+                }
+              })
+            }}
+          />
           
           {/* Post Header */}
           <header className="text-center mb-12">

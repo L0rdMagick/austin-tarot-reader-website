@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     title: 'Tarot Reading Services & Booking | Austin Tarot Reader',
     description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
   },
+  alternates: {
+    canonical: '/services',
+  },
 };
 
 const services = [
@@ -29,6 +32,28 @@ export default function ServicesPage() {
     <div className="fade-in-on-load">
       <main className="flex flex-col items-center">
         <section className="w-full text-center py-20 md:py-28 flex flex-col items-center justify-center px-4">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "itemListElement": services.map((service, index) => ({
+                  "@type": "ListItem",
+                  "position": index + 1,
+                  "item": {
+                    "@type": "Service",
+                    "name": service.title,
+                    "description": service.description,
+                    "provider": {
+                      "@type": "LocalBusiness",
+                      "name": "Austin Tarot Reader"
+                    }
+                  }
+                }))
+              })
+            }}
+          />
           <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-primary">
             Tarot Readings & Coaching Services
           </h1>

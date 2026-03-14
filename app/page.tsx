@@ -1,6 +1,15 @@
 import { TestimonialCard } from '@/components/TestimonialCard';
 import { TarotCardAnimation } from '@/components/TarotCardAnimation';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Austin Tarot Reader | Intuitive Guidance & Clarity",
+  description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session now.",
+  alternates: {
+    canonical: '/',
+  },
+};
 
 // --- Testimonials Data ---
 const testimonials = [
@@ -17,7 +26,7 @@ export default function HomePage() {
         {/* Section 1: Hero */}
         <section className="w-full text-center pt-24 pb-12 md:pt-32 md:pb-20 flex flex-col items-center justify-center px-4">
           <h1 className="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-balance text-primary">
-            Unlock Your Path with Austin's Tarot Reader
+            Top-Rated Austin Tarot Reader | Intuitive Readings & Guidance
           </h1>
           <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
             Find clarity for your love life, career, and spiritual journey. Compassionate, intuitive readings that bring the guidance you seek.

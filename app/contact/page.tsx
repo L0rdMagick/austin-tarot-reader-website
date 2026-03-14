@@ -3,6 +3,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Contact',
   description: 'Contact Daniel for tarot readings in Austin, TX. Reach out by phone or email for inquiries about personal sessions, coaching, or event bookings.',
+  alternates: {
+    canonical: '/contact',
+  },
 };
 
 const contactDetails = [
