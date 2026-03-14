@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Austin Tarot Reader",
     default: "Austin Tarot Reader | Intuitive Guidance & Clarity",
   },
-  description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session today.",
+  description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session now.",
   keywords: ["tarot reader Austin", "Austin tarot reading", "tarot cards Austin TX", "psychic Austin", "spiritual guidance Austin", "local tarot reader"],
   
   // CHANGED: Upgraded the icons object to a comprehensive, professional suite.
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Austin Tarot Reader | Intuitive Guidance & Clarity",
-    description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session today.",
+    description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session now.",
     url: "https://www.austintarotreader.com",
     siteName: "Austin Tarot Reader",
     images: [
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Austin Tarot Reader | Intuitive Guidance & Clarity",
-    description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session today.",
+    description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session now.",
     images: ["/og-image.jpg"],
   }
 };
