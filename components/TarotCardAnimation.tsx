@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 
 // --- Configuration ---
 const cardImages = [
-  { src: '/images/19-TheSun.jpg', alt: 'The Sun Tarot Card' },
-  { src: '/images/17-TheStar.jpg', alt: 'The Star Tarot Card' },
-  { src: '/images/01-TheMagician.jpg', alt: 'The Magician Tarot Card' },
+  { src: '/images/19-TheSun.jpg', alt: 'The Sun Tarot Card - Guidance from Austin Tarot Reader' },
+  { src: '/images/17-TheStar.jpg', alt: 'The Star Tarot Card - Intuition through Austin Tarot Reader' },
+  { src: '/images/01-TheMagician.jpg', alt: 'The Magician Tarot Card - Spiritual Clarity in Austin' },
 ];
 
 const containerVariants = {

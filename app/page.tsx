@@ -57,7 +57,7 @@ export default function HomePage() {
           <section className="bg-secondary p-8 md:p-12 rounded-2xl border border-white/10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/50 border-2 border-primary/30">
-                <video className="w-full h-full object-cover" autoPlay loop muted playsInline key="/videos/love-tarot-reading-questions.mp4">
+                <video className="w-full h-full object-cover" autoPlay loop muted playsInline key="/videos/love-tarot-reading-questions.mp4" title="Love and relationship tarot reading session demonstration">
                   <source src="/videos/love-tarot-reading-questions.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>

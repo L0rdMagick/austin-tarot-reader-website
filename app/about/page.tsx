@@ -39,7 +39,7 @@ export default function AboutPage() {
           <div className="w-full max-w-sm mx-auto aspect-square relative rounded-full overflow-hidden shadow-2xl shadow-black/50 border-4 border-primary/50">
             <Image 
               src="/images/daxiel-austin-tarot-reader.png" 
-              alt="Daniel, Austin Tarot Reader" 
+              alt="Daniel, an intuitive Tarot Reader in Austin, TX" 
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               style={{ objectFit: 'cover' }}
