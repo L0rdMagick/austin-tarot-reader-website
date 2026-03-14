@@ -26,7 +26,7 @@ interface LocalBusinessSchema {
 export function generateLocalBusinessSchema(data: LocalBusinessSchema) {
   return {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "LocalBusiness",
     ...data,
     "@id": `${data.url}/#organization`,
   };
@@ -86,18 +86,19 @@ export function generateServiceSchema(services: { name: string; description: str
     "itemListElement": services.map((service, index) => ({
       "@type": "ListItem",
       "position": index + 1,
+      "url": service.url,
       "item": {
         "@type": "Service",
         "name": service.name,
         "description": service.description,
+        "url": service.url,
         "offers": {
           "@type": "Offer",
           "price": service.price.replace('$', ''),
           "priceCurrency": service.priceCurrency
         },
         "provider": {
-          "@type": "LocalBusiness",
-          "name": "Austin Tarot Reader"
+          "@id": "https://www.austintarotreader.com/#organization"
         }
       }
     }))

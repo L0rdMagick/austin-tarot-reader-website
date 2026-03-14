@@ -38,16 +38,21 @@ export default function ServicesPage() {
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "ItemList",
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": "https://www.austintarotreader.com/services"
+                },
                 "itemListElement": services.map((service, index) => ({
                   "@type": "ListItem",
                   "position": index + 1,
+                  "url": service.bookingLink,
                   "item": {
                     "@type": "Service",
                     "name": service.title,
                     "description": service.description,
+                    "url": service.bookingLink,
                     "provider": {
-                      "@type": "LocalBusiness",
-                      "name": "Austin Tarot Reader"
+                      "@id": "https://www.austintarotreader.com/#organization"
                     }
                   }
                 }))

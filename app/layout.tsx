@@ -89,7 +89,8 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
                 "@context": "https://schema.org",
-                "@type": "ProfessionalService",
+                "@type": "LocalBusiness",
+                "@id": "https://www.austintarotreader.com/#organization",
                 "name": "Austin Tarot Reader",
                 "url": "https://www.austintarotreader.com",
                 "image": "https://www.austintarotreader.com/images/icon.png",
