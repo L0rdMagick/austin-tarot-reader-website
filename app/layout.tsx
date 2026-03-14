@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Austin Tarot Reader | Intuitive Guidance & Clarity",
-    description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings.",
+    description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session today.",
     url: "https://www.austintarotreader.com",
     siteName: "Austin Tarot Reader",
     images: [
@@ -61,6 +61,12 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Austin Tarot Reader | Intuitive Guidance & Clarity",
+    description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session today.",
+    images: ["/og-image.jpg"],
   }
 };
 
