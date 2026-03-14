@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About Daniel | Austin Tarot Reader',
-  description: 'Learn about Daniel, an esteemed Austin tarot reader known for a compassionate and intuitive approach. Discover my philosophy on using tarot for clarity and empowerment.',
+  description: "Learn about Daniel, an Austin tarot reader known for an intuitive approach. Discover my philosophy on using tarot for clarity, guidance, and empowerment.",
 };
 
 export default function AboutPage() {

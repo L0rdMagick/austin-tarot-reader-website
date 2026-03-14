@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Austin Tarot Reader",
     default: "Austin Tarot Reader | Intuitive Guidance & Clarity",
   },
-  description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your session today for insightful and compassionate guidance.",
+  description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session today.",
   keywords: ["tarot reader Austin", "Austin tarot reading", "tarot cards Austin TX", "psychic Austin", "spiritual guidance Austin", "local tarot reader"],
   
   // CHANGED: Upgraded the icons object to a comprehensive, professional suite.

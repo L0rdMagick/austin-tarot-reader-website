@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Tarot Wisdom & Spiritual Insights Blog',
-  description: 'Discover the deeper meanings of tarot cards, love readings, and spiritual symbolism. Explore guidance, intuition, and transformation through the Austin Tarot Reader Blog.',
+  description: "Explore the deeper meanings of tarot cards, love readings, and spiritual symbolism. Gain guidance and transformation through the Austin Tarot Reader Blog.",
 };
 
 export default function BlogPage() {

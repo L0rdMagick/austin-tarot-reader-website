@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'FAQ | Austin Tarot Reader',
-  description: 'Frequently asked questions about tarot readings in Austin, TX. Find answers on how to prepare, what to ask, love readings, career guidance, and more with Daniel.',
+  description: "Frequently asked questions about tarot readings in Austin. Find answers on how to prepare, what to ask, love readings, career guidance, and more with Daniel.",
 };
 
 // SEO-rich FAQ content. Each answer is an opportunity for keywords.
