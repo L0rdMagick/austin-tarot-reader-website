@@ -3,6 +3,15 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Tarot Reading Services & Booking',
   description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
+  openGraph: {
+    title: 'Tarot Reading Services & Booking | Austin Tarot Reader',
+    description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tarot Reading Services & Booking | Austin Tarot Reader',
+    description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
+  },
 };
 
 const services = [

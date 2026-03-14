@@ -4,7 +4,16 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About Daniel',
-  description: "Learn about Daniel, an Austin tarot reader known for an intuitive approach. Discover my philosophy on using tarot for clarity, guidance, and empowerment.",
+  description: "Learn about Daniel, an Austin tarot reader known for an intuitive approach. Discover my philosophy on using tarot for clarity and guidance.",
+  openGraph: {
+    title: 'About Daniel | Austin Tarot Reader',
+    description: "Learn about Daniel, an Austin tarot reader known for an intuitive approach. Discover my philosophy on using tarot for clarity and guidance.",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Daniel | Austin Tarot Reader',
+    description: "Learn about Daniel, an Austin tarot reader known for an intuitive approach. Discover my philosophy on using tarot for clarity and guidance.",
+  },
 };
 
 export default function AboutPage() {
