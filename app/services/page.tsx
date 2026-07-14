@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
+import { AddamsTarotDeck } from '@/components/AddamsTarotDeck';
 
 export const metadata: Metadata = {
-  title: 'Tarot Reading Services & Booking',
-  description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
+  title: 'Tarot Readings & Mystic Offerings',
+  description: 'Book a tarot reading or purchase the Morticia\'s Shadow Gothic Tarot Deck in Austin, TX. Find the clarity and spiritual tools you seek today.',
   openGraph: {
-    title: 'Tarot Reading Services & Booking | Austin Tarot Reader',
-    description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
+    title: 'Tarot Readings & Mystic Offerings | Austin Tarot Reader',
+    description: 'Book a tarot reading or purchase the Morticia\'s Shadow Gothic Tarot Deck in Austin, TX. Find the clarity and spiritual tools you seek today.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tarot Reading Services & Booking | Austin Tarot Reader',
-    description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
+    title: 'Tarot Readings & Mystic Offerings | Austin Tarot Reader',
+    description: 'Book a tarot reading or purchase the Morticia\'s Shadow Gothic Tarot Deck in Austin, TX. Find the clarity and spiritual tools you seek today.',
   },
   alternates: {
     canonical: '/services',
@@ -60,15 +61,18 @@ export default function ServicesPage() {
             }}
           />
           <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-primary">
-            Tarot Readings & Coaching Services
+            Mystic Offerings: Readings & Wares
           </h1>
           <p className="mt-4 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
-            Each session is a confidential, compassionate, and empowering experience. Choose the reading that best fits your needs.
+            Explore personalized intuitive readings and handcrafted spiritual tools designed to guide you through the shadows.
           </p>
         </section>
 
         <div className="w-full max-w-4xl mx-auto space-y-16 px-4 sm:px-8 md:px-12 pb-24">
           <section className="space-y-12">
+            <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-accent mb-6 border-b border-white/10 pb-2">
+              Intuitive Readings & Coaching
+            </h2>
             {services.map((service) => (
               <div key={service.title} className="bg-secondary p-8 rounded-xl border border-white/10 flex flex-col md:flex-row gap-8 items-center">
                 <div className="flex-grow">
@@ -92,7 +96,12 @@ export default function ServicesPage() {
             ))}
           </section>
 
-          <section>
+          {/* Addams Tarot Deck Section */}
+          <div className="border-t border-white/10 pt-16">
+            <AddamsTarotDeck />
+          </div>
+
+          <section className="border-t border-white/10 pt-16">
             <h2 className="font-cinzel text-3xl font-bold text-center text-accent">
               How to Prepare for Your Reading
             </h2>
