@@ -1,17 +1,16 @@
 import type { Metadata } from 'next';
-import { AddamsTarotDeck } from '@/components/AddamsTarotDeck';
 
 export const metadata: Metadata = {
-  title: 'Tarot Readings & Mystic Offerings',
-  description: 'Book a tarot reading or purchase the Morticia\'s Shadow Gothic Tarot Deck in Austin, TX. Find the clarity and spiritual tools you seek today.',
+  title: 'Tarot Reading Services & Booking',
+  description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
   openGraph: {
-    title: 'Tarot Readings & Mystic Offerings | Austin Tarot Reader',
-    description: 'Book a tarot reading or purchase the Morticia\'s Shadow Gothic Tarot Deck in Austin, TX. Find the clarity and spiritual tools you seek today.',
+    title: 'Tarot Reading Services & Booking | Austin Tarot Reader',
+    description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tarot Readings & Mystic Offerings | Austin Tarot Reader',
-    description: 'Book a tarot reading or purchase the Morticia\'s Shadow Gothic Tarot Deck in Austin, TX. Find the clarity and spiritual tools you seek today.',
+    title: 'Tarot Reading Services & Booking | Austin Tarot Reader',
+    description: 'Book a tarot reading in Austin, TX. I offer in-depth, love & relationship, career, and intuitive coaching sessions. Find the clarity you seek today.',
   },
   alternates: {
     canonical: '/services',
@@ -24,12 +23,11 @@ const services = [
   { title: 'Focused 30-Minute Tarot Reading', duration: '30 min', price: '$55.00', description: 'A focused 15-card spread designed to bring quick insight into your current questions or crossroads. We explore each card one-by-one to find the guidance you need. Available in-person in Austin, by phone, or video call.', bookingLink: 'https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU' },
   { title: 'Intuitive Coaching + Tarot Session', duration: '1 hr', price: '$85.00', description: 'This unique session combines intuitive tarot with practical life coaching to help you gain insight and take action. Ideal for clients who want both spiritual clarity and structured support in making real changes. Includes meditation, a focused reading, coaching, and personalized next steps.', bookingLink: 'https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/SK53OJ3ZTPXWAEZOF3SK4P4A' },
   { title: 'Twin Flame Tarot Reading', duration: '1 hr', price: '$85.00', description: 'Explore your deep spiritual connection in this 60-minute reading. A specialized 15-card spread helps uncover karmic lessons, emotional blocks, and the next steps on your unique twin flame journey.', bookingLink: 'https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/ST7VCF5PTA3TP2GXKQCFSQBL' },
-  { title: 'Career & Money Tarot Reading', duration: '1 hr', price: '$85.00', description: 'A 60-minute reading focused on your professional path. This spread offers intuitive guidance to help you make confident, aligned decisions.', details: [ "Assesses what’s working (or not) in your current career position.", "Identifies hidden blocks or limiting beliefs affecting abundance.", "Highlights upcoming opportunities or professional shifts.", "Provides clear guidance on decision-making: whether to hold steady, take a leap, or pivot." ], bookingLink: 'https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/Y35MKZALF3RNQPE6OSOUDG5Q' },
+  { title: 'Career & Money Tarot Reading', duration: '1 hr', price: '$85.00', description: 'A 60-minute reading focused on your professional path. This spread offers intuitive guidance to help you make confident, aligned decisions.', details: [ "Assesses what’s working (or not) in your current career position.", "Identifies hidden blocks or limiting beliefs affecting abundance.", "Highlights upcoming opportunities or professional shifts.", "Provides clear guidance on decision-making: whether to hold steady, take a leap, or pivot." ], bookingLink: 'https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/Y35MKZALF3RNQPE6OSOUDG5Q' },
 ];
 
 export default function ServicesPage() {
   return (
-    // ADDED: Wrapper div with the fade-in animation class
     <div className="fade-in-on-load">
       <main className="flex flex-col items-center">
         <section className="w-full text-center py-20 md:py-28 flex flex-col items-center justify-center px-4">
@@ -61,18 +59,15 @@ export default function ServicesPage() {
             }}
           />
           <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-primary">
-            Mystic Offerings: Readings & Wares
+            Tarot Readings & Coaching Services
           </h1>
           <p className="mt-4 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
-            Explore personalized intuitive readings and handcrafted spiritual tools designed to guide you through the shadows.
+            Each session is a confidential, compassionate, and empowering experience. Choose the reading that best fits your needs.
           </p>
         </section>
 
         <div className="w-full max-w-4xl mx-auto space-y-16 px-4 sm:px-8 md:px-12 pb-24">
           <section className="space-y-12">
-            <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-accent mb-6 border-b border-white/10 pb-2">
-              Intuitive Readings & Coaching
-            </h2>
             {services.map((service) => (
               <div key={service.title} className="bg-secondary p-8 rounded-xl border border-white/10 flex flex-col md:flex-row gap-8 items-center">
                 <div className="flex-grow">
@@ -96,12 +91,7 @@ export default function ServicesPage() {
             ))}
           </section>
 
-          {/* Addams Tarot Deck Section */}
-          <div className="border-t border-white/10 pt-16">
-            <AddamsTarotDeck />
-          </div>
-
-          <section className="border-t border-white/10 pt-16">
+          <section>
             <h2 className="font-cinzel text-3xl font-bold text-center text-accent">
               How to Prepare for Your Reading
             </h2>

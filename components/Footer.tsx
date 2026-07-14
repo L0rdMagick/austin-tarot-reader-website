@@ -58,7 +58,8 @@ export function Footer() {
             <ul className="space-y-2 font-sans">
               <li><Link href="/" className="hover:text-primary transition-colors text-foreground">Home</Link></li>
               <li><Link href="/about" className="hover:text-primary transition-colors text-foreground">About Me</Link></li>
-              <li><Link href="/services" className="hover:text-primary transition-colors text-foreground">Offerings & Booking</Link></li>
+              <li><Link href="/services" className="hover:text-primary transition-colors text-foreground">Tarot Readings</Link></li>
+              <li><Link href="/services/decks" className="hover:text-primary transition-colors text-foreground">Tarot Decks</Link></li>
               <li><Link href="/blog" className="hover:text-primary transition-colors text-foreground">Blog</Link></li>
               <li><Link href="/faq" className="hover:text-primary transition-colors text-foreground">FAQ</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors text-foreground">Contact</Link></li>
