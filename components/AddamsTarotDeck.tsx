@@ -66,7 +66,7 @@ export function AddamsTarotDeck() {
 
     const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || 'sb'; // Default to sandbox ('sb')
     const script = document.createElement('script');
-    script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&intent=capture`;
+    script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&intent=capture&disable-funding=card,credit,paylater`;
     script.async = true;
     script.onload = () => {
       setPaypalLoaded(true);
@@ -309,8 +309,25 @@ export function AddamsTarotDeck() {
 
                 {/* PayPal Checkout Segment */}
                 <div className="border-t border-white/10 pt-6">
-                  <h4 className="font-cinzel text-md font-semibold text-primary uppercase tracking-wider mb-4 text-center">Secure Payment</h4>
+                  <h4 className="font-cinzel text-md font-semibold text-primary uppercase tracking-wider mb-4 text-center">Secure Checkout</h4>
                   
+                  {/* Styled Payment Badges */}
+                  <div className="flex flex-col items-center gap-2 mb-4 select-none">
+                    <div className="flex items-center gap-1 text-foreground/50">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      <span className="font-sans uppercase tracking-widest text-[9px] font-bold">Secure Gateway</span>
+                    </div>
+                    <div className="flex justify-center items-center gap-1.5">
+                      <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">VISA</span>
+                      <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">MC</span>
+                      <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">AMEX</span>
+                      <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">DISCOVER</span>
+                      <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-primary/20 rounded bg-primary/10 text-primary">PAYPAL</span>
+                    </div>
+                  </div>
+
                   {!paypalLoaded ? (
                     <div className="flex flex-col items-center justify-center py-6 space-y-3">
                       {/* Gothic custom spinner (hourglass/waxing moon style) */}
@@ -325,8 +342,9 @@ export function AddamsTarotDeck() {
                     style={{ opacity: paypalLoaded ? 1 : 0.4 }}
                   />
                   
-                  <p className="text-[10px] sm:text-xs text-center text-foreground/40 mt-3 font-sans">
-                    Payments are encrypted and processed safely through PayPal.
+                  {/* Guest Checkout Helper Text */}
+                  <p className="text-[11px] text-center text-foreground/75 mt-3 font-sans max-w-xs mx-auto leading-normal">
+                    <strong>No PayPal account needed?</strong> Click the button above, then select <em>"Pay with Debit or Credit Card"</em> inside the secure popup to check out securely as a guest.
                   </p>
                 </div>
               </motion.div>
