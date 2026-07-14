@@ -15,10 +15,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Determine the environment and set base URL
-    const isSandbox = accessToken.startsWith('EAAA-') || accessToken.startsWith('sandbox-') || process.env.SQUARE_ENVIRONMENT === 'sandbox';
-    // Square sandbox access tokens typically start with "EAAA" for sandbox application or "sandbox-"
-    // If it starts with "EAAAE", it is production. Let's inspect the token prefix or check env
-    const isTokenSandbox = accessToken.startsWith('EAAAE') ? false : (accessToken.startsWith('EAAA') || accessToken.startsWith('sandbox-'));
+    // Square sandbox access tokens start with "EAAA-" (with a hyphen) or "sandbox-"
+    // Live production tokens start with "EAAA" followed directly by letters/numbers (no hyphen)
+    const isTokenSandbox = accessToken.startsWith('EAAA-') || accessToken.startsWith('sandbox-');
     
     const environment = process.env.SQUARE_ENVIRONMENT || (isTokenSandbox ? 'sandbox' : 'production');
     const baseUrl = environment === 'sandbox'
