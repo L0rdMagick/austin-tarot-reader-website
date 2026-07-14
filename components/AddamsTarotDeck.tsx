@@ -6,36 +6,49 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 
 // --- Card Sample Images ---
+// --- Card Sample Images ---
 const sampleCards = [
   {
     name: 'The Fool',
+    character: 'Wednesday Addams',
     src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the fool.png',
-    description: 'A whimsical and careless traveler stepping off the precipice of expectation.'
+    alt: 'Wednesday Addams as The Fool card in the Addams Family inspired Gothic Tarot Deck',
+    description: 'Wednesday Addams walks a dangerous precipice with absolute indifference. A perfect representation of The Fool card in our Addams Family inspired gothic tarot deck.'
   },
   {
     name: 'The High Priestess',
+    character: 'Morticia Addams',
     src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the high priestess.png',
-    description: 'Guardian of secrets, keeper of the quiet dark, and deep intuitive wisdom.'
+    alt: 'Morticia Addams as The High Priestess card in the Morticia\'s Shadow Gothic Tarot Deck',
+    description: 'Morticia Addams embodies the quiet mystery, hidden secrets, and deep intuitive wisdom of The High Priestess card.'
   },
   {
     name: 'The Emperor',
+    character: 'Gomez Addams',
     src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the emperor.png',
-    description: 'Order, structural control, and the patriarch of the mysterious domain.'
+    alt: 'Gomez Addams as The Emperor card in the Addams Family inspired Gothic Tarot Deck',
+    description: 'Gomez Addams represents structural authority, passionate leadership, and family patriarchy as The Emperor card.'
   },
   {
     name: 'The Lovers',
+    character: 'Morticia and Gomez Addams',
     src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the lovers.png',
-    description: 'An elegant union of souls, embracing both the light and the shadows.'
+    alt: 'Morticia & Gomez Addams as The Lovers card in the Morticia\'s Shadow Gothic Tarot Deck',
+    description: 'Morticia and Gomez Addams represent a passionate, undying, and dark romantic union as The Lovers card.'
   },
   {
     name: 'The Devil',
+    character: 'Gomez Addams',
     src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the devil.PNG', // Note: Uppercase PNG in file system
-    description: 'Material entrapment, raw passion, and the playful chains of desire.'
+    alt: 'Gomez Addams as The Devil card in the Addams Family inspired Gothic Tarot Deck',
+    description: 'Gomez Addams plays the tempting role of desire, playful chains, and material obsession as The Devil card.'
   },
   {
     name: 'The Star',
+    character: 'Wednesday Addams',
     src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the star.png',
-    description: 'Hope, serene starlight, and spiritual replenishment in the dark of night.'
+    alt: 'Wednesday Addams as The Star card in the Addams Family inspired Gothic Tarot Deck',
+    description: 'Wednesday Addams represents a silent beacon of hope and dark guidance under the night sky as The Star card.'
   }
 ];
 
@@ -46,6 +59,7 @@ export function AddamsTarotDeck() {
   const [orderId, setOrderId] = useState<string | null>(null);
   const [payerName, setPayerName] = useState<string | null>(null);
   const [isSquareLoading, setIsSquareLoading] = useState(false);
+  const [shippingOption, setShippingOption] = useState<'standard' | 'expedited'>('standard');
   const paypalButtonContainerRef = useRef<HTMLDivElement>(null);
 
   const searchParams = useSearchParams();
@@ -71,6 +85,10 @@ export function AddamsTarotDeck() {
     try {
       const response = await fetch('/api/square/checkout', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ shippingOption }),
       });
       const data = await response.json();
 
@@ -124,6 +142,10 @@ export function AddamsTarotDeck() {
       // Clear container in case of multiple renders
       paypalButtonContainerRef.current.innerHTML = '';
 
+      const itemPrice = shippingOption === 'standard' ? '64.95' : '89.95';
+      const totalValue = shippingOption === 'standard' ? '69.90' : '94.90';
+      const descriptionText = `Morticia's Shadow: Gothic Tarot Deck - ${shippingOption === 'standard' ? 'Standard Delivery 2-4 weeks' : 'Expedited Delivery 1-2 weeks'} (Addams Family Inspired Edition)`;
+
       // @ts-ignore (PayPal SDK added to window)
       window.paypal.Buttons({
         style: {
@@ -137,11 +159,11 @@ export function AddamsTarotDeck() {
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: '44.90', // $39.95 deck + $4.95 shipping
+                value: totalValue,
                 breakdown: {
                   item_total: {
                     currency_code: 'USD',
-                    value: '39.95'
+                    value: itemPrice
                   },
                   shipping: {
                     currency_code: 'USD',
@@ -149,7 +171,7 @@ export function AddamsTarotDeck() {
                   }
                 }
               },
-              description: "Morticia's Shadow: Gothic Tarot Deck (Addams Family Inspired Edition)"
+              description: descriptionText
             }]
           });
         },
@@ -166,7 +188,7 @@ export function AddamsTarotDeck() {
         }
       }).render(paypalButtonContainerRef.current);
     }
-  }, [paypalLoaded, paymentSuccess]);
+  }, [paypalLoaded, paymentSuccess, shippingOption]);
 
   return (
     <section className="w-full text-foreground py-12 md:py-20 px-4 max-w-6xl mx-auto">
@@ -244,7 +266,7 @@ export function AddamsTarotDeck() {
                     <div className="relative w-full h-[90%] rounded-lg overflow-hidden border border-white/5 bg-background">
                       <Image
                         src={card.src}
-                        alt={`Morticia's Shadow Tarot: ${card.name}`}
+                        alt={card.alt}
                         fill
                         sizes="(max-width: 768px) 100vw, 300px"
                         style={{ objectFit: 'cover' }}
@@ -310,12 +332,60 @@ export function AddamsTarotDeck() {
               >
                 <div>
                   <h3 className="font-cinzel text-2xl font-bold text-primary">Order Your Deck</h3>
-                  <div className="flex items-baseline gap-2 mt-2">
-                    <span className="font-sans text-3xl font-extrabold text-accent">$39.95</span>
-                    <span className="font-sans text-foreground/60 text-sm">+ $4.95 shipping</span>
-                  </div>
-                  <div className="mt-4 bg-primary/10 border border-primary/20 rounded-lg p-3 text-xs sm:text-sm font-sans text-foreground/90 leading-relaxed">
-                    <strong>Made to Order:</strong> Each deck is handcrafted individually. Due to the high standard of production and custom detail, all deliveries take approximately <strong>2 to 3 weeks</strong>.
+                  <p className="font-sans text-xs sm:text-sm text-foreground/80 leading-relaxed mt-2 border-b border-white/5 pb-4">
+                    Immerse yourself in the dark charm of <strong>Morticia's Shadow: Gothic Tarot Deck</strong>. 
+                    This premium, hand-crafted 78-card deck is the ultimate piece of <strong>Addams Family merchandise</strong>, 
+                    perfect for fans seeking spooky Edwardian occult wares. Featuring iconic, stylized designs of your favorite characters—including 
+                    <strong>Wednesday Addams</strong> as The Fool and The Star, <strong>Gomez Addams</strong> as The Emperor and The Devil, and the elegant 
+                    <strong>Morticia Addams</strong> as The High Priestess, with both as the passionate Lovers—this deck blends timeless 
+                    tarot symbolism with gothic aesthetic elegance.
+                  </p>
+                </div>
+
+                {/* Shipping & Delivery Options Selector */}
+                <div className="space-y-3 pt-2">
+                  <h4 className="font-cinzel text-sm font-semibold text-primary uppercase tracking-wider">Select Delivery Option</h4>
+                  <div className="grid grid-cols-1 gap-3">
+                    {/* Standard option */}
+                    <div 
+                      onClick={() => setShippingOption('standard')}
+                      className={`border-2 rounded-xl p-3.5 cursor-pointer transition-all duration-300 font-sans flex flex-col justify-between ${
+                        shippingOption === 'standard' 
+                          ? 'border-primary bg-primary/10 shadow-[0_0_12px_rgba(212,175,55,0.15)]' 
+                          : 'border-white/10 bg-background/30 hover:border-white/20'
+                      }`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <span className="font-bold text-sm sm:text-md text-foreground">Standard Delivery</span>
+                        <span className="font-extrabold text-sm sm:text-md text-accent">$64.95</span>
+                      </div>
+                      <div className="flex justify-between items-center mt-1.5 text-xs text-foreground/70">
+                        <span>Made to Order (2-4 Weeks)</span>
+                        <span>+ $4.95 shipping</span>
+                      </div>
+                    </div>
+
+                    {/* Expedited option */}
+                    <div 
+                      onClick={() => setShippingOption('expedited')}
+                      className={`border-2 rounded-xl p-3.5 cursor-pointer transition-all duration-300 font-sans flex flex-col justify-between ${
+                        shippingOption === 'expedited' 
+                          ? 'border-primary bg-primary/10 shadow-[0_0_12px_rgba(212,175,55,0.15)]' 
+                          : 'border-white/10 bg-background/30 hover:border-white/20'
+                      }`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <span className="font-bold text-sm sm:text-md text-foreground flex items-center gap-1.5">
+                          Expedited Delivery
+                          <span className="text-[10px] bg-accent/20 border border-accent/30 text-accent font-bold px-1.5 py-0.2 rounded font-sans uppercase">Fast Track</span>
+                        </span>
+                        <span className="font-extrabold text-sm sm:text-md text-accent">$89.95</span>
+                      </div>
+                      <div className="flex justify-between items-center mt-1.5 text-xs text-foreground/70">
+                        <span>Expedited Crafting (1-2 Weeks)</span>
+                        <span>+ $4.95 shipping</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -395,6 +465,7 @@ export function AddamsTarotDeck() {
                   </div>
 
                   <div 
+                    key={shippingOption}
                     ref={paypalButtonContainerRef} 
                     className="w-full transition-opacity duration-300"
                     style={{ opacity: paypalLoaded ? 1 : 0.4 }}
@@ -426,7 +497,7 @@ export function AddamsTarotDeck() {
 
                 <div className="bg-background/50 border border-white/5 rounded-xl p-4 text-left font-sans text-xs sm:text-sm space-y-2 text-foreground/80">
                   <p><strong>Order Reference:</strong> <span className="font-mono text-accent">{orderId || 'Completed via Square'}</span></p>
-                  <p><strong>Delivery Estimate:</strong> 2 to 3 weeks (made-to-order)</p>
+                  <p><strong>Delivery Estimate:</strong> {shippingOption === 'standard' ? '2 to 4 weeks' : '1 to 2 weeks'} (made-to-order)</p>
                   <p><strong>Shipping Cost:</strong> Flat Rate $4.95</p>
                   <p>A receipt has been sent to your email. We will notify you as soon as the package begins its journey.</p>
                 </div>

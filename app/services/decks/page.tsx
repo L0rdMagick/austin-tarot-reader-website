@@ -69,17 +69,17 @@ export default function DecksCatalogPage() {
                 </div>
                 
                 <p className="font-sans text-foreground/90 text-md sm:text-lg leading-relaxed">
-                  A beautifully spooky, Edwardian-gothic tarot deck containing 78 custom cards. Handcrafted to order and wrapped in a plain black velvet drawstring bag.
+                  Immerse yourself in the dark elegance of this premium 78-card <strong>Addams Family inspired gothic tarot deck</strong>. Handcrafted to order and safely wrapped in a plain black velvet drawstring bag.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-2">
                   <div className="flex items-baseline gap-1">
-                    <span className="font-sans text-3xl font-extrabold text-accent">$39.95</span>
+                    <span className="font-sans text-3xl font-extrabold text-accent">From $64.95</span>
                     <span className="font-sans text-foreground/50 text-xs sm:text-sm font-light">+ $4.95 shipping</span>
                   </div>
                   <span className="hidden sm:inline text-foreground/20">|</span>
                   <span className="font-sans text-xs sm:text-sm text-foreground/60 italic bg-primary/5 px-3 py-1 rounded-full border border-primary/10">
-                    Made to Order (2-3 weeks delivery)
+                    Made to Order (Expedited available)
                   </span>
                 </div>
 

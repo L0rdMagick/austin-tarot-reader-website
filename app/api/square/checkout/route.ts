@@ -28,6 +28,13 @@ export async function POST(request: NextRequest) {
     const origin = new URL(request.url).origin;
     const redirectUrl = `${origin}/services/decks/morticias-shadow?status=success`;
 
+    // Parse standard vs expedited shipping option from request body
+    const body = await request.json().catch(() => ({}));
+    const shippingOption = body.shippingOption === 'expedited' ? 'expedited' : 'standard';
+
+    const itemPrice = shippingOption === 'standard' ? 6495 : 8995;
+    const deliveryText = shippingOption === 'standard' ? 'Standard Delivery (2-4 Weeks)' : 'Expedited Delivery (1-2 Weeks)';
+
     // Make the API request to Square Checkout API
     const response = await fetch(`${baseUrl}/v2/online-checkout/payment-links`, {
       method: 'POST',
@@ -42,10 +49,10 @@ export async function POST(request: NextRequest) {
           location_id: locationId,
           line_items: [
             {
-              name: "Morticia's Shadow: Gothic Tarot Deck (Addams Family Inspired Edition)",
+              name: `Morticia's Shadow: Gothic Tarot Deck - ${deliveryText} (Addams Family Inspired Edition)`,
               quantity: '1',
               base_price_money: {
-                amount: 3995, // $39.95 in cents
+                amount: itemPrice,
                 currency: 'USD',
               },
             },
