@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSearchParams } from 'next/navigation';
 
 // --- Card Sample Images ---
 const sampleCards = [
@@ -44,7 +45,18 @@ export function AddamsTarotDeck() {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [payerName, setPayerName] = useState<string | null>(null);
+  const [isSquareLoading, setIsSquareLoading] = useState(false);
   const paypalButtonContainerRef = useRef<HTMLDivElement>(null);
+
+  const searchParams = useSearchParams();
+  const statusParam = searchParams.get('status');
+
+  // Detect redirect status from Square Checkout
+  useEffect(() => {
+    if (statusParam === 'success') {
+      setPaymentSuccess(true);
+    }
+  }, [statusParam]);
 
   // Cycle to next/prev card
   const nextCard = () => {
@@ -52,6 +64,28 @@ export function AddamsTarotDeck() {
   };
   const prevCard = () => {
     setActiveIndex((prev) => (prev - 1 + sampleCards.length) % sampleCards.length);
+  };
+
+  const handleSquareCheckout = async () => {
+    setIsSquareLoading(true);
+    try {
+      const response = await fetch('/api/square/checkout', {
+        method: 'POST',
+      });
+      const data = await response.json();
+
+      if (response.ok && data.url) {
+        // Redirect to Square Checkout portal
+        window.location.href = data.url;
+      } else {
+        alert(data.error || 'Failed to initialize card checkout. Please try again.');
+        setIsSquareLoading(false);
+      }
+    } catch (error) {
+      console.error('Square Checkout Error:', error);
+      alert('An unexpected error occurred. Please try again.');
+      setIsSquareLoading(false);
+    }
   };
 
   // Load PayPal SDK Dynamically
@@ -336,6 +370,30 @@ export function AddamsTarotDeck() {
                     </div>
                   ) : null}
 
+                  {/* Square Payment Button */}
+                  <div className="mb-4">
+                    <button
+                      onClick={handleSquareCheckout}
+                      disabled={isSquareLoading}
+                      className="w-full bg-secondary/50 border border-primary/40 text-primary font-bold py-3 px-6 rounded-lg text-md hover:bg-primary hover:text-background transition-all duration-300 font-sans flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed gothic-glow"
+                    >
+                      {isSquareLoading ? (
+                        <div className="w-5 h-5 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+                      ) : (
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg>
+                      )}
+                      <span>{isSquareLoading ? 'Redirecting to Square...' : 'Pay with Credit / Debit Card'}</span>
+                    </button>
+
+                    <div className="flex items-center justify-center my-3 gap-2 select-none">
+                      <div className="h-[1px] bg-white/10 flex-grow" />
+                      <span className="font-sans text-[9px] text-foreground/40 uppercase tracking-wider">or pay with</span>
+                      <div className="h-[1px] bg-white/10 flex-grow" />
+                    </div>
+                  </div>
+
                   <div 
                     ref={paypalButtonContainerRef} 
                     className="w-full transition-opacity duration-300"
@@ -360,17 +418,17 @@ export function AddamsTarotDeck() {
                 </div>
                 <div>
                   <h3 className="font-cinzel text-2xl font-bold text-primary">Spells Cast Successfully!</h3>
-                  <p className="font-sans text-lg text-foreground/90 mt-2">Thank you for your order, {payerName}!</p>
+                  <p className="font-sans text-lg text-foreground/90 mt-2">Thank you for your order, {payerName || 'Valued Customer'}!</p>
                   <p className="font-sans text-sm text-foreground/70 mt-3 leading-relaxed">
                     Your payment was completed and your order has been received. Morticia's Shadow deck will be custom crafted and shipped to you.
                   </p>
                 </div>
 
                 <div className="bg-background/50 border border-white/5 rounded-xl p-4 text-left font-sans text-xs sm:text-sm space-y-2 text-foreground/80">
-                  <p><strong>Order Reference:</strong> <span className="font-mono text-accent">{orderId}</span></p>
+                  <p><strong>Order Reference:</strong> <span className="font-mono text-accent">{orderId || 'Completed via Square'}</span></p>
                   <p><strong>Delivery Estimate:</strong> 2 to 3 weeks (made-to-order)</p>
                   <p><strong>Shipping Cost:</strong> Flat Rate $4.95</p>
-                  <p>A receipt has been sent to your PayPal email. We will notify you as soon as the package begins its journey.</p>
+                  <p>A receipt has been sent to your email. We will notify you as soon as the package begins its journey.</p>
                 </div>
 
                 <button

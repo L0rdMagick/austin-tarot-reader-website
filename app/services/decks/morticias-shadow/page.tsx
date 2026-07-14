@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import { AddamsTarotDeck } from '@/components/AddamsTarotDeck';
 
 export const metadata: Metadata = {
@@ -33,7 +34,9 @@ export default function MorticiasShadowPage() {
           </Link>
         </div>
 
-        <AddamsTarotDeck />
+        <Suspense fallback={<div className="text-center py-20 font-sans text-foreground/50">Loading Morticia's Shadow...</div>}>
+          <AddamsTarotDeck />
+        </Suspense>
       </main>
     </div>
   );
