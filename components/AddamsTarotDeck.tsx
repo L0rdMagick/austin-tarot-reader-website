@@ -333,11 +333,11 @@ export function AddamsTarotDeck() {
                 <div>
                   <h3 className="font-cinzel text-2xl font-bold text-primary">Order Your Deck</h3>
                   <p className="font-sans text-xs sm:text-sm text-foreground/80 leading-relaxed mt-2 border-b border-white/5 pb-4">
-                    Immerse yourself in the dark charm of <strong>Morticia's Shadow: Gothic Tarot Deck</strong>. 
-                    This premium, hand-crafted 78-card deck is the ultimate piece of <strong>Addams Family merchandise</strong>, 
-                    perfect for fans seeking spooky Edwardian occult wares. Featuring iconic, stylized designs of your favorite characters—including 
-                    <strong>Wednesday Addams</strong> as The Fool and The Star, <strong>Gomez Addams</strong> as The Emperor and The Devil, and the elegant 
-                    <strong>Morticia Addams</strong> as The High Priestess, with both as the passionate Lovers—this deck blends timeless 
+                    Immerse yourself in the dark charm of <strong>Morticia's Shadow: Gothic Tarot Deck</strong>.{" "}
+                    This premium, hand-crafted 78-card deck is the ultimate piece of <strong>Addams Family merchandise</strong>,{" "}
+                    perfect for fans seeking spooky Edwardian occult wares. Featuring iconic, stylized designs of your favorite characters—including{" "}
+                    <strong>Wednesday Addams</strong> as The Fool and The Star, <strong>Gomez Addams</strong> as The Emperor and The Devil, and the elegant{" "}
+                    <strong>Morticia Addams</strong> as The High Priestess, with both as the passionate Lovers—this deck blends timeless{" "}
                     tarot symbolism with gothic aesthetic elegance.
                   </p>
                 </div>
@@ -355,7 +355,7 @@ export function AddamsTarotDeck() {
                           : 'border-white/10 bg-background/30 hover:border-white/20'
                       }`}
                     >
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center gap-4">
                         <span className="font-bold text-sm sm:text-md text-foreground">Standard Delivery</span>
                         <span className="font-extrabold text-sm sm:text-md text-accent">$64.95</span>
                       </div>
@@ -374,10 +374,10 @@ export function AddamsTarotDeck() {
                           : 'border-white/10 bg-background/30 hover:border-white/20'
                       }`}
                     >
-                      <div className="flex justify-between items-center">
-                        <span className="font-bold text-sm sm:text-md text-foreground flex items-center gap-1.5">
+                      <div className="flex justify-between items-center gap-4">
+                        <span className="font-bold text-sm sm:text-md text-foreground flex flex-wrap items-center gap-1.5">
                           Expedited Delivery
-                          <span className="text-[10px] bg-accent/20 border border-accent/30 text-accent font-bold px-1.5 py-0.2 rounded font-sans uppercase">Fast Track</span>
+                          <span className="text-[10px] bg-accent/20 border border-accent/30 text-accent font-bold px-1.5 py-0.5 rounded font-sans uppercase tracking-wider">Fast Track</span>
                         </span>
                         <span className="font-extrabold text-sm sm:text-md text-accent">$89.95</span>
                       </div>
