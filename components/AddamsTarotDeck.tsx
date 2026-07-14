@@ -48,11 +48,6 @@ export function AddamsTarotDeck() {
   const [isSquareLoading, setIsSquareLoading] = useState(false);
   const paypalButtonContainerRef = useRef<HTMLDivElement>(null);
 
-  // Promo Code States
-  const [promoInput, setPromoInput] = useState('');
-  const [isPromoApplied, setIsPromoApplied] = useState(false);
-  const [promoError, setPromoError] = useState('');
-
   const searchParams = useSearchParams();
   const statusParam = searchParams.get('status');
 
@@ -62,16 +57,6 @@ export function AddamsTarotDeck() {
       setPaymentSuccess(true);
     }
   }, [statusParam]);
-
-  // Apply promo logic
-  const handleApplyPromo = () => {
-    if (promoInput.trim().toUpperCase() === 'TEST100') {
-      setIsPromoApplied(true);
-      setPromoError('');
-    } else {
-      setPromoError('Invalid promo code.');
-    }
-  };
 
   // Cycle to next/prev card
   const nextCard = () => {
@@ -323,20 +308,11 @@ export function AddamsTarotDeck() {
                 exit={{ opacity: 0, y: -15 }}
                 className="space-y-6"
               >
-                 <div>
+                <div>
                   <h3 className="font-cinzel text-2xl font-bold text-primary">Order Your Deck</h3>
                   <div className="flex items-baseline gap-2 mt-2">
-                    {isPromoApplied ? (
-                      <>
-                        <span className="font-sans text-3xl font-extrabold text-accent">$0.00</span>
-                        <span className="font-sans text-foreground/60 text-sm">Free Shipping!</span>
-                      </>
-                    ) : (
-                      <>
-                        <span className="font-sans text-3xl font-extrabold text-accent">$39.95</span>
-                        <span className="font-sans text-foreground/60 text-sm">+ $4.95 shipping</span>
-                      </>
-                    )}
+                    <span className="font-sans text-3xl font-extrabold text-accent">$39.95</span>
+                    <span className="font-sans text-foreground/60 text-sm">+ $4.95 shipping</span>
                   </div>
                   <div className="mt-4 bg-primary/10 border border-primary/20 rounded-lg p-3 text-xs sm:text-sm font-sans text-foreground/90 leading-relaxed">
                     <strong>Made to Order:</strong> Each deck is handcrafted individually. Due to the high standard of production and custom detail, all deliveries take approximately <strong>2 to 3 weeks</strong>.
@@ -365,121 +341,69 @@ export function AddamsTarotDeck() {
                   </ul>
                 </div>
 
-                {/* Promo Code Input Section */}
-                <div className="border-t border-white/10 pt-4">
-                  <h4 className="font-cinzel text-sm font-semibold text-primary uppercase tracking-wider mb-2">Promo Code</h4>
-                  {isPromoApplied ? (
-                    <div className="flex items-center justify-between bg-primary/10 border border-primary/30 rounded-lg p-2.5">
-                      <span className="font-sans text-xs sm:text-sm text-primary font-bold">TEST100 (100% OFF)</span>
-                      <button 
-                        onClick={() => setIsPromoApplied(false)}
-                        className="text-xs text-foreground/50 hover:text-foreground underline font-sans focus:outline-none"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="flex gap-2">
-                      <input
-                        type="text"
-                        placeholder="Enter code"
-                        value={promoInput}
-                        onChange={(e) => setPromoInput(e.target.value)}
-                        className="flex-grow bg-background/50 border border-white/10 rounded-lg px-3 py-2 text-xs sm:text-sm font-sans text-foreground focus:outline-none focus:border-primary/50"
-                      />
-                      <button
-                        onClick={handleApplyPromo}
-                        className="bg-primary text-background font-bold px-4 py-2 rounded-lg text-xs sm:text-sm hover:opacity-90 transition-opacity font-sans"
-                      >
-                        Apply
-                      </button>
-                    </div>
-                  )}
-                  {promoError && (
-                    <p className="text-red-400 text-xs mt-1 font-sans">{promoError}</p>
-                  )}
-                </div>
-
-                {/* Secure Checkout Section */}
+                {/* PayPal Checkout Segment */}
                 <div className="border-t border-white/10 pt-6">
                   <h4 className="font-cinzel text-md font-semibold text-primary uppercase tracking-wider mb-4 text-center">Secure Checkout</h4>
                   
-                  {isPromoApplied ? (
-                    <div className="mt-2">
-                      <button
-                        onClick={() => {
-                          setOrderId('PROMO-TEST100');
-                          setPayerName('Valued Guest');
-                          setPaymentSuccess(true);
-                        }}
-                        className="w-full bg-primary text-background font-bold py-3 px-6 rounded-lg text-md hover:opacity-90 transition-opacity duration-300 font-sans tracking-wide shadow-lg"
-                      >
-                        Complete Free Order
-                      </button>
+                  {/* Styled Payment Badges */}
+                  <div className="flex flex-col items-center gap-2 mb-4 select-none">
+                    <div className="flex items-center gap-1 text-foreground/50">
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                      <span className="font-sans uppercase tracking-widest text-[9px] font-bold">Secure Gateway</span>
                     </div>
-                  ) : (
-                    <>
-                      {/* Styled Payment Badges */}
-                      <div className="flex flex-col items-center gap-2 mb-4 select-none">
-                        <div className="flex items-center gap-1 text-foreground/50">
-                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                          </svg>
-                          <span className="font-sans uppercase tracking-widest text-[9px] font-bold">Secure Gateway</span>
-                        </div>
-                        <div className="flex justify-center items-center gap-1.5">
-                          <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">VISA</span>
-                          <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">MC</span>
-                          <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">AMEX</span>
-                          <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">DISCOVER</span>
-                          <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-primary/20 rounded bg-primary/10 text-primary">PAYPAL</span>
-                        </div>
-                      </div>
+                    <div className="flex justify-center items-center gap-1.5">
+                      <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">VISA</span>
+                      <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">MC</span>
+                      <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">AMEX</span>
+                      <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-white/10 rounded bg-white/5 text-foreground/80">DISCOVER</span>
+                      <span className="text-[9px] font-sans font-bold tracking-wider px-2 py-0.5 border border-primary/20 rounded bg-primary/10 text-primary">PAYPAL</span>
+                    </div>
+                  </div>
 
-                      {!paypalLoaded ? (
-                        <div className="flex flex-col items-center justify-center py-6 space-y-3">
-                          {/* Gothic custom spinner (hourglass/waxing moon style) */}
-                          <div className="w-8 h-8 rounded-full border-4 border-accent border-t-transparent animate-spin" />
-                          <span className="font-sans text-xs text-foreground/50">Summoning PayPal Checkout...</span>
-                        </div>
-                      ) : null}
+                  {!paypalLoaded ? (
+                    <div className="flex flex-col items-center justify-center py-6 space-y-3">
+                      {/* Gothic custom spinner (hourglass/waxing moon style) */}
+                      <div className="w-8 h-8 rounded-full border-4 border-accent border-t-transparent animate-spin" />
+                      <span className="font-sans text-xs text-foreground/50">Summoning PayPal Checkout...</span>
+                    </div>
+                  ) : null}
 
-                      {/* Square Payment Button */}
-                      <div className="mb-4">
-                        <button
-                          onClick={handleSquareCheckout}
-                          disabled={isSquareLoading}
-                          className="w-full bg-secondary/50 border border-primary/40 text-primary font-bold py-3 px-6 rounded-lg text-md hover:bg-primary hover:text-background transition-all duration-300 font-sans flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed gothic-glow"
-                        >
-                          {isSquareLoading ? (
-                            <div className="w-5 h-5 rounded-full border-2 border-primary border-t-transparent animate-spin" />
-                          ) : (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                            </svg>
-                          )}
-                          <span>{isSquareLoading ? 'Redirecting to Square...' : 'Pay with Credit / Debit Card'}</span>
-                        </button>
+                  {/* Square Payment Button */}
+                  <div className="mb-4">
+                    <button
+                      onClick={handleSquareCheckout}
+                      disabled={isSquareLoading}
+                      className="w-full bg-secondary/50 border border-primary/40 text-primary font-bold py-3 px-6 rounded-lg text-md hover:bg-primary hover:text-background transition-all duration-300 font-sans flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed gothic-glow"
+                    >
+                      {isSquareLoading ? (
+                        <div className="w-5 h-5 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+                      ) : (
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg>
+                      )}
+                      <span>{isSquareLoading ? 'Redirecting to Square...' : 'Pay with Credit / Debit Card'}</span>
+                    </button>
 
-                        <div className="flex items-center justify-center my-3 gap-2 select-none">
-                          <div className="h-[1px] bg-white/10 flex-grow" />
-                          <span className="font-sans text-[9px] text-foreground/40 uppercase tracking-wider">or pay with</span>
-                          <div className="h-[1px] bg-white/10 flex-grow" />
-                        </div>
-                      </div>
+                    <div className="flex items-center justify-center my-3 gap-2 select-none">
+                      <div className="h-[1px] bg-white/10 flex-grow" />
+                      <span className="font-sans text-[9px] text-foreground/40 uppercase tracking-wider">or pay with</span>
+                      <div className="h-[1px] bg-white/10 flex-grow" />
+                    </div>
+                  </div>
 
-                      <div 
-                        ref={paypalButtonContainerRef} 
-                        className="w-full transition-opacity duration-300"
-                        style={{ opacity: paypalLoaded ? 1 : 0.4 }}
-                      />
-                      
-                      {/* Guest Checkout Helper Text */}
-                      <p className="text-[11px] text-center text-foreground/75 mt-3 font-sans max-w-xs mx-auto leading-normal">
-                        <strong>No PayPal account needed?</strong> Click the button above, then select <em>"Pay with Debit or Credit Card"</em> inside the secure popup to check out securely as a guest.
-                      </p>
-                    </>
-                  )}
+                  <div 
+                    ref={paypalButtonContainerRef} 
+                    className="w-full transition-opacity duration-300"
+                    style={{ opacity: paypalLoaded ? 1 : 0.4 }}
+                  />
+                  
+                  {/* Guest Checkout Helper Text */}
+                  <p className="text-[11px] text-center text-foreground/75 mt-3 font-sans max-w-xs mx-auto leading-normal">
+                    <strong>No PayPal account needed?</strong> Click the button above, then select <em>"Pay with Debit or Credit Card"</em> inside the secure popup to check out securely as a guest.
+                  </p>
                 </div>
               </motion.div>
             ) : (
