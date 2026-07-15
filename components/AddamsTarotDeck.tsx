@@ -94,6 +94,21 @@ export function AddamsTarotDeck() {
     setActiveIndex((prev) => (prev - 1 + sampleCards.length) % sampleCards.length);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!isZoomed) return;
+      if (e.key === 'ArrowRight') {
+        nextCard();
+      } else if (e.key === 'ArrowLeft') {
+        prevCard();
+      } else if (e.key === 'Escape') {
+        setIsZoomed(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isZoomed]);
+
   const handleSquareCheckout = async () => {
     setIsSquareLoading(true);
     try {
@@ -549,6 +564,29 @@ export function AddamsTarotDeck() {
                 aria-label="Close"
               >
                 <span>✕</span> Close
+              </button>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevCard();
+                }}
+                className="absolute left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 text-foreground/80 hover:text-primary transition-all duration-200 text-2xl sm:text-3xl font-sans font-bold flex items-center justify-center z-20 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-secondary/80 border border-primary/30 hover:border-primary/60 hover:scale-105 backdrop-blur-sm shadow-lg cursor-pointer"
+                aria-label="Previous card"
+              >
+                ‹
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextCard();
+                }}
+                className="absolute right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 text-foreground/80 hover:text-primary transition-all duration-200 text-2xl sm:text-3xl font-sans font-bold flex items-center justify-center z-20 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-secondary/80 border border-primary/30 hover:border-primary/60 hover:scale-105 backdrop-blur-sm shadow-lg cursor-pointer"
+                aria-label="Next card"
+              >
+                ›
               </button>
 
               {/* Enlarged Card Image with elegant border wrapper */}
