@@ -6,60 +6,59 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 
 // --- Card Sample Images ---
-// --- Card Sample Images ---
 const sampleCards = [
   {
-    name: 'The Fool',
-    character: 'Wednesday Addams',
-    src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the fool.png',
-    alt: 'Wednesday Addams as The Fool card in the Addams Family inspired Gothic Tarot Deck',
-    description: 'Wednesday Addams walks a dangerous precipice with absolute indifference. A perfect representation of The Fool card in our Addams Family inspired gothic tarot deck.'
-  },
-  {
-    name: 'The High Priestess',
-    character: 'Morticia Addams',
-    src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the high priestess.png',
-    alt: 'Morticia Addams as The High Priestess card in the Morticia\'s Shadow Gothic Tarot Deck',
-    description: 'Morticia Addams embodies the quiet mystery, hidden secrets, and deep intuitive wisdom of The High Priestess card.'
-  },
-  {
-    name: 'The Emperor',
-    character: 'Gomez Addams',
-    src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the emperor.png',
-    alt: 'Gomez Addams as The Emperor card in the Addams Family inspired Gothic Tarot Deck',
-    description: 'Gomez Addams represents structural authority, passionate leadership, and family patriarchy as The Emperor card.'
+    name: 'The Hierophant',
+    character: 'Royal Feline Priest',
+    src: '/images/Merchandise/Tarot Decks/Cats of the Crown Tarot Deck/the_hierophant.webp',
+    alt: 'The Hierophant card in the Cats of the Crown Tarot Deck showing a wise majestic cat pope',
+    description: 'A wise, regal feline pope presiding over the royal council. Representing spiritual tradition and structured belief.'
   },
   {
     name: 'The Lovers',
-    character: 'Morticia and Gomez Addams',
-    src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the lovers.png',
-    alt: 'Morticia & Gomez Addams as The Lovers card in the Morticia\'s Shadow Gothic Tarot Deck',
-    description: 'Morticia and Gomez Addams represent a passionate, undying, and dark romantic union as The Lovers card.'
+    character: 'Cuddling Companions',
+    src: '/images/Merchandise/Tarot Decks/Cats of the Crown Tarot Deck/the_lovers.webp',
+    alt: 'The Lovers card in the Cats of the Crown Tarot Deck showing two royal cats cuddling in the palace garden',
+    description: 'Two beautiful bonded royal felines cuddling in the palace gardens, symbolizing deep connection, love, and harmony.'
   },
   {
-    name: 'The Devil',
-    character: 'Gomez Addams',
-    src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the devil.PNG', // Note: Uppercase PNG in file system
-    alt: 'Gomez Addams as The Devil card in the Addams Family inspired Gothic Tarot Deck',
-    description: 'Gomez Addams plays the tempting role of desire, playful chains, and material obsession as The Devil card.'
+    name: 'The Tower',
+    character: 'Upheaval Castle',
+    src: '/images/Merchandise/Tarot Decks/Cats of the Crown Tarot Deck/the_tower.webp',
+    alt: 'The Tower card in the Cats of the Crown Tarot Deck showing a lightning strike on a royal cat castle',
+    description: 'A grand castle tower struck by lightning, throwing royal felines into sudden upheaval and structural collapse.'
   },
   {
-    name: 'The Star',
-    character: 'Wednesday Addams',
-    src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the star.png',
-    alt: 'Wednesday Addams as The Star card in the Addams Family inspired Gothic Tarot Deck',
-    description: 'Wednesday Addams represents a silent beacon of hope and dark guidance under the night sky as The Star card.'
+    name: 'The World',
+    character: 'Crown Sovereign',
+    src: '/images/Merchandise/Tarot Decks/Cats of the Crown Tarot Deck/the_world.webp',
+    alt: 'The World card in the Cats of the Crown Tarot Deck showing a crowned cat resting in a laurel wreath',
+    description: 'A crowned sovereign feline resting peacefully inside a laurel wreath, representing completion, wholeness, and absolute mastery.'
+  },
+  {
+    name: 'Three of Cups',
+    character: 'Celebratory Kittens',
+    src: '/images/Merchandise/Tarot Decks/Cats of the Crown Tarot Deck/three_of_cups.webp',
+    alt: 'Three of Cups card in the Cats of the Crown Tarot Deck showing three playful cats drinking from gold cups',
+    description: 'Three feline companions playing and drinking milk from golden chalices. A card of celebration, friendship, and joy.'
+  },
+  {
+    name: 'Two of Swords',
+    character: 'Stalemate Blindfold',
+    src: '/images/Merchandise/Tarot Decks/Cats of the Crown Tarot Deck/two_of_swords.webp',
+    alt: 'Two of Swords card in the Cats of the Crown Tarot Deck showing a blindfolded cat with crossed claws',
+    description: 'A blindfolded cat sitting calmly with two crossed swords, representing difficult choices, stalemate, and intellectual block.'
   },
   {
     name: 'Card Back',
-    character: 'The Addams Crest',
-    src: '/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/tarot card back.png',
-    alt: 'Morticia\'s Shadow Gothic Tarot Deck card back design featuring intricate spiderwebs and the Addams Family crest',
-    description: 'The ornate and gothic card back design, featuring custom filigree, spiderwebs, and the iconic Addams Family crest.'
+    character: 'Cats of the Crown Back',
+    src: '/images/Merchandise/Tarot Decks/Cats of the Crown Tarot Deck/cats of the crown tarot card back.png',
+    alt: 'Cats of the Crown Tarot Deck card back design featuring royal feline crowns and gold filigree',
+    description: 'Intricate royal feline card back design, featuring majestic crowns, paws, and gold-leaf patterns.'
   }
 ];
 
-export function AddamsTarotDeck() {
+export function CatsOfCrownTarotDeck() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paypalLoaded, setPaypalLoaded] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
@@ -95,7 +94,7 @@ export function AddamsTarotDeck() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ shippingOption }),
+        body: JSON.stringify({ shippingOption, deck: 'cats-of-the-crown' }),
       });
       const data = await response.json();
 
@@ -123,7 +122,7 @@ export function AddamsTarotDeck() {
       return;
     }
 
-    const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || 'sb'; // Default to sandbox ('sb')
+    const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || 'sb';
     const script = document.createElement('script');
     script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=USD&intent=capture&disable-funding=card,credit,paylater`;
     script.async = true;
@@ -136,7 +135,6 @@ export function AddamsTarotDeck() {
     document.body.appendChild(script);
 
     return () => {
-      // Clean up script on unmount
       if (document.body.contains(script)) {
         document.body.removeChild(script);
       }
@@ -151,7 +149,7 @@ export function AddamsTarotDeck() {
 
       const itemPrice = shippingOption === 'standard' ? '64.95' : '89.95';
       const totalValue = shippingOption === 'standard' ? '69.90' : '94.90';
-      const descriptionText = `Morticia's Shadow: Gothic Tarot Deck - ${shippingOption === 'standard' ? 'Standard Delivery 2-4 weeks' : 'Expedited Delivery 1-2 weeks'} (Addams Family Inspired Edition)`;
+      const descriptionText = `Cats of the Crown Tarot Deck - ${shippingOption === 'standard' ? 'Standard Delivery 2-4 weeks' : 'Expedited Delivery 1-2 weeks'} (Royal Feline Edition)`;
 
       // @ts-ignore (PayPal SDK added to window)
       window.paypal.Buttons({
@@ -203,10 +201,10 @@ export function AddamsTarotDeck() {
       <div className="text-center mb-12">
         <span className="text-accent uppercase tracking-widest text-sm font-sans font-semibold">Mystic Wares</span>
         <h2 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-bold text-primary mt-2">
-          Morticia's Shadow
+          Cats of the Crown
         </h2>
         <p className="text-foreground/80 mt-2 font-cinzel italic text-md sm:text-lg">
-          Gothic Tarot Deck (Addams Family Inspired)
+          Royal Feline Tarot Deck (Majestic & Divine)
         </p>
         <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto mt-4" />
       </div>
@@ -225,35 +223,47 @@ export function AddamsTarotDeck() {
             {/* Cards Stack Presentation */}
             <AnimatePresence mode="popLayout">
               {sampleCards.map((card, idx) => {
-                // Calculate distance/index relative to active
                 const relativeIndex = (idx - activeIndex + sampleCards.length) % sampleCards.length;
                 const isCurrent = relativeIndex === 0;
                 
-                // We only render the top few cards to keep DOM clean and stack neat
-                if (relativeIndex > 3) return null;
+                // Show 3 cards stacked in perspective
+                if (relativeIndex > 2 && relativeIndex < sampleCards.length - 1) return null;
 
-                // Stack offset styling
-                const xOffset = relativeIndex * 15;
-                const yOffset = relativeIndex * 8;
-                const rotateOffset = relativeIndex * 3;
-                const scale = 1 - relativeIndex * 0.05;
-                const opacity = 1 - relativeIndex * 0.25;
+                // Position transforms
+                let x = 0;
+                let zIndex = 10 - relativeIndex;
+                let scale = 1 - relativeIndex * 0.08;
+                let rotate = 0;
+                let opacity = 1 - relativeIndex * 0.45;
+
+                if (relativeIndex === 1) {
+                  x = 35;
+                  rotate = 6;
+                } else if (relativeIndex === 2) {
+                  x = 70;
+                  rotate = 12;
+                } else if (relativeIndex === sampleCards.length - 1) {
+                  // Card exiting left
+                  x = -250;
+                  rotate = -15;
+                  scale = 0.8;
+                  opacity = 0;
+                  zIndex = 20;
+                }
 
                 return (
                   <motion.div
                     key={card.name}
-                    className={`absolute w-[260px] h-[450px] sm:w-[280px] sm:h-[480px] rounded-xl overflow-hidden border-2 border-primary/40 bg-secondary/90 shadow-2xl flex flex-col justify-between p-3 cursor-pointer gothic-glow animate-gothic-float`}
+                    className="absolute w-[240px] sm:w-[280px] aspect-[1.66/3] rounded-xl border-2 border-primary/40 bg-secondary/80 p-3 shadow-2xl flex flex-col cursor-grab active:cursor-grabbing backdrop-blur-sm"
                     style={{
-                      zIndex: 10 - relativeIndex,
                       transformOrigin: 'bottom center',
+                      zIndex
                     }}
-                    initial={{ opacity: 0, scale: 0.8, y: 50 }}
                     animate={{
-                      opacity: opacity,
-                      scale: scale,
-                      x: xOffset,
-                      y: yOffset,
-                      rotate: rotateOffset,
+                      x,
+                      scale,
+                      rotate,
+                      opacity,
                     }}
                     exit={{
                       opacity: 0,
@@ -325,7 +335,7 @@ export function AddamsTarotDeck() {
         {/* RIGHT COLUMN: The Store Purchase Details (5 cols on large screens) */}
         <div className="lg:col-span-5 bg-secondary/40 border border-white/10 p-8 rounded-2xl backdrop-blur-sm shadow-xl relative overflow-hidden">
           
-          {/* Corner Gothic Spiderweb Accent */}
+          {/* Corner Gothic Filigree Accent */}
           <div className="absolute top-0 right-0 w-24 h-24 opacity-10 pointer-events-none select-none bg-[radial-gradient(circle_at_top_right,var(--accent-rgb)_0%,transparent_70%)]" />
           
           <AnimatePresence mode="wait">
@@ -340,12 +350,11 @@ export function AddamsTarotDeck() {
                 <div>
                   <h3 className="font-cinzel text-2xl font-bold text-primary">Order Your Deck</h3>
                   <p className="font-sans text-xs sm:text-sm text-foreground/80 leading-relaxed mt-2 border-b border-white/5 pb-4">
-                    Immerse yourself in the dark charm of <strong>Morticia's Shadow: Gothic Tarot Deck</strong>.{" "}
-                    This premium, hand-crafted 78-card deck is the ultimate piece of <strong>Addams Family merchandise</strong>,{" "}
-                    perfect for fans seeking spooky Edwardian occult wares. Featuring iconic, stylized designs of your favorite characters—including{" "}
-                    <strong>Wednesday Addams</strong> as The Fool and The Star, <strong>Gomez Addams</strong> as The Emperor and The Devil, and the elegant{" "}
-                    <strong>Morticia Addams</strong> as The High Priestess, with both as the passionate Lovers—this deck blends timeless{" "}
-                    tarot symbolism with gothic aesthetic elegance.
+                    Immerse yourself in the majestic world of the <strong>Cats of the Crown Tarot Deck</strong>.{" "}
+                    This premium, hand-crafted 78-card deck is the ultimate piece of <strong>cat tarot merchandise</strong>,{" "}
+                    perfect for feline lovers and seekers of divine, regal designs. Featuring beautiful, stylized artwork of sovereign kitty characters—including{" "}
+                    <strong>The Hierophant</strong> as the wise feline priest, <strong>The Lovers</strong> as bonded palace companions, and the crowned ruler of{" "}
+                    <strong>The World</strong>—this deck blends classic tarot symbolism with breathtaking feline majesty.
                   </p>
                 </div>
 
@@ -401,24 +410,24 @@ export function AddamsTarotDeck() {
                   <h4 className="font-cinzel text-md font-semibold text-primary uppercase tracking-wider mb-2">Specifications</h4>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-sans text-foreground/80">
                     <li className="flex items-center gap-2">
-                      <span className="text-accent">&#9733;</span> Size: 2.75"×4.75" (70×120mm)
+                      <span className="text-accent">&#9733;</span> Cards: 78 Full Tarot Deck
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-accent">&#9733;</span> Card Count: Full 78 Cards
+                      <span className="text-accent">&#9733;</span> Finish: Smooth Satin Coating
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-accent">&#9733;</span> Stock: S30 Standard Smooth
+                      <span className="text-accent">&#9733;</span> Size: Standard Tarot Size (2.75" x 4.75")
                     </li>
                     <li className="flex items-center gap-2">
-                      <span className="text-accent">&#9733;</span> Finishing: Gloss Protective Finish
+                      <span className="text-accent">&#9733;</span> Card Stock: Heavy 350 GSM Paper
                     </li>
-                    <li className="flex items-center gap-2 sm:col-span-2">
+                    <li className="flex items-center gap-2 col-span-1 sm:col-span-2">
                       <span className="text-accent">&#9733;</span> Packaging: Plain black velvet bag
                     </li>
                   </ul>
                 </div>
 
-                {/* PayPal Checkout Segment */}
+                {/* Secure Checkout Section */}
                 <div className="border-t border-white/10 pt-6">
                   <h4 className="font-cinzel text-md font-semibold text-primary uppercase tracking-wider mb-4 text-center">Secure Checkout</h4>
                   
@@ -441,7 +450,6 @@ export function AddamsTarotDeck() {
 
                   {!paypalLoaded ? (
                     <div className="flex flex-col items-center justify-center py-6 space-y-3">
-                      {/* Gothic custom spinner (hourglass/waxing moon style) */}
                       <div className="w-8 h-8 rounded-full border-4 border-accent border-t-transparent animate-spin" />
                       <span className="font-sans text-xs text-foreground/50">Summoning PayPal Checkout...</span>
                     </div>
@@ -498,7 +506,7 @@ export function AddamsTarotDeck() {
                   <h3 className="font-cinzel text-2xl font-bold text-primary">Spells Cast Successfully!</h3>
                   <p className="font-sans text-lg text-foreground/90 mt-2">Thank you for your order, {payerName || 'Valued Customer'}!</p>
                   <p className="font-sans text-sm text-foreground/70 mt-3 leading-relaxed">
-                    Your payment was completed and your order has been received. Morticia's Shadow deck will be custom crafted and shipped to you.
+                    Your payment was completed and your order has been received. Cats of the Crown deck will be custom crafted and shipped to you.
                   </p>
                 </div>
 
@@ -508,18 +516,10 @@ export function AddamsTarotDeck() {
                   <p><strong>Shipping Cost:</strong> Flat Rate $4.95</p>
                   <p>A receipt has been sent to your email. We will notify you as soon as the package begins its journey.</p>
                 </div>
-
-                <button
-                  onClick={() => setPaymentSuccess(false)}
-                  className="font-sans text-sm text-primary hover:underline"
-                >
-                  Place another order
-                </button>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-
       </div>
     </section>
   );

@@ -26,14 +26,19 @@ export async function POST(request: NextRequest) {
 
     // Get the request origin dynamically (supports localhost, Vercel deployments, and production domains)
     const origin = new URL(request.url).origin;
-    const redirectUrl = `${origin}/services/decks/morticias-shadow?status=success`;
 
-    // Parse standard vs expedited shipping option from request body
+    // Parse standard vs expedited shipping option and deck type from request body
     const body = await request.json().catch(() => ({}));
     const shippingOption = body.shippingOption === 'expedited' ? 'expedited' : 'standard';
+    const deck = body.deck === 'cats-of-the-crown' ? 'cats-of-the-crown' : 'morticias-shadow';
 
     const itemPrice = shippingOption === 'standard' ? 6495 : 8995;
     const deliveryText = shippingOption === 'standard' ? 'Standard Delivery (2-4 Weeks)' : 'Expedited Delivery (1-2 Weeks)';
+
+    // Choose redirect URL, item name, and suffix based on the deck type
+    const deckName = deck === 'cats-of-the-crown' ? 'Cats of the Crown' : "Morticia's Shadow";
+    const deckSuffix = deck === 'cats-of-the-crown' ? 'Royal Feline Edition' : 'Addams Family Inspired Edition';
+    const redirectUrl = `${origin}/services/decks/${deck === 'cats-of-the-crown' ? 'cats-of-the-crown' : 'morticias-shadow'}?status=success`;
 
     // Make the API request to Square Checkout API
     const response = await fetch(`${baseUrl}/v2/online-checkout/payment-links`, {
@@ -49,7 +54,7 @@ export async function POST(request: NextRequest) {
           location_id: locationId,
           line_items: [
             {
-              name: `Morticia's Shadow: Gothic Tarot Deck - ${deliveryText} (Addams Family Inspired Edition)`,
+              name: `${deckName} Tarot Deck - ${deliveryText} (${deckSuffix})`,
               quantity: '1',
               base_price_money: {
                 amount: itemPrice,
