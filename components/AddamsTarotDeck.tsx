@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
@@ -62,6 +63,7 @@ const sampleCards = [
 export function AddamsTarotDeck() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [paypalLoaded, setPaypalLoaded] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
@@ -79,6 +81,10 @@ export function AddamsTarotDeck() {
       setPaymentSuccess(true);
     }
   }, [statusParam]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Cycle to next/prev card
   const nextCard = () => {
@@ -526,44 +532,46 @@ export function AddamsTarotDeck() {
       </div>
 
       {/* Zoom Modal overlay */}
-      <AnimatePresence>
-        {isZoomed && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsZoomed(false)}
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background/90 backdrop-blur-md p-4 cursor-zoom-out"
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setIsZoomed(false)}
-              className="absolute top-4 right-4 text-foreground/80 hover:text-primary transition-colors text-lg font-sans font-bold flex items-center gap-1.5 z-10 bg-secondary/80 border border-primary/30 px-3 py-1.5 rounded-lg backdrop-blur-sm shadow-lg"
-              aria-label="Close"
-            >
-              <span>✕</span> Close
-            </button>
-
-            {/* Enlarged Card Image with elegant border wrapper */}
+      {mounted && typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {isZoomed && (
             <motion.div
-              initial={{ scale: 0.95, y: 15 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 15 }}
-              onClick={(e) => e.stopPropagation()} // Prevent close on clicking the image border container itself
-              className="relative h-[82vh] max-h-[82vh] max-w-[90vw] aspect-[2.75/4.75] rounded-2xl overflow-hidden border-2 border-primary/60 bg-background shadow-2xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsZoomed(false)}
+              className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background/90 backdrop-blur-md p-4 cursor-zoom-out"
             >
-              <Image
-                src={sampleCards[activeIndex].src}
-                alt={sampleCards[activeIndex].alt}
-                fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 768px) 100vw, 800px"
-                priority
-              />
+              {/* Close Button */}
+              <button
+                onClick={() => setIsZoomed(false)}
+                className="absolute top-4 right-4 text-foreground/80 hover:text-primary transition-colors text-lg font-sans font-bold flex items-center gap-1.5 z-10 bg-secondary/80 border border-primary/30 px-3 py-1.5 rounded-lg backdrop-blur-sm shadow-lg"
+                aria-label="Close"
+              >
+                <span>✕</span> Close
+              </button>
+
+              {/* Enlarged Card Image with elegant border wrapper */}
+              <motion.div
+                initial={{ scale: 0.95, y: 15 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.95, y: 15 }}
+                className="relative h-[82vh] max-h-[82vh] max-w-[90vw] aspect-[2.75/4.75] rounded-2xl overflow-hidden border-2 border-primary/60 bg-background shadow-2xl"
+              >
+                <Image
+                  src={sampleCards[activeIndex].src}
+                  alt={sampleCards[activeIndex].alt}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  priority
+                />
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   );
 }
