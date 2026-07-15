@@ -61,6 +61,7 @@ const sampleCards = [
 
 export function AddamsTarotDeck() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
   const [paypalLoaded, setPaypalLoaded] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
@@ -211,13 +212,13 @@ export function AddamsTarotDeck() {
         <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto mt-4" />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         {/* LEFT COLUMN: The Interactive Gothic Deck Showcase (7 cols on large screens) */}
         <div className="lg:col-span-7 flex flex-col items-center">
           
           {/* Card Showcase Container */}
-          <div className="relative w-full max-w-[340px] sm:max-w-[380px] h-[580px] flex items-center justify-center select-none">
+          <div className="relative w-full max-w-[340px] sm:max-w-[380px] h-[460px] sm:h-[500px] flex items-center justify-center select-none">
             
             {/* Background filigree aura */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(63,51,81,0.4)_0%,transparent_70%)] pointer-events-none rounded-full" />
@@ -242,7 +243,7 @@ export function AddamsTarotDeck() {
                 return (
                   <motion.div
                     key={card.name}
-                    className={`absolute w-[260px] h-[450px] sm:w-[280px] sm:h-[480px] rounded-xl overflow-hidden border-2 border-primary/40 bg-secondary/90 shadow-2xl flex flex-col justify-between p-3 cursor-pointer gothic-glow animate-gothic-float`}
+                    className={`absolute w-[260px] h-[450px] sm:w-[280px] sm:h-[480px] rounded-xl overflow-hidden border-2 border-primary/40 bg-secondary/90 shadow-2xl flex flex-col justify-between p-3 gothic-glow animate-gothic-float ${isCurrent ? 'cursor-zoom-in' : 'cursor-pointer'}`}
                     style={{
                       zIndex: 10 - relativeIndex,
                       transformOrigin: 'bottom center',
@@ -265,6 +266,8 @@ export function AddamsTarotDeck() {
                     onClick={() => {
                       if (!isCurrent) {
                         setActiveIndex(idx);
+                      } else {
+                        setIsZoomed(true);
                       }
                     }}
                     transition={{ type: 'spring', stiffness: 260, damping: 25 }}
@@ -521,6 +524,59 @@ export function AddamsTarotDeck() {
         </div>
 
       </div>
+
+      {/* Zoom Modal overlay */}
+      <AnimatePresence>
+        {isZoomed && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsZoomed(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md p-4 cursor-zoom-out"
+          >
+            {/* Modal Container */}
+            <motion.div
+              initial={{ scale: 0.95, y: 15 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 15 }}
+              onClick={(e) => e.stopPropagation()} // Prevent close on clicking modal itself
+              className="relative max-w-[360px] sm:max-w-[420px] w-full max-h-[90vh] flex flex-col items-center border-2 border-primary/40 bg-secondary/90 p-4 rounded-2xl shadow-2xl backdrop-blur-sm"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsZoomed(false)}
+                className="absolute -top-12 right-2 sm:right-0 text-foreground/80 hover:text-primary transition-colors text-lg font-sans font-bold flex items-center gap-1.5"
+                aria-label="Close"
+              >
+                <span>✕</span> Close
+              </button>
+
+              {/* Card Image Container */}
+              <div className="relative w-full aspect-[2.75/4.75] max-h-[60vh] sm:max-h-[65vh] rounded-lg overflow-hidden border border-white/10 bg-background shadow-inner">
+                <Image
+                  src={sampleCards[activeIndex].src}
+                  alt={sampleCards[activeIndex].alt}
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  priority
+                />
+              </div>
+
+              {/* Title & Caption */}
+              <div className="text-center mt-4">
+                <h3 className="font-cinzel text-lg sm:text-xl text-primary font-bold tracking-wide">
+                  {sampleCards[activeIndex].name.toUpperCase()}
+                </h3>
+                <p className="font-sans text-xs sm:text-sm text-foreground/80 mt-1.5 italic max-w-[280px] sm:max-w-xs mx-auto">
+                  "{sampleCards[activeIndex].description}"
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

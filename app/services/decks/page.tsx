@@ -42,7 +42,10 @@ export default function DecksCatalogPage() {
             <div className="bg-secondary/40 p-6 sm:p-8 md:p-12 rounded-2xl border border-white/10 flex flex-col md:flex-row gap-8 md:gap-12 items-center hover:border-accent/30 transition-all duration-300 shadow-xl">
               
               {/* Left Column: Large Hovering Thumbnail (star card) */}
-              <div className="w-full md:w-1/2 max-w-[280px] sm:max-w-[320px] aspect-[2/3] relative rounded-xl overflow-hidden shadow-2xl border border-primary/30 group cursor-pointer animate-gothic-float">
+              <Link 
+                href="/services/decks/morticias-shadow"
+                className="w-full md:w-1/2 max-w-[280px] sm:max-w-[320px] aspect-[2/3] relative rounded-xl overflow-hidden shadow-2xl border border-primary/30 group cursor-pointer animate-gothic-float"
+              >
                 <Image
                   src="/images/Merchandise/Tarot Decks/Addams Family Tarot Deck/the lovers.png"
                   alt="Morticia's Shadow Gothic Tarot Deck - Lovers Card"
@@ -54,7 +57,7 @@ export default function DecksCatalogPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                   <span className="font-cinzel text-sm text-primary tracking-widest">VIEW DETAILS</span>
                 </div>
-              </div>
+              </Link>
 
               {/* Right Column: Title & Caption */}
               <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left space-y-4">
@@ -99,7 +102,10 @@ export default function DecksCatalogPage() {
             <div className="bg-secondary/40 p-6 sm:p-8 md:p-12 rounded-2xl border border-white/10 flex flex-col md:flex-row gap-8 md:gap-12 items-center hover:border-accent/30 transition-all duration-300 shadow-xl">
               
               {/* Left Column: Large Hovering Thumbnail (Lovers card) */}
-              <div className="w-full md:w-1/2 max-w-[280px] sm:max-w-[320px] aspect-[2/3] relative rounded-xl overflow-hidden shadow-2xl border border-primary/30 group cursor-pointer animate-gothic-float">
+              <Link
+                href="/services/decks/cats-of-the-crown"
+                className="w-full md:w-1/2 max-w-[280px] sm:max-w-[320px] aspect-[2/3] relative rounded-xl overflow-hidden shadow-2xl border border-primary/30 group cursor-pointer animate-gothic-float"
+              >
                 <Image
                   src="/images/Merchandise/Tarot Decks/Cats of the Crown Tarot Deck/the_lovers.webp"
                   alt="Cats of the Crown Tarot Deck - Lovers Card"
@@ -110,7 +116,7 @@ export default function DecksCatalogPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                   <span className="font-cinzel text-sm text-primary tracking-widest">VIEW DETAILS</span>
                 </div>
-              </div>
+              </Link>
 
               {/* Right Column: Title & Description */}
               <div className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left space-y-4">
