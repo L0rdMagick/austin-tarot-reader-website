@@ -558,10 +558,8 @@ export function AddamsTarotDeck() {
                 exit={{ scale: 0.95, y: 15 }}
                 style={{
                   aspectRatio: '2.75 / 4.75',
-                  width: '90vw',
-                  height: 'auto',
                 }}
-                className="relative max-h-[82vh] max-w-[90vw] rounded-2xl overflow-hidden border-2 border-primary/60 bg-background shadow-2xl"
+                className="relative w-full h-auto max-h-[82vh] max-w-[90vw] rounded-2xl overflow-hidden border-2 border-primary/60 bg-background shadow-2xl"
               >
                 <Image
                   src={sampleCards[activeIndex].src}

@@ -558,10 +558,8 @@ export function CatsOfCrownTarotDeck() {
                 exit={{ scale: 0.95, y: 15 }}
                 style={{
                   aspectRatio: '1.66 / 3',
-                  width: '90vw',
-                  height: 'auto',
                 }}
-                className="relative max-h-[82vh] max-w-[90vw] rounded-2xl overflow-hidden border-2 border-primary/60 bg-background shadow-2xl"
+                className="relative w-full h-auto max-h-[82vh] max-w-[90vw] rounded-2xl overflow-hidden border-2 border-primary/60 bg-background shadow-2xl"
               >
                 <Image
                   src={sampleCards[activeIndex].src}
