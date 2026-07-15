@@ -533,46 +533,33 @@ export function AddamsTarotDeck() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsZoomed(false)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md p-4 cursor-zoom-out"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background/90 backdrop-blur-md p-4 cursor-zoom-out"
           >
-            {/* Modal Container */}
+            {/* Close Button */}
+            <button
+              onClick={() => setIsZoomed(false)}
+              className="absolute top-4 right-4 text-foreground/80 hover:text-primary transition-colors text-lg font-sans font-bold flex items-center gap-1.5 z-10 bg-secondary/80 border border-primary/30 px-3 py-1.5 rounded-lg backdrop-blur-sm shadow-lg"
+              aria-label="Close"
+            >
+              <span>✕</span> Close
+            </button>
+
+            {/* Enlarged Card Image with elegant border wrapper */}
             <motion.div
               initial={{ scale: 0.95, y: 15 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 15 }}
-              onClick={(e) => e.stopPropagation()} // Prevent close on clicking modal itself
-              className="relative max-w-[360px] sm:max-w-[420px] w-full max-h-[90vh] flex flex-col items-center border-2 border-primary/40 bg-secondary/90 p-4 rounded-2xl shadow-2xl backdrop-blur-sm"
+              onClick={(e) => e.stopPropagation()} // Prevent close on clicking the image border container itself
+              className="relative h-[82vh] max-h-[82vh] max-w-[90vw] aspect-[2.75/4.75] rounded-2xl overflow-hidden border-2 border-primary/60 bg-background shadow-2xl"
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setIsZoomed(false)}
-                className="absolute -top-12 right-2 sm:right-0 text-foreground/80 hover:text-primary transition-colors text-lg font-sans font-bold flex items-center gap-1.5"
-                aria-label="Close"
-              >
-                <span>✕</span> Close
-              </button>
-
-              {/* Card Image Container */}
-              <div className="relative w-full aspect-[2.75/4.75] max-h-[60vh] sm:max-h-[65vh] rounded-lg overflow-hidden border border-white/10 bg-background shadow-inner">
-                <Image
-                  src={sampleCards[activeIndex].src}
-                  alt={sampleCards[activeIndex].alt}
-                  fill
-                  style={{ objectFit: 'contain' }}
-                  sizes="(max-width: 768px) 100vw, 600px"
-                  priority
-                />
-              </div>
-
-              {/* Title & Caption */}
-              <div className="text-center mt-4">
-                <h3 className="font-cinzel text-lg sm:text-xl text-primary font-bold tracking-wide">
-                  {sampleCards[activeIndex].name.toUpperCase()}
-                </h3>
-                <p className="font-sans text-xs sm:text-sm text-foreground/80 mt-1.5 italic max-w-[280px] sm:max-w-xs mx-auto">
-                  "{sampleCards[activeIndex].description}"
-                </p>
-              </div>
+              <Image
+                src={sampleCards[activeIndex].src}
+                alt={sampleCards[activeIndex].alt}
+                fill
+                style={{ objectFit: 'cover' }}
+                sizes="(max-width: 768px) 100vw, 800px"
+                priority
+              />
             </motion.div>
           </motion.div>
         )}
