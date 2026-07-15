@@ -203,7 +203,7 @@ export function CatsOfCrownTarotDeck() {
   }, [paypalLoaded, paymentSuccess, shippingOption]);
 
   return (
-    <section className="w-full text-foreground py-12 md:py-20 px-4 max-w-6xl mx-auto">
+    <section className="w-full text-foreground py-12 md:py-20 px-4 max-w-6xl mx-auto overflow-x-clip">
       {/* Visual Accent Section Header */}
       <div className="text-center mb-12">
         <span className="text-accent uppercase tracking-widest text-sm font-sans font-semibold">Mystic Wares</span>
@@ -558,14 +558,15 @@ export function CatsOfCrownTarotDeck() {
                 exit={{ scale: 0.95, y: 15 }}
                 style={{
                   aspectRatio: '1.66 / 3',
+                  maxWidth: 'min(90vw, calc(82vh * 1.66 / 3))',
                 }}
-                className="relative w-full h-auto max-h-[82vh] max-w-[90vw] rounded-2xl overflow-hidden border-2 border-primary/60 bg-background shadow-2xl"
+                className="relative w-full h-auto rounded-2xl overflow-hidden border-2 border-primary/60 bg-background shadow-2xl"
               >
                 <Image
                   src={sampleCards[activeIndex].src}
                   alt={sampleCards[activeIndex].alt}
                   fill
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'contain' }}
                   sizes="(max-width: 768px) 100vw, 800px"
                   priority
                 />
