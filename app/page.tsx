@@ -1,5 +1,7 @@
 import { TestimonialCard } from '@/components/TestimonialCard';
 import { TarotCardAnimation } from '@/components/TarotCardAnimation';
+import { InteractiveTarotOracle } from '@/components/InteractiveTarotOracle';
+import { MobileStickyBar } from '@/components/MobileStickyBar';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -20,32 +22,45 @@ const testimonials = [
 
 export default function HomePage() {
   return (
-    // ADDED: Wrapper div with the fade-in animation class
-    <div className="fade-in-on-load">
+    <div className="fade-in-on-load pb-16 md:pb-0">
       <main className="flex flex-col items-center">
         {/* Section 1: Hero */}
-        <section className="w-full text-center pt-24 pb-12 md:pt-32 md:pb-20 flex flex-col items-center justify-center px-4">
-          <h1 className="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-balance text-primary">
-            Top-Rated Austin Tarot Reader | Intuitive Readings & Guidance
+        <section className="w-full text-center pt-24 pb-8 md:pt-32 md:pb-16 flex flex-col items-center justify-center px-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs sm:text-sm font-sans font-semibold mb-6">
+            <span>⭐ 5.0 Google Rated Tarot Reader</span>
+            <span className="text-foreground/40">•</span>
+            <span>In-Person Austin, TX & Virtual</span>
+          </div>
+
+          <h1 className="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-balance text-primary max-w-4xl">
+            Top-Rated Austin Tarot Reader | Intuitive Guidance & Clarity
           </h1>
-          <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground">
-            Find clarity for your love life, career, and spiritual journey. Compassionate, intuitive readings that bring the guidance you seek.
+          <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90">
+            Find clarity for your love life, career, and spiritual journey. Confidential, compassionate, intuitive readings tailored to your path.
           </p>
-          <Link href="/services" className="mt-10 inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans">
-            Book a Reading
-          </Link>
+          <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
+            <Link href="/services" className="w-full sm:w-auto bg-primary text-background font-bold py-3.5 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans shadow-lg shadow-primary/20">
+              Book a Session ($55 – $85)
+            </Link>
+            <a href="sms:15125550199?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="w-full sm:w-auto bg-secondary text-primary border border-primary/40 font-bold py-3.5 px-6 rounded-lg text-base hover:bg-secondary/80 transition-colors duration-300 font-sans">
+              💬 Text Daniel to Check Today's Availability
+            </a>
+          </div>
         </section>
 
         <TarotCardAnimation />
 
-        <div className="w-full max-w-5xl mx-auto space-y-24 md:space-y-32 px-4 sm:px-8 md:px-12 pb-24 pt-16">
+        {/* Section 2: Interactive Card Flip Experience */}
+        <InteractiveTarotOracle />
+
+        <div className="w-full max-w-5xl mx-auto space-y-24 md:space-y-32 px-4 sm:px-8 md:px-12 pb-24 pt-10">
           
-          {/* Section 2: Brief About Me */}
+          {/* Section 3: Brief About Me */}
           <section className="text-center max-w-3xl mx-auto">
             <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-accent">
               A Trusted Guide for Your Journey
             </h2>
-            <p className="mt-4 font-sans text-md sm:text-lg text-foreground/90">
+            <p className="mt-4 font-sans text-md sm:text-lg text-foreground/90 leading-relaxed">
               Welcome! I'm Daniel. Known for a compassionate and intuitive approach, I've conducted thousands of readings helping people from all walks of life navigate life's complexities. My goal is to offer insight and clarity, revealing the truth behind emotional confusion so you can make confident decisions from a place of self-worth.
             </p>
             <Link href="/about" className="mt-6 inline-block font-sans text-lg text-primary hover:underline">
@@ -53,7 +68,89 @@ export default function HomePage() {
             </Link>
           </section>
 
-          {/* Section 3: Featured Service - Love Readings with VIDEO */}
+          {/* Section 4: Clear Session Durations & Pricing */}
+          <section className="text-center">
+            <span className="text-accent uppercase tracking-widest text-xs font-sans font-semibold">Frictionless Booking</span>
+            <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-primary mt-1">
+              Choose Your Guidance Session
+            </h2>
+            <p className="mt-3 font-sans text-foreground/80 max-w-xl mx-auto text-base sm:text-lg">
+              Available in-person in Austin, TX or via Phone/Zoom worldwide.
+            </p>
+
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+              {/* Card 1: 30-Min */}
+              <div className="bg-secondary/60 p-8 rounded-2xl border border-white/10 flex flex-col justify-between hover:border-primary/40 transition-all duration-300 shadow-xl">
+                <div>
+                  <span className="text-accent font-sans text-xs uppercase tracking-wider font-semibold">Quick Answers</span>
+                  <h3 className="font-cinzel text-2xl font-bold text-primary mt-1">Focused Reading</h3>
+                  <div className="mt-3 flex items-baseline gap-2">
+                    <span className="font-sans text-3xl font-bold text-primary">$55.00</span>
+                    <span className="font-sans text-xs text-foreground/60">/ 30 minutes</span>
+                  </div>
+                  <p className="mt-4 font-sans text-sm text-foreground/80 leading-relaxed">
+                    Designed to bring quick, sharp insight into 1–2 pressing questions or immediate crossroads in your life.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <a href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU" target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-secondary border border-primary/50 text-primary hover:bg-primary hover:text-background font-bold py-3 px-6 rounded-lg text-base transition-colors duration-300 font-sans">
+                    Book 30-Min ($55)
+                  </a>
+                </div>
+              </div>
+
+              {/* Card 2: 60-Min (MOST POPULAR) */}
+              <div className="bg-secondary p-8 rounded-2xl border-2 border-primary shadow-2xl shadow-primary/20 flex flex-col justify-between relative transform md:-translate-y-2">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-background text-xs font-bold font-sans uppercase px-3 py-1 rounded-full tracking-wider">
+                  Most Popular
+                </div>
+                <div>
+                  <span className="text-accent font-sans text-xs uppercase tracking-wider font-semibold">Deep Clarity</span>
+                  <h3 className="font-cinzel text-2xl font-bold text-primary mt-1">In-Depth Reading</h3>
+                  <div className="mt-3 flex items-baseline gap-2">
+                    <span className="font-sans text-3xl font-bold text-primary">$85.00</span>
+                    <span className="font-sans text-xs text-foreground/60">/ 60 minutes</span>
+                  </div>
+                  <p className="mt-4 font-sans text-sm text-foreground/90 leading-relaxed">
+                    An extended 15-card spread covering your Love Life, Career, Twin Flame journey, or overall spiritual path.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <a href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/BF72ZKQM74NPNZ3FTYZLARXT" target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-primary text-background font-bold py-3 px-6 rounded-lg text-base hover:opacity-90 transition-opacity duration-300 font-sans shadow-md">
+                    Book 60-Min ($85)
+                  </a>
+                </div>
+              </div>
+
+              {/* Card 3: Coaching */}
+              <div className="bg-secondary/60 p-8 rounded-2xl border border-white/10 flex flex-col justify-between hover:border-primary/40 transition-all duration-300 shadow-xl">
+                <div>
+                  <span className="text-accent font-sans text-xs uppercase tracking-wider font-semibold">Tarot + Life Coaching</span>
+                  <h3 className="font-cinzel text-2xl font-bold text-primary mt-1">Intuitive Coaching</h3>
+                  <div className="mt-3 flex items-baseline gap-2">
+                    <span className="font-sans text-3xl font-bold text-primary">$85.00</span>
+                    <span className="font-sans text-xs text-foreground/60">/ 60 minutes</span>
+                  </div>
+                  <p className="mt-4 font-sans text-sm text-foreground/80 leading-relaxed">
+                    Combines intuitive tarot insight with structured life coaching to map out real action steps for transformation.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <a href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/SK53OJ3ZTPXWAEZOF3SK4P4A" target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-secondary border border-primary/50 text-primary hover:bg-primary hover:text-background font-bold py-3 px-6 rounded-lg text-base transition-colors duration-300 font-sans">
+                    Book Coaching ($85)
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <Link href="/services" className="font-sans text-base text-primary hover:underline">
+                Explore all specialized reading topics (Love, Career, Twin Flame) →
+              </Link>
+            </div>
+          </section>
+
+          {/* Section 5: Featured Service - Love Readings with VIDEO */}
           <section className="bg-secondary p-8 md:p-12 rounded-2xl border border-white/10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/50 border-2 border-primary/30">
@@ -63,39 +160,26 @@ export default function HomePage() {
                 </video>
               </div>
               <div className="text-center md:text-left">
-                <h3 className="font-cinzel text-3xl sm:text-4xl font-bold text-primary">
+                <span className="text-accent uppercase tracking-widest text-xs font-sans font-semibold">Specialized Focus</span>
+                <h3 className="font-cinzel text-3xl sm:text-4xl font-bold text-primary mt-1">
                   Tarot for Love & Relationships
                 </h3>
                 <p className="mt-4 font-sans text-lg text-foreground/90">
                   Feeling uncertain? My love readings are designed to meet you exactly where you are and illuminate the path forward. We'll explore hidden patterns, clarify your present, and uncover any obstacles to a deeper connection.
                 </p>
-                <div className="mt-8 text-left">
-                  <a href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans">
-                    Book a Love Reading
+                <div className="mt-8 text-center md:text-left">
+                  <a href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary text-background font-bold py-3.5 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans shadow-lg">
+                    Book a Love Reading ($85)
                   </a>
                 </div>
               </div>
             </div>
           </section>
-
-          {/* Section 4: Other Services Overview */}
-          <section className="text-center">
-              <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-accent">
-                Guidance for Every Part of Your Life
-              </h2>
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Career & Money</h3><p className="mt-2 font-sans text-foreground/90">Gain clarity on your professional path and financial decisions.</p></div>
-                  <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Intuitive Coaching</h3><p className="mt-2 font-sans text-foreground/90">Combine tarot with life coaching for structured support.</p></div>
-                  <div className="bg-secondary/50 p-8 rounded-xl border border-white/10"><h3 className="font-cinzel text-2xl font-bold text-primary">Personal Guidance</h3><p className="mt-2 font-sans text-foreground/90">An in-depth reading for spiritual growth and transformation.</p></div>
-              </div>
-              <Link href="/services" className="mt-10 inline-block font-sans text-lg text-primary hover:underline">
-                  Explore all readings →
-              </Link>
-          </section>
           
-          {/* Section 5: Testimonials */}
+          {/* Section 6: Testimonials */}
           <section className="text-center">
-            <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-accent">
+            <span className="text-accent uppercase tracking-widest text-xs font-sans font-semibold">Client Experiences</span>
+            <h2 className="font-cinzel text-3xl sm:text-4xl font-bold text-accent mt-1">
               What Clients Are Saying
             </h2>
             <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -104,6 +188,9 @@ export default function HomePage() {
           </section>
         </div>
       </main>
+
+      {/* Sticky Action Bar for Mobile Visitors */}
+      <MobileStickyBar />
     </div>
   );
-}
+}

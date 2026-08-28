@@ -11,7 +11,7 @@ async function submitUrls() {
     'blog',
     'faq',
     'contact'
-  ].map(route => `https://${HOST}${route === '/' ? '' : route}`)
+  ].map(route => `https://${HOST}${route ? `/${route}` : ''}`)
 
   const payload = {
     host: HOST,
