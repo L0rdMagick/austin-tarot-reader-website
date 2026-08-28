@@ -70,23 +70,23 @@ const PACKAGES: SessionPackage[] = [
   },
 ];
 
-const BASE_SQUARE_IFRAME_URL = "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services";
+const BASE_SQUARE_URL = "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services";
 
 export function MysticBookingEngine() {
   const [selectedPkgId, setSelectedPkgId] = useState<string>("in-depth-60");
-  const [activeSquareFrameUrl, setActiveSquareFrameUrl] = useState<string>(PACKAGES[1].squareUrl);
-  const [isIframeModalOpen, setIsIframeModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [activeSquareUrl, setActiveSquareUrl] = useState<string>(PACKAGES[1].squareUrl);
 
   const activePackage = PACKAGES.find((p) => p.id === selectedPkgId) || PACKAGES[1];
 
   const handleSelectPackage = (pkg: SessionPackage) => {
     setSelectedPkgId(pkg.id);
-    setActiveSquareFrameUrl(pkg.squareUrl);
+    setActiveSquareUrl(pkg.squareUrl);
   };
 
-  const handleOpenSquareBooking = (url: string) => {
-    setActiveSquareFrameUrl(url);
-    setIsIframeModalOpen(true);
+  const handleOpenSquareModal = (url: string) => {
+    setActiveSquareUrl(url);
+    setIsModalOpen(true);
   };
 
   return (
@@ -112,7 +112,7 @@ export function MysticBookingEngine() {
           <div>
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
               <h3 className="font-editorial text-2xl font-semibold text-foreground flex items-center gap-2">
-                <span className="text-gold">01.</span> Select Reading Type
+                <span className="text-gold">01.</span> Choose Session Type
               </h3>
               <span className="text-xs font-mono text-gold/80 bg-gold/10 px-3 py-1 rounded-full border border-gold/20">
                 In-Person or Virtual
@@ -178,65 +178,102 @@ export function MysticBookingEngine() {
           </div>
 
           <div className="pt-2 text-center text-xs font-sans text-foreground/60">
-            💬 Need a custom time or group reading? <a href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="text-gold hover:underline font-bold">Text Daniel directly (512-547-7129)</a>
+            💬 Questions? <a href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="text-gold hover:underline font-bold">Text Daniel directly at 512-547-7129</a>
           </div>
         </div>
 
-        {/* BENTO CARD 2: Direct Square Live Calendar Widget (6 cols) */}
-        <div className="lg:col-span-6 bg-surface-elevated p-6 sm:p-8 rounded-2xl border border-gold/30 shadow-2xl flex flex-col justify-between space-y-6">
+        {/* BENTO CARD 2: Custom Native Booking Card (6 cols) */}
+        <div className="lg:col-span-6 bg-surface-elevated p-6 sm:p-8 rounded-2xl border border-gold/30 shadow-2xl flex flex-col justify-between space-y-6 relative overflow-hidden">
           <div>
-            <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
               <h3 className="font-editorial text-2xl font-semibold text-foreground flex items-center gap-2">
-                <span className="text-gold">02.</span> Live Square Calendar
+                <span className="text-gold">02.</span> Live Booking Summary
               </h3>
               <span className="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                Square Real-Time Sync
+                Square Calendar Active
               </span>
             </div>
 
-            <p className="font-sans text-xs text-foreground/70 mb-4">
-              Currently selected: <span className="font-bold text-gold">{activePackage.title} (${activePackage.price})</span>. Preview availability below or click the button to book directly:
-            </p>
+            {/* Native Session Card Showcase */}
+            <div className="bg-obsidian/80 p-6 rounded-2xl border border-gold/30 space-y-5 shadow-xl">
+              <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                <div>
+                  <span className="text-[10px] font-mono text-gold uppercase tracking-widest block">
+                    Selected Experience
+                  </span>
+                  <h4 className="font-editorial text-2xl font-bold text-foreground">
+                    {activePackage.title}
+                  </h4>
+                </div>
+                <div className="text-right">
+                  <span className="font-mono text-3xl font-bold text-gold tabular-nums">
+                    ${activePackage.price}
+                  </span>
+                  <span className="block text-xs font-mono text-foreground/60">
+                    {activePackage.duration}
+                  </span>
+                </div>
+              </div>
 
-            {/* Embedded Square iFrame Frame (Clipped at h-[245px] to hide Square's redundant internal 'Add' button) */}
-            <div className="w-full h-[245px] rounded-xl overflow-hidden border border-gold/30 bg-white relative shadow-inner">
-              <iframe
-                src={activeSquareFrameUrl}
-                title="Square Appointments Booking Calendar"
-                className="w-full h-[380px] border-0"
-                loading="lazy"
-              />
+              <p className="font-sans text-sm text-foreground/80 leading-relaxed">
+                {activePackage.tagline}
+              </p>
+
+              {/* Service Highlights Checklist */}
+              <div className="space-y-2 text-xs font-sans text-foreground/90 border-t border-b border-white/10 py-3">
+                <div className="flex items-center gap-2 text-gold">
+                  <span>✦</span>
+                  <span><strong>Real-Time Sync:</strong> Direct connection to Squareup Calendar</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>✦</span>
+                  <span><strong>Location:</strong> In-Person (Austin, TX) or Virtual (Zoom/Phone)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>✦</span>
+                  <span><strong>Included:</strong> Live Q&A + HD Audio/Video Session Recording</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span>✦</span>
+                  <span><strong>Confidentiality:</strong> 100% Private, Compassionate Guidance</span>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2 text-[11px] font-mono text-gold/80">
+                <span className="bg-gold/10 px-2.5 py-1 rounded-md border border-gold/20">⚡ Instant Confirmation</span>
+                <span className="bg-gold/10 px-2.5 py-1 rounded-md border border-gold/20">🔒 Secure Square Checkout</span>
+              </div>
             </div>
           </div>
 
-          {/* Action CTA Button */}
+          {/* Action CTA Buttons */}
           <div className="space-y-3 pt-2">
-            <button
-              type="button"
-              onClick={() => handleOpenSquareBooking(activePackage.squareUrl)}
-              className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-6 rounded-xl text-base transition-all transform hover:scale-[1.01] shadow-xl shadow-gold/20 flex items-center justify-center gap-2"
-            >
-              <span>Confirm & Lock In {activePackage.title} (${activePackage.price})</span>
-              <span className="text-lg">→</span>
-            </button>
-
             <a
-              href={BASE_SQUARE_IFRAME_URL}
+              href={activePackage.squareUrl}
               target="_blank"
               rel="noopener noreferrer"
+              className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-4 px-6 rounded-xl text-base transition-all transform hover:scale-[1.01] shadow-xl shadow-gold/20 flex items-center justify-center gap-2 text-center"
+            >
+              <span>Book {activePackage.title} (${activePackage.price}) on Square</span>
+              <span className="text-lg">↗</span>
+            </a>
+
+            <button
+              type="button"
+              onClick={() => handleOpenSquareModal(activePackage.squareUrl)}
               className="w-full bg-surface/80 hover:bg-surface border border-gold/30 text-gold font-bold py-2.5 px-6 rounded-xl text-xs font-mono uppercase tracking-wider text-center block transition-colors"
             >
-              Open Square Calendar in New Window ↗
-            </a>
+              Preview Live Square Calendar Overlay ✦
+            </button>
           </div>
         </div>
 
       </div>
 
-      {/* FULLSCREEN / MODAL SQUARE APPOINTMENTS DRAWER WITH FIXED HIGH Z-INDEX & UN-OVERLAPPED CLOSE BUTTON */}
+      {/* FULLSCREEN / MODAL SQUARE APPOINTMENTS DRAWER WITH UN-OVERLAPPED CLOSE BUTTON */}
       <AnimatePresence>
-        {isIframeModalOpen && (
+        {isModalOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 pt-20 sm:pt-24 pb-6 bg-obsidian/90 backdrop-blur-lg overflow-y-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.96, y: 10 }}
@@ -254,7 +291,7 @@ export function MysticBookingEngine() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setIsIframeModalOpen(false)}
+                  onClick={() => setIsModalOpen(false)}
                   className="bg-gold text-obsidian font-bold px-4 py-2 rounded-xl text-xs font-mono tracking-wider shadow-lg hover:bg-gold-light transition-all flex items-center gap-1.5 border border-gold"
                 >
                   <span>Close Window</span>
@@ -265,7 +302,7 @@ export function MysticBookingEngine() {
               {/* Full Interactive iFrame Container */}
               <div className="flex-grow w-full rounded-xl overflow-hidden bg-white border border-white/20">
                 <iframe
-                  src={activeSquareFrameUrl}
+                  src={activeSquareUrl}
                   title="Full Square Appointments Booking"
                   className="w-full h-full border-0"
                 />
