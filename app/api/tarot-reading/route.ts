@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { TAROT_DECK } from '@/lib/tarotDeck';
+import { buildConversationalReading } from '@/lib/tarotInterpreter';
 
 interface ReadingRequest {
   subject: string;
@@ -22,9 +23,9 @@ export async function POST(req: Request) {
     const cleanSubject = subject || 'General Guidance';
     const userQuestion = question && question.trim().length > 0
       ? question.trim()
-      : `What guidance does the tarot offer regarding my ${cleanSubject.toLowerCase()} journey?`;
+      : `What guidance does the tarot offer regarding my ${cleanSubject.toLowerCase()} situation?`;
 
-    // Retrieve card metadata from dataset
+    // Look up full card metadata from dataset
     const cardData1 = TAROT_DECK.find((c) => c.name === cards[0].name) || TAROT_DECK[0];
     const cardData2 = TAROT_DECK.find((c) => c.name === cards[1].name) || TAROT_DECK[1];
     const cardData3 = TAROT_DECK.find((c) => c.name === cards[2].name) || TAROT_DECK[2];
@@ -35,37 +36,47 @@ export async function POST(req: Request) {
     let overallSummary = '';
     let actionStep = '';
 
-    // Check if Gemini API key exists for live generative interpretation
+    // Check for API key (Gemini / OpenAI)
     const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 
     if (apiKey) {
       try {
         const prompt = `
-You are Daniel, an empathetic, intuitive, highly experienced Austin Tarot Reader.
-Provide a compassionate, deep, non-fatalistic 3-card tarot reading addressing the client's question.
+You are Daniel, an empathetic, highly intuitive Austin Tarot Reader.
+Deliver a warm, conversational, human 3-card tarot reading addressing the client's question.
 
 CLIENT DETAILS:
-- Reading Subject: ${cleanSubject}
-- Specific Question: "${userQuestion}"
+- Subject Category: ${cleanSubject}
+- Client Question: "${userQuestion}"
 
 CARDS DRAWN IN PLACEMENT:
 1. Past Energy & Origins (Card 1): ${cardData1.name} (${cardData1.symbolism})
 2. Present Energy & Dynamics (Card 2): ${cardData2.name} (${cardData2.symbolism})
 3. Future Outcome & Trajectory (Card 3): ${cardData3.name} (${cardData3.symbolism})
 
-CRITICAL INSTRUCTIONS:
-- Directly answer and reference the client's question: "${userQuestion}".
-- Card 1 MUST strictly focus on Past Energy, past events, or underlying roots.
-- Card 2 MUST strictly focus on Present Energy, current dynamics, and active mindsets.
-- Card 3 MUST strictly focus on Future Outcome, trajectory, and ultimate resolution.
+CRITICAL TONE & STYLE GUIDELINES (MUST MATCH THIS EXACT FEW-SHOT STYLE):
 
-Return JSON in this EXACT structure:
+EXAMPLE FEW-SHOT STYLE:
+Question: "will pepe come back to me?"
+Card 1 (The Magician): "With The Magician card in the past position of the spread, we can see that your past connection with Pepe was filled with a magical energy that at times seemed full of wonder and potential, and considering the spiritual nature of The Magician card and his connection to source, your relationship to Pepe would have felt spiritually connected."
+Card 2 (King of Swords): "With the King of Swords occupying the present energy card position, this tells me that the cold and precise nature of the King of Swords is a sign that your relationship presently is feeling somewhat cold, calculated, and with heavy signs of hard boundaries between you. Sometimes this can be due to people protecting their inner wounds and sometimes it can be due to people needing space to take care of other obligations."
+Card 3 (King of Pentacles): "The King of Pentacles representing the future outcome would indicate that there will be more stability in the relationship once again, but it could also mean that the relationship won't quite feel the same as the old times because the dominant energy and feeling in the future is that practical obligations and money will become a priority in the future and although there does seem to be more stability, financial obligations do take a higher priority than what you may have been used to."
+Summary: A natural synthesis weaving the 3 individual interpretations into a clear closing story.
+
+REQUIREMENTS:
+- Directly reference the client's specific question ("${userQuestion}") and any names or topics mentioned.
+- Card 1 MUST start with: "With the [Card Name] card in the past position of the spread, we can see that..."
+- Card 2 MUST start with: "With the [Card Name] occupying the present energy card position, this tells me that..."
+- Card 3 MUST start with: "The [Card Name] representing the future outcome would indicate that..."
+- Overall Summary MUST synthesize the individual card findings into a natural narrative conclusion.
+
+Return JSON in this EXACT format:
 {
-  "card1Insight": "Insight for Card 1...",
-  "card2Insight": "Insight for Card 2...",
-  "card3Insight": "Insight for Card 3...",
-  "overallSummary": "Cohesive synthesis directly answering the question...",
-  "actionStep": "One practical, empowering advice step..."
+  "card1Insight": "...",
+  "card2Insight": "...",
+  "card3Insight": "...",
+  "overallSummary": "...",
+  "actionStep": "..."
 }
 `;
 
@@ -94,29 +105,25 @@ Return JSON in this EXACT structure:
           }
         }
       } catch (aiErr) {
-        console.warn('Gemini API call failed, using intuitive engine fallback:', aiErr);
+        console.warn('Gemini API call error, using conversational engine fallback:', aiErr);
       }
     }
 
-    // Fallback Deep Intuitive Engine (Question & Placement Aware)
-    if (!card1Insight) {
-      card1Insight = `Looking into the foundation of your question regarding "${userQuestion}", ${cardData1.name} illuminates the past energy. ${cardData1.pastMeaning} This past root created the emotional and situational landscape you inhabit today in your ${cleanSubject.toLowerCase()} path.`;
-    }
+    // Fallback Conversational Engine
+    if (!card1Insight || !card2Insight || !card3Insight) {
+      const fallbackReading = buildConversationalReading(
+        cleanSubject,
+        userQuestion,
+        cardData1,
+        cardData2,
+        cardData3
+      );
 
-    if (!card2Insight) {
-      card2Insight = `In your current situation regarding "${userQuestion}", ${cardData2.name} represents your present active energy. ${cardData2.presentMeaning} Pay close attention to how this dynamic is testing or supporting your current mindset right now.`;
-    }
-
-    if (!card3Insight) {
-      card3Insight = `Looking toward the future outcome for "${userQuestion}", ${cardData3.name} highlights the trajectory unfolding ahead. ${cardData3.futureMeaning} By aligning your current choices with self-trust, this card promises a clear resolution.`;
-    }
-
-    if (!overallSummary) {
-      overallSummary = `In summary, your 3-card spread (${cardData1.name} ➔ ${cardData2.name} ➔ ${cardData3.name}) directly addresses your question: "${userQuestion}". The cards show a clear progression: your past experiences with ${cardData1.name} gave you wisdom, your current work with ${cardData2.name} calls for conscious action, and your future with ${cardData3.name} opens the door to fulfilled clarity.`;
-    }
-
-    if (!actionStep) {
-      actionStep = `Reflect on the present energy of ${cardData2.name} today. Take one aligned, practical step toward resolving your question with self-trust.`;
+      card1Insight = card1Insight || fallbackReading.card1Insight;
+      card2Insight = card2Insight || fallbackReading.card2Insight;
+      card3Insight = card3Insight || fallbackReading.card3Insight;
+      overallSummary = overallSummary || fallbackReading.overallSummary;
+      actionStep = actionStep || fallbackReading.actionStep;
     }
 
     return NextResponse.json({
