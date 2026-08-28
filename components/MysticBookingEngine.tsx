@@ -10,84 +10,83 @@ interface SessionPackage {
   price: number;
   popular?: boolean;
   tagline: string;
+  squareUrl: string;
   highlights: string[];
 }
 
 const PACKAGES: SessionPackage[] = [
   {
-    id: "clarity-30",
-    title: "30-Min Clarity Reading",
+    id: "focused-30",
+    title: "30-Min Focused Reading",
     duration: "30 Minutes",
-    price: 75,
-    tagline: "Focused intuitive answers for 1–2 pressing life questions",
+    price: 55,
+    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU",
+    tagline: "Quick, sharp intuitive insight for 1–2 pressing life questions",
     highlights: [
       "Direct single-spread card breakdown",
-      "Immediate action steps",
-      "Audio recording included",
+      "Immediate action steps & clarity",
+      "In-Person Austin or Phone/Zoom worldwide",
     ],
   },
   {
-    id: "deep-soul-60",
-    title: "60-Min Deep Soul Roadmap",
+    id: "in-depth-60",
+    title: "60-Min In-Depth Reading",
     duration: "60 Minutes",
-    price: 135,
+    price: 85,
     popular: true,
-    tagline: "Comprehensive multi-spread deep dive into your life's path",
+    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/BF72ZKQM74NPNZ3FTYZLARXT",
+    tagline: "Comprehensive 15-card spread covering Love, Career, or Life Path",
     highlights: [
       "Past, present & 6-month trajectory",
       "Shadow work & block identification",
-      "Live Q&A + HD Video/Audio recording",
+      "Audio/Video recording included",
     ],
   },
   {
-    id: "couples-90",
-    title: "90-Min Master Couples & Destiny",
-    duration: "90 Minutes",
-    price: 195,
-    tagline: "Deep alignment for romantic partners or major life transitions",
+    id: "coaching-60",
+    title: "60-Min Intuitive Coaching",
+    duration: "60 Minutes",
+    price: 85,
+    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/SK53OJ3ZTPXWAEZOF3SK4P4A",
+    tagline: "Combines intuitive tarot insight with structured action coaching",
     highlights: [
-      "Dual-person energy synthesis",
-      "Karmic connections & obstacles",
-      "Personalized integration guide",
+      "Tarot spread + actionable goal mapping",
+      "Break through emotional or career blocks",
+      "Personalized integration steps",
+    ],
+  },
+  {
+    id: "love-60",
+    title: "60-Min Love & Relationships",
+    duration: "60 Minutes",
+    price: 85,
+    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ",
+    tagline: "Specialized deep dive for romantic connections & soulmates",
+    highlights: [
+      "Partner energy & communication dynamics",
+      "Uncover hidden relationship patterns",
+      "Clear guidance for next steps",
     ],
   },
 ];
 
-const INTENT_CHIPS = [
-  "❤️ Love & Relationships",
-  "💼 Career & Purpose",
-  "✨ Shadow Work & Blockages",
-  "💰 Financial Abundance",
-  "🏡 Home & Major Decisions",
-  "🔮 General Spiritual Roadmap",
-];
-
-const AVAILABLE_SLOTS = [
-  { time: "10:00 AM CST", count: "2 slots left" },
-  { time: "1:30 PM CST", count: "1 slot left" },
-  { time: "4:00 PM CST", count: "3 slots left" },
-  { time: "7:00 PM CST", count: "1 slot left (Popular)" },
-];
+const BASE_SQUARE_IFRAME_URL = "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services";
 
 export function MysticBookingEngine() {
-  const [selectedPkg, setSelectedPkg] = useState<string>("deep-soul-60");
-  const [selectedIntent, setSelectedIntent] = useState<string>("❤️ Love & Relationships");
-  const [selectedSlot, setSelectedSlot] = useState<string>("7:00 PM CST");
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [selectedPkgId, setSelectedPkgId] = useState<string>("in-depth-60");
+  const [activeSquareFrameUrl, setActiveSquareFrameUrl] = useState<string>(PACKAGES[1].squareUrl);
+  const [isIframeModalOpen, setIsIframeModalOpen] = useState<boolean>(false);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    notes: "",
-  });
+  const activePackage = PACKAGES.find((p) => p.id === selectedPkgId) || PACKAGES[1];
 
-  const activePackage = PACKAGES.find((p) => p.id === selectedPkg) || PACKAGES[1];
+  const handleSelectPackage = (pkg: SessionPackage) => {
+    setSelectedPkgId(pkg.id);
+    setActiveSquareFrameUrl(pkg.squareUrl);
+  };
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
+  const handleOpenSquareBooking = (url: string) => {
+    setActiveSquareFrameUrl(url);
+    setIsIframeModalOpen(true);
   };
 
   return (
@@ -95,39 +94,39 @@ export function MysticBookingEngine() {
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-mono font-semibold uppercase tracking-widest">
-          <span>✦ Sacred Session Reservation ✦</span>
+          <span>✦ Live Square Calendar Reservation ✦</span>
         </div>
         <h2 className="font-editorial text-4xl sm:text-5xl font-normal tracking-tight text-gold">
-          The Mystic Booking Engine
+          Reserve Your Session
         </h2>
         <p className="font-sans text-foreground/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          Reserve your 1-on-1 reading with Daniel. Select your reading depth, choose your intention, and lock in your session slot seamlessly.
+          Select your reading depth below. Synchronized live with Daniel's official Squareup calendar for instant appointment confirmation.
         </p>
       </div>
 
       {/* Bento Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         
-        {/* BENTO CARD 1: Package Selection (7 cols) */}
-        <div className="lg:col-span-7 bg-surface p-6 sm:p-8 rounded-2xl border border-gold/20 shadow-2xl flex flex-col justify-between space-y-6">
+        {/* BENTO CARD 1: Session Package Selector (6 cols) */}
+        <div className="lg:col-span-6 bg-surface p-6 sm:p-8 rounded-2xl border border-gold/20 shadow-2xl flex flex-col justify-between space-y-6">
           <div>
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
               <h3 className="font-editorial text-2xl font-semibold text-foreground flex items-center gap-2">
-                <span className="text-gold">01.</span> Select Your Session Depth
+                <span className="text-gold">01.</span> Select Reading Type
               </h3>
               <span className="text-xs font-mono text-gold/80 bg-gold/10 px-3 py-1 rounded-full border border-gold/20">
-                1-on-1 via Zoom or Phone
+                In-Person or Virtual
               </span>
             </div>
 
             <div className="space-y-4">
               {PACKAGES.map((pkg) => {
-                const isActive = selectedPkg === pkg.id;
+                const isActive = selectedPkgId === pkg.id;
                 return (
                   <button
                     key={pkg.id}
                     type="button"
-                    onClick={() => setSelectedPkg(pkg.id)}
+                    onClick={() => handleSelectPackage(pkg)}
                     className={`w-full text-left p-5 rounded-xl border transition-all duration-300 relative ${
                       isActive
                         ? "bg-surface-elevated border-gold shadow-lg shadow-gold/10 scale-[1.01]"
@@ -148,7 +147,7 @@ export function MysticBookingEngine() {
                           {pkg.tagline}
                         </p>
                       </div>
-                      <div className="text-right sm:text-right shrink-0">
+                      <div className="text-left sm:text-right shrink-0">
                         <span className="font-mono text-2xl font-bold text-gold tabular-nums">
                           ${pkg.price}
                         </span>
@@ -162,7 +161,7 @@ export function MysticBookingEngine() {
                       <motion.ul
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
-                        className="mt-4 pt-3 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-sans text-foreground/90"
+                        className="mt-4 pt-3 border-t border-white/10 space-y-1.5 text-xs font-sans text-foreground/90"
                       >
                         {pkg.highlights.map((h, i) => (
                           <li key={i} className="flex items-center gap-2 text-gold/90">
@@ -178,213 +177,95 @@ export function MysticBookingEngine() {
             </div>
           </div>
 
-          {/* Intention Quick Chips */}
-          <div className="pt-2">
-            <label className="block text-xs font-mono uppercase tracking-wider text-gold/90 mb-3">
-              Focused Intent / Topic Choice:
-            </label>
-            <div className="flex flex-wrap gap-2">
-              {INTENT_CHIPS.map((chip) => (
-                <button
-                  key={chip}
-                  type="button"
-                  onClick={() => setSelectedIntent(chip)}
-                  className={`text-xs font-sans px-3.5 py-2 rounded-lg border transition-all ${
-                    selectedIntent === chip
-                      ? "bg-gold text-obsidian font-bold border-gold shadow-md"
-                      : "bg-surface-elevated/60 text-foreground/80 border-white/10 hover:border-gold/30"
-                  }`}
-                >
-                  {chip}
-                </button>
-              ))}
-            </div>
+          <div className="pt-2 text-center text-xs font-sans text-foreground/60">
+            💬 Need a custom time or group reading? <a href="sms:15125550199?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="text-gold hover:underline font-bold">Text Daniel directly</a>
           </div>
         </div>
 
-        {/* BENTO CARD 2: Slot & Confirmation Summary (5 cols) */}
-        <div className="lg:col-span-5 bg-surface-elevated p-6 sm:p-8 rounded-2xl border border-gold/30 shadow-2xl flex flex-col justify-between space-y-6">
+        {/* BENTO CARD 2: Direct Square Live Calendar Widget (6 cols) */}
+        <div className="lg:col-span-6 bg-surface-elevated p-6 sm:p-8 rounded-2xl border border-gold/30 shadow-2xl flex flex-col justify-between space-y-6">
           <div>
-            <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
               <h3 className="font-editorial text-2xl font-semibold text-foreground flex items-center gap-2">
-                <span className="text-gold">02.</span> Available Live Slots
+                <span className="text-gold">02.</span> Live Square Calendar
               </h3>
               <span className="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                Live Calendar
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                Square Real-Time Sync
               </span>
             </div>
 
-            <div className="space-y-3 mb-6">
-              <label className="block text-xs font-mono uppercase tracking-wider text-foreground/70">
-                Select Preferred Time (CST):
-              </label>
-              {AVAILABLE_SLOTS.map((slot) => {
-                const isSelected = selectedSlot === slot.time;
-                return (
-                  <button
-                    key={slot.time}
-                    type="button"
-                    onClick={() => setSelectedSlot(slot.time)}
-                    className={`w-full p-3.5 rounded-xl border flex items-center justify-between font-mono text-sm transition-all ${
-                      isSelected
-                        ? "bg-gold/20 border-gold text-gold font-bold shadow-md shadow-gold/10"
-                        : "bg-surface/60 border-white/10 text-foreground/80 hover:border-gold/30"
-                    }`}
-                  >
-                    <span>{slot.time}</span>
-                    <span className="text-xs font-sans text-gold/80 bg-gold/10 px-2.5 py-0.5 rounded-full border border-gold/20">
-                      {slot.count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+            <p className="font-sans text-xs text-foreground/70 mb-4">
+              Currently selected: <span className="font-bold text-gold">{activePackage.title} (${activePackage.price})</span>. Click below to load live availability directly from Squareup:
+            </p>
 
-            {/* Session Summary Box */}
-            <div className="bg-obsidian/70 p-4 rounded-xl border border-gold/20 space-y-2 text-xs font-sans">
-              <div className="flex justify-between text-foreground/70">
-                <span>Selected Package:</span>
-                <span className="font-bold text-gold">{activePackage.title}</span>
-              </div>
-              <div className="flex justify-between text-foreground/70">
-                <span>Primary Intent:</span>
-                <span className="text-foreground">{selectedIntent}</span>
-              </div>
-              <div className="flex justify-between text-foreground/70">
-                <span>Time Slot:</span>
-                <span className="font-mono text-gold">{selectedSlot}</span>
-              </div>
-              <div className="border-t border-white/10 pt-2 flex justify-between text-sm font-bold text-foreground">
-                <span>Total Investment:</span>
-                <span className="font-mono text-gold text-base">${activePackage.price}</span>
-              </div>
+            {/* Embedded Square iFrame Frame */}
+            <div className="w-full h-[420px] rounded-xl overflow-hidden border border-white/15 bg-white relative shadow-inner">
+              <iframe
+                src={activeSquareFrameUrl}
+                title="Square Appointments Booking Calendar"
+                className="w-full h-full border-0"
+                loading="lazy"
+              />
             </div>
           </div>
 
-          {/* Action CTA Button */}
-          <div>
+          {/* Action CTA Buttons */}
+          <div className="space-y-3 pt-2">
             <button
               type="button"
-              onClick={() => setIsModalOpen(true)}
-              className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-4 px-6 rounded-xl text-base transition-all transform hover:scale-[1.01] shadow-xl shadow-gold/20 flex items-center justify-center gap-2 group"
+              onClick={() => handleOpenSquareBooking(activePackage.squareUrl)}
+              className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-6 rounded-xl text-base transition-all transform hover:scale-[1.01] shadow-xl shadow-gold/20 flex items-center justify-center gap-2"
             >
-              <span>Lock In Session Slot</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span>Book {activePackage.title} (${activePackage.price})</span>
+              <span className="text-lg">→</span>
             </button>
-            <p className="text-center font-sans text-[11px] text-foreground/50 mt-3">
-              🔒 100% Confidential • Audio/Video Recording Included
-            </p>
+
+            <a
+              href={BASE_SQUARE_IFRAME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-surface/80 hover:bg-surface border border-gold/30 text-gold font-bold py-3 px-6 rounded-xl text-xs font-mono uppercase tracking-wider text-center block transition-colors"
+            >
+              Open Full Square Calendar in New Window ↗
+            </a>
           </div>
         </div>
 
       </div>
 
-      {/* CONFIRMATION / CHECKOUT MODAL DRAWER */}
+      {/* FULLSCREEN / MODAL SQUARE APPOINTMENTS DRAWER */}
       <AnimatePresence>
-        {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/85 backdrop-blur-md">
+        {isIframeModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-obsidian/90 backdrop-blur-md">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-surface p-6 sm:p-8 rounded-2xl border border-gold/40 max-w-lg w-full shadow-2xl space-y-6 relative"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              className="bg-surface p-4 sm:p-6 rounded-2xl border border-gold/40 max-w-4xl w-full h-[90vh] shadow-2xl flex flex-col relative"
             >
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 text-foreground/50 hover:text-gold text-lg"
-              >
-                ✕
-              </button>
-
-              {!isSubmitted ? (
-                <>
-                  <div className="border-b border-white/10 pb-4">
-                    <span className="text-xs font-mono text-gold uppercase tracking-widest">
-                      Finalize Reservation
-                    </span>
-                    <h3 className="font-editorial text-2xl font-bold text-foreground mt-1">
-                      {activePackage.title} (${activePackage.price})
-                    </h3>
-                    <p className="font-sans text-xs text-foreground/70 mt-1">
-                      Slot: <span className="text-gold font-mono">{selectedSlot}</span> • Topic: {selectedIntent}
-                    </p>
-                  </div>
-
-                  <form onSubmit={handleBookingSubmit} className="space-y-4 font-sans text-sm">
-                    <div>
-                      <label className="block text-xs text-foreground/80 mb-1 font-bold">Your Name *</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Maya Lin"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-obsidian/80 border border-white/15 rounded-xl px-4 py-2.5 text-foreground placeholder:text-foreground/40 focus:border-gold focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs text-foreground/80 mb-1 font-bold">Email Address *</label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="maya@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-obsidian/80 border border-white/15 rounded-xl px-4 py-2.5 text-foreground placeholder:text-foreground/40 focus:border-gold focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs text-foreground/80 mb-1 font-bold">Phone Number (Optional)</label>
-                      <input
-                        type="tel"
-                        placeholder="(512) 555-0199"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-obsidian/80 border border-white/15 rounded-xl px-4 py-2.5 text-foreground placeholder:text-foreground/40 focus:border-gold focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs text-foreground/80 mb-1 font-bold">Specific Question / Notes</label>
-                      <textarea
-                        rows={3}
-                        placeholder="Share any background details or questions for Daniel..."
-                        value={formData.notes}
-                        onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                        className="w-full bg-obsidian/80 border border-white/15 rounded-xl px-4 py-2.5 text-foreground placeholder:text-foreground/40 focus:border-gold focus:outline-none"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-6 rounded-xl text-base transition-all shadow-lg shadow-gold/20"
-                    >
-                      Confirm Session Booking →
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <div className="text-center py-8 space-y-4">
-                  <div className="w-16 h-16 bg-gold/20 rounded-full border border-gold flex items-center justify-center mx-auto text-2xl text-gold">
-                    ✦
-                  </div>
-                  <h3 className="font-editorial text-3xl font-bold text-gold">
-                    Session Reserved!
-                  </h3>
-                  <p className="font-sans text-sm text-foreground/80 max-w-sm mx-auto leading-relaxed">
-                    Thank you, <span className="font-bold text-foreground">{formData.name}</span>. A confirmation email and calendar link for <span className="text-gold font-mono">{selectedSlot}</span> has been sent to <span className="underline">{formData.email}</span>.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setIsModalOpen(false);
-                      setIsSubmitted(false);
-                    }}
-                    className="bg-surface-elevated border border-gold/30 hover:border-gold text-gold font-bold py-2.5 px-6 rounded-xl text-xs font-mono uppercase tracking-wider"
-                  >
-                    Return to Site
-                  </button>
+              <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="font-editorial text-xl font-bold text-gold">
+                    Square Appointments — Live Booking
+                  </span>
                 </div>
-              )}
+                <button
+                  onClick={() => setIsIframeModalOpen(false)}
+                  className="bg-surface-elevated hover:bg-gold hover:text-obsidian text-foreground/70 p-2 rounded-lg text-sm font-mono border border-white/10 transition-colors"
+                >
+                  Close ✕
+                </button>
+              </div>
+
+              <div className="flex-grow w-full rounded-xl overflow-hidden bg-white border border-white/20">
+                <iframe
+                  src={activeSquareFrameUrl}
+                  title="Full Square Appointments Booking"
+                  className="w-full h-full border-0"
+                />
+              </div>
             </motion.div>
           </div>
         )}
