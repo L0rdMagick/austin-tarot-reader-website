@@ -16,6 +16,12 @@ const SUBJECT_OPTIONS = [
   { id: 'Life Purpose', label: '🔮 Life Purpose', desc: 'Soul calling, higher path, personal growth' },
 ];
 
+const PLACEMENT_LABELS = [
+  { badge: '⏳ Card 1: Past Energy', title: 'Past Energy & Origins' },
+  { badge: '⚡ Card 2: Present Energy', title: 'Present Energy & Dynamics' },
+  { badge: '🔮 Card 3: Future Outcome', title: 'Future Outcome & Trajectory' },
+];
+
 interface CardReadingItem {
   position: string;
   cardName: string;
@@ -45,12 +51,12 @@ export function InteractiveTarotOracle() {
     setReadingResult(null);
     setFlippedCards([false, false, false]);
 
-    // STEP 1: Random selection happens FIRST, completely independent of the prompt/AI
+    // STEP 1: Random card selection FIRST, completely independent of AI/prompt
     const cards = drawRandomCards(3);
     setDrawnCards(cards);
 
     try {
-      // STEP 2: Send question + randomly chosen cards to AI interpretation API
+      // STEP 2: Send question + chosen cards to AI interpretation API
       const res = await fetch('/api/tarot-reading', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -65,7 +71,7 @@ export function InteractiveTarotOracle() {
       const data: ReadingResponse = await res.json();
       setReadingResult(data);
       
-      // Automatically trigger 3D card flips in sequence
+      // Sequence 3D card flips
       setTimeout(() => setFlippedCards([true, false, false]), 400);
       setTimeout(() => setFlippedCards([true, true, false]), 900);
       setTimeout(() => setFlippedCards([true, true, true]), 1400);
@@ -101,7 +107,7 @@ export function InteractiveTarotOracle() {
           Ask the Cards: 3-Card AI Reading
         </h2>
         <p className="mt-3 font-sans text-foreground/80 text-base sm:text-lg">
-          Select a subject, type your burning question, and let our robust 78-card random generator draw your cards before receiving AI intuitive guidance.
+          Choose your subject, type your specific question, and receive an intuitive 3-card spread analyzing your Past Energy, Present Dynamics, and Future Outcome.
         </p>
       </div>
 
@@ -140,13 +146,13 @@ export function InteractiveTarotOracle() {
           {/* Question Input */}
           <div>
             <label className="block text-sm font-sans font-bold text-accent uppercase tracking-wider mb-2">
-              2. Enter Your Question or Focus Area:
+              2. Enter Your Specific Question:
             </label>
             <textarea
               rows={3}
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              placeholder="e.g. What should I know about my relationship right now? Or Leave blank for general guidance..."
+              placeholder="e.g. Will my career move succeed this month? Should I reach out to my ex? Leave blank for general guidance..."
               className="w-full bg-background/80 text-foreground border border-white/15 rounded-xl p-4 font-sans text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-foreground/40"
             />
           </div>
@@ -161,7 +167,7 @@ export function InteractiveTarotOracle() {
               {loading ? (
                 <>
                   <span className="animate-spin text-xl">✦</span>
-                  <span>Generating Random Draw & Reading...</span>
+                  <span>Shuffling 78 Cards & Interpreting...</span>
                 </>
               ) : (
                 <>
@@ -179,12 +185,12 @@ export function InteractiveTarotOracle() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 justify-items-center max-w-4xl mx-auto">
             {drawnCards.map((card, index) => {
               const isFlipped = flippedCards[index];
-              const positions = ['1. Past / Foundation', '2. Present Energy', '3. Future Potential'];
+              const placement = PLACEMENT_LABELS[index];
 
               return (
                 <div key={card.id} className="w-full max-w-[220px] flex flex-col items-center">
-                  <span className="text-xs font-cinzel text-accent font-bold uppercase tracking-wider mb-2">
-                    {positions[index]}
+                  <span className="text-xs font-sans text-accent font-bold uppercase tracking-wider mb-2 text-center bg-accent/10 px-3 py-0.5 rounded-full border border-accent/20">
+                    {placement.badge}
                   </span>
 
                   <motion.div
@@ -200,7 +206,7 @@ export function InteractiveTarotOracle() {
                           : 'border-white/20 hover:border-accent/50 shadow-black/80'
                       }`}
                     >
-                      {/* CARD BACK (Custom Mystical Backing with Instructional Overlay) */}
+                      {/* CARD BACK */}
                       <div className="absolute inset-0 w-full h-full rounded-xl bg-gradient-to-br from-secondary via-background to-secondary p-3 flex flex-col items-center justify-between backface-hidden overflow-hidden border border-white/10">
                         <div className="w-full h-full border-2 border-primary/30 rounded-lg flex flex-col items-center justify-between p-3 relative bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent">
                           <div className="w-7 h-7 rounded-full border border-primary/40 flex items-center justify-center text-primary text-xs font-cinzel">
@@ -211,8 +217,8 @@ export function InteractiveTarotOracle() {
                             <div className="text-accent font-sans text-[10px] font-semibold tracking-wider uppercase bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20">
                               Tap to Reveal
                             </div>
-                            <div className="text-foreground/40 font-cinzel text-[9px] tracking-widest uppercase">
-                              {positions[index]}
+                            <div className="text-foreground/50 font-sans text-[9px] font-semibold uppercase">
+                              {placement.title}
                             </div>
                           </div>
                           <div className="w-7 h-7 rounded-full border border-primary/40 flex items-center justify-center text-primary text-xs font-cinzel">
@@ -221,7 +227,7 @@ export function InteractiveTarotOracle() {
                         </div>
                       </div>
 
-                      {/* CARD FRONT (Rider-Waite Artwork in 2:3 ratio) */}
+                      {/* CARD FRONT */}
                       <div className="absolute inset-0 w-full h-full rounded-xl rotate-y-180 backface-hidden overflow-hidden bg-secondary">
                         <Image
                           src={card.image}
@@ -256,18 +262,20 @@ export function InteractiveTarotOracle() {
                 className="bg-secondary/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-primary/30 max-w-4xl mx-auto shadow-2xl space-y-8"
               >
                 {/* Header */}
-                <div className="border-b border-white/10 pb-4 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-2">
+                <div className="border-b border-white/10 pb-4 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-3">
                   <div>
-                    <span className="text-xs font-sans uppercase font-bold text-accent bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
-                      Subject: {readingResult.subject}
-                    </span>
+                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                      <span className="text-xs font-sans uppercase font-bold text-accent bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
+                        Subject: {readingResult.subject}
+                      </span>
+                    </div>
                     <h3 className="font-cinzel text-2xl font-bold text-primary mt-2">
-                      Your Intuitive 3-Card Reading
+                      Question: "{readingResult.question}"
                     </h3>
                   </div>
                   <button
                     onClick={handleReset}
-                    className="text-xs font-sans text-foreground/60 hover:text-primary transition-colors underline"
+                    className="text-xs font-sans text-foreground/60 hover:text-primary transition-colors underline py-1"
                   >
                     ✦ Ask Another Question
                   </button>
@@ -276,12 +284,14 @@ export function InteractiveTarotOracle() {
                 {/* Individual Card Breakdowns */}
                 <div className="space-y-6">
                   {readingResult.cardReadings.map((item, idx) => (
-                    <div key={idx} className="bg-background/50 p-5 rounded-xl border border-white/10 space-y-2">
-                      <div className="flex items-center justify-between text-xs font-sans text-accent font-bold uppercase tracking-wider">
-                        <span>{item.position}</span>
-                        <span className="text-primary">{item.cardName}</span>
+                    <div key={idx} className="bg-background/50 p-6 rounded-xl border border-white/10 space-y-2">
+                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/5 pb-2">
+                        <span className="text-xs font-sans text-accent font-bold uppercase tracking-wider">
+                          {PLACEMENT_LABELS[idx].badge} — {PLACEMENT_LABELS[idx].title}
+                        </span>
+                        <span className="text-primary font-cinzel font-bold text-base">{item.cardName}</span>
                       </div>
-                      <p className="font-sans text-foreground/90 text-sm sm:text-base leading-relaxed">
+                      <p className="font-sans text-foreground/90 text-sm sm:text-base leading-relaxed pt-1">
                         {item.insight}
                       </p>
                     </div>
