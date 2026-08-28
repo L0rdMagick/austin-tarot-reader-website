@@ -312,20 +312,21 @@ export function InteractiveTarotOracle() {
                 </div>
 
                 {/* Direct Booking CTA */}
-                <div className="bg-secondary p-6 rounded-xl border border-white/10 text-center space-y-4 pt-4">
-                  <h4 className="font-cinzel text-xl sm:text-2xl font-bold text-primary">
-                    Want to Explore Your Path Even Deeper?
+                <div className="bg-surface-elevated p-6 sm:p-8 rounded-xl border border-gold/20 text-center space-y-4 pt-4">
+                  <h4 className="font-editorial text-2xl sm:text-3xl font-semibold text-gold">
+                    Ready to Explore Your Path Even Deeper?
                   </h4>
-                  <p className="font-sans text-sm sm:text-base text-foreground/80 max-w-xl mx-auto">
-                    While AI offers quick reflections, a live 1-on-1 session with Daniel provides deep intuitive clarity, personal connection, and answers to your exact life situation.
+                  <p className="font-sans text-sm sm:text-base text-foreground/80 max-w-xl mx-auto leading-relaxed">
+                    This Oracle offers a glimpse—a live 1-on-1 session with Daniel provides deep intuitive clarity, personal connection, and answers tailored to your exact journey.
                   </p>
                   <div>
-                    <Link
-                      href="/services"
-                      className="inline-block bg-primary text-background font-bold py-3 px-8 rounded-lg text-base hover:opacity-90 transition-opacity font-sans shadow-lg shadow-primary/20"
+                    <a
+                      href="#booking-engine"
+                      className="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-8 rounded-xl text-base transition-all transform hover:scale-[1.02] shadow-xl shadow-gold/15"
                     >
-                      Book Your Personal Reading with Daniel →
-                    </Link>
+                      <span>Reserve Your 1-on-1 Reading Below</span>
+                      <span className="text-lg">↓</span>
+                    </a>
                   </div>
                 </div>
               </motion.div>

@@ -3,24 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --background-rgb: 13, 12, 29; /* #0D0C1D - Deep Indigo */
-  --foreground-rgb: 234, 231, 220; /* #EAE7DC - Parchment */
-  --primary-rgb: 224, 201, 166; /* #E0C9A6 - Soft Gold */
-  --secondary-rgb: 63, 51, 81; /* #3F3351 - Dusky Purple */
-  --accent-rgb: 178, 164, 255; /* #B2A4FF - Mystical Lavender */
+  --background-rgb: 9, 10, 15; /* #090A0F - Deep Obsidian Velvet */
+  --foreground-rgb: 248, 250, 252; /* #F8FAFC - Off-white Cream */
+  --primary-rgb: 212, 175, 55; /* #D4AF37 - Celestial Gold */
+  --secondary-rgb: 26, 32, 48; /* #1A2030 - Night Surface */
+  --accent-rgb: 139, 92, 246; /* #8B5CF6 - Mystic Amethyst */
 
-  --background-start-rgb: 24, 22, 48;
-  --background-end-rgb: 13, 12, 29;
+  --background-start-rgb: 15, 17, 26;
+  --background-end-rgb: 9, 10, 15;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
+  background-color: #090A0F;
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.04) 0%, transparent 40%),
+    linear-gradient(to bottom, rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cinzel, Quicksand } from "next/font/google";
+import { Cinzel, Quicksand, Cormorant_Garamond, Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import { Navbar } from "@/components/Navbar";
@@ -14,6 +14,22 @@ const cinzel = Cinzel({
 const quicksand = Quicksand({ 
   subsets: ["latin"],
   variable: '--font-quicksand',
+  display: 'swap',
+});
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: '--font-jakarta',
+  display: 'swap',
+});
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: '--font-space',
   display: 'swap',
 });
 
@@ -81,7 +97,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={twMerge(cinzel.variable, quicksand.variable, 'font-sans bg-background flex flex-col min-h-screen')}>
+      <body className={twMerge(cinzel.variable, quicksand.variable, cormorant.variable, jakarta.variable, spaceGrotesk.variable, 'font-sans bg-background text-foreground flex flex-col min-h-screen selection:bg-amber-500/20 selection:text-amber-200')}>
         <Navbar />
         <div className="flex-grow">
           <script

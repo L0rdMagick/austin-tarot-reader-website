@@ -1,6 +1,8 @@
 import { TestimonialCard } from '@/components/TestimonialCard';
 import { TarotCardAnimation } from '@/components/TarotCardAnimation';
 import { InteractiveTarotOracle } from '@/components/InteractiveTarotOracle';
+import { MysticBookingEngine } from '@/components/MysticBookingEngine';
+import { AmbientConstellation } from '@/components/AmbientConstellation';
 import { MobileStickyBar } from '@/components/MobileStickyBar';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -22,28 +24,31 @@ const testimonials = [
 
 export default function HomePage() {
   return (
-    <div className="fade-in-on-load pb-16 md:pb-0">
-      <main className="flex flex-col items-center">
+    <div className="fade-in-on-load pb-16 md:pb-0 relative min-h-screen">
+      {/* 60fps Ambient Stardust & Constellations */}
+      <AmbientConstellation />
+
+      <main className="flex flex-col items-center relative z-10">
         {/* Section 1: Hero */}
         <section className="w-full text-center pt-24 pb-8 md:pt-32 md:pb-16 flex flex-col items-center justify-center px-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs sm:text-sm font-sans font-semibold mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-mono font-semibold mb-6">
             <span>⭐ 5.0 Google Rated Tarot Reader</span>
             <span className="text-foreground/40">•</span>
             <span>In-Person Austin, TX & Virtual</span>
           </div>
 
-          <h1 className="font-cinzel text-4xl sm:text-5xl md:text-6xl font-bold text-balance text-primary max-w-4xl">
-            Top-Rated Austin Tarot Reader | Intuitive Guidance & Clarity
+          <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-balance text-gold max-w-5xl leading-[1.08]">
+            Step into the Circle. The Cards Already Know.
           </h1>
-          <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90">
-            Find clarity for your love life, career, and spiritual journey. Confidential, compassionate, intuitive readings tailored to your path.
+          <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90 leading-relaxed">
+            Find immediate clarity for love, purpose, and life's crossroads with Austin's premier intuitive reader.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
-            <Link href="/services" className="w-full sm:w-auto bg-primary text-background font-bold py-3.5 px-8 rounded-lg text-lg hover:opacity-90 transition-opacity duration-300 font-sans shadow-lg shadow-primary/20">
-              Book a Session ($55 – $85)
-            </Link>
-            <a href="sms:15125550199?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="w-full sm:w-auto bg-secondary text-primary border border-primary/40 font-bold py-3.5 px-6 rounded-lg text-base hover:bg-secondary/80 transition-colors duration-300 font-sans">
-              💬 Text Daniel to Check Today's Availability
+            <a href="#booking-engine" className="w-full sm:w-auto bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-8 rounded-xl text-lg transition-all duration-300 font-sans shadow-xl shadow-gold/20 transform hover:scale-[1.02]">
+              Reserve Your Reading Below ↓
+            </a>
+            <a href="sms:15125550199?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="w-full sm:w-auto bg-surface-elevated text-gold border border-gold/40 font-bold py-3.5 px-6 rounded-xl text-base hover:bg-surface-overlay transition-colors duration-300 font-sans">
+              💬 Text Daniel for Today's Openings
             </a>
           </div>
         </section>
@@ -52,6 +57,9 @@ export default function HomePage() {
 
         {/* Section 2: Interactive Card Flip Experience */}
         <InteractiveTarotOracle />
+
+        {/* Section 3: Mystic Bento Booking Engine */}
+        <MysticBookingEngine />
 
         <div className="w-full max-w-5xl mx-auto space-y-24 md:space-y-32 px-4 sm:px-8 md:px-12 pb-24 pt-10">
           
