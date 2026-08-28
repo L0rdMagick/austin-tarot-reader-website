@@ -122,7 +122,7 @@ export default function RootLayout({
                   "latitude": 30.2672,
                   "longitude": -97.7431
                 },
-                "telephone": "+17739488925",
+                "telephone": "+15125477129",
                 "priceRange": "$$",
                 "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 09:00-21:00"
               })

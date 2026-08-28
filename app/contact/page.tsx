@@ -18,8 +18,8 @@ const contactDetails = [
     },
     { 
         name: 'Phone', 
-        value: '(773) 948-8925', 
-        href: 'tel:+17739488925',
+        value: '(512) 547-7129', 
+        href: 'tel:+15125477129',
         cta: 'Call Now'
     },
     { 
