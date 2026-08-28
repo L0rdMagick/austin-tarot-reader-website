@@ -199,12 +199,12 @@ export function MysticBookingEngine() {
               Currently selected: <span className="font-bold text-gold">{activePackage.title} (${activePackage.price})</span>. Preview availability below or click the button to book directly:
             </p>
 
-            {/* Embedded Square iFrame Frame */}
-            <div className="w-full h-[400px] rounded-xl overflow-hidden border border-white/15 bg-white relative shadow-inner">
+            {/* Embedded Square iFrame Frame (Clipped at h-[245px] to hide Square's redundant internal 'Add' button) */}
+            <div className="w-full h-[245px] rounded-xl overflow-hidden border border-gold/30 bg-white relative shadow-inner">
               <iframe
                 src={activeSquareFrameUrl}
                 title="Square Appointments Booking Calendar"
-                className="w-full h-full border-0"
+                className="w-full h-[380px] border-0"
                 loading="lazy"
               />
             </div>
