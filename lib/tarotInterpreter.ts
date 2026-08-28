@@ -20,27 +20,38 @@ function formatCardTitle(cardName: string): string {
 }
 
 /**
- * Cleanly extracts target person name or situation from user question
+ * Cleanly extracts target person name or situation without awkward quotes or redundant "regarding" phrases
  */
-function extractNameOrTarget(question: string, subject: string): { name: string | null; phrase: string } {
+function extractCleanTarget(question: string, subject: string): string {
   if (!question || question.trim().length === 0) {
-    return { name: null, phrase: `your ${subject.toLowerCase()} situation` };
+    return `your ${subject.toLowerCase()} path`;
   }
 
   const q = question.trim();
 
-  // Match "will Pepe come back" or "is Pepe coming back"
+  // Match personal names (e.g. "will Pepe come back", "is John thinking of me")
   const match = q.match(/(?:will|is|does|has|can)\s+([A-Z][a-z]+|\w+)\s+(?:come|return|love|think|feel|talk|call|text|stay|be)/i);
   if (match && match[1] && !['i', 'you', 'we', 'they', 'my', 'the', 'a', 'it', 'this', 'he', 'she'].includes(match[1].toLowerCase())) {
     const name = match[1].charAt(0).toUpperCase() + match[1].slice(1);
-    return { name, phrase: `your connection with ${name}` };
+    return `your connection with ${name}`;
   }
 
-  return { name: null, phrase: `your situation regarding "${q}"` };
+  // Clean situational topics without raw quotes
+  if (q.toLowerCase().includes('job') || q.toLowerCase().includes('career') || q.toLowerCase().includes('promotion')) {
+    return 'your career trajectory';
+  }
+  if (q.toLowerCase().includes('money') || q.toLowerCase().includes('financial') || q.toLowerCase().includes('wealth')) {
+    return 'your financial growth';
+  }
+  if (q.toLowerCase().includes('love') || q.toLowerCase().includes('relationship') || q.toLowerCase().includes('ex')) {
+    return 'your romantic path';
+  }
+
+  return 'your current situation';
 }
 
 /**
- * Generates 100% grammatically flawless, esoteric, spiritual readings
+ * Generates natural, conventional, human-grade tarot interpretations with clean grammar
  */
 export function buildConversationalReading(
   subject: string,
@@ -49,18 +60,17 @@ export function buildConversationalReading(
   card2: TarotCardData,
   card3: TarotCardData
 ): InterpretationResult {
-  const { name, phrase } = extractNameOrTarget(question, subject);
-  const targetLabel = name ? `your connection with ${name}` : phrase;
+  const targetLabel = extractCleanTarget(question, subject);
 
   const card1Title = formatCardTitle(card1.name);
   const card2Title = formatCardTitle(card2.name);
   const card3Title = formatCardTitle(card3.name);
 
   // --- CARD 1: PAST ENERGY & ORIGINS ---
-  const card1Insight = `With ${card1Title} standing in the past position of your spread, we see the spiritual foundation of ${targetLabel}. In past times, this energy manifested as ${card1.pastPhrase}. This sacred foundation shaped the emotional and practical history that brought you to where you stand today.`;
+  const card1Insight = `With ${card1Title} standing in the past position of your spread, we see the foundation of ${targetLabel}. In past times, this energy manifested as ${card1.pastPhrase}. This sacred foundation shaped the emotional and practical history that brought you to where you stand today.`;
 
   // --- CARD 2: PRESENT ENERGY & DYNAMICS ---
-  const card2Insight = `With ${card2Title} holding the present energy position, the universe illuminates your current dynamic regarding ${targetLabel}. Right now, this sacred archetype reveals that ${card2.presentPhrase}. Pay close attention to this present energy, as it calls for conscious awareness and aligned choices.`;
+  const card2Insight = `With ${card2Title} holding the present energy position, the universe illuminates your active dynamic regarding ${targetLabel}. Right now, this sacred archetype reveals that ${card2.presentPhrase}. Pay close attention to this present energy, as it calls for conscious awareness and aligned choices.`;
 
   // --- CARD 3: FUTURE OUTCOME & TRAJECTORY ---
   const card3Insight = `As we look to the future outcome, ${card3Title} emerges as a sign from the universe regarding ${targetLabel}. Moving forward, this card indicates that ${card3.futurePhrase}. By honoring your self-worth and staying grounded in your spiritual truth, this path promises a clear and authentic resolution.`;
