@@ -178,7 +178,7 @@ export function MysticBookingEngine() {
           </div>
 
           <div className="pt-2 text-center text-xs font-sans text-foreground/60">
-            💬 Need a custom time or group reading? <a href="sms:15125550199?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="text-gold hover:underline font-bold">Text Daniel directly</a>
+            💬 Need a custom time or group reading? <a href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="text-gold hover:underline font-bold">Text Daniel directly (512-547-7129)</a>
           </div>
         </div>
 
@@ -196,11 +196,11 @@ export function MysticBookingEngine() {
             </div>
 
             <p className="font-sans text-xs text-foreground/70 mb-4">
-              Currently selected: <span className="font-bold text-gold">{activePackage.title} (${activePackage.price})</span>. Click below to load live availability directly from Squareup:
+              Currently selected: <span className="font-bold text-gold">{activePackage.title} (${activePackage.price})</span>. Preview availability below or click the button to book directly:
             </p>
 
             {/* Embedded Square iFrame Frame */}
-            <div className="w-full h-[420px] rounded-xl overflow-hidden border border-white/15 bg-white relative shadow-inner">
+            <div className="w-full h-[400px] rounded-xl overflow-hidden border border-white/15 bg-white relative shadow-inner">
               <iframe
                 src={activeSquareFrameUrl}
                 title="Square Appointments Booking Calendar"
@@ -210,14 +210,14 @@ export function MysticBookingEngine() {
             </div>
           </div>
 
-          {/* Action CTA Buttons */}
+          {/* Action CTA Button */}
           <div className="space-y-3 pt-2">
             <button
               type="button"
               onClick={() => handleOpenSquareBooking(activePackage.squareUrl)}
               className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-6 rounded-xl text-base transition-all transform hover:scale-[1.01] shadow-xl shadow-gold/20 flex items-center justify-center gap-2"
             >
-              <span>Book {activePackage.title} (${activePackage.price})</span>
+              <span>Confirm & Lock In {activePackage.title} (${activePackage.price})</span>
               <span className="text-lg">→</span>
             </button>
 
@@ -225,40 +225,44 @@ export function MysticBookingEngine() {
               href={BASE_SQUARE_IFRAME_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full bg-surface/80 hover:bg-surface border border-gold/30 text-gold font-bold py-3 px-6 rounded-xl text-xs font-mono uppercase tracking-wider text-center block transition-colors"
+              className="w-full bg-surface/80 hover:bg-surface border border-gold/30 text-gold font-bold py-2.5 px-6 rounded-xl text-xs font-mono uppercase tracking-wider text-center block transition-colors"
             >
-              Open Full Square Calendar in New Window ↗
+              Open Square Calendar in New Window ↗
             </a>
           </div>
         </div>
 
       </div>
 
-      {/* FULLSCREEN / MODAL SQUARE APPOINTMENTS DRAWER */}
+      {/* FULLSCREEN / MODAL SQUARE APPOINTMENTS DRAWER WITH FIXED HIGH Z-INDEX & UN-OVERLAPPED CLOSE BUTTON */}
       <AnimatePresence>
         {isIframeModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-obsidian/90 backdrop-blur-md">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 pt-20 sm:pt-24 pb-6 bg-obsidian/90 backdrop-blur-lg overflow-y-auto">
             <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              className="bg-surface p-4 sm:p-6 rounded-2xl border border-gold/40 max-w-4xl w-full h-[90vh] shadow-2xl flex flex-col relative"
+              initial={{ opacity: 0, scale: 0.96, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 10 }}
+              className="bg-surface p-4 sm:p-6 rounded-2xl border-2 border-gold/50 max-w-4xl w-full h-[85vh] shadow-2xl flex flex-col relative z-[101]"
             >
-              <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+              {/* Modal Top Header Bar with High-Visibility Close Pill */}
+              <div className="flex items-center justify-between border-b border-white/15 pb-3 mb-3 shrink-0">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="font-editorial text-xl font-bold text-gold">
+                  <span className="font-editorial text-lg sm:text-xl font-bold text-gold">
                     Square Appointments — Live Booking
                   </span>
                 </div>
                 <button
+                  type="button"
                   onClick={() => setIsIframeModalOpen(false)}
-                  className="bg-surface-elevated hover:bg-gold hover:text-obsidian text-foreground/70 p-2 rounded-lg text-sm font-mono border border-white/10 transition-colors"
+                  className="bg-gold text-obsidian font-bold px-4 py-2 rounded-xl text-xs font-mono tracking-wider shadow-lg hover:bg-gold-light transition-all flex items-center gap-1.5 border border-gold"
                 >
-                  Close ✕
+                  <span>Close Window</span>
+                  <span className="text-sm font-bold">✕</span>
                 </button>
               </div>
 
+              {/* Full Interactive iFrame Container */}
               <div className="flex-grow w-full rounded-xl overflow-hidden bg-white border border-white/20">
                 <iframe
                   src={activeSquareFrameUrl}
