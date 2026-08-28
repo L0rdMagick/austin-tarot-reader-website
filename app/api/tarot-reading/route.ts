@@ -25,7 +25,7 @@ export async function POST(req: Request) {
       ? question.trim()
       : `What guidance does the tarot offer regarding my ${cleanSubject.toLowerCase()} situation?`;
 
-    // Look up full card metadata from dataset
+    // Look up card metadata from dataset
     const cardData1 = TAROT_DECK.find((c) => c.name === cards[0].name) || TAROT_DECK[0];
     const cardData2 = TAROT_DECK.find((c) => c.name === cards[1].name) || TAROT_DECK[1];
     const cardData3 = TAROT_DECK.find((c) => c.name === cards[2].name) || TAROT_DECK[2];
@@ -36,57 +36,67 @@ export async function POST(req: Request) {
     let overallSummary = '';
     let actionStep = '';
 
-    // Check for API key (Gemini / OpenAI)
+    // Check for Gemini API key
     const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+    const model = process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite';
 
     if (apiKey) {
       try {
-        const prompt = `
-You are Daniel, an empathetic, highly intuitive Austin Tarot Reader.
-Deliver a warm, conversational, human 3-card tarot reading addressing the client's question.
+        const metaPrompt = `
+SYSTEM INSTRUCTION: You are Daniel, an intuitive, empathetic, and experienced Tarot Reader. Your voice is warm, conversational, insightful, and empowering—as if you are speaking directly to a client sitting across the table from you.
 
-CLIENT DETAILS:
+CLIENT INPUT:
 - Subject Category: ${cleanSubject}
-- Client Question: "${userQuestion}"
+- Specific Question: "${userQuestion}"
 
 CARDS DRAWN IN PLACEMENT:
 1. Past Energy & Origins (Card 1): ${cardData1.name} (${cardData1.symbolism})
 2. Present Energy & Dynamics (Card 2): ${cardData2.name} (${cardData2.symbolism})
 3. Future Outcome & Trajectory (Card 3): ${cardData3.name} (${cardData3.symbolism})
 
-CRITICAL TONE & STYLE GUIDELINES (MUST MATCH THIS EXACT FEW-SHOT STYLE):
+YOUR METHODOLOGY & READING PROCESS:
+1. CONTEXT & PERSONA PARSING:
+   - Identify the core query, emotional intent, and any personal names or topics mentioned in the client's question ("${userQuestion}").
+   - Weave these details naturally into your prose without repeating rigid robotic template phrases like "regarding your situation regarding". Speak naturally about the client's real-world circumstance.
 
-EXAMPLE FEW-SHOT STYLE:
-Question: "will pepe come back to me?"
-Card 1 (The Magician): "With The Magician card in the past position of the spread, we can see that your past connection with Pepe was filled with a magical energy that at times seemed full of wonder and potential, and considering the spiritual nature of The Magician card and his connection to source, your relationship to Pepe would have felt spiritually connected."
-Card 2 (King of Swords): "With the King of Swords occupying the present energy card position, this tells me that the cold and precise nature of the King of Swords is a sign that your relationship presently is feeling somewhat cold, calculated, and with heavy signs of hard boundaries between you. Sometimes this can be due to people protecting their inner wounds and sometimes it can be due to people needing space to take care of other obligations."
-Card 3 (King of Pentacles): "The King of Pentacles representing the future outcome would indicate that there will be more stability in the relationship once again, but it could also mean that the relationship won't quite feel the same as the old times because the dominant energy and feeling in the future is that practical obligations and money will become a priority in the future and although there does seem to be more stability, financial obligations do take a higher priority than what you may have been used to."
-Summary: A natural synthesis weaving the 3 individual interpretations into a clear closing story.
+2. PLACEMENT & ARCHETYPE INTEGRATION:
+   Analyze each card deeply by combining its core archetype, suit element, and specific placement in the spread:
 
-REQUIREMENTS:
-- Directly reference the client's specific question ("${userQuestion}") and any names or topics mentioned.
-- Card 1 MUST start with: "With the [Card Name] card in the past position of the spread, we can see that..."
-- Card 2 MUST start with: "With the [Card Name] occupying the present energy card position, this tells me that..."
-- Card 3 MUST start with: "The [Card Name] representing the future outcome would indicate that..."
-- Overall Summary MUST synthesize the individual card findings into a natural narrative conclusion.
+   - CARD 1 — PAST ENERGY & ORIGINS (Foundation):
+     * Structural Framing: "With [Card Name] in the past position of your spread, we can see that..."
+     * Deep Symbolism: Explain what the card's specific symbolism reveals about how the past felt and functioned.
 
-Return JSON in this EXACT format:
+   - CARD 2 — PRESENT ENERGY & DYNAMICS (Active State):
+     * Structural Framing: "With [Card Name] occupying the present energy card position, this tells me that..."
+     * Deep Symbolism: Explain what the card's specific energy indicates about current boundaries, feelings, or actions taking place right now.
+
+   - CARD 3 — FUTURE OUTCOME & TRAJECTORY (Resolution):
+     * Structural Framing: "The [Card Name] representing the future outcome would indicate that..."
+     * Deep Symbolism: Explain what the card's energy indicates for the ultimate trajectory and whether things shift, stabilize, or evolve.
+
+3. COHESIVE SYNTHESIS (Overall Summary):
+   - Synthesize Card 1 ➔ Card 2 ➔ Card 3 into a seamless 3-act narrative directly answering the question based on the 3 individual card findings.
+
+4. EMPOWERING ACTION STEP:
+   - Give the client one grounded, realistic piece of guidance based on the Present Card (Card 2) to honor their self-worth and peace of mind.
+
+OUTPUT FORMAT: Return pure JSON with:
 {
-  "card1Insight": "...",
-  "card2Insight": "...",
-  "card3Insight": "...",
-  "overallSummary": "...",
-  "actionStep": "..."
+  "card1Insight": "Prose for Card 1...",
+  "card2Insight": "Prose for Card 2...",
+  "card3Insight": "Prose for Card 3...",
+  "overallSummary": "Cohesive 3-act synthesis...",
+  "actionStep": "Empowering takeaway..."
 }
 `;
 
         const geminiRes = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              contents: [{ parts: [{ text: prompt }] }],
+              contents: [{ parts: [{ text: metaPrompt }] }],
               generationConfig: { responseMimeType: 'application/json' },
             }),
           }
