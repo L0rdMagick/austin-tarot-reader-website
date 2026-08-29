@@ -90,7 +90,7 @@ export function MysticBookingEngine() {
   };
 
   return (
-    <section id="booking-engine" className="w-full max-w-6xl mx-auto px-4 py-16 relative z-10">
+    <section id="booking-engine" className="w-full max-w-6xl mx-auto px-4 py-12 md:py-16 relative z-10">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-mono font-semibold uppercase tracking-widest">

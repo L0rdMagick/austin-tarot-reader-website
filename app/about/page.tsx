@@ -25,7 +25,7 @@ export default function AboutPage() {
     <div className="fade-in-on-load">
       <main className="flex flex-col items-center">
         {/* Section 1: Page Header */}
-        <section className="w-full text-center py-20 md:py-28 flex flex-col items-center justify-center px-4">
+        <section className="w-full text-center pt-12 pb-6 md:pt-16 md:pb-8 flex flex-col items-center justify-center px-4">
           <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-balance text-primary">
             My Journey & Philosophy
           </h1>
@@ -34,7 +34,7 @@ export default function AboutPage() {
           </p>
         </section>
 
-        <div className="w-full max-w-3xl mx-auto space-y-16 px-4 sm:px-8 md:px-12 pb-24">
+        <div className="w-full max-w-3xl mx-auto space-y-12 md:space-y-16 px-4 sm:px-8 md:px-12 pb-16">
           
           <div className="w-full max-w-sm mx-auto aspect-square relative rounded-full overflow-hidden shadow-2xl shadow-black/50 border-4 border-primary/50">
             <Image 

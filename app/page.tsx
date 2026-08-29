@@ -53,7 +53,7 @@ export default function HomePage() {
         {/* ========================================================================= */}
         {/* SECTION 1: HERO */}
         {/* ========================================================================= */}
-        <section className="w-full text-center pt-24 pb-8 md:pt-32 md:pb-16 flex flex-col items-center justify-center px-4">
+        <section className="w-full text-center pt-12 pb-6 md:pt-16 md:pb-8 flex flex-col items-center justify-center px-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-mono font-semibold mb-6">
             <span>⭐ 5.0 Google Rated Tarot Reader</span>
             <span className="text-foreground/40">•</span>
@@ -81,7 +81,7 @@ export default function HomePage() {
         {/* ========================================================================= */}
         <TarotCardAnimation />
 
-        <div className="w-full max-w-5xl mx-auto space-y-24 md:space-y-32 px-4 sm:px-8 md:px-12 pb-24 pt-10">
+        <div className="w-full max-w-5xl mx-auto space-y-12 md:space-y-16 px-4 sm:px-8 md:px-12 pb-16 pt-6">
           
           {/* ========================================================================= */}
           {/* SECTION 3: ABOUT DANIEL (HUMAN CONNECTION & TRUST) */}

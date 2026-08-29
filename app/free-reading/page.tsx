@@ -16,7 +16,7 @@ export default function FreeReadingPage() {
     <div className="fade-in-on-load min-h-screen relative pb-16">
       <AmbientConstellation />
 
-      <main className="flex flex-col items-center relative z-10 pt-20 sm:pt-28 px-4">
+      <main className="flex flex-col items-center relative z-10 pt-12 md:pt-16 px-4">
         {/* Page Hero Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-6">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-mono font-semibold uppercase tracking-widest">

@@ -34,7 +34,7 @@ export default function ContactPage() {
   return (
     <div className="fade-in-on-load">
       <main className="flex flex-col items-center">
-        <section className="w-full text-center py-16 md:py-24 flex flex-col items-center justify-center px-4">
+        <section className="w-full text-center pt-12 pb-6 md:pt-16 md:pb-8 flex flex-col items-center justify-center px-4">
           <h1 className="font-cinzel text-4xl sm:text-5xl font-bold text-primary">
             Get In Touch
           </h1>
