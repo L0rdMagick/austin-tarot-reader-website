@@ -88,6 +88,16 @@ export function Navbar() {
                           Tarot Readings
                         </Link>
                         <Link
+                          href="/free-reading"
+                          className={twMerge(
+                            'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left flex items-center justify-between',
+                            pathname === '/free-reading' && 'text-primary font-semibold'
+                          )}
+                        >
+                          <span>Free AI Reading</span>
+                          <span className="text-[10px] font-mono bg-gold/20 text-gold px-1.5 py-0.5 rounded">3-Card</span>
+                        </Link>
+                        <Link
                           href="/services/decks"
                           className={twMerge(
                             'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
