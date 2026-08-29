@@ -30,8 +30,8 @@ const cardVariants = {
 export function TarotCardAnimation() {
   return (
     <motion.div
-      // Responsive margin for mobile vs. desktop
-      className="relative h-64 w-full flex items-center justify-center -mt-8 md:-mt-16"
+      // Standard spacing grid without negative margin overlap
+      className="relative h-64 sm:h-72 w-full flex items-center justify-center py-6 md:py-8"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
