@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 const cardImages = [
   { src: '/images/19-TheSun.jpg', alt: 'The Sun Tarot Card - Guidance from Austin Tarot Reader' },
   { src: '/images/17-TheStar.jpg', alt: 'The Star Tarot Card - Intuition through Austin Tarot Reader' },
-  { src: '/images/01-TheMagician.jpg', alt: 'The Magician Tarot Card - Spiritual Clarity in Austin' },
+  { src: '/images/rider-waite-tarot-deck-cards/18-TheMoon.jpg', alt: 'The Moon Tarot Card - Intuitive Insight in Austin' },
 ];
 
 const containerVariants = {
