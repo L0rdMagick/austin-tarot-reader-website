@@ -26,15 +26,15 @@ const testimonials = [
 const quickFaqs = [
   {
     question: "Are in-person tarot readings available in Austin, TX?",
-    answer: "Yes! In-person sessions are held at Daniel's Downtown Austin studio space. Virtual readings via Zoom or Phone are also available worldwide with the exact same energetic accuracy."
+    answer: "Yes! In-person sessions are available in Downtown Austin, TX. Virtual readings via Phone or Video are also available worldwide with the exact same energetic accuracy."
   },
   {
     question: "What if I don't know what specific question to ask?",
     answer: "No problem at all. Open, general spreads allow the cards to illuminate whatever message, emotional blockage, or upcoming transition is most urgent for your soul right now."
   },
   {
-    question: "Will I get an audio or video recording of my session?",
-    answer: "Yes, an HD audio or video recording is included with all 60-minute reading sessions so you can revisit your guidance anytime."
+    question: "What will I take away from my reading session?",
+    answer: "You will leave with direct actionable guidance, emotional peace, plus a high-resolution photo of your custom card spread to revisit anytime."
   },
   {
     question: "Is my reading completely confidential?",
