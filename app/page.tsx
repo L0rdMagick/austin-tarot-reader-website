@@ -4,6 +4,7 @@ import { MysticBookingEngine } from '@/components/MysticBookingEngine';
 import { AmbientConstellation } from '@/components/AmbientConstellation';
 import { MobileStickyBar } from '@/components/MobileStickyBar';
 import { FaqAccordion } from '@/components/FaqAccordion';
+import { SpecializedFocusCarousel } from '@/components/SpecializedFocusCarousel';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -164,32 +165,9 @@ export default function HomePage() {
           <MysticBookingEngine />
 
           {/* ========================================================================= */}
-          {/* SECTION 7: SPECIALIZED FOCUS: TAROT FOR LOVE & RELATIONSHIPS */}
+          {/* SECTION 7: SPECIALIZED FOCUS 3-SLIDE VIDEO CAROUSEL */}
           {/* ========================================================================= */}
-          <section className="bg-surface p-8 md:p-12 rounded-2xl border border-gold/20 shadow-2xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-              <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/50 border-2 border-gold/30">
-                <video className="w-full h-full object-cover" autoPlay loop muted playsInline key="/videos/love-tarot-reading-questions.mp4" title="Love and relationship tarot reading session demonstration">
-                  <source src="/videos/love-tarot-reading-questions.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <div className="text-center md:text-left">
-                <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">Specialized Focus</span>
-                <h3 className="font-editorial text-3xl sm:text-4xl font-normal text-gold mt-1">
-                  Tarot for Love & Relationships
-                </h3>
-                <p className="mt-4 font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
-                  Feeling uncertain? My love readings are designed to meet you exactly where you are and illuminate the path forward. We'll explore hidden patterns, clarify your present, and uncover any obstacles to a deeper connection.
-                </p>
-                <div className="mt-8 text-center md:text-left">
-                  <a href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ" target="_blank" rel="noopener noreferrer" className="inline-block bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-8 rounded-xl text-base transition-all font-sans shadow-lg shadow-gold/20">
-                    Book a Love Reading ($85) ↗
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
+          <SpecializedFocusCarousel />
 
           {/* ========================================================================= */}
           {/* SECTION 8: QUICK FREQUENTLY ASKED QUESTIONS (FAQ) ACCORDION */}
