@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { InteractiveTarotOracle } from '@/components/InteractiveTarotOracle';
-import { AmbientConstellation } from '@/components/AmbientConstellation';
+import { AmbientBackgroundCards, BgCard } from '@/components/AmbientBackgroundCards';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -11,10 +11,16 @@ export const metadata: Metadata = {
   },
 };
 
+const FREE_READING_BG_CARDS: BgCard[] = [
+  { src: '/images/rider-waite-tarot-deck-cards/01-TheMagician.jpg', name: 'The Magician', topPercent: 18, side: 'left', rotateDeg: -15 },
+  { src: '/images/rider-waite-tarot-deck-cards/17-TheStar.jpg', name: 'The Star', topPercent: 50, side: 'right', rotateDeg: 16 },
+  { src: '/images/rider-waite-tarot-deck-cards/21-TheWorld.jpg', name: 'The World', topPercent: 80, side: 'left', rotateDeg: -12 },
+];
+
 export default function FreeReadingPage() {
   return (
-    <div className="fade-in-on-load min-h-screen relative pb-16">
-      <AmbientConstellation />
+    <div className="fade-in-on-load min-h-screen relative pb-16 overflow-hidden">
+      <AmbientBackgroundCards cards={FREE_READING_BG_CARDS} />
 
       <main className="flex flex-col items-center relative z-10 pt-12 md:pt-16 px-4">
         {/* Page Hero Header */}
@@ -46,7 +52,7 @@ export default function FreeReadingPage() {
           <div className="pt-2">
             <Link
               href="/#booking-engine"
-              className="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-8 rounded-xl text-base transition-all transform hover:scale-[1.02] shadow-xl shadow-gold/20 font-sans"
+              className="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-8 rounded-xl text-base transition-all transform hover:scale-[1.02] shadow-xl shadow-gold/20 font-sans active:scale-95"
             >
               <span>Book Your 1-on-1 Reading with Daniel ($55 – $85)</span>
               <span>→</span>

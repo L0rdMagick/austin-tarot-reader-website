@@ -4,6 +4,7 @@ import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { AmbientConstellation } from "@/components/AmbientConstellation";
 import React from "react";
 
 const cinzel = Cinzel({ 
@@ -98,6 +99,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={twMerge(cinzel.variable, quicksand.variable, cormorant.variable, jakarta.variable, spaceGrotesk.variable, 'font-sans bg-background text-foreground flex flex-col min-h-screen selection:bg-amber-500/20 selection:text-amber-200')}>
+        <AmbientConstellation />
         <Navbar />
         <div className="flex-grow">
           <script
