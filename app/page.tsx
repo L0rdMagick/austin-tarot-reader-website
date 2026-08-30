@@ -6,6 +6,8 @@ import { MobileStickyBar } from '@/components/MobileStickyBar';
 import { FaqAccordion } from '@/components/FaqAccordion';
 import { SpecializedFocusCarousel } from '@/components/SpecializedFocusCarousel';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { TarotTopicFeature } from '@/components/TarotTopicFeature';
+import { AmbientBackgroundCards } from '@/components/AmbientBackgroundCards';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -46,9 +48,12 @@ const quickFaqs = [
 
 export default function HomePage() {
   return (
-    <div className="fade-in-on-load pb-16 md:pb-0 relative min-h-screen">
+    <div className="fade-in-on-load pb-16 md:pb-0 relative min-h-screen overflow-hidden">
       {/* 60fps Ambient Stardust & Constellations */}
       <AmbientConstellation />
+
+      {/* Ambient Floating Tarot Card Watermarks in Background */}
+      <AmbientBackgroundCards />
 
       <main className="flex flex-col items-center relative z-10">
         
@@ -88,24 +93,20 @@ export default function HomePage() {
         <div className="w-full max-w-5xl mx-auto space-y-12 md:space-y-16 px-4 sm:px-8 md:px-12 pb-16 pt-6">
           
           {/* ========================================================================= */}
-          {/* SECTION 3: ABOUT DANIEL (HUMAN CONNECTION & TRUST) */}
+          {/* SECTION 3: ABOUT DANIEL (VISUAL STIMULUS + PERSUASIVE COPY) */}
           {/* ========================================================================= */}
           <ScrollReveal variant="fade-up">
-            <section className="text-center max-w-3xl mx-auto space-y-4">
-              <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">Intuitive Authority</span>
-              <h2 className="font-editorial text-3xl sm:text-4xl font-normal text-gold">
-                A Trusted Guide for Your Journey
-              </h2>
-              <p className="font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
-                Welcome! I'm Daniel. Known for a compassionate and intuitive approach, I've conducted thousands of readings helping people from all walks of life navigate life's complexities. My goal is to offer insight and clarity, revealing the truth behind emotional confusion so you can make confident decisions from a place of self-worth.
-              </p>
-              <div className="pt-2">
-                <Link href="/about" className="font-sans text-base text-gold hover:underline inline-flex items-center gap-1 font-semibold active:scale-95">
-                  <span>Learn more about my philosophy</span>
-                  <span>→</span>
-                </Link>
-              </div>
-            </section>
+            <TarotTopicFeature
+              badge="Intuitive Authority"
+              subtitle="Deep Intuition & Unfiltered Clarity"
+              title="A Trusted Guide for Your Journey"
+              description="Welcome! I'm Daniel. Known for a compassionate and intuitive approach, I've conducted thousands of readings helping people from all walks of life navigate life's complexities. My goal is to offer insight and clarity, revealing the truth behind emotional confusion so you can make confident decisions from a place of self-worth."
+              cardSrc="/images/rider-waite-tarot-deck-cards/02-TheHighPriestess.jpg"
+              cardName="02 - The High Priestess"
+              ctaText="Learn More About My Philosophy →"
+              ctaHref="/about"
+              imagePosition="left"
+            />
           </ScrollReveal>
 
           {/* ========================================================================= */}
@@ -126,11 +127,11 @@ export default function HomePage() {
           </ScrollReveal>
 
           {/* ========================================================================= */}
-          {/* SECTION 5: HOW A READING WORKS (3-STEP FRICTION REDUCER) */}
+          {/* SECTION 5: HOW A READING WORKS (VISUAL STIMULUS + 3-STEP PROCESS) */}
           {/* ========================================================================= */}
           <ScrollReveal variant="fade-up">
-            <section className="bg-surface p-8 sm:p-12 rounded-2xl border border-gold/30 text-center space-y-8 shadow-2xl">
-              <div>
+            <section className="bg-surface p-8 sm:p-12 rounded-2xl border border-gold/30 space-y-8 shadow-2xl">
+              <div className="text-center">
                 <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">Simple 3-Step Process</span>
                 <h2 className="font-editorial text-3xl sm:text-4xl font-normal text-gold mt-1">
                   How Your Session Works
