@@ -45,6 +45,18 @@ body {
   .fade-in-on-load {
     animation: fadeIn 1s ease-out forwards;
   }
+  /* NEW: Global Tactile Interactive Press Effect */
+  button, 
+  a, 
+  .interactive-press {
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease, filter 0.15s ease;
+  }
+  button:active, 
+  a:active, 
+  .interactive-press:active {
+    transform: scale(0.96) !important;
+    filter: brightness(0.95);
+  }
 }
 
 @layer components {
