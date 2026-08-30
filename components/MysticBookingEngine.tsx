@@ -25,7 +25,7 @@ const PACKAGES: SessionPackage[] = [
     highlights: [
       "Direct single-spread card breakdown",
       "Immediate action steps & clarity",
-      "In-Person Austin or Phone/Zoom worldwide",
+      "In-Person Austin or Phone/Video worldwide",
     ],
   },
   {
@@ -39,7 +39,7 @@ const PACKAGES: SessionPackage[] = [
     highlights: [
       "Past, present & 6-month trajectory",
       "Shadow work & block identification",
-      "Audio/Video recording included",
+      "Full spread photo & custom action steps included",
     ],
   },
   {
@@ -228,11 +228,11 @@ export function MysticBookingEngine() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span>✦</span>
-                  <span><strong>Location:</strong> In-Person (Austin, TX) or Virtual (Zoom/Phone)</span>
+                  <span><strong>Location:</strong> In-Person (Austin, TX) or Virtual (Phone/Video)</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span>✦</span>
-                  <span><strong>Included:</strong> Live Q&A + HD Audio/Video Session Recording</span>
+                  <span><strong>Included:</strong> Full Spread Photo + Custom Integration Blueprint</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span>✦</span>

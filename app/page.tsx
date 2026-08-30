@@ -136,7 +136,7 @@ export default function HomePage() {
                 <span className="text-2xl font-editorial font-bold text-gold">01</span>
                 <h3 className="font-editorial text-xl font-bold text-foreground">Choose Your Format</h3>
                 <p className="font-sans text-xs text-foreground/80 leading-relaxed">
-                  Reserve in-person at Daniel's Downtown Austin studio or via Phone/Zoom worldwide.
+                  Reserve in-person in Downtown Austin or via Phone/Video worldwide.
                 </p>
               </div>
 
@@ -152,7 +152,7 @@ export default function HomePage() {
                 <span className="text-2xl font-editorial font-bold text-gold">03</span>
                 <h3 className="font-editorial text-xl font-bold text-foreground">Gain Actionable Clarity</h3>
                 <p className="font-sans text-xs text-foreground/80 leading-relaxed">
-                  Leave with concrete next steps, spiritual peace, plus your full session audio/video recording.
+                  Leave with concrete next steps, spiritual peace, plus clarity on your given question.
                 </p>
               </div>
             </div>
@@ -218,7 +218,7 @@ export default function HomePage() {
                 Choose Your Guidance Session
               </h2>
               <p className="mt-3 font-sans text-foreground/80 max-w-xl mx-auto text-base sm:text-lg">
-                Available in-person in Austin, TX or via Phone/Zoom worldwide.
+                Available in-person in Downtown Austin or via Phone/Video worldwide.
               </p>
             </div>
 
