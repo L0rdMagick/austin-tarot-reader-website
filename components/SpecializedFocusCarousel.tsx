@@ -99,7 +99,7 @@ export function SpecializedFocusCarousel() {
             </video>
 
             {/* TOP OVERLAY: Dark Semi-Transparent Backdrop Behind Category Pills & Mobile Title */}
-            <div className="absolute top-0 left-0 right-0 p-3 pt-3.5 pb-3.5 bg-black/80 backdrop-blur-md border-b border-white/10 z-10 flex flex-col items-center gap-2">
+            <div className="absolute top-0 left-0 right-0 p-3 pt-3.5 pb-3.5 bg-black/55 backdrop-blur-md border-b border-white/10 z-10 flex flex-col items-center gap-2">
               <div className="flex items-center justify-center gap-1.5 flex-wrap">
                 {SLIDES.map((slide, idx) => (
                   <button
@@ -108,7 +108,7 @@ export function SpecializedFocusCarousel() {
                     className={`px-3 py-1 rounded-full font-mono text-[11px] transition-all ${
                       activeSlideIndex === idx
                         ? "bg-gold text-obsidian font-bold shadow-md"
-                        : "bg-black/50 text-white/90 hover:text-gold border border-white/20"
+                        : "bg-black/40 text-white/90 hover:text-gold border border-white/20"
                     }`}
                   >
                     {idx + 1}. {slide.id === "love" ? "Love" : slide.id === "career" ? "Career" : "Life Path"}
@@ -122,36 +122,38 @@ export function SpecializedFocusCarousel() {
               </h3>
             </div>
 
-            {/* BOTTOM OVERLAY: Video Controls & Circular Arrows */}
-            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10 flex items-center justify-between gap-2 font-sans">
+            {/* BOTTOM OVERLAY: Left Arrow, Centered Pause/Resume, Right Arrow */}
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 via-black/35 to-transparent z-10 flex items-center justify-between gap-2 font-sans">
+              {/* Left Arrow Button */}
+              <button
+                onClick={handlePrev}
+                aria-label="Previous Slide"
+                className="w-8 h-8 shrink-0 rounded-full border border-gold/40 bg-black/55 text-gold hover:bg-gold hover:text-obsidian flex items-center justify-center text-2xl font-bold leading-none transition-all shadow-md backdrop-blur-md select-none"
+              >
+                <span className="relative -top-[1px] -left-[0.5px]">‹</span>
+              </button>
+
+              {/* Centered Pause/Resume Button */}
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className={`px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1.5 text-xs font-semibold backdrop-blur-md ${
+                className={`px-3 py-1.5 rounded-lg border transition-all flex items-center justify-center gap-1.5 text-xs font-semibold backdrop-blur-md mx-auto ${
                   isPlaying
-                    ? "bg-black/70 border-gold/50 text-gold hover:bg-gold/20"
-                    : "bg-black/80 border-white/40 text-white hover:bg-white/20"
+                    ? "bg-black/55 border-gold/50 text-gold hover:bg-gold/20"
+                    : "bg-black/55 border-white/40 text-white hover:bg-white/20"
                 }`}
               >
                 <span className="text-sm">{isPlaying ? "⏸" : "▶"}</span>
                 <span>{isPlaying ? "Pause Rotation" : "Resume Rotation"}</span>
               </button>
 
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={handlePrev}
-                  aria-label="Previous Slide"
-                  className="w-8 h-8 rounded-full border border-gold/40 bg-black/70 text-gold hover:bg-gold hover:text-obsidian flex items-center justify-center text-lg font-bold transition-all shadow-md backdrop-blur-md"
-                >
-                  ‹
-                </button>
-                <button
-                  onClick={handleNext}
-                  aria-label="Next Slide"
-                  className="w-8 h-8 rounded-full border border-gold/40 bg-black/70 text-gold hover:bg-gold hover:text-obsidian flex items-center justify-center text-lg font-bold transition-all shadow-md backdrop-blur-md"
-                >
-                  ›
-                </button>
-              </div>
+              {/* Right Arrow Button */}
+              <button
+                onClick={handleNext}
+                aria-label="Next Slide"
+                className="w-8 h-8 shrink-0 rounded-full border border-gold/40 bg-black/55 text-gold hover:bg-gold hover:text-obsidian flex items-center justify-center text-2xl font-bold leading-none transition-all shadow-md backdrop-blur-md select-none"
+              >
+                <span className="relative -top-[1px] -right-[0.5px]">›</span>
+              </button>
             </div>
           </div>
 
