@@ -38,7 +38,10 @@ export async function POST(req: Request) {
 
     // Check for Gemini API key
     const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-    const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+    let model = process.env.GEMINI_MODEL || 'gemini-3.6-flash';
+    if (model.includes('2.5')) {
+      model = 'gemini-3.6-flash';
+    }
 
     if (apiKey) {
       try {
