@@ -38,7 +38,7 @@ export async function POST(req: Request) {
 
     // Check for Gemini API key
     const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-    const model = process.env.GEMINI_MODEL || 'gemini-3.7-flash';
+    const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 
     if (apiKey) {
       try {
@@ -65,13 +65,13 @@ CRITICAL METHODOLOGY & GRAMMAR RULES:
 
 3. CLEAN NATURAL PROSE (STRICT GRAMMAR):
    - NEVER use double prepositions like "regarding your situation regarding".
-   - NEVER repeat verbatim quoted question strings inside card paragraphs. Use natural phrasing like "your connection with Pepe" or "your career trajectory".
-   - Card 1 Framing: "With [Card Name] standing in the past position of your spread, we see the foundation of [target]..."
-   - Card 2 Framing: "With [Card Name] holding the present energy position, the universe illuminates your active dynamic regarding [target]..."
-   - Card 3 Framing: "As we look to the future outcome, [Card Name] emerges as a sign from the universe regarding [target]..."
+   - Seamlessly connect card meanings to the querent's question and situation in natural, eloquent prose.
+   - Card 1 Framing: "With [Card Name] standing in the past position of your spread, we see the foundation of..."
+   - Card 2 Framing: "With [Card Name] holding the present energy position, the universe illuminates your active dynamic regarding..."
+   - Card 3 Framing: "As we look to the future outcome, [Card Name] emerges as a sign from the universe regarding..."
 
 4. OVERALL SYNTHESIS & ACTION:
-   - Synthesize Card 1 ➔ Card 2 ➔ Card 3 into a smooth 3-act narrative.
+   - Synthesize Card 1 ➔ Card 2 ➔ Card 3 into a smooth 3-act narrative directly answering the querent's question.
    - Provide one grounded action step based on Card 2.
 
 Return pure JSON in this EXACT format:
@@ -107,6 +107,9 @@ Return pure JSON in this EXACT format:
             overallSummary = parsed.overallSummary;
             actionStep = parsed.actionStep;
           }
+        } else {
+          const errText = await geminiRes.text();
+          console.error(`Gemini API Error [HTTP ${geminiRes.status}]:`, errText);
         }
       } catch (aiErr) {
         console.warn('Gemini API call error, using conversational engine fallback:', aiErr);
