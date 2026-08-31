@@ -73,55 +73,6 @@ export function SpecializedFocusCarousel() {
 
   return (
     <section className="bg-surface p-6 sm:p-10 md:p-12 rounded-2xl border border-gold/20 shadow-2xl relative overflow-hidden">
-      {/* Carousel Top Header Bar & Controls */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4 mb-6">
-        {/* Slide Indicator Pills */}
-        <div className="flex items-center gap-2">
-          {SLIDES.map((slide, idx) => (
-            <button
-              key={slide.id}
-              onClick={() => setActiveSlideIndex(idx)}
-              className={`px-3 py-1 rounded-full font-mono text-xs transition-all ${
-                activeSlideIndex === idx
-                  ? "bg-gold text-obsidian font-bold shadow-md"
-                  : "bg-surface-elevated/70 text-foreground/70 hover:text-gold border border-white/10"
-              }`}
-            >
-              {idx + 1}. {slide.id === "love" ? "Love" : slide.id === "career" ? "Career" : "Life Path"}
-            </button>
-          ))}
-        </div>
-
-        {/* Play/Pause & Arrow Navigation Controls */}
-        <div className="flex items-center gap-2 text-xs font-mono">
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className={`px-3 py-1 rounded-lg border transition-all flex items-center gap-1 ${
-              isPlaying
-                ? "bg-gold/10 border-gold/40 text-gold"
-                : "bg-surface-elevated border-white/20 text-foreground"
-            }`}
-          >
-            <span>{isPlaying ? "⏸ Pause Auto-Rotation" : "▶ Resume Auto-Rotation"}</span>
-          </button>
-
-          <button
-            onClick={handlePrev}
-            aria-label="Previous Slide"
-            className="p-1.5 rounded-lg border border-white/15 bg-surface-elevated text-gold hover:bg-gold hover:text-obsidian transition-colors"
-          >
-            ←
-          </button>
-          <button
-            onClick={handleNext}
-            aria-label="Next Slide"
-            className="p-1.5 rounded-lg border border-white/15 bg-surface-elevated text-gold hover:bg-gold hover:text-obsidian transition-colors"
-          >
-            →
-          </button>
-        </div>
-      </div>
-
       {/* Animated Slide Content Viewport */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -133,7 +84,7 @@ export function SpecializedFocusCarousel() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
         >
           {/* Vertical 9:16 Video Player Container */}
-          <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/60 border-2 border-gold/40 bg-obsidian relative">
+          <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/60 border-2 border-gold/40 bg-obsidian relative group">
             <video
               key={currentSlide.videoSrc}
               className="w-full h-full object-cover"
@@ -146,20 +97,72 @@ export function SpecializedFocusCarousel() {
               <source src={currentSlide.videoSrc} type="video/mp4" />
               Your browser does not support video playback.
             </video>
+
+            {/* TOP OVERLAY: Category Pills & Mobile Title */}
+            <div className="absolute top-0 left-0 right-0 p-3 bg-gradient-to-b from-black/85 via-black/50 to-transparent z-10 flex flex-col items-center gap-2">
+              <div className="flex items-center justify-center gap-1.5 flex-wrap">
+                {SLIDES.map((slide, idx) => (
+                  <button
+                    key={slide.id}
+                    onClick={() => setActiveSlideIndex(idx)}
+                    className={`px-2.5 py-1 rounded-full font-mono text-[11px] transition-all backdrop-blur-md ${
+                      activeSlideIndex === idx
+                        ? "bg-gold text-obsidian font-bold shadow-md"
+                        : "bg-black/50 text-white/90 hover:text-gold border border-white/20"
+                    }`}
+                  >
+                    {idx + 1}. {slide.id === "love" ? "Love" : slide.id === "career" ? "Career" : "Life Path"}
+                  </button>
+                ))}
+              </div>
+
+              {/* Mobile Title Overlay */}
+              <h3 className="md:hidden font-editorial text-lg font-normal text-gold text-center leading-tight drop-shadow-md pt-1">
+                {currentSlide.title}
+              </h3>
+            </div>
+
+            {/* BOTTOM OVERLAY: Controls */}
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/85 via-black/50 to-transparent z-10 flex items-center justify-between gap-2 text-xs font-mono">
+              <button
+                onClick={() => setIsPlaying(!isPlaying)}
+                className={`px-2.5 py-1 rounded-lg border transition-all flex items-center gap-1 text-[11px] backdrop-blur-md ${
+                  isPlaying
+                    ? "bg-black/50 border-gold/50 text-gold"
+                    : "bg-black/60 border-white/30 text-white"
+                }`}
+              >
+                <span>{isPlaying ? "⏸ Pause Auto-Rotation" : "▶ Resume Auto-Rotation"}</span>
+              </button>
+
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous Slide"
+                  className="p-1 px-2 rounded-lg border border-white/20 bg-black/50 text-gold hover:bg-gold hover:text-obsidian transition-colors backdrop-blur-md"
+                >
+                  ←
+                </button>
+                <button
+                  onClick={handleNext}
+                  aria-label="Next Slide"
+                  className="p-1 px-2 rounded-lg border border-white/20 bg-black/50 text-gold hover:bg-gold hover:text-obsidian transition-colors backdrop-blur-md"
+                >
+                  →
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Slide Text & Action Button */}
           <div className="text-center md:text-left space-y-4">
-            <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">
-              {currentSlide.badge}
-            </span>
-            <h3 className="font-editorial text-3xl sm:text-4xl font-normal text-gold leading-tight">
+            <h3 className="hidden md:block font-editorial text-3xl sm:text-4xl font-normal text-gold leading-tight">
               {currentSlide.title}
             </h3>
             <p className="font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
               {currentSlide.description}
             </p>
-            <div className="pt-4 text-center md:text-left">
+            <div className="pt-2 text-center md:text-left">
               <a
                 href={currentSlide.bookingUrl}
                 target="_blank"
