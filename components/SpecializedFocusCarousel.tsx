@@ -81,7 +81,7 @@ export function SpecializedFocusCarousel() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-center"
         >
           {/* Vertical 9:16 Video Player Container */}
           <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/60 border-2 border-gold/40 bg-obsidian relative group">
@@ -98,14 +98,14 @@ export function SpecializedFocusCarousel() {
               Your browser does not support video playback.
             </video>
 
-            {/* TOP OVERLAY: Category Pills & Mobile Title */}
-            <div className="absolute top-0 left-0 right-0 p-3 bg-gradient-to-b from-black/85 via-black/50 to-transparent z-10 flex flex-col items-center gap-2">
+            {/* TOP OVERLAY: Dark Semi-Transparent Backdrop Behind Category Pills & Mobile Title */}
+            <div className="absolute top-0 left-0 right-0 p-3 pt-3.5 pb-3.5 bg-black/80 backdrop-blur-md border-b border-white/10 z-10 flex flex-col items-center gap-2">
               <div className="flex items-center justify-center gap-1.5 flex-wrap">
                 {SLIDES.map((slide, idx) => (
                   <button
                     key={slide.id}
                     onClick={() => setActiveSlideIndex(idx)}
-                    className={`px-2.5 py-1 rounded-full font-mono text-[11px] transition-all backdrop-blur-md ${
+                    className={`px-3 py-1 rounded-full font-mono text-[11px] transition-all ${
                       activeSlideIndex === idx
                         ? "bg-gold text-obsidian font-bold shadow-md"
                         : "bg-black/50 text-white/90 hover:text-gold border border-white/20"
@@ -117,38 +117,39 @@ export function SpecializedFocusCarousel() {
               </div>
 
               {/* Mobile Title Overlay */}
-              <h3 className="md:hidden font-editorial text-lg font-normal text-gold text-center leading-tight drop-shadow-md pt-1">
+              <h3 className="md:hidden font-editorial text-lg font-normal text-gold text-center leading-tight drop-shadow-md pt-0.5">
                 {currentSlide.title}
               </h3>
             </div>
 
-            {/* BOTTOM OVERLAY: Controls */}
-            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/85 via-black/50 to-transparent z-10 flex items-center justify-between gap-2 text-xs font-mono">
+            {/* BOTTOM OVERLAY: Video Controls & Circular Arrows */}
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/90 via-black/60 to-transparent z-10 flex items-center justify-between gap-2 font-sans">
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className={`px-2.5 py-1 rounded-lg border transition-all flex items-center gap-1 text-[11px] backdrop-blur-md ${
+                className={`px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1.5 text-xs font-semibold backdrop-blur-md ${
                   isPlaying
-                    ? "bg-black/50 border-gold/50 text-gold"
-                    : "bg-black/60 border-white/30 text-white"
+                    ? "bg-black/70 border-gold/50 text-gold hover:bg-gold/20"
+                    : "bg-black/80 border-white/40 text-white hover:bg-white/20"
                 }`}
               >
-                <span>{isPlaying ? "⏸ Pause Auto-Rotation" : "▶ Resume Auto-Rotation"}</span>
+                <span className="text-sm">{isPlaying ? "⏸" : "▶"}</span>
+                <span>{isPlaying ? "Pause Rotation" : "Resume Rotation"}</span>
               </button>
 
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 <button
                   onClick={handlePrev}
                   aria-label="Previous Slide"
-                  className="p-1 px-2 rounded-lg border border-white/20 bg-black/50 text-gold hover:bg-gold hover:text-obsidian transition-colors backdrop-blur-md"
+                  className="w-8 h-8 rounded-full border border-gold/40 bg-black/70 text-gold hover:bg-gold hover:text-obsidian flex items-center justify-center text-lg font-bold transition-all shadow-md backdrop-blur-md"
                 >
-                  ←
+                  ‹
                 </button>
                 <button
                   onClick={handleNext}
                   aria-label="Next Slide"
-                  className="p-1 px-2 rounded-lg border border-white/20 bg-black/50 text-gold hover:bg-gold hover:text-obsidian transition-colors backdrop-blur-md"
+                  className="w-8 h-8 rounded-full border border-gold/40 bg-black/70 text-gold hover:bg-gold hover:text-obsidian flex items-center justify-center text-lg font-bold transition-all shadow-md backdrop-blur-md"
                 >
-                  →
+                  ›
                 </button>
               </div>
             </div>
