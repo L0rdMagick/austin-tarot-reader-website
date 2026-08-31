@@ -10,6 +10,8 @@
     "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
+    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/redis": "^1.38.3",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.10",
     "gray-matter": "^4.0.3",

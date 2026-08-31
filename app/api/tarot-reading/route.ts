@@ -1,6 +1,18 @@
 import { NextResponse } from 'next/server';
+import { Redis } from '@upstash/redis';
+import { Ratelimit } from '@upstash/ratelimit';
 import { TAROT_DECK } from '@/lib/tarotDeck';
 import { buildConversationalReading } from '@/lib/tarotInterpreter';
+
+// Initialize sliding window rate limiter (5 free readings per 24 hours per IP address)
+const ratelimit =
+  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+    ? new Ratelimit({
+        redis: Redis.fromEnv(),
+        limiter: Ratelimit.slidingWindow(5, '24 h'),
+        analytics: true,
+      })
+    : null;
 
 interface ReadingRequest {
   subject: string;
@@ -24,6 +36,26 @@ export async function POST(req: Request) {
     const userQuestion = question && question.trim().length > 0
       ? question.trim()
       : `What guidance does the tarot offer regarding my ${cleanSubject.toLowerCase()} situation?`;
+
+    // Rate Limiting Check with Admin Bypass ('lordmagick' in question or local dev mode)
+    const isBypassMode =
+      process.env.NODE_ENV === 'development' ||
+      userQuestion.toLowerCase().includes('lordmagick');
+
+    if (ratelimit && !isBypassMode) {
+      const forwardedFor = req.headers.get('x-forwarded-for');
+      const ip = forwardedFor ? forwardedFor.split(',')[0].trim() : '127.0.0.1';
+      const { success } = await ratelimit.limit(`tarot_ip_${ip}`);
+
+      if (!success) {
+        return NextResponse.json(
+          {
+            error: 'You have reached the maximum free reading limit for today (5 readings/24 hours). Please book a 1-on-1 personal reading with Daniel for deep, unlimited intuitive guidance!',
+          },
+          { status: 429 }
+        );
+      }
+    }
 
     // Look up card metadata from dataset
     const cardData1 = TAROT_DECK.find((c) => c.name === cards[0].name) || TAROT_DECK[0];

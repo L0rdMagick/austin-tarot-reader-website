@@ -43,6 +43,7 @@ export function InteractiveTarotOracle() {
   const [cardFlippedState, setCardFlippedState] = useState<boolean[]>([false, false, false]);
   const [loading, setLoading] = useState(false);
   const [readingResult, setReadingResult] = useState<ReadingResponse | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   
   // Carousel slide index: 0 = Past, 1 = Present, 2 = Future, 3 = Synthesis
   const [activeSlide, setActiveSlide] = useState<number>(0);
@@ -51,6 +52,7 @@ export function InteractiveTarotOracle() {
     e.preventDefault();
     setLoading(true);
     setReadingResult(null);
+    setErrorMessage(null);
     setCardFlippedState([false, false, false]);
     setActiveSlide(0);
 
@@ -70,9 +72,16 @@ export function InteractiveTarotOracle() {
         }),
       });
 
-      if (!res.ok) throw new Error('Reading generation failed');
-      const data: ReadingResponse = await res.json();
-      setReadingResult(data);
+      const data = await res.json();
+      if (!res.ok) {
+        if (res.status === 429) {
+          setErrorMessage(data.error || 'Daily reading limit reached.');
+          setDrawnCards(null);
+          return;
+        }
+        throw new Error(data.error || 'Reading generation failed');
+      }
+      setReadingResult(data as ReadingResponse);
     } catch (err) {
       console.error(err);
     } finally {
@@ -132,6 +141,18 @@ export function InteractiveTarotOracle() {
           onSubmit={handleStartReading}
           className="bg-surface/80 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-gold/25 max-w-2xl mx-auto shadow-2xl space-y-6"
         >
+          {errorMessage && (
+            <div className="p-4 rounded-xl bg-red-950/60 border border-red-500/40 text-red-200 text-xs sm:text-sm font-sans space-y-2 text-center">
+              <p>⏳ {errorMessage}</p>
+              <a
+                href="#booking-engine"
+                className="inline-block mt-1 font-bold text-gold underline hover:text-gold-light"
+              >
+                Book Your 1-on-1 Personal Reading with Daniel →
+              </a>
+            </div>
+          )}
+
           {/* Subject Picker */}
           <div>
             <label className="block text-xs font-mono font-bold text-gold uppercase tracking-wider mb-3">
