@@ -99,7 +99,7 @@ export function SpecializedFocusCarousel() {
             </video>
 
             {/* TOP OVERLAY: Dark Semi-Transparent Backdrop Behind Category Pills & Mobile Title */}
-            <div className="absolute top-0 left-0 right-0 p-3 pt-3.5 pb-3.5 bg-black/55 backdrop-blur-md border-b border-white/10 z-10 flex flex-col items-center gap-2">
+            <div className="absolute top-0 left-0 right-0 p-3 pt-3.5 pb-3.5 bg-black/55 backdrop-blur-md border-b border-white/10 z-10 flex flex-col items-center gap-2 rounded-t-[10px]">
               <div className="flex items-center justify-center gap-1.5 flex-wrap">
                 {SLIDES.map((slide, idx) => (
                   <button
@@ -123,7 +123,7 @@ export function SpecializedFocusCarousel() {
             </div>
 
             {/* BOTTOM OVERLAY: Left Arrow, Centered Pause/Resume, Right Arrow */}
-            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 via-black/35 to-transparent z-10 flex items-center justify-between gap-2 font-sans">
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 via-black/35 to-transparent z-10 flex items-center justify-between gap-2 font-sans rounded-b-[10px]">
               {/* Left Arrow Button */}
               <button
                 onClick={handlePrev}
