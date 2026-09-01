@@ -9,7 +9,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+    const GOOGLE_SHEETS_WEBHOOK_URL =
+      process.env.GOOGLE_SHEETS_WEBHOOK_URL ||
+      'https://script.google.com/macros/s/AKfycby-ug9E2ixi3fDdw88SrMT8-LlczRlodKPat2pfiGxGojOQGykX_lveG-mBdZYmFMV2/exec';
 
     if (GOOGLE_SHEETS_WEBHOOK_URL) {
       await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
