@@ -76,7 +76,7 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-secondary/95 border border-white/10 rounded-xl shadow-2xl backdrop-blur-md p-2 flex flex-col z-50"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-[#121622] border border-white/15 rounded-xl shadow-2xl p-2 flex flex-col z-50"
                       >
                         <Link
                           href="/services"
