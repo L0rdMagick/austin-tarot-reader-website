@@ -62,11 +62,15 @@ const sellingPoints = [
 export default function EventsPage() {
   return (
     <div className="fade-in-on-load pb-16 md:pb-0 relative min-h-screen overflow-hidden">
-      <AmbientBackgroundCards />
+      <AmbientBackgroundCards cards={[
+        { src: '/images/rider-waite-tarot-deck-cards/02-TheHighPriestess.jpg', name: 'The High Priestess', topPercent: 12, side: 'left', rotateDeg: -18 },
+        { src: '/images/rider-waite-tarot-deck-cards/10-WheelOfFortune.jpg', name: 'Wheel of Fortune', topPercent: 55, side: 'right', rotateDeg: 15 },
+        { src: '/images/rider-waite-tarot-deck-cards/21-TheWorld.jpg', name: 'The World', topPercent: 82, side: 'left', rotateDeg: -12 },
+      ]} />
 
-      <main className="flex flex-col items-center relative z-10">
+      <main className="flex flex-col items-center relative z-10 w-full">
         {/* HERO SECTION */}
-        <ScrollReveal variant="fade-up">
+        <ScrollReveal variant="fade-up" className="w-full flex flex-col items-center">
           <section className="w-full text-center pt-12 pb-8 md:pt-16 md:pb-12 flex flex-col items-center justify-center px-4">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-mono font-semibold mb-6">
               <span>📍 Austin, TX &amp; Surrounding Areas • In-Person Events</span>
@@ -98,7 +102,7 @@ export default function EventsPage() {
         </ScrollReveal>
 
         {/* HERO IMAGE SHOWCASE */}
-        <ScrollReveal variant="fade-up">
+        <ScrollReveal variant="fade-up" className="w-full flex flex-col items-center">
           <section className="w-full max-w-5xl mx-auto px-4 sm:px-8 mb-16">
             <div className="relative w-full h-[320px] sm:h-[450px] md:h-[520px] rounded-2xl overflow-hidden border-2 border-gold/40 shadow-2xl shadow-gold/15">
               <Image
