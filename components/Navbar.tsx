@@ -72,58 +72,69 @@ export function Navbar() {
                   <AnimatePresence>
                     {isDropdownOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        initial={{ opacity: 0, y: 6, scale: 0.96 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        exit={{ opacity: 0, y: 6, scale: 0.96 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-0 mt-2 w-60 bg-[#121622] border border-white/15 rounded-xl shadow-2xl p-2 flex flex-col z-50"
+                        className="absolute top-full left-0 pt-1 w-60 z-50"
                       >
-                        <Link
-                          href="/services"
-                          className={twMerge(
-                            'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
-                            pathname === '/services' && 'text-primary font-semibold'
-                          )}
-                        >
-                          Tarot Readings
-                        </Link>
-                        <Link
-                          href="/free-reading"
-                          className={twMerge(
-                            'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left flex items-center justify-between',
-                            pathname === '/free-reading' && 'text-primary font-semibold'
-                          )}
-                        >
-                          <span>Free AI Reading</span>
-                          <span className="text-[10px] font-mono bg-gold/20 text-gold px-1.5 py-0.5 rounded">3-Card</span>
-                        </Link>
-                        <Link
-                          href="/services/decks"
-                          className={twMerge(
-                            'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
-                            pathname.startsWith('/services/decks') && 'text-primary font-semibold'
-                          )}
-                        >
-                          Tarot Decks
-                        </Link>
-                        <Link
-                          href="/gift-cards"
-                          className={twMerge(
-                            'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
-                            pathname.startsWith('/gift-cards') && 'text-primary font-semibold'
-                          )}
-                        >
-                          Gift Cards
-                        </Link>
-                        <Link
-                          href="/events"
-                          className={twMerge(
-                            'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
-                            pathname.startsWith('/events') && 'text-primary font-semibold'
-                          )}
-                        >
-                          Corporate &amp; Events
-                        </Link>
+                        <div className="bg-[#121622] border border-white/15 rounded-xl shadow-2xl p-2 flex flex-col">
+                          {/* 1. Tarot Readings */}
+                          <Link
+                            href="/services"
+                            className={twMerge(
+                              'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
+                              pathname === '/services' && 'text-primary font-semibold'
+                            )}
+                          >
+                            Tarot Readings
+                          </Link>
+
+                          {/* 2. Corporate & Events */}
+                          <Link
+                            href="/events"
+                            className={twMerge(
+                              'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
+                              pathname.startsWith('/events') && 'text-primary font-semibold'
+                            )}
+                          >
+                            Corporate &amp; Events
+                          </Link>
+
+                          {/* 3. Gift Cards */}
+                          <Link
+                            href="/gift-cards"
+                            className={twMerge(
+                              'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
+                              pathname.startsWith('/gift-cards') && 'text-primary font-semibold'
+                            )}
+                          >
+                            Gift Cards
+                          </Link>
+
+                          {/* 4. Tarot Decks */}
+                          <Link
+                            href="/services/decks"
+                            className={twMerge(
+                              'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
+                              pathname.startsWith('/services/decks') && 'text-primary font-semibold'
+                            )}
+                          >
+                            Tarot Decks
+                          </Link>
+
+                          {/* 5. Free AI Reading */}
+                          <Link
+                            href="/free-reading"
+                            className={twMerge(
+                              'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left flex items-center justify-between',
+                              pathname === '/free-reading' && 'text-primary font-semibold'
+                            )}
+                          >
+                            <span>Free AI Reading</span>
+                            <span className="text-[10px] font-mono bg-gold/20 text-gold px-1.5 py-0.5 rounded">3-Card</span>
+                          </Link>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -191,20 +202,13 @@ export function Navbar() {
                             href="/services"
                             className="font-sans text-xl text-foreground/90 hover:text-primary"
                           >
-                            Tarot Readings & Coaching
+                            Tarot Readings &amp; Coaching
                           </Link>
                           <Link
-                            href="/free-reading"
-                            className="font-sans text-xl text-foreground/90 hover:text-primary flex items-center gap-2"
-                          >
-                            <span>Free AI Reading</span>
-                            <span className="text-xs font-mono bg-gold/20 text-gold px-2 py-0.5 rounded">3-Card</span>
-                          </Link>
-                          <Link
-                            href="/services/decks"
+                            href="/events"
                             className="font-sans text-xl text-foreground/90 hover:text-primary"
                           >
-                            Gothic Tarot Decks
+                            Corporate &amp; Private Events
                           </Link>
                           <Link
                             href="/gift-cards"
@@ -213,10 +217,17 @@ export function Navbar() {
                             Gift Cards
                           </Link>
                           <Link
-                            href="/events"
+                            href="/services/decks"
                             className="font-sans text-xl text-foreground/90 hover:text-primary"
                           >
-                            Corporate &amp; Private Events
+                            Gothic Tarot Decks
+                          </Link>
+                          <Link
+                            href="/free-reading"
+                            className="font-sans text-xl text-foreground/90 hover:text-primary flex items-center gap-2"
+                          >
+                            <span>Free AI Reading</span>
+                            <span className="text-xs font-mono bg-gold/20 text-gold px-2 py-0.5 rounded">3-Card</span>
                           </Link>
                         </div>
                       </div>
