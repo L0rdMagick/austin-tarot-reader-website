@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface SessionPackage {
@@ -70,18 +70,28 @@ const PACKAGES: SessionPackage[] = [
   },
 ];
 
-const BASE_SQUARE_URL = "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services";
-
 export function MysticBookingEngine() {
   const [selectedPkgId, setSelectedPkgId] = useState<string>("in-depth-60");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [activeSquareUrl, setActiveSquareUrl] = useState<string>(PACKAGES[1].squareUrl);
+
+  const buttonRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   const activePackage = PACKAGES.find((p) => p.id === selectedPkgId) || PACKAGES[1];
 
   const handleSelectPackage = (pkg: SessionPackage) => {
     setSelectedPkgId(pkg.id);
     setActiveSquareUrl(pkg.squareUrl);
+
+    // Auto-scroll selected element to top on mobile viewports (< lg)
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      setTimeout(() => {
+        const el = buttonRefs.current[pkg.id];
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
   };
 
   const handleOpenSquareModal = (url: string) => {
@@ -100,7 +110,7 @@ export function MysticBookingEngine() {
           Reserve Your Session
         </h2>
         <p className="font-sans text-foreground/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          Select your reading depth below. Synchronized live with Daniel's official Squareup calendar for instant appointment confirmation.
+          Select your reading depth below. Synchronized live with Daniel&apos;s official Squareup calendar for instant appointment confirmation.
         </p>
       </div>
 
@@ -123,55 +133,118 @@ export function MysticBookingEngine() {
               {PACKAGES.map((pkg) => {
                 const isActive = selectedPkgId === pkg.id;
                 return (
-                  <button
+                  <div
                     key={pkg.id}
-                    type="button"
-                    onClick={() => handleSelectPackage(pkg)}
-                    className={`w-full text-left p-5 rounded-xl border transition-all duration-300 relative ${
-                      isActive
-                        ? "bg-surface-elevated border-gold shadow-lg shadow-gold/10 scale-[1.01]"
-                        : "bg-surface/50 border-white/10 hover:border-gold/40 hover:bg-surface-elevated/40"
-                    }`}
+                    ref={(el) => { buttonRefs.current[pkg.id] = el; }}
+                    className="scroll-mt-24"
                   >
-                    {pkg.popular && (
-                      <span className="absolute -top-3 right-4 bg-gold text-obsidian font-mono text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider shadow-md">
-                        Most Popular
-                      </span>
-                    )}
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                      <div>
-                        <h4 className="font-editorial text-xl font-bold text-foreground">
-                          {pkg.title}
-                        </h4>
-                        <p className="font-sans text-xs text-foreground/70 mt-1">
-                          {pkg.tagline}
-                        </p>
-                      </div>
-                      <div className="text-left sm:text-right shrink-0">
-                        <span className="font-mono text-2xl font-bold text-gold tabular-nums">
-                          ${pkg.price}
+                    <button
+                      type="button"
+                      onClick={() => handleSelectPackage(pkg)}
+                      className={`w-full text-left p-5 rounded-xl border transition-all duration-300 relative ${
+                        isActive
+                          ? "bg-surface-elevated border-gold shadow-lg shadow-gold/10 scale-[1.01]"
+                          : "bg-surface/50 border-white/10 hover:border-gold/40 hover:bg-surface-elevated/40"
+                      }`}
+                    >
+                      {pkg.popular && (
+                        <span className="absolute -top-3 right-4 bg-gold text-obsidian font-mono text-[10px] font-bold px-3 py-0.5 rounded-full uppercase tracking-wider shadow-md">
+                          Most Popular
                         </span>
-                        <span className="block font-mono text-[11px] text-foreground/50">
-                          {pkg.duration}
-                        </span>
+                      )}
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                          <h4 className="font-editorial text-xl font-bold text-foreground">
+                            {pkg.title}
+                          </h4>
+                          <p className="font-sans text-xs text-foreground/70 mt-1">
+                            {pkg.tagline}
+                          </p>
+                        </div>
+                        <div className="text-left sm:text-right shrink-0">
+                          <span className="font-mono text-2xl font-bold text-gold tabular-nums">
+                            ${pkg.price}
+                          </span>
+                          <span className="block font-mono text-[11px] text-foreground/50">
+                            {pkg.duration}
+                          </span>
+                        </div>
                       </div>
-                    </div>
 
-                    {isActive && (
-                      <motion.ul
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        className="mt-4 pt-3 border-t border-white/10 space-y-1.5 text-xs font-sans text-foreground/90"
-                      >
-                        {pkg.highlights.map((h, i) => (
-                          <li key={i} className="flex items-center gap-2 text-gold/90">
-                            <span className="text-gold">✦</span>
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </motion.ul>
-                    )}
-                  </button>
+                      {/* Desktop Highlights List */}
+                      {isActive && (
+                        <motion.ul
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          className="mt-4 pt-3 border-t border-white/10 space-y-1.5 text-xs font-sans text-foreground/90"
+                        >
+                          {pkg.highlights.map((h, i) => (
+                            <li key={i} className="flex items-center gap-2 text-gold/90">
+                              <span className="text-gold">✦</span>
+                              <span>{h}</span>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </button>
+
+                    {/* MOBILE ACCORDION FOLD-OUT: Live Booking Summary directly below selected card on Mobile (< lg) */}
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="lg:hidden mt-3 p-5 bg-obsidian/90 rounded-xl border border-gold/40 space-y-4 shadow-xl overflow-hidden"
+                        >
+                          <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                            <span className="text-xs font-editorial font-bold text-gold">
+                              Live Booking Summary
+                            </span>
+                            <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
+                              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                              Square Active
+                            </span>
+                          </div>
+
+                          <div className="space-y-2 text-xs font-sans text-foreground/90">
+                            <p className="text-foreground/80 leading-relaxed">{pkg.tagline}</p>
+                            <div className="flex items-center gap-2 text-gold">
+                              <span>✦</span>
+                              <span><strong>Real-Time Sync:</strong> Direct Squareup Connection</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span>✦</span>
+                              <span><strong>Format:</strong> In-Person (Austin) or Phone/Video</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span>✦</span>
+                              <span><strong>Included:</strong> Full Spread Photo + Action Steps</span>
+                            </div>
+                          </div>
+
+                          <div className="pt-2 space-y-2">
+                            <a
+                              href={pkg.squareUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-5 rounded-xl text-sm transition-all flex items-center justify-center gap-2 text-center"
+                            >
+                              <span>Book {pkg.title} (${pkg.price}) on Square</span>
+                              <span className="text-base">↗</span>
+                            </a>
+                            <button
+                              type="button"
+                              onClick={() => handleOpenSquareModal(pkg.squareUrl)}
+                              className="w-full bg-surface-elevated text-gold border border-gold/30 font-bold py-2.5 px-4 rounded-xl text-[11px] font-mono uppercase tracking-wider text-center block"
+                            >
+                              Preview Square Calendar Overlay ✦
+                            </button>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 );
               })}
             </div>
@@ -182,8 +255,8 @@ export function MysticBookingEngine() {
           </div>
         </div>
 
-        {/* BENTO CARD 2: Custom Native Booking Card (6 cols) */}
-        <div className="lg:col-span-6 bg-surface-elevated p-6 sm:p-8 rounded-2xl border border-gold/30 shadow-2xl flex flex-col justify-between space-y-6 relative overflow-hidden">
+        {/* BENTO CARD 2: Custom Native Booking Card (Visible on desktop/larger screens lg:) */}
+        <div className="hidden lg:flex lg:col-span-6 bg-surface-elevated p-6 sm:p-8 rounded-2xl border border-gold/30 shadow-2xl flex-col justify-between space-y-6 relative overflow-hidden">
           <div>
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
               <h3 className="font-editorial text-2xl font-semibold text-foreground flex items-center gap-2">

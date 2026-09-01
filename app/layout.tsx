@@ -4,6 +4,7 @@ import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import { Navbar } from "@/components/Navbar";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
+import { LeadCaptureModal } from "@/components/LeadCaptureModal";
 import { Footer } from "@/components/Footer";
 import { AmbientConstellation } from "@/components/AmbientConstellation";
 import React from "react";
@@ -103,6 +104,7 @@ export default function RootLayout({
         <AmbientConstellation />
         <AnnouncementBar />
         <Navbar />
+        <LeadCaptureModal />
         <div className="flex-grow">
           <script
             type="application/ld+json"

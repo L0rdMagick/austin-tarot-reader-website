@@ -101,6 +101,17 @@ export function Navbar() {
                             Corporate &amp; Events
                           </Link>
 
+                          {/* Executive Readings */}
+                          <Link
+                            href="/executive"
+                            className={twMerge(
+                              'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
+                              pathname.startsWith('/executive') && 'text-primary font-semibold'
+                            )}
+                          >
+                            Executive Clarity
+                          </Link>
+
                           {/* 3. Gift Cards */}
                           <Link
                             href="/gift-cards"
@@ -209,6 +220,12 @@ export function Navbar() {
                             className="font-sans text-xl text-foreground/90 hover:text-primary"
                           >
                             Corporate &amp; Private Events
+                          </Link>
+                          <Link
+                            href="/executive"
+                            className="font-sans text-xl text-foreground/90 hover:text-primary"
+                          >
+                            Executive Clarity
                           </Link>
                           <Link
                             href="/gift-cards"

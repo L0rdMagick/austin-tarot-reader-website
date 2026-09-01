@@ -68,10 +68,30 @@ export default function AboutPage() {
               </h2>
               <div className="mt-4 space-y-4 font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
                 <p>
-                  I'm Daniel, and for years I've had the honor of guiding individuals from all walks of life through thousands of tarot readings. With a deep understanding of the intricacies of the human experience, I've helped people navigate countless situations, offering insight where there was confusion and clarity where there was doubt.
+                  I&apos;m Daniel, and for years I&apos;ve had the honor of guiding individuals from all walks of life through thousands of tarot readings. With a deep understanding of the intricacies of the human experience, I&apos;ve helped people navigate countless situations, offering insight where there was confusion and clarity where there was doubt.
                 </p>
                 <p>
-                  My journey began not with a mystical vision, but with a quiet curiosity about the stories these 78 cards could tell. I quickly learned they weren't about predicting a rigid, unchangeable future. Instead, they are a powerful language for our own intuition—a way to see our circumstances with a fresh perspective and make decisions from a place of empowerment.
+                  My journey began not with a mystical vision, but with a quiet curiosity about the stories these 78 cards could tell. I quickly learned they weren&apos;t about predicting a rigid, unchangeable future. Instead, they are a powerful language for our own intuition—a way to see our circumstances with a fresh perspective and make decisions from a place of empowerment.
+                </p>
+              </div>
+            </section>
+          </ScrollReveal>
+
+          {/* Section 2.5: The Strategist Behind the Cards (Wharton MBA & Executive Perspective) */}
+          <ScrollReveal variant="fade-up">
+            <section className="bg-surface/90 p-8 rounded-2xl border border-gold/30 shadow-xl space-y-4">
+              <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">
+                Strategic Intuition
+              </span>
+              <h2 className="font-editorial text-3xl font-bold text-gold">
+                The Strategist Behind the Cards
+              </h2>
+              <div className="space-y-4 font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
+                <p>
+                  In addition to over 11 years as an intuitive reader, I hold an <strong className="text-gold font-semibold">MBA in entrepreneurship from the Wharton School of Business</strong> and build tech platforms. This unique dual perspective bridges analytical rigor with deep intuitive awareness.
+                </p>
+                <p>
+                  Whether you are a founder facing a critical crossroads, an executive navigating complex partner dynamics, or an individual seeking practical alignment, I integrate structured strategic clarity with spiritual insight — ensuring every reading delivers real, actionable value.
                 </p>
               </div>
             </section>
