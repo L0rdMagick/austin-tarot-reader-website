@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { MobileStickyBar } from '@/components/MobileStickyBar';
 import { AmbientBackgroundCards } from '@/components/AmbientBackgroundCards';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Tarot Reading Services & Booking',
@@ -210,6 +211,27 @@ export default function ServicesPage() {
               <div className="mt-4 font-sans text-sm sm:text-base text-foreground/90 space-y-3 leading-relaxed">
                 <p>To make the most of our time together, I recommend thinking about your questions or the area of your life you'd like to focus on beforehand. Come with an open mind and a quiet space where you won't be disturbed.</p>
                 <p className="text-gold font-semibold">Remember, there are no 'silly' questions. This is your safe space to seek clarity.</p>
+              </div>
+            </section>
+          </ScrollReveal>
+
+          {/* Gift Card Announcement Banner */}
+          <ScrollReveal variant="zoom-in">
+            <section className="mt-8 bg-gradient-to-r from-purple-950/40 via-surface-elevated to-gold/10 p-6 rounded-2xl border border-gold/20 text-center max-w-2xl mx-auto shadow-xl space-y-3">
+              <h3 className="font-editorial text-2xl font-normal text-gold">
+                ✦ Give the Gift of Insight ✦
+              </h3>
+              <p className="font-sans text-sm text-foreground/80 max-w-md mx-auto leading-relaxed">
+                Looking for a unique &amp; meaningful present? Share an intuitive tarot reading with someone special.
+              </p>
+              <div className="pt-1">
+                <Link
+                  href="https://www.austintarotreader.com/gift-cards"
+                  className="inline-flex items-center gap-2 bg-secondary hover:bg-surface-elevated text-gold border border-gold/40 font-semibold py-2.5 px-6 rounded-xl text-sm transition-all font-sans active:scale-95"
+                >
+                  <span>Get a Gift Card</span>
+                  <span>→</span>
+                </Link>
               </div>
             </section>
           </ScrollReveal>

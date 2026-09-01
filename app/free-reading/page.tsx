@@ -59,6 +59,25 @@ export default function FreeReadingPage() {
             </Link>
           </div>
         </section>
+
+        {/* Gift Card Announcement Banner */}
+        <section className="w-full max-w-3xl mx-auto mt-8 p-6 bg-gradient-to-r from-purple-950/40 via-surface-elevated to-gold/10 rounded-2xl border border-gold/20 text-center space-y-3 shadow-xl">
+          <h3 className="font-editorial text-2xl font-normal text-gold">
+            ✦ Give the Gift of Insight ✦
+          </h3>
+          <p className="font-sans text-sm text-foreground/80 max-w-md mx-auto leading-relaxed">
+            Looking for a unique &amp; meaningful present? Share an intuitive tarot reading with someone special.
+          </p>
+          <div className="pt-1">
+            <Link
+              href="https://www.austintarotreader.com/gift-cards"
+              className="inline-flex items-center gap-2 bg-secondary hover:bg-surface-elevated text-gold border border-gold/40 font-semibold py-2.5 px-6 rounded-xl text-sm transition-all font-sans active:scale-95"
+            >
+              <span>Get a Gift Card</span>
+              <span>→</span>
+            </Link>
+          </div>
+        </section>
       </main>
     </div>
   );
