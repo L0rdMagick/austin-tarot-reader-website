@@ -203,6 +203,60 @@ export default function ServicesPage() {
             ))}
           </section>
 
+          {/* Gift Card Featured Card (Matches Service Card Design) */}
+          <ScrollReveal variant="fade-up">
+            <div className="bg-surface/80 p-6 sm:p-8 rounded-2xl border border-gold/30 flex flex-col md:flex-row gap-6 md:gap-8 items-center hover:border-gold/60 transition-all duration-300 shadow-2xl relative group">
+              {/* Tarot Card Image */}
+              <div className="flex-shrink-0 relative w-32 h-52 sm:w-36 sm:h-56 rounded-xl overflow-hidden shadow-2xl border-2 border-gold/40 group-hover:border-gold transition-colors">
+                <Image
+                  src="/images/rider-waite-tarot-deck-cards/Pentacles06.jpg"
+                  alt="Six of Pentacles - Gift Card"
+                  fill
+                  sizes="144px"
+                  style={{ objectFit: 'cover' }}
+                  className="transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute bottom-1.5 left-1.5 right-1.5 text-center bg-obsidian/85 py-0.5 px-1 rounded text-[10px] font-editorial font-bold text-gold">
+                  Six of Pentacles
+                </div>
+              </div>
+
+              {/* Copy & Details */}
+              <div className="flex-grow space-y-3 text-center md:text-left">
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                  <span className="text-xs font-mono uppercase font-bold text-gold bg-gold/10 px-2.5 py-0.5 rounded-full border border-gold/30">
+                    Digital Gift Card
+                  </span>
+                  <span className="text-xs font-sans text-foreground/60">
+                    Instant Delivery
+                  </span>
+                </div>
+
+                <h2 className="font-editorial text-2xl sm:text-3xl font-bold text-gold">
+                  Give the Gift of Intuitive Insight
+                </h2>
+                
+                <div className="flex items-baseline justify-center md:justify-start gap-2">
+                  <span className="font-mono text-2xl font-bold text-gold">$55.00 – $170.00</span>
+                  <span className="font-mono text-xs text-foreground/60">| Redeemable for Any Reading</span>
+                </div>
+
+                <p className="font-sans text-foreground/90 text-sm sm:text-base leading-relaxed">
+                  Looking for a thoughtful, spiritual gift? Share an authentic 1-on-1 tarot reading with a loved one. Delivered instantly via email with custom notes.
+                </p>
+
+                <div className="pt-3">
+                  <a
+                    href="https://www.austintarotreader.com/gift-cards"
+                    className="inline-block text-center w-full md:w-auto bg-gold text-obsidian font-bold py-3 px-8 rounded-xl text-base hover:bg-gold-light transition-all duration-300 font-sans shadow-md active:scale-95"
+                  >
+                    Purchase a Gift Card ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
           <ScrollReveal variant="zoom-in">
             <section className="bg-surface p-8 rounded-2xl border border-gold/30 text-center max-w-2xl mx-auto shadow-2xl">
               <h2 className="font-editorial text-2xl sm:text-3xl font-bold text-gold">
@@ -211,27 +265,6 @@ export default function ServicesPage() {
               <div className="mt-4 font-sans text-sm sm:text-base text-foreground/90 space-y-3 leading-relaxed">
                 <p>To make the most of our time together, I recommend thinking about your questions or the area of your life you'd like to focus on beforehand. Come with an open mind and a quiet space where you won't be disturbed.</p>
                 <p className="text-gold font-semibold">Remember, there are no 'silly' questions. This is your safe space to seek clarity.</p>
-              </div>
-            </section>
-          </ScrollReveal>
-
-          {/* Gift Card Announcement Banner */}
-          <ScrollReveal variant="zoom-in">
-            <section className="mt-8 bg-gradient-to-r from-purple-950/40 via-surface-elevated to-gold/10 p-6 rounded-2xl border border-gold/20 text-center max-w-2xl mx-auto shadow-xl space-y-3">
-              <h3 className="font-editorial text-2xl font-normal text-gold">
-                ✦ Give the Gift of Insight ✦
-              </h3>
-              <p className="font-sans text-sm text-foreground/80 max-w-md mx-auto leading-relaxed">
-                Looking for a unique &amp; meaningful present? Share an intuitive tarot reading with someone special.
-              </p>
-              <div className="pt-1">
-                <Link
-                  href="https://www.austintarotreader.com/gift-cards"
-                  className="inline-flex items-center gap-2 bg-secondary hover:bg-surface-elevated text-gold border border-gold/40 font-semibold py-2.5 px-6 rounded-xl text-sm transition-all font-sans active:scale-95"
-                >
-                  <span>Get a Gift Card</span>
-                  <span>→</span>
-                </Link>
               </div>
             </section>
           </ScrollReveal>
