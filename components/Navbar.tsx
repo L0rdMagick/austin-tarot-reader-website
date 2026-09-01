@@ -76,7 +76,7 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-[#121622] border border-white/15 rounded-xl shadow-2xl p-2 flex flex-col z-50"
+                        className="absolute top-full left-0 mt-2 w-60 bg-[#121622] border border-white/15 rounded-xl shadow-2xl p-2 flex flex-col z-50"
                       >
                         <Link
                           href="/services"
@@ -183,6 +183,13 @@ export function Navbar() {
                             className="font-sans text-xl text-foreground/90 hover:text-primary"
                           >
                             Tarot Readings & Coaching
+                          </Link>
+                          <Link
+                            href="/free-reading"
+                            className="font-sans text-xl text-foreground/90 hover:text-primary flex items-center gap-2"
+                          >
+                            <span>Free AI Reading</span>
+                            <span className="text-xs font-mono bg-gold/20 text-gold px-2 py-0.5 rounded">3-Card</span>
                           </Link>
                           <Link
                             href="/services/decks"
