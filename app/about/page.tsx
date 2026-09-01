@@ -79,19 +79,31 @@ export default function AboutPage() {
 
           {/* Section 3: My Approach to Tarot */}
           <ScrollReveal variant="fade-up">
-            <section className="bg-surface/80 p-8 rounded-2xl border border-gold/20 shadow-xl">
-              <h2 className="font-editorial text-3xl font-bold text-gold">
-                Tarot for Modern Life
-              </h2>
-              <div className="mt-4 space-y-4 font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
+            <section className="bg-surface/80 p-8 rounded-2xl border border-gold/25 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              <div className="md:col-span-5 flex justify-center">
+                <div className="relative w-52 h-72 sm:w-56 sm:h-80 rounded-2xl overflow-hidden shadow-2xl border-2 border-gold/40 shadow-gold/20 transform hover:scale-[1.02] transition-transform">
+                  <Image
+                    src="/images/austin tarot reader portrait image of daniel the tarot reader3.png"
+                    alt="Daniel - Intuitive Tarot Reader in Austin, TX"
+                    fill
+                    sizes="(max-width: 768px) 224px, 224px"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian/75 via-transparent to-transparent pointer-events-none" />
+                </div>
+              </div>
+              <div className="md:col-span-7 space-y-4 font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
+                <h2 className="font-editorial text-3xl font-bold text-gold">
+                  Tarot for Modern Life
+                </h2>
                 <p>
                   My approach is compassionate, intuitive, and grounded in practical wisdom. I see a tarot reading as a collaborative conversation—a safe, non-judgmental space where we can explore the energies surrounding you. My goal is to help you:
                 </p>
-                <ul className="list-disc list-inside pl-4 space-y-3">
+                <ul className="list-disc list-inside space-y-2.5 text-sm sm:text-base text-foreground/85">
                   <li><strong>Gain Empowering Perspective:</strong> See your situation from a new angle that highlights your strength and options.</li>
-                  <li><strong>Validate Your Intuition:</strong> Confirm those gut feelings you've been having and build trust in your own inner wisdom.</li>
-                  <li><strong>Navigate Your Crossroads:</strong> Explore the potential outcomes of your choices so you can move forward with confidence, not fear.</li>
-                  <li><strong>Find Actionable Clarity:</strong> You will leave our session not just with insight, but with a clearer understanding of your next steps.</li>
+                  <li><strong>Validate Your Intuition:</strong> Confirm those gut feelings you&apos;ve been having and build trust in your own inner wisdom.</li>
+                  <li><strong>Navigate Your Crossroads:</strong> Explore the potential outcomes of your choices so you can move forward with confidence.</li>
+                  <li><strong>Find Actionable Clarity:</strong> Leave with clear understanding of your next steps.</li>
                 </ul>
               </div>
             </section>

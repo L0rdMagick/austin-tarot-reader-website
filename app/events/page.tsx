@@ -106,8 +106,8 @@ export default function EventsPage() {
           <section className="w-full max-w-5xl mx-auto px-4 sm:px-8 mb-16">
             <div className="relative w-full h-[320px] sm:h-[450px] md:h-[520px] rounded-2xl overflow-hidden border-2 border-gold/40 shadow-2xl shadow-gold/15">
               <Image
-                src="/images/events/corporate-tarot-hero.jpg"
-                alt="Professional tarot reader performing at a high-end Austin corporate cocktail party"
+                src="/images/events/austin tarot reader at a private party in austin texas blurred.png"
+                alt="Austin tarot reader performing at a private party in Austin, Texas"
                 fill
                 priority
                 className="object-cover"
@@ -217,8 +217,8 @@ export default function EventsPage() {
                 <div className="space-y-6">
                   <div className="relative w-full h-[260px] rounded-xl overflow-hidden border border-gold/30 shadow-xl">
                     <Image
-                      src="/images/events/event-tarot-setup.jpg"
-                      alt="Celestial tarot reading lounge setup for Austin events"
+                      src="/images/events/austin tarot reader at a corporate event in austin texas blurred and cropped.png"
+                      alt="Austin tarot reader performing at a corporate event in Austin, Texas"
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 500px"
