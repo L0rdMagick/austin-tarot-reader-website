@@ -115,6 +115,15 @@ export function Navbar() {
                         >
                           Gift Cards
                         </Link>
+                        <Link
+                          href="/events"
+                          className={twMerge(
+                            'font-sans text-md px-4 py-2.5 rounded-lg hover:bg-primary hover:text-background text-foreground transition-all duration-200 text-left',
+                            pathname.startsWith('/events') && 'text-primary font-semibold'
+                          )}
+                        >
+                          Corporate &amp; Events
+                        </Link>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -202,6 +211,12 @@ export function Navbar() {
                             className="font-sans text-xl text-foreground/90 hover:text-primary"
                           >
                             Gift Cards
+                          </Link>
+                          <Link
+                            href="/events"
+                            className="font-sans text-xl text-foreground/90 hover:text-primary"
+                          >
+                            Corporate &amp; Private Events
                           </Link>
                         </div>
                       </div>

@@ -3,6 +3,7 @@ import { Cinzel, Quicksand, Cormorant_Garamond, Plus_Jakarta_Sans, Space_Grotesk
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import { Navbar } from "@/components/Navbar";
+import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { Footer } from "@/components/Footer";
 import { AmbientConstellation } from "@/components/AmbientConstellation";
 import React from "react";
@@ -100,6 +101,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={twMerge(cinzel.variable, quicksand.variable, cormorant.variable, jakarta.variable, spaceGrotesk.variable, 'font-sans bg-background text-foreground flex flex-col min-h-screen selection:bg-amber-500/20 selection:text-amber-200')}>
         <AmbientConstellation />
+        <AnnouncementBar />
         <Navbar />
         <div className="flex-grow">
           <script
