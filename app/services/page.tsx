@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { MobileStickyBar } from '@/components/MobileStickyBar';
 import { AmbientBackgroundCards } from '@/components/AmbientBackgroundCards';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { FaqAccordion } from '@/components/FaqAccordion';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -97,6 +98,25 @@ const services = [
   },
 ];
 
+const servicesFaqs = [
+  {
+    question: "What topics can I explore during a tarot reading?",
+    answer: "You can explore romantic relationships, career transitions, life decisions, personal growth, spiritual path alignment, and overcoming energetic blocks. The session is tailored around your specific questions and goals."
+  },
+  {
+    question: "How should I prepare for my tarot reading session?",
+    answer: "Find a quiet, comfortable space where you won't be interrupted. Take a few deep breaths to center yourself, and jot down 2-3 open-ended questions or specific topics you want to explore beforehand."
+  },
+  {
+    question: "What if a 'scary' card comes up during my reading?",
+    answer: "There are no inherently bad cards in tarot. Cards like Death or The Tower signify transformation, breakthrough, and necessary life shifts. Daniel interprets every card through an empowering, constructive lens focused on personal growth."
+  },
+  {
+    question: "What is the difference between an in-person and virtual tarot reading?",
+    answer: "Energy and symbolic intuition transcend physical distance. In-person readings take place in Austin, TX, while virtual readings are conducted worldwide via Google Meet or Phone. Both offer equal clarity, intimacy, and accuracy."
+  }
+];
+
 export default function ServicesPage() {
   return (
     <div className="fade-in-on-load pb-16 md:pb-0 relative min-h-screen overflow-hidden">
@@ -126,6 +146,23 @@ export default function ServicesPage() {
                     "provider": {
                       "@id": "https://www.austintarotreader.com/#organization"
                     }
+                  }
+                }))
+              })
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": servicesFaqs.map((faq) => ({
+                  "@type": "Question",
+                  "name": faq.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
                   }
                 }))
               })
@@ -265,6 +302,25 @@ export default function ServicesPage() {
               <div className="mt-4 font-sans text-sm sm:text-base text-foreground/90 space-y-3 leading-relaxed">
                 <p>To make the most of our time together, I recommend thinking about your questions or the area of your life you'd like to focus on beforehand. Come with an open mind and a quiet space where you won't be disturbed.</p>
                 <p className="text-gold font-semibold">Remember, there are no 'silly' questions. This is your safe space to seek clarity.</p>
+              </div>
+            </section>
+          </ScrollReveal>
+
+          {/* FAQ Accordion Section */}
+          <ScrollReveal variant="fade-up">
+            <section className="mt-16 bg-surface/60 p-6 sm:p-10 rounded-2xl border border-gold/30 shadow-2xl">
+              <div className="text-center mb-8">
+                <h2 className="font-editorial text-3xl sm:text-4xl font-bold text-gold">
+                  Frequently Asked Questions
+                </h2>
+                <p className="mt-2 font-sans text-foreground/80 text-base">
+                  Common questions about booking and experiencing a session with Daniel.
+                </p>
+              </div>
+              <div className="space-y-3 max-w-3xl mx-auto">
+                {servicesFaqs.map((faq, index) => (
+                  <FaqAccordion key={index} question={faq.question} answer={faq.answer} />
+                ))}
               </div>
             </section>
           </ScrollReveal>

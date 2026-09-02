@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AmbientBackgroundCards } from '@/components/AmbientBackgroundCards';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { FaqAccordion } from '@/components/FaqAccordion';
 
 export const metadata: Metadata = {
   title: 'Corporate Events & Private Parties | Austin Tarot Reader',
@@ -59,6 +60,25 @@ const sellingPoints = [
   },
 ];
 
+const eventFaqs = [
+  {
+    question: "How many guests can be read per hour at an event?",
+    answer: "Throughput depends on your event format. For high-volume cocktail parties, 5-minute rapid pulls allow ~10-12 guests per hour. For intimate gatherings, 10 to 15-minute readings allow 4-6 guests per hour."
+  },
+  {
+    question: "What are your rates and travel fee policy for Austin events?",
+    answer: "Event tarot entertainment is billed at a transparent $150 per hour with a 2-hour minimum, plus a flat $50 travel fee for locations within the Greater Austin metro area."
+  },
+  {
+    question: "What table and booth setup do I need to provide?",
+    answer: "Daniel brings his own professional tarot decks and decorative cloths. All the venue needs to provide is a small table (at least 2'x2') and 2 comfortable chairs in a relatively quiet or well-lit corner."
+  },
+  {
+    question: "Do you offer formal corporate proposals for event budget approval?",
+    answer: "Yes! You can view and print our formal 1-page corporate proposal anytime at /events/team-proposal to present to finance or executive event organizers."
+  }
+];
+
 export default function EventsPage() {
   return (
     <div className="fade-in-on-load pb-16 md:pb-0 relative min-h-screen overflow-hidden">
@@ -72,6 +92,23 @@ export default function EventsPage() {
         {/* HERO SECTION */}
         <ScrollReveal variant="fade-up" className="w-full flex flex-col items-center">
           <section className="w-full text-center pt-12 pb-8 md:pt-16 md:pb-12 flex flex-col items-center justify-center px-4">
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": eventFaqs.map((faq) => ({
+                    "@type": "Question",
+                    "name": faq.question,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": faq.answer
+                    }
+                  }))
+                })
+              }}
+            />
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-mono font-semibold mb-6">
               <span>📍 Austin, TX &amp; Surrounding Areas • In-Person Events</span>
             </div>
@@ -304,6 +341,25 @@ export default function EventsPage() {
                     I arrive 30 minutes early, set up according to your venue directions, and deliver non-stop engaging readings for your guests.
                   </p>
                 </div>
+              </div>
+            </section>
+          </ScrollReveal>
+
+          {/* EVENT FAQ SECTION */}
+          <ScrollReveal variant="fade-up">
+            <section className="bg-surface/80 p-8 sm:p-10 rounded-2xl border border-gold/30 shadow-2xl">
+              <div className="text-center mb-8">
+                <h2 className="font-editorial text-3xl sm:text-4xl font-bold text-gold">
+                  Event FAQ & Logistics
+                </h2>
+                <p className="mt-2 font-sans text-foreground/80 text-base">
+                  Everything event organizers and party planners need to know.
+                </p>
+              </div>
+              <div className="space-y-3 max-w-3xl mx-auto">
+                {eventFaqs.map((faq, index) => (
+                  <FaqAccordion key={index} question={faq.question} answer={faq.answer} />
+                ))}
               </div>
             </section>
           </ScrollReveal>

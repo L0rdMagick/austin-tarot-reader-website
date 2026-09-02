@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AmbientBackgroundCards } from '@/components/AmbientBackgroundCards';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { FaqAccordion } from '@/components/FaqAccordion';
 
 export const metadata: Metadata = {
   title: 'Executive Clarity Sessions | Strategic Tarot for Leaders',
@@ -36,6 +37,21 @@ const focusAreas = [
   },
 ];
 
+const executiveFaqs = [
+  {
+    question: "Are Executive Clarity Sessions strictly confidential?",
+    answer: "Yes. Every session is held under strict NDA-level confidentiality. Your business strategy, negotiations, co-founder dynamics, and sensitive decisions remain 100% private."
+  },
+  {
+    question: "How does Wharton MBA strategy combine with intuitive tarot?",
+    answer: "Daniel bridges analytical frameworks (market timing, risk evaluation, capital allocation) with deep symbolic intuition to illuminate unstated variables, emotional leverage points, and non-obvious paths forward."
+  },
+  {
+    question: "What business and executive topics are best suited for this session?",
+    answer: "Common topics include founder burnout & perspective resets, co-founder partnership alignment, strategic pivots, product launches, venture capital timing, and high-stakes negotiation positioning."
+  }
+];
+
 export default function ExecutivePage() {
   return (
     <div className="fade-in-on-load pb-16 md:pb-0 relative min-h-screen overflow-hidden">
@@ -49,6 +65,23 @@ export default function ExecutivePage() {
         {/* HERO SECTION */}
         <ScrollReveal variant="fade-up" className="w-full flex flex-col items-center">
           <section className="w-full text-center pt-12 pb-8 md:pt-16 md:pb-12 flex flex-col items-center justify-center px-4">
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": executiveFaqs.map((faq) => ({
+                    "@type": "Question",
+                    "name": faq.question,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": faq.answer
+                    }
+                  }))
+                })
+              }}
+            />
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-mono font-semibold mb-6">
               <span>🎓 Wharton MBA • 11 Years Intuitive Reader</span>
             </div>
@@ -196,6 +229,25 @@ export default function ExecutivePage() {
                     Reserve Executive Session ($250) ↗
                   </a>
                 </div>
+              </div>
+            </section>
+          </ScrollReveal>
+
+          {/* EXECUTIVE FAQ SECTION */}
+          <ScrollReveal variant="fade-up" className="w-full">
+            <section className="mt-12 bg-surface/80 p-8 sm:p-10 rounded-2xl border border-gold/30 shadow-2xl">
+              <div className="text-center mb-8">
+                <h2 className="font-editorial text-3xl sm:text-4xl font-bold text-gold">
+                  Executive FAQ &amp; Confidentiality
+                </h2>
+                <p className="mt-2 font-sans text-foreground/80 text-base">
+                  Direct answers regarding privacy, methodology, and session structure.
+                </p>
+              </div>
+              <div className="space-y-3 max-w-3xl mx-auto">
+                {executiveFaqs.map((faq, index) => (
+                  <FaqAccordion key={index} question={faq.question} answer={faq.answer} />
+                ))}
               </div>
             </section>
           </ScrollReveal>
