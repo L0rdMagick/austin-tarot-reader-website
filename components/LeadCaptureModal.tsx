@@ -13,6 +13,12 @@ export function LeadCaptureModal() {
   const router = useRouter();
 
   useEffect(() => {
+    // Developer Test Override: Append ?testPopup=true to any URL to test popup immediately
+    if (typeof window !== 'undefined' && window.location.search.includes('testPopup=true')) {
+      setIsOpen(true);
+      return;
+    }
+
     // Check if user has already dismissed or submitted in this session
     const hasSeenModal = sessionStorage.getItem('hasSeenLeadModal');
     if (hasSeenModal) return;
@@ -69,17 +75,9 @@ export function LeadCaptureModal() {
       });
 
       setIsSubmitted(true);
-      setTimeout(() => {
-        setIsOpen(false);
-        router.push('/free-reading');
-      }, 1500);
     } catch (error) {
       console.error('Lead capture error:', error);
       setIsSubmitted(true);
-      setTimeout(() => {
-        setIsOpen(false);
-        router.push('/free-reading');
-      }, 1500);
     } finally {
       setIsSubmitting(false);
     }
@@ -96,19 +94,19 @@ export function LeadCaptureModal() {
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           className="relative bg-surface p-6 sm:p-8 rounded-2xl border-2 border-gold/40 max-w-lg w-full shadow-2xl shadow-gold/20 overflow-hidden"
         >
-          {/* Close Button */}
+          {/* Prominent Circular Close Button */}
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 text-foreground/50 hover:text-gold transition-colors p-1"
+            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-gold/10 border border-gold/40 text-gold flex items-center justify-center hover:bg-gold hover:text-obsidian transition-all shadow-md z-10"
             aria-label="Close modal"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
 
           {!isSubmitted ? (
-            <div className="space-y-6 text-center">
+            <div className="space-y-6 text-center pt-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-mono font-semibold">
                 <span>✨ Free Intuitive Gift</span>
               </div>
@@ -163,14 +161,38 @@ export function LeadCaptureModal() {
               </p>
             </div>
           ) : (
-            <div className="py-8 text-center space-y-4">
-              <span className="text-4xl">🔮</span>
-              <h3 className="font-editorial text-2xl font-bold text-gold">
-                You&apos;re In! Redirecting to Your Free Reading...
+            <div className="py-6 text-center space-y-5 pt-4">
+              <div className="w-14 h-14 rounded-full bg-gold/20 border border-gold/40 text-gold text-3xl flex items-center justify-center mx-auto shadow-lg">
+                🔮
+              </div>
+
+              <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-gold">
+                You&apos;re Connected!
               </h3>
-              <p className="font-sans text-sm text-foreground/80">
-                Prepare your focus and questions. Taking you there now.
+
+              <p className="font-sans text-sm sm:text-base text-foreground/90 leading-relaxed max-w-sm mx-auto">
+                Your information has been successfully recorded in our database. You are now unlocked to experience your 3-Card AI Tarot Reading.
               </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 pt-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsOpen(false);
+                    router.push('/free-reading');
+                  }}
+                  className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-6 rounded-xl text-sm transition-all font-sans shadow-lg shadow-gold/20 active:scale-95"
+                >
+                  Continue to Free Reading ↗
+                </button>
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  className="w-full bg-surface-elevated text-gold border border-gold/40 font-bold py-3.5 px-6 rounded-xl text-sm hover:bg-surface-overlay transition-colors active:scale-95"
+                >
+                  Close &amp; Stay on Page
+                </button>
+              </div>
             </div>
           )}
         </motion.div>
