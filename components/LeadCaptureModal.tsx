@@ -8,6 +8,7 @@ export function LeadCaptureModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [agreedToEmail, setAgreedToEmail] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const router = useRouter();
@@ -71,7 +72,12 @@ export function LeadCaptureModal() {
       await fetch('/api/lead-capture', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, source: 'Exit Intent Popup' }),
+        body: JSON.stringify({
+          name,
+          email,
+          source: agreedToEmail ? 'Exit Intent Popup (Subscribed)' : 'Exit Intent Popup (No Email Consent)',
+          agreedToEmail,
+        }),
       });
 
       setIsSubmitted(true);
@@ -145,6 +151,20 @@ export function LeadCaptureModal() {
                     placeholder="name@example.com"
                     className="w-full bg-surface-elevated border border-white/15 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold transition-colors"
                   />
+                </div>
+
+                <div>
+                  <label className="flex items-start gap-2.5 cursor-pointer pt-1">
+                    <input
+                      type="checkbox"
+                      checked={agreedToEmail}
+                      onChange={(e) => setAgreedToEmail(e.target.checked)}
+                      className="mt-0.5 w-4 h-4 rounded border-white/20 bg-surface-elevated text-gold focus:ring-gold accent-amber-500 shrink-0"
+                    />
+                    <span className="text-xs font-sans text-foreground/80 leading-snug">
+                      I agree to receive weekly tarot clarity insights and updates from Austin Tarot Reader. Unsubscribe anytime with one click.
+                    </span>
+                  </label>
                 </div>
 
                 <button
