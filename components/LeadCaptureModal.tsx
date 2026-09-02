@@ -8,6 +8,7 @@ export function LeadCaptureModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [agreedToEmail, setAgreedToEmail] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -64,9 +65,10 @@ export function LeadCaptureModal() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || !agreedToEmail) return;
 
     setIsSubmitting(true);
+    setIsSubmitted(true); // Instant UI transition with 0ms delay!
 
     try {
       await fetch('/api/lead-capture', {
@@ -75,15 +77,13 @@ export function LeadCaptureModal() {
         body: JSON.stringify({
           name,
           email,
-          source: agreedToEmail ? 'Exit Intent Popup (Subscribed)' : 'Exit Intent Popup (No Email Consent)',
-          agreedToEmail,
+          phone,
+          source: 'Exit Intent Popup (Subscribed)',
+          agreedToEmail: true,
         }),
       });
-
-      setIsSubmitted(true);
     } catch (error) {
       console.error('Lead capture error:', error);
-      setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -122,7 +122,7 @@ export function LeadCaptureModal() {
               </h2>
 
               <p className="font-sans text-sm sm:text-base text-foreground/80 leading-relaxed">
-                Unlock instant access to your <strong className="text-gold font-semibold">Free 3-Card AI Tarot Reading</strong> + receive weekly intuitive updates directly to your inbox.
+                Unlock instant access to your <strong className="text-gold font-semibold">Free 3-Card AI Tarot Reading</strong> + exclusive text message discounts, email tarot draws, &amp; priority updates.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4 text-left pt-2">
@@ -154,23 +154,37 @@ export function LeadCaptureModal() {
                 </div>
 
                 <div>
+                  <label className="block text-xs font-mono text-gold/90 uppercase tracking-wider mb-1">
+                    Mobile Phone Number (Optional)
+                  </label>
+                  <input
+                    type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="(512) 000-0000"
+                    className="w-full bg-surface-elevated border border-white/15 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold transition-colors"
+                  />
+                </div>
+
+                <div>
                   <label className="flex items-start gap-2.5 cursor-pointer pt-1">
                     <input
                       type="checkbox"
+                      required
                       checked={agreedToEmail}
                       onChange={(e) => setAgreedToEmail(e.target.checked)}
                       className="mt-0.5 w-4 h-4 rounded border-white/20 bg-surface-elevated text-gold focus:ring-gold accent-amber-500 shrink-0"
                     />
                     <span className="text-xs font-sans text-foreground/80 leading-snug">
-                      I agree to receive weekly tarot clarity insights and updates from Austin Tarot Reader. Unsubscribe anytime with one click.
+                      I agree to receive weekly tarot clarity insights, exclusive session discounts, &amp; priority updates via email and SMS text (if phone number is submitted). Unsubscribe anytime with one click.
                     </span>
                   </label>
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-6 rounded-xl text-base transition-all font-sans shadow-xl shadow-gold/20 active:scale-95 text-center block"
+                  disabled={!agreedToEmail || isSubmitting}
+                  className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-6 rounded-xl text-base transition-all font-sans shadow-xl shadow-gold/20 active:scale-95 text-center block disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Unlocking...' : 'Unlock Free Reading Now ↗'}
                 </button>

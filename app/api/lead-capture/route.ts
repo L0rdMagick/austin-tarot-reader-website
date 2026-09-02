@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, source } = body;
+    const { name, email, phone, source } = body;
 
     if (!email) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
@@ -17,6 +17,7 @@ export async function POST(request: Request) {
       const params = new URLSearchParams();
       params.append('name', name || 'Anonymous');
       params.append('email', email);
+      params.append('phone', phone || 'Not provided');
       params.append('source', source || 'Website Popup');
 
       await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
