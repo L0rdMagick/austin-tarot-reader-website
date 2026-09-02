@@ -9,7 +9,7 @@ export function LeadCaptureModal() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [agreedToEmail, setAgreedToEmail] = useState(true);
+  const [agreedToEmail, setAgreedToEmail] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const router = useRouter();
@@ -93,41 +93,37 @@ export function LeadCaptureModal() {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-obsidian/85 backdrop-blur-md">
+      <div className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-4 bg-obsidian/85 backdrop-blur-md">
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className="relative bg-surface p-6 sm:p-8 rounded-2xl border-2 border-gold/40 max-w-lg w-full shadow-2xl shadow-gold/20 overflow-hidden"
+          className="relative bg-surface p-5 sm:p-7 rounded-2xl border-2 border-gold/40 max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl shadow-gold/20"
         >
           {/* Prominent Circular Close Button */}
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-gold/10 border border-gold/40 text-gold flex items-center justify-center hover:bg-gold hover:text-obsidian transition-all shadow-md z-10"
+            className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-gold/10 border border-gold/40 text-gold flex items-center justify-center hover:bg-gold hover:text-obsidian transition-all shadow-md z-10"
             aria-label="Close modal"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
 
           {!isSubmitted ? (
-            <div className="space-y-6 text-center pt-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-mono font-semibold">
-                <span>✨ Free Intuitive Gift</span>
-              </div>
-
-              <h2 className="font-editorial text-3xl sm:text-4xl font-normal text-gold leading-tight">
+            <div className="space-y-4 text-center pt-1">
+              <h2 className="font-editorial text-2xl sm:text-3xl font-normal text-gold leading-tight">
                 Before You Go — Claim Your Free Reading
               </h2>
 
-              <p className="font-sans text-sm sm:text-base text-foreground/80 leading-relaxed">
+              <p className="font-sans text-xs sm:text-sm text-foreground/80 leading-relaxed max-w-md mx-auto">
                 Unlock instant access to your <strong className="text-gold font-semibold">Free 3-Card AI Tarot Reading</strong> + exclusive text message discounts, email tarot draws, &amp; priority updates.
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-4 text-left pt-2">
+              <form onSubmit={handleSubmit} className="space-y-3 text-left pt-1">
                 <div>
-                  <label className="block text-xs font-mono text-gold/90 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-mono text-gold/90 uppercase tracking-wider mb-1">
                     Your Name (Optional)
                   </label>
                   <input
@@ -135,12 +131,12 @@ export function LeadCaptureModal() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Enter your name"
-                    className="w-full bg-surface-elevated border border-white/15 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold transition-colors"
+                    className="w-full bg-surface-elevated border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-foreground focus:outline-none focus:border-gold transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-gold/90 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-mono text-gold/90 uppercase tracking-wider mb-1">
                     Your Email Address <span className="text-gold">*</span>
                   </label>
                   <input
@@ -149,12 +145,12 @@ export function LeadCaptureModal() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@example.com"
-                    className="w-full bg-surface-elevated border border-white/15 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold transition-colors"
+                    className="w-full bg-surface-elevated border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-foreground focus:outline-none focus:border-gold transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono text-gold/90 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-mono text-gold/90 uppercase tracking-wider mb-1">
                     Mobile Phone Number (Optional)
                   </label>
                   <input
@@ -162,12 +158,12 @@ export function LeadCaptureModal() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="(512) 000-0000"
-                    className="w-full bg-surface-elevated border border-white/15 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:border-gold transition-colors"
+                    className="w-full bg-surface-elevated border border-white/15 rounded-xl px-3.5 py-2.5 text-sm text-foreground focus:outline-none focus:border-gold transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="flex items-start gap-2.5 cursor-pointer pt-1">
+                  <label className="flex items-start gap-2 cursor-pointer pt-0.5">
                     <input
                       type="checkbox"
                       required
@@ -175,7 +171,7 @@ export function LeadCaptureModal() {
                       onChange={(e) => setAgreedToEmail(e.target.checked)}
                       className="mt-0.5 w-4 h-4 rounded border-white/20 bg-surface-elevated text-gold focus:ring-gold accent-amber-500 shrink-0"
                     />
-                    <span className="text-xs font-sans text-foreground/80 leading-snug">
+                    <span className="text-[11px] font-sans text-foreground/80 leading-snug">
                       I agree to receive weekly tarot clarity insights, exclusive session discounts, &amp; priority updates via email and SMS text (if phone number is submitted). Unsubscribe anytime with one click.
                     </span>
                   </label>
@@ -184,13 +180,13 @@ export function LeadCaptureModal() {
                 <button
                   type="submit"
                   disabled={!agreedToEmail || isSubmitting}
-                  className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-6 rounded-xl text-base transition-all font-sans shadow-xl shadow-gold/20 active:scale-95 text-center block disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3 px-5 rounded-xl text-sm transition-all font-sans shadow-xl shadow-gold/20 active:scale-95 text-center block disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Unlocking...' : 'Unlock Free Reading Now ↗'}
                 </button>
               </form>
 
-              <p className="text-[11px] font-sans text-foreground/50">
+              <p className="text-[10px] font-sans text-foreground/50 pt-1">
                 100% confidential. No spam, unsubscribe anytime with one click.
               </p>
             </div>
