@@ -366,9 +366,9 @@ export function AddamsTarotDeck() {
                   <p className="font-sans text-xs sm:text-sm text-foreground/80 leading-relaxed mt-2 border-b border-white/5 pb-4">
                     Immerse yourself in the dark charm of <strong>Morticia's Shadow: Gothic Tarot Deck</strong>.{" "}
                     This premium, hand-crafted 78-card deck is the ultimate piece of <strong>Addams Family merchandise</strong>,{" "}
-                    perfect for fans seeking spooky Edwardian occult wares. Featuring iconic, stylized designs of your favorite characters—including{" "}
+                    perfect for fans seeking spooky Edwardian occult wares. Featuring iconic, stylized designs of your favorite characters, including{" "}
                     <strong>Wednesday Addams</strong> as The Fool and The Star, <strong>Gomez Addams</strong> as The Emperor and The Devil, and the elegant{" "}
-                    <strong>Morticia Addams</strong> as The High Priestess, with both as the passionate Lovers—this deck blends timeless{" "}
+                    <strong>Morticia Addams</strong> as The High Priestess, with both as the passionate Lovers: this deck blends timeless{" "}
                     tarot symbolism with gothic aesthetic elegance.
                   </p>
                 </div>

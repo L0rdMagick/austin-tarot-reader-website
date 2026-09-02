@@ -38,7 +38,7 @@ export default function AboutPage() {
         <ScrollReveal variant="fade-up">
           <section className="w-full text-center pt-12 pb-6 md:pt-16 md:pb-8 flex flex-col items-center justify-center px-4">
             <h1 className="font-editorial text-4xl sm:text-5xl font-bold text-balance text-gold">
-              My Journey & Philosophy
+              My Journey &amp; Philosophy
             </h1>
             <p className="mt-4 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90">
               I believe tarot is a profound tool for unlocking the wisdom we already hold within.
@@ -68,30 +68,69 @@ export default function AboutPage() {
               </h2>
               <div className="mt-4 space-y-4 font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
                 <p>
-                  I&apos;m Daniel, and for years I&apos;ve had the honor of guiding individuals from all walks of life through thousands of tarot readings. With a deep understanding of the intricacies of the human experience, I&apos;ve helped people navigate countless situations, offering insight where there was confusion and clarity where there was doubt.
+                  I&apos;m Daniel, and for over 11 years I&apos;ve had the honor of guiding individuals through thousands of 1-on-1 tarot readings. With a deep understanding of the intricacies of the human experience, I help people navigate life&apos;s crossroads, offering insight where there was confusion and clarity where there was doubt.
                 </p>
                 <p>
-                  My journey began not with a mystical vision, but with a quiet curiosity about the stories these 78 cards could tell. I quickly learned they weren&apos;t about predicting a rigid, unchangeable future. Instead, they are a powerful language for our own intuition—a way to see our circumstances with a fresh perspective and make decisions from a place of empowerment.
+                  My journey began with a quiet curiosity about the symbolic stories these 78 cards tell. I quickly learned tarot isn&apos;t about predicting a rigid, unchangeable future. Instead, it is a rich language for our own intuition: a structured lens to examine our circumstances with fresh perspective and make decisions from a place of genuine self-empowerment.
                 </p>
               </div>
             </section>
           </ScrollReveal>
 
-          {/* Section 2.5: The Strategist Behind the Cards (Wharton MBA & Executive Perspective) */}
+          {/* Section 2.25: Holding Space for Love, Career & Life Path Guidance */}
+          <ScrollReveal variant="fade-up">
+            <section className="bg-surface/80 p-8 rounded-2xl border border-gold/25 shadow-xl space-y-4">
+              <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">
+                Personalized Reading Containers
+              </span>
+              <h2 className="font-editorial text-3xl font-bold text-gold">
+                Holding Space for Love, Career &amp; Life Path Guidance
+              </h2>
+              <div className="space-y-4 font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
+                <p>
+                  Every reading I hold is an intimate, supportive container built on empathy, trust, and absolute discretion. Over the past decade, my core practice has centered on three foundational areas of human fulfillment:
+                </p>
+                <div className="grid grid-cols-1 gap-4 pt-2">
+                  <div className="bg-surface-elevated p-5 rounded-xl border border-gold/20 space-y-2">
+                    <h3 className="font-editorial text-xl font-bold text-gold">❤️ Love &amp; Relationships</h3>
+                    <p className="font-sans text-sm text-foreground/85 leading-relaxed">
+                      Relationships touch our deepest vulnerabilities. Whether you are navigating complex partner dynamics, processing past relationship patterns, or seeking clarity on romantic alignment, we examine the underlying emotional currents with zero judgment.
+                    </p>
+                  </div>
+
+                  <div className="bg-surface-elevated p-5 rounded-xl border border-gold/20 space-y-2">
+                    <h3 className="font-editorial text-xl font-bold text-gold">💼 Career &amp; Professional Purpose</h3>
+                    <p className="font-sans text-sm text-foreground/85 leading-relaxed">
+                      Career decisions often carry high personal and financial stakes. I help clients evaluate professional pivots, address workplace friction, identify hidden opportunities, and align daily work with authentic purpose.
+                    </p>
+                  </div>
+
+                  <div className="bg-surface-elevated p-5 rounded-xl border border-gold/20 space-y-2">
+                    <h3 className="font-editorial text-xl font-bold text-gold">🌟 General Life Path &amp; Personal Transitions</h3>
+                    <p className="font-sans text-sm text-foreground/85 leading-relaxed">
+                      When standing at a major life milestone or experiencing seasonal shifts, general life path readings provide a macro-level view of your trajectory, illuminating unseen strengths and practical next steps.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </ScrollReveal>
+
+          {/* Section 2.5: The Strategist Behind the Cards (Wharton MBA & Philosophy Degree) */}
           <ScrollReveal variant="fade-up">
             <section className="bg-surface/90 p-8 rounded-2xl border border-gold/30 shadow-xl space-y-4">
               <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">
-                Strategic Intuition
+                Academic &amp; Strategic Foundation
               </span>
               <h2 className="font-editorial text-3xl font-bold text-gold">
                 The Strategist Behind the Cards
               </h2>
               <div className="space-y-4 font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
                 <p>
-                  In addition to over 11 years as an intuitive reader, I hold an <strong className="text-gold font-semibold">MBA in entrepreneurship from the Wharton School of Business</strong> and build tech platforms. This unique dual perspective bridges analytical rigor with deep intuitive awareness.
+                  My approach is grounded by an <strong className="text-gold font-semibold">undergraduate degree in philosophy</strong> alongside an <strong className="text-gold font-semibold">MBA in entrepreneurship from the Wharton School of Business</strong>.
                 </p>
                 <p>
-                  Whether you are a founder facing a critical crossroads, an executive navigating complex partner dynamics, or an individual seeking practical alignment, I integrate structured strategic clarity with spiritual insight — ensuring every reading delivers real, actionable value.
+                  Philosophy trained me in rigorous logic, ethics, and deep symbolic interpretation, while my Wharton MBA background provides structured decision frameworks, risk evaluation, and organizational perspective. This rare blend bridges analytical clarity with intuitive awareness, ensuring every reading is both deeply resonant and practically actionable.
                 </p>
               </div>
             </section>
@@ -117,13 +156,13 @@ export default function AboutPage() {
                   Tarot for Modern Life
                 </h2>
                 <p>
-                  My approach is compassionate, intuitive, and grounded in practical wisdom. I see a tarot reading as a collaborative conversation—a safe, non-judgmental space where we can explore the energies surrounding you. My goal is to help you:
+                  My approach is compassionate, intuitive, and grounded in practical wisdom. I view each session as a collaborative dialogue in a safe, confidential space. My goal is to help you:
                 </p>
                 <ul className="list-disc list-inside space-y-2.5 text-sm sm:text-base text-foreground/85">
-                  <li><strong>Gain Empowering Perspective:</strong> See your situation from a new angle that highlights your strength and options.</li>
-                  <li><strong>Validate Your Intuition:</strong> Confirm those gut feelings you&apos;ve been having and build trust in your own inner wisdom.</li>
-                  <li><strong>Navigate Your Crossroads:</strong> Explore the potential outcomes of your choices so you can move forward with confidence.</li>
-                  <li><strong>Find Actionable Clarity:</strong> Leave with clear understanding of your next steps.</li>
+                  <li><strong>Gain Empowering Perspective:</strong> View your circumstances through a lens that highlights your choices and personal strength.</li>
+                  <li><strong>Validate Your Intuition:</strong> Confirm the subtle gut feelings you have been sensing and strengthen trust in your inner wisdom.</li>
+                  <li><strong>Navigate Your Crossroads:</strong> Explore potential outcomes so you can move forward with confidence and clarity.</li>
+                  <li><strong>Find Actionable Clarity:</strong> Leave with concrete, practical steps tailored to your goals.</li>
                 </ul>
               </div>
             </section>

@@ -376,9 +376,9 @@ export function CatsOfCrownTarotDeck() {
                   <p className="font-sans text-xs sm:text-sm text-foreground/80 leading-relaxed mt-2 border-b border-white/5 pb-4">
                     Immerse yourself in the majestic world of the <strong>Cats of the Crown Tarot Deck</strong>.{" "}
                     This premium, hand-crafted 78-card deck is the ultimate piece of <strong>cat tarot merchandise</strong>,{" "}
-                    perfect for feline lovers and seekers of divine, regal designs. Featuring beautiful, stylized artwork of sovereign kitty characters—including{" "}
-                    <strong>The Hierophant</strong> as the wise feline priest, <strong>The Lovers</strong> as bonded palace companions, and the crowned ruler of{" "}
-                    <strong>The World</strong>—this deck blends classic tarot symbolism with breathtaking feline majesty.
+                    perfect for feline lovers and seekers of divine, regal designs. Featuring beautiful, stylized artwork of sovereign kitty characters, including{" "}
+                    <strong>The Emperor</strong>, <strong>The Empress</strong>, <strong>The Magician</strong>, and{" "}
+                    <strong>The World</strong>, this deck blends classic tarot symbolism with breathtaking feline majesty.
                   </p>
                 </div>
 

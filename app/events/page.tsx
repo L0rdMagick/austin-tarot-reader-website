@@ -22,7 +22,7 @@ const eventTypes = [
   },
   {
     title: 'Halloween & Fall Bashes',
-    desc: 'The ultimate seasonal attraction. October dates book up months in advance — reserve early.',
+    desc: 'The ultimate seasonal attraction. October dates book up months in advance; reserve early.',
     icon: '🎃',
   },
   {
@@ -46,7 +46,7 @@ const sellingPoints = [
   {
     title: 'Customizable Pace per Guest',
     description:
-      'Structure readings for any headcount — from 5-minute rapid clarity pulls for large crowds to 15-minute deep insights for smaller gatherings.',
+      'Structure readings for any headcount, from 5-minute rapid clarity pulls for large crowds to 15-minute deep insights for smaller gatherings.',
   },
   {
     title: 'Zero Logistical Stress for Planners',
@@ -305,7 +305,7 @@ export default function EventsPage() {
             </section>
           </ScrollReveal>
 
-          {/* HOW BOOKING WORKS — STEP BY STEP */}
+          {/* HOW BOOKING WORKS: STEP BY STEP */}
           <ScrollReveal variant="fade-up">
             <section className="bg-surface p-8 sm:p-12 rounded-2xl border border-gold/30 space-y-8 shadow-2xl">
               <div className="text-center">
@@ -375,7 +375,7 @@ export default function EventsPage() {
                   Ready to Elevate Your Event?
                 </h2>
                 <p className="font-sans text-foreground/80 max-w-lg mx-auto text-sm sm:text-base mt-2">
-                  Dates — especially for October, Halloween, and holiday seasons — fill up quickly. Get in touch today to check availability.
+                  Dates, especially for October, Halloween, and holiday seasons, fill up quickly. Get in touch today to check availability.
                 </p>
               </div>
 

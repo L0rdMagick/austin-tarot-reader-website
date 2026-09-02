@@ -64,7 +64,7 @@ const faqData = [
   },
   {
     question: "How often should I get a tarot reading?",
-    answer: "It varies for everyone. Some people find a quarterly reading helpful for seasonal check-ins, while others seek guidance during major life transitions or when facing a specific challenge. Trust your intuition—you'll know when it's the right time."
+    answer: "It varies for everyone. Some people find a quarterly reading helpful for seasonal check-ins, while others seek guidance during major life transitions or when facing a specific challenge. Trust your intuition; you'll know when it's the right time."
   },
   {
     question: "Can you tell me what someone else is thinking or feeling?",

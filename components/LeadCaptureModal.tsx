@@ -114,7 +114,7 @@ export function LeadCaptureModal() {
           {!isSubmitted ? (
             <div className="space-y-4 text-center pt-1">
               <h2 className="font-editorial text-2xl sm:text-3xl font-normal text-gold leading-tight">
-                Before You Go — Claim Your Free Reading
+                Before You Go: Claim Your Free Reading
               </h2>
 
               <p className="font-sans text-xs sm:text-sm text-foreground/80 leading-relaxed max-w-md mx-auto">

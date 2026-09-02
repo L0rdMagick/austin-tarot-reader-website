@@ -142,7 +142,7 @@ export default function ExecutivePage() {
                     I hold an <strong className="text-gold font-semibold">MBA in entrepreneurship from the Wharton School of Business</strong>, have built tech platforms, and have spent over 11 years conducting thousands of intuitive tarot readings.
                   </p>
                   <p>
-                    Most executive decisions fail not from lack of data, but from unexamined gut feelings or emotional blind spots. Executive Clarity Sessions bridge this gap — providing a sophisticated space where market strategy, organizational dynamics, and intuitive foresight converge.
+                    Most executive decisions fail not from lack of data, but from unexamined gut feelings or emotional blind spots. Executive Clarity Sessions bridge this gap by providing a sophisticated space where market strategy, organizational dynamics, and intuitive foresight converge.
                   </p>
                 </div>
               </div>

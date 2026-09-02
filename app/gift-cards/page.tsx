@@ -5,7 +5,7 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 export const metadata: Metadata = {
   title: 'Tarot Reading Gift Cards | Austin Tarot Reader',
   description:
-    'Give the gift of clarity. Purchase a tarot reading gift card for someone you love. Available in multiple denominations — redeemable for any session in Austin, TX or virtually.',
+    'Give the gift of clarity. Purchase a tarot reading gift card for someone you love. Available in multiple denominations, redeemable for any session in Austin, TX or virtually.',
   alternates: {
     canonical: '/gift-cards',
   },
@@ -37,7 +37,7 @@ const giftOptions = [
     amount: '$100',
     duration: '2 × 30 Minutes',
     description:
-      'Gift two 30-minute sessions — one to use now, one to hold for whenever the next question arises.',
+      'Gift two 30-minute sessions (one to use now, one to hold for whenever the next question arises).',
     badge: 'Save $10',
     highlight: false,
     savingsNote: 'Save $10 vs. booking separately',
@@ -47,7 +47,7 @@ const giftOptions = [
     amount: '$160',
     duration: '2 × 60 Minutes',
     description:
-      'Two full 60-minute sessions — ideal for a deep journey or for sharing the experience with someone special.',
+      'Two full 60-minute sessions: ideal for a deep journey or for sharing the experience with someone special.',
     badge: 'Save $10',
     highlight: false,
     savingsNote: 'Save $10 vs. booking separately',
@@ -70,7 +70,7 @@ const faqs = [
   },
   {
     q: 'Can the gift card be used for any reading type?',
-    a: 'Yes — the balance applies to any session: in-person in Austin, TX, or virtual via phone or video call worldwide.',
+    a: 'Yes, the balance applies to any session: in-person in Austin, TX, or virtual via phone or video call worldwide.',
   },
   {
     q: 'Does the gift card expire?',
@@ -82,7 +82,7 @@ const faqs = [
   },
   {
     q: 'Can I purchase a gift card for myself?',
-    a: '辦Absolutely. Locking in a session at today\'s rate for a future booking is a smart move — especially heading into busier months.',
+    a: 'Absolutely. Locking in a session at today\'s rate for a future booking is a smart move, especially heading into busier months.',
   },
 ];
 
@@ -96,13 +96,13 @@ export default function GiftCardsPage() {
         <ScrollReveal variant="fade-up">
           <section className="w-full text-center pt-12 pb-6 md:pt-16 md:pb-8 flex flex-col items-center justify-center px-4">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-mono font-semibold mb-6">
-              <span>🎁 Gift Cards — Redeemable In-Person &amp; Virtually</span>
+              <span>🎁 Gift Cards: Redeemable In-Person &amp; Virtually</span>
             </div>
             <h1 className="font-editorial text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-balance text-gold max-w-4xl leading-[1.1]">
               Give the Gift of Clarity
             </h1>
             <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90 leading-relaxed">
-              A tarot reading is a genuinely meaningful gift — not another thing
+              A tarot reading is a genuinely meaningful gift, not another thing
               they don&apos;t need. Give someone you care about a private space
               to find answers, process what&apos;s weighing on them, and leave
               with real direction.
@@ -133,7 +133,7 @@ export default function GiftCardsPage() {
                 </h2>
                 <p className="mt-3 font-sans text-foreground/70 max-w-xl mx-auto text-sm sm:text-base">
                   Select the option that fits. All gift cards are purchased
-                  through Square — secure, instant digital delivery to any
+                  through Square with secure, instant digital delivery to any
                   email address.
                 </p>
               </div>
@@ -251,7 +251,7 @@ export default function GiftCardsPage() {
                   <h3 className="font-editorial text-xl font-bold text-foreground">They Receive</h3>
                   <p className="font-sans text-sm text-foreground/80 leading-relaxed">
                     The recipient gets a digital gift card delivered instantly
-                    to their inbox — no shipping, no waiting.
+                    to their inbox with no shipping and no waiting.
                   </p>
                 </div>
 
@@ -304,7 +304,7 @@ export default function GiftCardsPage() {
                 Ready to Give the Gift?
               </h2>
               <p className="font-sans text-foreground/70 max-w-md mx-auto text-sm">
-                Birthdays, anniversaries, holidays, or just because — clarity
+                Birthdays, anniversaries, holidays, or just because: clarity
                 is always the right gift.
               </p>
               <a

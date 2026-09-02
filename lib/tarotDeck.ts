@@ -388,7 +388,7 @@ const MINOR_ARCANA_CUSTOM: Record<string, { past: string; present: string; futur
   },
   'Swords10': {
     past: 'reaching the absolute bottom of a painful cycle, allowing a clean slate to begin',
-    present: 'you are closing out a painful chapter completely—the worst is officially behind you',
+    present: 'you are closing out a painful chapter completely, the worst is officially behind you',
     future: 'a final ending to old pain will pave the way for a bright dawn of new beginnings',
     summary: 'closing a painful chapter to begin anew',
   },

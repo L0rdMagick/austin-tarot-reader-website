@@ -359,7 +359,7 @@ export function MysticBookingEngine() {
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="font-editorial text-lg sm:text-xl font-bold text-gold">
-                    Square Appointments — Live Booking
+                    Square Appointments: Live Booking
                   </span>
                 </div>
                 <button
