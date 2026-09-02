@@ -274,6 +274,29 @@ export default function EventsPage() {
             </section>
           </ScrollReveal>
 
+          {/* CORPORATE PROPOSAL BANNER */}
+          <ScrollReveal variant="fade-up">
+            <div className="bg-surface/90 border-2 border-gold/40 p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-2xl shadow-gold/10">
+              <div className="space-y-2 max-w-2xl">
+                <span className="text-xs font-mono font-bold text-gold uppercase tracking-wider bg-gold/10 px-3 py-1 rounded-full border border-gold/30">
+                  For Corporate Event Planners &amp; HR Leaders
+                </span>
+                <h3 className="font-editorial text-2xl font-bold text-gold">
+                  Need a Formal 1-Page Proposal for Budget Approval?
+                </h3>
+                <p className="font-sans text-sm text-foreground/85 leading-relaxed">
+                  Access a clean, printable PDF proposal summarizing event rates ($150/hr + $50 travel), guest throughput options, booth requirements, and credentials to share with your executive team.
+                </p>
+              </div>
+              <Link
+                href="/events/team-proposal"
+                className="bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-8 rounded-xl text-base transition-all font-sans shadow-lg shadow-gold/20 whitespace-nowrap active:scale-95 flex-shrink-0"
+              >
+                View &amp; Print Proposal ↗
+              </Link>
+            </div>
+          </ScrollReveal>
+
           {/* PERFECT FOR THESE EVENTS */}
           <ScrollReveal variant="fade-up">
             <section className="space-y-8 text-center">
