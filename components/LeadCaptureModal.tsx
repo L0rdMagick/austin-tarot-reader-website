@@ -17,13 +17,22 @@ export function LeadCaptureModal() {
     const hasSeenModal = sessionStorage.getItem('hasSeenLeadModal');
     if (hasSeenModal) return;
 
-    // Timed trigger (45 seconds)
+    // 1. Timed trigger (10 seconds - standard CRO timing)
     const timer = setTimeout(() => {
       setIsOpen(true);
       sessionStorage.setItem('hasSeenLeadModal', 'true');
-    }, 45000);
+    }, 10000);
 
-    // Exit intent trigger (mouse leaving top of window)
+    // 2. Scroll trigger (40% down page)
+    const handleScroll = () => {
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      if (scrollPercent >= 40 && !sessionStorage.getItem('hasSeenLeadModal')) {
+        setIsOpen(true);
+        sessionStorage.setItem('hasSeenLeadModal', 'true');
+      }
+    };
+
+    // 3. Exit intent trigger (mouse leaving top of window)
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 10 && !sessionStorage.getItem('hasSeenLeadModal')) {
         setIsOpen(true);
@@ -32,10 +41,12 @@ export function LeadCaptureModal() {
     };
 
     document.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       clearTimeout(timer);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 

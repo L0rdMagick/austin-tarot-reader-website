@@ -11,18 +11,19 @@ export async function POST(request: Request) {
 
     const GOOGLE_SHEETS_WEBHOOK_URL =
       process.env.GOOGLE_SHEETS_WEBHOOK_URL ||
-      'https://script.google.com/macros/s/AKfycby-ug9E2ixi3fDdw88SrMT8-LlczRlodKPat2pfiGxGojOQGykX_lveG-mBdZYmFMV2/exec';
+      'https://script.google.com/macros/s/AKfycbzHZfaAEtR5cz6Mo5rhkghTxhS2n50PNdNfTF0eehnlN_zhI0EA6xOTCQ75A0SpTuc0/exec';
 
     if (GOOGLE_SHEETS_WEBHOOK_URL) {
+      const params = new URLSearchParams();
+      params.append('name', name || 'Anonymous');
+      params.append('email', email);
+      params.append('source', source || 'Website Popup');
+
       await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name || 'Anonymous',
-          email,
-          source: source || 'Website Popup',
-          timestamp: new Date().toISOString(),
-        }),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+        redirect: 'follow',
       }).catch((err) => {
         console.error('Google Sheets POST error:', err);
       });
