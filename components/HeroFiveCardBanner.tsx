@@ -72,41 +72,31 @@ export function HeroFiveCardBanner() {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="relative z-10 w-full text-center py-10 sm:py-14 px-4 sm:px-8 space-y-6"
+        className="relative z-10 w-full text-center py-10 sm:py-16 px-4 sm:px-8 space-y-6"
       >
         <div className="max-w-4xl mx-auto space-y-6">
-          {/* Trust Badge - Darker High Contrast Backdrop */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#0B0F19]/90 border border-gold/40 text-gold text-xs sm:text-sm font-sans font-semibold shadow-lg shadow-obsidian/60">
-            <span>⭐ 5.0 Google Rated Tarot Reader</span>
-            <span className="text-foreground/40">•</span>
-            <span>In-Person Austin, TX & Virtual</span>
+          {/* Sleek Minimal Trust Line */}
+          <div className="text-gold text-sm sm:text-base font-sans font-semibold tracking-wide drop-shadow-md">
+            ⭐ 5.0 Google Rated Reader
           </div>
 
-          {/* Hero Title with Uniform Crisp White Color & Deep Dark Halo Shadow */}
-          <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-balance text-white max-w-4xl mx-auto leading-[1.08] [text-shadow:_0_4px_16px_rgba(0,0,0,0.95),_0_2px_6px_rgba(11,15,25,1)]">
-            Step into the Circle. The Cards Already Know.
+          {/* Bold, Larger Hero Title */}
+          <h1 className="font-editorial text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight text-balance text-white max-w-4xl mx-auto leading-[1.05] [text-shadow:_0_4px_20px_rgba(0,0,0,0.95),_0_2px_8px_rgba(11,15,25,1)]">
+            The Cards Already Know.
           </h1>
 
-          {/* Subtitle in 40% Opaque Rounded Rectangle Box with Yellow Font & Dark Halo Shadow */}
-          <div className="bg-[#0B0F19]/40 backdrop-blur-sm border border-gold/30 rounded-xl p-4 sm:p-5 max-w-2xl mx-auto shadow-lg">
-            <p className="font-sans text-base sm:text-xl text-balance text-gold font-medium leading-relaxed [text-shadow:_0_4px_16px_rgba(0,0,0,0.95),_0_2px_6px_rgba(11,15,25,1)]">
-              The universe communicates through the cards to illuminate your future path in love, career, and purpose.
-            </p>
-          </div>
+          {/* Punchy Subheader */}
+          <p className="font-sans text-lg sm:text-2xl text-balance text-gold font-medium max-w-xl mx-auto leading-relaxed [text-shadow:_0_3px_12px_rgba(0,0,0,0.95)]">
+            Intuitive tarot guidance for love, career, and destiny.
+          </p>
 
-          {/* CTA Buttons */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* Single Primary CTA Button */}
+          <div className="pt-2 flex justify-center">
             <a
               href="#booking-engine"
-              className="w-full sm:w-auto bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-8 rounded-xl text-lg transition-all duration-300 font-sans shadow-xl shadow-gold/20 transform hover:scale-[1.02] active:scale-95"
+              className="w-full sm:w-auto bg-gold hover:bg-gold-light text-obsidian font-bold py-4 px-10 rounded-xl text-lg sm:text-xl transition-all duration-300 font-sans shadow-2xl shadow-gold/30 transform hover:scale-[1.02] active:scale-95"
             >
-              Reserve Your Reading Below ↓
-            </a>
-            <a
-              href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading."
-              className="w-full sm:w-auto bg-surface-elevated text-gold border border-gold/40 font-bold py-3.5 px-6 rounded-xl text-base hover:bg-surface-overlay transition-colors duration-300 font-sans active:scale-95"
-            >
-              💬 Text Daniel for Today&apos;s Openings
+              Reserve Your Session Below ↓
             </a>
           </div>
         </div>
