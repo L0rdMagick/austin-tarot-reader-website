@@ -90,7 +90,7 @@ export function HeroFiveCardBanner() {
           {/* Subtitle in 40% Opaque Rounded Rectangle Box with Yellow Font & Dark Halo Shadow */}
           <div className="bg-[#0B0F19]/40 backdrop-blur-sm border border-gold/30 rounded-xl p-4 sm:p-5 max-w-2xl mx-auto shadow-lg">
             <p className="font-sans text-base sm:text-xl text-balance text-gold font-medium leading-relaxed [text-shadow:_0_4px_16px_rgba(0,0,0,0.95),_0_2px_6px_rgba(11,15,25,1)]">
-              Find immediate clarity for love, purpose, and life&apos;s crossroads with Austin&apos;s premier intuitive reader.
+              The universe communicates through the cards to illuminate your future path in love, career, and purpose.
             </p>
           </div>
 

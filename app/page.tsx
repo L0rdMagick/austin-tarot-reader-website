@@ -13,7 +13,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Austin Tarot Reader | Intuitive Guidance & Clarity",
-  description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in love & relationship, career, and life purpose readings. Book your session now.",
+  description: "Discover clarity and guidance with Austin's trusted tarot reader and mystic guide. Specializing in love, career, and soul purpose readings. Book your session now.",
   alternates: {
     canonical: '/',
   },
@@ -30,19 +30,19 @@ const testimonials = [
 const quickFaqs = [
   {
     question: "Are in-person tarot readings available in Austin, TX?",
-    answer: "Yes! In-person sessions are available in Downtown Austin, TX. Virtual readings via Phone or Video are also available worldwide with the exact same energetic accuracy."
+    answer: "Yes. In-person sanctuary sessions are available in Downtown Austin, TX. Virtual readings via Phone or Zoom Video are also available worldwide with the exact same energetic accuracy."
   },
   {
     question: "What if I don't know what specific question to ask?",
-    answer: "No problem at all. Open, general spreads allow the cards to illuminate whatever message, emotional blockage, or upcoming transition is most urgent for your soul right now."
+    answer: "The universe already knows what your soul requires. When you sit with Daniel, open spreads allow the cards to act as mirrors, illuminating hidden desires, karmic lessons, and upcoming transitions."
   },
   {
     question: "What will I take away from my reading session?",
-    answer: "You will leave with direct actionable guidance, emotional peace, plus a high-resolution photo of your custom card spread to revisit anytime."
+    answer: "You will leave with direct actionable guidance, emotional peace, a 1-year future outlook, plus a high-resolution photo of your custom card spread to revisit anytime."
   },
   {
     question: "Is my reading completely confidential?",
-    answer: "100%. Every reading is a strictly private, non-judgmental, and compassionate space."
+    answer: "100%. Every reading is a strictly private, non-judgmental, and sacred space."
   }
 ];
 
@@ -72,7 +72,7 @@ export default function HomePage() {
               badge="Intuitive Authority"
               subtitle="Deep Intuition & Unfiltered Clarity"
               title="A Trusted Guide for Your Journey"
-              description="Welcome! I'm Daniel. Known for a compassionate and intuitive approach, I've conducted thousands of readings helping people from all walks of life navigate life's complexities. My goal is to offer insight and clarity, revealing the truth behind emotional confusion so you can make confident decisions from a place of self-worth."
+              description="Welcome. I am Daniel, a mystic, intuitive reader, and spiritual guide. For over a decade, I have acted as a translator between the physical world and the subtle signs of the universe. Bridging analytical perception with deep esoteric intuition, my sacred duty is to help you read the signs, understand how the past informs your present, and navigate future outcomes from a place of unshakeable spiritual authority."
               cardSrc="/images/austin tarot reader portrait image of daniel the tarot reader4.png"
               cardName="Daniel • Intuitive Reader"
               ctaText="Learn More About My Philosophy →"
@@ -106,7 +106,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           {/* ========================================================================= */}
-          {/* SECTION 5: PRIMARY BOOKING ENGINE (DEMAND-DRIVEN TOPIC TABS & FORMAT TOGGLE) */}
+          {/* SECTION 5: PRIMARY BOOKING ENGINE (DEMAND-DRIVEN TOPIC TABS & DURATION FILTERS) */}
           {/* ========================================================================= */}
           <ScrollReveal variant="fade-up">
             <MysticBookingEngine />
@@ -130,25 +130,25 @@ export default function HomePage() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
                 <div className="bg-surface-elevated p-6 rounded-xl border border-white/10 space-y-3 relative hover:border-gold/40 transition-colors">
                   <span className="text-2xl font-editorial font-bold text-gold">01</span>
-                  <h3 className="font-editorial text-xl font-bold text-foreground">Choose Your Format</h3>
+                  <h3 className="font-editorial text-xl font-bold text-foreground">Enter the Sacred Circle</h3>
                   <p className="font-sans text-xs text-foreground/80 leading-relaxed">
-                    Reserve in-person in Downtown Austin or via Phone/Video worldwide.
+                    Reserve your session in-person in Downtown Austin, TX, or via Phone & Zoom Video Call worldwide.
                   </p>
                 </div>
 
                 <div className="bg-surface-elevated p-6 rounded-xl border border-white/10 space-y-3 relative hover:border-gold/40 transition-colors">
                   <span className="text-2xl font-editorial font-bold text-gold">02</span>
-                  <h3 className="font-editorial text-xl font-bold text-foreground">Share Your Focus</h3>
+                  <h3 className="font-editorial text-xl font-bold text-foreground">Decode Universal Signs</h3>
                   <p className="font-sans text-xs text-foreground/80 leading-relaxed">
-                    Bring specific questions (Love, Career, Life Purpose) or let open spreads reveal immediate clarity.
+                    Bring pressing life questions (Love, Career, Destiny) or allow open spreads to reveal the universe&apos;s most urgent message for your soul.
                   </p>
                 </div>
 
                 <div className="bg-surface-elevated p-6 rounded-xl border border-white/10 space-y-3 relative hover:border-gold/40 transition-colors">
                   <span className="text-2xl font-editorial font-bold text-gold">03</span>
-                  <h3 className="font-editorial text-xl font-bold text-foreground">Gain Actionable Clarity</h3>
+                  <h3 className="font-editorial text-xl font-bold text-foreground">Illuminate Future Outcomes</h3>
                   <p className="font-sans text-xs text-foreground/80 leading-relaxed">
-                    Leave with concrete next steps, spiritual peace, plus clarity on your given question.
+                    Understand how the past informs your present, dissolve spiritual obstacles, and leave with a 1-year future outlook and concrete steps for soul evolution.
                   </p>
                 </div>
               </div>

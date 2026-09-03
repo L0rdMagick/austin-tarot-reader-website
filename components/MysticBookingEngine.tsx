@@ -33,11 +33,13 @@ const PACKAGES: SessionPackage[] = [
     price: 85,
     popular: true,
     squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ",
-    tagline: "Comprehensive 15-card spread covering romantic connections, twin flames, soulmates, and emotional healing.",
+    tagline: "A deep esoteric consultation reading the signs and omens of your romantic journey, soulmate dynamics, and twin flame connection.",
     highlights: [
-      "Partner energy, hidden motivations & communication dynamics",
-      "Uncover recurring relationship blockages & emotional patterns",
-      "6-month trajectory with clear, actionable next steps",
+      "Format: Available In-Person in Downtown Austin, TX, or Worldwide via Phone & Zoom Video Call",
+      "Hidden Intentions & Influences: Reveal unspoken partner feelings, unstated motives, and third-party energetic influences",
+      "Past to Present: Understand how past heartbreaks, unresolved karmic loops, and emotional contracts shape your present state",
+      "Obstacles & Subconscious Desires: Uncover hidden romantic blocks, fears of vulnerability, and true heart desires",
+      "1-Year Romantic Outlook & Outcomes: Future timelines, likely romantic outcomes, and next steps for soul evolution",
     ],
   },
   {
@@ -48,11 +50,12 @@ const PACKAGES: SessionPackage[] = [
     durationText: "30 Minutes",
     price: 55,
     squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU",
-    tagline: "Direct single-spread insight into 1–2 pressing relationship questions or immediate romantic crossroads.",
+    tagline: "Direct intuitive single-spread consultation providing sharp clarity for 1 or 2 pressing relationship questions or romantic crossroads.",
     highlights: [
-      "Quick, sharp clarity on current romantic dynamics",
-      "Immediate insight into partner feelings & intentions",
-      "Concrete next steps for your romantic situation",
+      "Format: Available In-Person in Downtown Austin, TX, or Worldwide via Phone & Zoom Video Call",
+      "Partner Intentions & Dynamics: Immediate insight into partner motives, true feelings, and emotional masks",
+      "Obstacles & Next Steps: Identify current romantic blockages and concrete spiritual next steps for your connection",
+      "Likely Near-Term Outcomes: Understand immediate future trajectories and upcoming romantic developments",
     ],
   },
 
@@ -66,11 +69,13 @@ const PACKAGES: SessionPackage[] = [
     price: 85,
     popular: true,
     squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/Y35MKZALF3RNQPE6OSOUDG5Q",
-    tagline: "Deep strategic spread evaluating career pivots, workplace negotiations, founder trajectory, and abundance.",
+    tagline: "A powerful intuitive sanctuary evaluating workplace crossroads, colleague intentions, executive alignment, and financial abundance.",
     highlights: [
-      "Evaluate upcoming job shifts, promotions, or venture opportunities",
-      "Identify limiting beliefs & financial abundance blockages",
-      "Strategic alignment for long-term professional fulfillment",
+      "Format: Available In-Person in Downtown Austin, TX, or Worldwide via Phone & Zoom Video Call",
+      "Unspoken Intentions & Leadership Influences: Uncover hidden partner motives, executive negotiations, and team dynamics",
+      "Past Career Cycles & Abundance Blocks: How past work lessons shape your present, and dissolve subconscious money blocks",
+      "Workplace Obstacles & Hidden Desires: Identify professional stagnation causes and align with your true vocational calling",
+      "1-Year Career Outlook & Financial Outcomes: Future timelines for promotions, ventures, and next steps for financial mastery",
     ],
   },
   {
@@ -81,11 +86,12 @@ const PACKAGES: SessionPackage[] = [
     durationText: "30 Minutes",
     price: 55,
     squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU",
-    tagline: "Focused guidance for urgent workplace decisions, salary discussions, or immediate business crossroads.",
+    tagline: "Focused intuitive guidance for urgent workplace decisions, salary discussions, job offers, or immediate business crossroads.",
     highlights: [
-      "Quick assessment of immediate work decisions",
-      "Uncover unstated team or leadership dynamics",
-      "Clear direction on immediate next steps",
+      "Format: Available In-Person in Downtown Austin, TX, or Worldwide via Phone & Zoom Video Call",
+      "Immediate Decision Clarity: Uncover unstated workplace motives and evaluate upcoming professional choices",
+      "Obstacles & Aligned Actions: Identify professional blockages and immediate next steps for confidence and worth",
+      "Likely Career Outcomes: Clear direction on near-term financial and professional trajectories",
     ],
   },
 
@@ -99,11 +105,13 @@ const PACKAGES: SessionPackage[] = [
     price: 85,
     popular: true,
     squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/BF72ZKQM74NPNZ3FTYZLARXT",
-    tagline: "Extended 15-card general spread revealing overall life trajectory, emotional peace, and spiritual growth.",
+    tagline: "An all-encompassing oracle consultation reading the signs sent by the universe to illuminate your overall destiny and spiritual growth.",
     highlights: [
-      "Past, present & 6-month trajectory overview",
-      "Shadow work & energetic block identification",
-      "Full spread photo & custom integration blueprint",
+      "Format: Available In-Person in Downtown Austin, TX, or Worldwide via Phone & Zoom Video Call",
+      "Universal Signs & Hidden Desires: Decode pressing messages the universe is sending right now for your soul path",
+      "Past to Present Echoes: Understand how past karmic contracts and experiences shape your current life state",
+      "Obstacles & Shadow Work: Uncover unseen energetic blocks, subconscious fears, and self-limiting patterns",
+      "1-Year Destiny Outlook & Likely Outcomes: Full 12-month future trajectory, outcome probabilities, and soul steps",
     ],
   },
   {
@@ -114,11 +122,12 @@ const PACKAGES: SessionPackage[] = [
     durationText: "30 Minutes",
     price: 55,
     squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU",
-    tagline: "Quick intuitive breakdown for 1–2 pressing life questions or general energy check-ins.",
+    tagline: "Quick intuitive single-spread breakdown decoding universal signs for 1 or 2 pressing life questions.",
     highlights: [
-      "Direct single-spread card breakdown",
-      "Immediate action steps & emotional reassurance",
-      "Ideal for monthly spiritual check-ins",
+      "Format: Available In-Person in Downtown Austin, TX, or Worldwide via Phone & Zoom Video Call",
+      "Universal Message Breakdown: Direct insight into the immediate signs surrounding your life right now",
+      "Obstacles & Immediate Next Steps: Dissolve confusion, identify current blocks, and gain emotional peace",
+      "Likely Near-Term Trajectory: Reassurance and clarity on upcoming life developments",
     ],
   },
 ];
@@ -204,7 +213,7 @@ export function MysticBookingEngine() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -15 }}
           transition={{ duration: 0.25 }}
-          className="bg-surface-elevated p-6 sm:p-10 rounded-2xl border-2 border-gold/40 shadow-2xl space-y-6 relative overflow-hidden"
+          className="bg-surface-elevated p-6 sm:p-10 rounded-2xl border-2 border-gold/40 shadow-2xl space-y-6 relative overflow-hidden text-left"
         >
           {/* Card Header & Price */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
@@ -239,15 +248,26 @@ export function MysticBookingEngine() {
           </p>
 
           {/* Feature Highlights Checklist */}
-          <div className="bg-obsidian/60 p-5 rounded-xl border border-gold/20 space-y-2.5 text-xs sm:text-sm font-sans text-foreground/90">
-            {activePackage.highlights.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2">
-                <span className="text-gold">✦</span>
-                <span>{item}</span>
-              </div>
-            ))}
-            <div className="flex items-center gap-2 text-emerald-400 pt-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="bg-obsidian/60 p-5 sm:p-6 rounded-xl border border-gold/20 space-y-3 text-xs sm:text-sm font-sans text-foreground/90">
+            {activePackage.highlights.map((item, idx) => {
+              const [title, desc] = item.split(": ");
+              return (
+                <div key={idx} className="flex items-start gap-2">
+                  <span className="text-gold shrink-0 mt-0.5">✦</span>
+                  <div>
+                    {desc ? (
+                      <>
+                        <strong className="text-gold">{title}:</strong> {desc}
+                      </>
+                    ) : (
+                      <span>{item}</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+            <div className="flex items-center gap-2 text-emerald-400 pt-2 border-t border-white/10">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               <span><strong>Real-Time Sync:</strong> Synchronized with Squareup Calendar (100% Confidential)</span>
             </div>
           </div>
