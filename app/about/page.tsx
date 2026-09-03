@@ -77,7 +77,39 @@ export default function AboutPage() {
             </section>
           </ScrollReveal>
 
-          {/* Section 2.25: Holding Space for Love, Career & Life Path Guidance */}
+          {/* Section 3: Tarot for Modern Life (MOVED DIRECTLY BELOW AN INTUITIVE PATH) */}
+          <ScrollReveal variant="fade-up">
+            <section className="bg-surface/80 p-8 rounded-2xl border border-gold/25 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              <div className="md:col-span-5 flex justify-center">
+                <div className="relative w-52 h-72 sm:w-56 sm:h-80 rounded-2xl overflow-hidden shadow-2xl border-2 border-gold/40 shadow-gold/20 transform hover:scale-[1.02] transition-transform">
+                  <Image
+                    src="/images/austin tarot reader portrait image of daniel the tarot reader3.png"
+                    alt="Daniel - Intuitive Tarot Reader in Austin, TX"
+                    fill
+                    sizes="(max-width: 768px) 224px, 224px"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian/75 via-transparent to-transparent pointer-events-none" />
+                </div>
+              </div>
+              <div className="md:col-span-7 space-y-4 font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
+                <h2 className="font-editorial text-3xl font-bold text-gold">
+                  Tarot for Modern Life
+                </h2>
+                <p>
+                  My approach is compassionate, intuitive, and grounded in practical wisdom. I view each session as a collaborative dialogue in a safe, confidential space. My goal is to help you:
+                </p>
+                <ul className="list-disc list-inside space-y-2.5 text-sm sm:text-base text-foreground/85">
+                  <li><strong>Gain Empowering Perspective:</strong> View your circumstances through a lens that highlights your choices and personal strength.</li>
+                  <li><strong>Validate Your Intuition:</strong> Confirm the subtle gut feelings you have been sensing and strengthen trust in your inner wisdom.</li>
+                  <li><strong>Navigate Your Crossroads:</strong> Explore potential outcomes so you can move forward with confidence and clarity.</li>
+                  <li><strong>Find Actionable Clarity:</strong> Leave with concrete, practical steps tailored to your goals.</li>
+                </ul>
+              </div>
+            </section>
+          </ScrollReveal>
+
+          {/* Section 4: Holding Space for Love, Career & Life Path Guidance */}
           <ScrollReveal variant="fade-up">
             <section className="bg-surface/80 p-8 rounded-2xl border border-gold/25 shadow-xl space-y-4">
               <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">
@@ -116,7 +148,7 @@ export default function AboutPage() {
             </section>
           </ScrollReveal>
 
-          {/* Section 2.5: The Strategist Behind the Cards (Wharton MBA & Philosophy Degree) */}
+          {/* Section 5: The Strategist Behind the Cards (Wharton MBA & Philosophy Degree) */}
           <ScrollReveal variant="fade-up">
             <section className="bg-surface/90 p-8 rounded-2xl border border-gold/30 shadow-xl space-y-4">
               <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">
@@ -136,39 +168,7 @@ export default function AboutPage() {
             </section>
           </ScrollReveal>
 
-          {/* Section 3: My Approach to Tarot */}
-          <ScrollReveal variant="fade-up">
-            <section className="bg-surface/80 p-8 rounded-2xl border border-gold/25 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div className="md:col-span-5 flex justify-center">
-                <div className="relative w-52 h-72 sm:w-56 sm:h-80 rounded-2xl overflow-hidden shadow-2xl border-2 border-gold/40 shadow-gold/20 transform hover:scale-[1.02] transition-transform">
-                  <Image
-                    src="/images/austin tarot reader portrait image of daniel the tarot reader3.png"
-                    alt="Daniel - Intuitive Tarot Reader in Austin, TX"
-                    fill
-                    sizes="(max-width: 768px) 224px, 224px"
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian/75 via-transparent to-transparent pointer-events-none" />
-                </div>
-              </div>
-              <div className="md:col-span-7 space-y-4 font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
-                <h2 className="font-editorial text-3xl font-bold text-gold">
-                  Tarot for Modern Life
-                </h2>
-                <p>
-                  My approach is compassionate, intuitive, and grounded in practical wisdom. I view each session as a collaborative dialogue in a safe, confidential space. My goal is to help you:
-                </p>
-                <ul className="list-disc list-inside space-y-2.5 text-sm sm:text-base text-foreground/85">
-                  <li><strong>Gain Empowering Perspective:</strong> View your circumstances through a lens that highlights your choices and personal strength.</li>
-                  <li><strong>Validate Your Intuition:</strong> Confirm the subtle gut feelings you have been sensing and strengthen trust in your inner wisdom.</li>
-                  <li><strong>Navigate Your Crossroads:</strong> Explore potential outcomes so you can move forward with confidence and clarity.</li>
-                  <li><strong>Find Actionable Clarity:</strong> Leave with concrete, practical steps tailored to your goals.</li>
-                </ul>
-              </div>
-            </section>
-          </ScrollReveal>
-
-          {/* Section 4: Call to Action */}
+          {/* Section 6: Call to Action */}
           <ScrollReveal variant="zoom-in">
             <section className="text-center bg-surface p-8 rounded-2xl border border-gold/30 shadow-2xl">
               <h2 className="font-editorial text-3xl font-bold text-gold">
