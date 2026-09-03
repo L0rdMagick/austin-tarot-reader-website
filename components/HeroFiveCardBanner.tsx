@@ -82,13 +82,13 @@ export function HeroFiveCardBanner() {
             <span>In-Person Austin, TX & Virtual</span>
           </div>
 
-          {/* Hero Title with Dark Letter Shadows for Crisp Readability */}
-          <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-balance text-gold max-w-4xl mx-auto leading-[1.08] [text-shadow:_0_2px_10px_rgba(11,15,25,0.95),_0_1px_3px_rgba(11,15,25,0.9)]">
-            Step into the Circle. The Cards Already Know.
+          {/* Hero Title with Crisp White Color & Deep Dark Halo Shadow for Extreme Legibility */}
+          <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-balance text-white max-w-4xl mx-auto leading-[1.08] [text-shadow:_0_4px_16px_rgba(0,0,0,0.95),_0_2px_6px_rgba(11,15,25,1)]">
+            Step into the Circle. <span className="text-gold">The Cards Already Know.</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="font-sans text-base sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90 leading-relaxed font-medium [text-shadow:_0_1px_5px_rgba(11,15,25,0.9)]">
+          <p className="font-sans text-base sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90 leading-relaxed font-medium [text-shadow:_0_2px_8px_rgba(0,0,0,0.95)]">
             Find immediate clarity for love, purpose, and life&apos;s crossroads with Austin&apos;s premier intuitive reader.
           </p>
 
