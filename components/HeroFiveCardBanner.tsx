@@ -39,17 +39,17 @@ const HERO_CARDS = [
 
 export function HeroFiveCardBanner() {
   return (
-    <section className="w-full relative py-12 md:py-20 flex flex-col items-center justify-center overflow-hidden">
-      {/* 5-CARD TAROT SPREAD BACKGROUND ACCENT - FULL CONTAINER HEIGHT */}
+    <section className="w-full relative pt-4 pb-10 sm:pb-14 flex flex-col items-center justify-center overflow-hidden">
+      {/* 5-CARD TAROT SPREAD BACKGROUND ACCENT - STRICTLY CONTAINED INSIDE HERO HEIGHT */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden opacity-75">
-        <div className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8 h-full w-full max-w-7xl px-4">
+        <div className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8 h-[92%] w-full max-w-7xl px-4 py-2">
           {HERO_CARDS.map((card, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30, rotate: 0 }}
+              initial={{ opacity: 0, y: 20, rotate: 0 }}
               animate={{ opacity: 1, y: 0, rotate: card.rotate }}
               transition={{ duration: 0.8, delay: idx * 0.1, ease: 'easeOut' }}
-              className={`relative h-[85%] aspect-[2/3] rounded-2xl overflow-hidden border border-gold/40 shadow-2xl shadow-gold/20 shrink-0 ${
+              className={`relative h-full aspect-[2/3] max-h-[500px] rounded-2xl overflow-hidden border border-gold/40 shadow-2xl shadow-gold/20 shrink-0 ${
                 card.mobileHide ? 'hidden sm:block' : 'block'
               }`}
             >
@@ -69,26 +69,26 @@ export function HeroFiveCardBanner() {
 
       {/* FOREGROUND FULL-WIDTH 30% OPAQUE SEMI-INDIGO BACKDROP CARD */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="relative z-10 w-full text-center bg-[#0B0F19]/30 backdrop-blur-sm border-y border-gold/30 py-10 sm:py-14 px-4 sm:px-8 shadow-2xl space-y-6"
+        className="relative z-10 w-full text-center bg-[#0B0F19]/30 backdrop-blur-sm border-y border-gold/30 py-8 sm:py-12 px-4 sm:px-8 shadow-2xl space-y-6"
       >
         <div className="max-w-4xl mx-auto space-y-6">
-          {/* Trust Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-sans font-semibold">
+          {/* Trust Badge - Darker High Contrast Backdrop */}
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#0B0F19]/90 border border-gold/40 text-gold text-xs sm:text-sm font-sans font-semibold shadow-lg shadow-obsidian/60">
             <span>⭐ 5.0 Google Rated Tarot Reader</span>
             <span className="text-foreground/40">•</span>
             <span>In-Person Austin, TX & Virtual</span>
           </div>
 
-          {/* Hero Title */}
-          <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-balance text-gold max-w-4xl mx-auto leading-[1.08]">
+          {/* Hero Title with Dark Letter Shadows for Crisp Readability */}
+          <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-balance text-gold max-w-4xl mx-auto leading-[1.08] [text-shadow:_0_2px_10px_rgba(11,15,25,0.95),_0_1px_3px_rgba(11,15,25,0.9)]">
             Step into the Circle. The Cards Already Know.
           </h1>
 
           {/* Subtitle */}
-          <p className="font-sans text-base sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90 leading-relaxed font-medium">
+          <p className="font-sans text-base sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90 leading-relaxed font-medium [text-shadow:_0_1px_5px_rgba(11,15,25,0.9)]">
             Find immediate clarity for love, purpose, and life&apos;s crossroads with Austin&apos;s premier intuitive reader.
           </p>
 
