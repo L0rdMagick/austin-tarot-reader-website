@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface SessionPackage {
   id: string;
+  category: "love" | "career" | "general";
   title: string;
   duration: string;
   price: number;
@@ -14,76 +15,132 @@ interface SessionPackage {
   highlights: string[];
 }
 
+const CATEGORIES = [
+  { id: "love", name: "💖 Love & Relationships", tagline: "Twin Flames, Soulmates, Heartbreak & Connection" },
+  { id: "career", name: "💼 Career & Life Purpose", tagline: "Pivots, Workplace Decisions & Financial Abundance" },
+  { id: "general", name: "✨ General / Open Reading", tagline: "Life Crossroads, Spiritual Growth & Deep Clarity" },
+];
+
 const PACKAGES: SessionPackage[] = [
+  // --- LOVE CATEGORY ---
   {
-    id: "focused-30",
-    title: "30-Min Focused Reading",
-    duration: "30 Minutes",
-    price: 55,
-    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU",
-    tagline: "Quick, sharp intuitive insight for 1–2 pressing life questions",
+    id: "love-60",
+    category: "love",
+    title: "60-Min Deep Love & Relationship Reading",
+    duration: "60 Minutes",
+    price: 85,
+    popular: true,
+    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ",
+    tagline: "Comprehensive 15-card spread for romantic connections, twin flames & soulmates",
     highlights: [
-      "Direct single-spread card breakdown",
-      "Immediate action steps & clarity",
-      "In-Person Austin or Phone/Video worldwide",
+      "Partner energy & communication dynamics",
+      "Uncover hidden romantic patterns & emotional blocks",
+      "6-month relationship trajectory & actionable next steps",
     ],
   },
   {
-    id: "in-depth-60",
-    title: "60-Min In-Depth Reading",
+    id: "love-30",
+    category: "love",
+    title: "30-Min Focused Love Check",
+    duration: "30 Minutes",
+    price: 55,
+    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU",
+    tagline: "Direct single-spread insight into 1–2 pressing relationship questions",
+    highlights: [
+      "Quick, sharp clarity on your current romantic situation",
+      "Immediate insight into partner intentions & feelings",
+      "Actionable guidance for immediate decisions",
+    ],
+  },
+
+  // --- CAREER CATEGORY ---
+  {
+    id: "career-60",
+    category: "career",
+    title: "60-Min Career, Money & Purpose Reading",
+    duration: "60 Minutes",
+    price: 85,
+    popular: true,
+    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/Y35MKZALF3RNQPE6OSOUDG5Q",
+    tagline: "Deep strategic spread for career transitions, business decisions & abundance",
+    highlights: [
+      "Evaluate career pivots, job offers, or business opportunities",
+      "Identify limiting beliefs & abundance blockages",
+      "Strategic alignment for long-term professional fulfillment",
+    ],
+  },
+  {
+    id: "career-30",
+    category: "career",
+    title: "30-Min Quick Career Check",
+    duration: "30 Minutes",
+    price: 55,
+    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU",
+    tagline: "Focused guidance for immediate work crossroads or salary negotiations",
+    highlights: [
+      "Quick assessment of upcoming workplace decisions",
+      "Uncover unstated dynamics with colleagues or managers",
+      "Clear direction on immediate next steps",
+    ],
+  },
+
+  // --- GENERAL CATEGORY ---
+  {
+    id: "general-60",
+    category: "general",
+    title: "60-Min In-Depth Life Path Reading",
     duration: "60 Minutes",
     price: 85,
     popular: true,
     squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/BF72ZKQM74NPNZ3FTYZLARXT",
-    tagline: "Comprehensive 15-card spread covering Love, Career, or Life Path",
+    tagline: "Extended 15-card general spread revealing overall energy, past, present & future",
     highlights: [
-      "Past, present & 6-month trajectory",
-      "Shadow work & block identification",
+      "Past, present & 6-month trajectory overview",
+      "Shadow work & energetic block identification",
       "Full spread photo & custom action steps included",
     ],
   },
   {
-    id: "coaching-60",
-    title: "60-Min Intuitive Coaching",
-    duration: "60 Minutes",
-    price: 85,
-    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/SK53OJ3ZTPXWAEZOF3SK4P4A",
-    tagline: "Combines intuitive tarot insight with structured action coaching",
+    id: "general-30",
+    category: "general",
+    title: "30-Min Focused General Reading",
+    duration: "30 Minutes",
+    price: 55,
+    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU",
+    tagline: "Quick intuitive breakdown for 1–2 immediate general questions",
     highlights: [
-      "Tarot spread + actionable goal mapping",
-      "Break through emotional or career blocks",
-      "Personalized integration steps",
-    ],
-  },
-  {
-    id: "love-60",
-    title: "60-Min Love & Relationships",
-    duration: "60 Minutes",
-    price: 85,
-    squareUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ",
-    tagline: "Specialized deep dive for romantic connections & soulmates",
-    highlights: [
-      "Partner energy & communication dynamics",
-      "Uncover hidden relationship patterns",
-      "Clear guidance for next steps",
+      "Direct single-spread card breakdown",
+      "Immediate action steps & peace of mind",
+      "Ideal for overall energy check-ins",
     ],
   },
 ];
 
 export function MysticBookingEngine() {
-  const [selectedPkgId, setSelectedPkgId] = useState<string>("in-depth-60");
+  const [selectedFormat, setSelectedFormat] = useState<"in-person" | "virtual">("in-person");
+  const [selectedCategory, setSelectedCategory] = useState<"love" | "career" | "general">("love");
+  const [selectedPkgId, setSelectedPkgId] = useState<string>("love-60");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [activeSquareUrl, setActiveSquareUrl] = useState<string>(PACKAGES[1].squareUrl);
+  const [activeSquareUrl, setActiveSquareUrl] = useState<string>(PACKAGES[0].squareUrl);
 
   const buttonRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  const activePackage = PACKAGES.find((p) => p.id === selectedPkgId) || PACKAGES[1];
+  const filteredPackages = PACKAGES.filter((p) => p.category === selectedCategory);
+  const activePackage = PACKAGES.find((p) => p.id === selectedPkgId) || filteredPackages[0] || PACKAGES[0];
+
+  const handleSelectCategory = (catId: "love" | "career" | "general") => {
+    setSelectedCategory(catId);
+    const firstPkg = PACKAGES.find((p) => p.category === catId);
+    if (firstPkg) {
+      setSelectedPkgId(firstPkg.id);
+      setActiveSquareUrl(firstPkg.squareUrl);
+    }
+  };
 
   const handleSelectPackage = (pkg: SessionPackage) => {
     setSelectedPkgId(pkg.id);
     setActiveSquareUrl(pkg.squareUrl);
 
-    // Auto-scroll selected element to top on mobile viewports (< lg)
     if (typeof window !== "undefined" && window.innerWidth < 1024) {
       setTimeout(() => {
         const el = buttonRefs.current[pkg.id];
@@ -102,16 +159,63 @@ export function MysticBookingEngine() {
   return (
     <section id="booking-engine" className="w-full max-w-6xl mx-auto px-4 py-12 md:py-16 relative z-10">
       {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-mono font-semibold uppercase tracking-widest">
+      <div className="text-center max-w-3xl mx-auto mb-10 space-y-4">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-sans font-semibold uppercase tracking-widest">
           <span>✦ Live Square Calendar Reservation ✦</span>
         </div>
         <h2 className="font-editorial text-4xl sm:text-5xl font-normal tracking-tight text-gold">
-          Reserve Your Session
+          Reserve Your Reading Session
         </h2>
         <p className="font-sans text-foreground/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          Select your reading depth below. Synchronized live with Daniel&apos;s official Squareup calendar for instant appointment confirmation.
+          Select your focus area and format below. Direct live synchronization with Daniel&apos;s Squareup calendar for instant confirmation.
         </p>
+
+        {/* 1. FORMAT SELECTOR TOGGLE (In-Person vs Virtual) */}
+        <div className="pt-2 flex items-center justify-center gap-2">
+          <button
+            type="button"
+            onClick={() => setSelectedFormat("in-person")}
+            className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-sans font-bold transition-all duration-200 border ${
+              selectedFormat === "in-person"
+                ? "bg-gold text-obsidian border-gold shadow-lg shadow-gold/20"
+                : "bg-surface/80 text-foreground/80 border-white/10 hover:border-gold/40"
+            }`}
+          >
+            📍 In-Person (Downtown Austin, TX)
+          </button>
+          <button
+            type="button"
+            onClick={() => setSelectedFormat("virtual")}
+            className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-sans font-bold transition-all duration-200 border ${
+              selectedFormat === "virtual"
+                ? "bg-gold text-obsidian border-gold shadow-lg shadow-gold/20"
+                : "bg-surface/80 text-foreground/80 border-white/10 hover:border-gold/40"
+            }`}
+          >
+            💻 Virtual (Phone / Video Worldwide)
+          </button>
+        </div>
+      </div>
+
+      {/* 2. TOPIC CATEGORY TABS */}
+      <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+        {CATEGORIES.map((cat) => {
+          const isActive = selectedCategory === cat.id;
+          return (
+            <button
+              key={cat.id}
+              type="button"
+              onClick={() => handleSelectCategory(cat.id as "love" | "career" | "general")}
+              className={`px-5 py-3 rounded-xl font-sans text-sm font-bold transition-all duration-200 border ${
+                isActive
+                  ? "bg-surface-elevated text-gold border-gold shadow-md shadow-gold/10"
+                  : "bg-surface/60 text-foreground/70 border-white/10 hover:border-gold/30 hover:text-foreground"
+              }`}
+            >
+              {cat.name}
+            </button>
+          );
+        })}
       </div>
 
       {/* Bento Grid Layout */}
@@ -122,15 +226,15 @@ export function MysticBookingEngine() {
           <div>
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
               <h3 className="font-editorial text-2xl font-semibold text-foreground flex items-center gap-2">
-                <span className="text-gold">01.</span> Choose Session Type
+                <span className="text-gold">01.</span> Choose Duration
               </h3>
               <span className="text-xs font-mono text-gold/80 bg-gold/10 px-3 py-1 rounded-full border border-gold/20">
-                In-Person or Virtual
+                {selectedFormat === "in-person" ? "📍 In-Person Austin" : "💻 Virtual Session"}
               </span>
             </div>
 
             <div className="space-y-4">
-              {PACKAGES.map((pkg) => {
+              {filteredPackages.map((pkg) => {
                 const isActive = selectedPkgId === pkg.id;
                 return (
                   <div
@@ -215,11 +319,7 @@ export function MysticBookingEngine() {
                             </div>
                             <div className="flex items-center gap-2">
                               <span>✦</span>
-                              <span><strong>Format:</strong> In-Person (Austin) or Phone/Video</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span>✦</span>
-                              <span><strong>Included:</strong> Full Spread Photo + Action Steps</span>
+                              <span><strong>Format:</strong> {selectedFormat === "in-person" ? "In-Person (Downtown Austin)" : "Phone / Zoom Video Worldwide"}</span>
                             </div>
                           </div>
 
@@ -230,7 +330,7 @@ export function MysticBookingEngine() {
                               rel="noopener noreferrer"
                               className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-5 rounded-xl text-sm transition-all flex items-center justify-center gap-2 text-center"
                             >
-                              <span>Book {pkg.title} (${pkg.price}) on Square</span>
+                              <span>Book {pkg.duration} (${pkg.price}) on Square</span>
                               <span className="text-base">↗</span>
                             </a>
                             <button
@@ -248,10 +348,10 @@ export function MysticBookingEngine() {
                 );
               })}
             </div>
-          </div>
 
-          <div className="pt-2 text-center text-xs font-sans text-foreground/60">
-            💬 Questions? <a href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="text-gold hover:underline font-bold">Text Daniel directly at 512-547-7129</a>
+            <div className="pt-6 text-center text-xs font-sans text-foreground/60">
+              💬 Questions? <a href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="text-gold hover:underline font-bold">Text Daniel directly at 512-547-7129</a>
+            </div>
           </div>
         </div>
 
@@ -301,7 +401,7 @@ export function MysticBookingEngine() {
                 </div>
                 <div className="flex items-center gap-2">
                   <span>✦</span>
-                  <span><strong>Location:</strong> In-Person (Austin, TX) or Virtual (Phone/Video)</span>
+                  <span><strong>Format:</strong> {selectedFormat === "in-person" ? "In-Person (Downtown Austin, TX)" : "Virtual (Phone / Video Call)"}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span>✦</span>
@@ -344,7 +444,7 @@ export function MysticBookingEngine() {
 
       </div>
 
-      {/* FULLSCREEN / MODAL SQUARE APPOINTMENTS DRAWER WITH UN-OVERLAPPED CLOSE BUTTON */}
+      {/* FULLSCREEN / MODAL SQUARE APPOINTMENTS DRAWER */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 pt-20 sm:pt-24 pb-6 bg-obsidian/90 backdrop-blur-lg overflow-y-auto">
@@ -354,7 +454,7 @@ export function MysticBookingEngine() {
               exit={{ opacity: 0, scale: 0.96, y: 10 }}
               className="bg-surface p-4 sm:p-6 rounded-2xl border-2 border-gold/50 max-w-4xl w-full h-[85vh] shadow-2xl flex flex-col relative z-[101]"
             >
-              {/* Modal Top Header Bar with High-Visibility Close Pill */}
+              {/* Modal Top Header Bar */}
               <div className="flex items-center justify-between border-b border-white/15 pb-3 mb-3 shrink-0">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />

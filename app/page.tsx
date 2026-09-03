@@ -1,5 +1,5 @@
 import { TestimonialCard } from '@/components/TestimonialCard';
-import { TarotCardAnimation } from '@/components/TarotCardAnimation';
+import { HeroFiveCardBanner } from '@/components/HeroFiveCardBanner';
 import { MysticBookingEngine } from '@/components/MysticBookingEngine';
 import { AmbientConstellation } from '@/components/AmbientConstellation';
 import { MobileStickyBar } from '@/components/MobileStickyBar';
@@ -13,7 +13,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Austin Tarot Reader | Intuitive Guidance & Clarity",
-  description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in personal, event, and couple's readings. Book your insightful session now.",
+  description: "Discover clarity and guidance with Austin's trusted tarot reader. Specializing in love & relationship, career, and life purpose readings. Book your session now.",
   alternates: {
     canonical: '/',
   },
@@ -58,42 +58,14 @@ export default function HomePage() {
       <main className="flex flex-col items-center relative z-10">
         
         {/* ========================================================================= */}
-        {/* SECTION 1: HERO */}
+        {/* SECTION 1: HERO 5-CARD SPREAD BANNER */}
         {/* ========================================================================= */}
-        <ScrollReveal variant="fade-up">
-          <section className="w-full text-center pt-12 pb-6 md:pt-16 md:pb-8 flex flex-col items-center justify-center px-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-sans font-semibold mb-6">
-              <span>⭐ 5.0 Google Rated Tarot Reader</span>
-              <span className="text-foreground/40">•</span>
-              <span>In-Person Austin, TX & Virtual</span>
-            </div>
-
-            <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-balance text-gold max-w-5xl leading-[1.08]">
-              Step into the Circle. The Cards Already Know.
-            </h1>
-            <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90 leading-relaxed">
-              Find immediate clarity for love, purpose, and life's crossroads with Austin's premier intuitive reader.
-            </p>
-            <div className="mt-8 flex flex-col items-center gap-3">
-              <a href="#booking-engine" className="w-full sm:w-auto bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-10 rounded-xl text-lg transition-all duration-300 font-sans shadow-xl shadow-gold/20 transform hover:scale-[1.02] active:scale-95">
-                Book Your Reading ↓
-              </a>
-              <a href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="font-sans text-sm text-foreground/75 hover:text-gold transition-colors duration-200 mt-1">
-                Need same-day? <span className="underline font-medium">Text (512) 547-7129</span>
-              </a>
-            </div>
-          </section>
-        </ScrollReveal>
-
-        {/* ========================================================================= */}
-        {/* SECTION 2: FLOATING TAROT CARDS VISUAL ACCENT */}
-        {/* ========================================================================= */}
-        <TarotCardAnimation />
+        <HeroFiveCardBanner />
 
         <div className="w-full max-w-5xl mx-auto space-y-12 md:space-y-16 px-4 sm:px-8 md:px-12 pb-16 pt-6">
           
           {/* ========================================================================= */}
-          {/* SECTION 3: ABOUT DANIEL (VISUAL STIMULUS + PERSUASIVE COPY) */}
+          {/* SECTION 2: ABOUT DANIEL (VISUAL STIMULUS + PERSUASIVE COPY) */}
           {/* ========================================================================= */}
           <ScrollReveal variant="fade-up">
             <TarotTopicFeature
@@ -110,7 +82,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           {/* ========================================================================= */}
-          {/* SECTION 4: CLIENT EXPERIENCES & VERIFIED GOOGLE REVIEWS */}
+          {/* SECTION 3: CLIENT EXPERIENCES & VERIFIED GOOGLE REVIEWS */}
           {/* ========================================================================= */}
           <ScrollReveal variant="zoom-in">
             <section className="text-center">
@@ -127,7 +99,21 @@ export default function HomePage() {
           </ScrollReveal>
 
           {/* ========================================================================= */}
-          {/* SECTION 5: HOW A READING WORKS (VISUAL STIMULUS + 3-STEP PROCESS) */}
+          {/* SECTION 4: SPECIALIZED FOCUS VIDEO CAROUSEL (PLACED BEFORE BOOKING ENGINE) */}
+          {/* ========================================================================= */}
+          <ScrollReveal variant="fade-up">
+            <SpecializedFocusCarousel />
+          </ScrollReveal>
+
+          {/* ========================================================================= */}
+          {/* SECTION 5: PRIMARY BOOKING ENGINE (DEMAND-DRIVEN TOPIC TABS & FORMAT TOGGLE) */}
+          {/* ========================================================================= */}
+          <ScrollReveal variant="fade-up">
+            <MysticBookingEngine />
+          </ScrollReveal>
+
+          {/* ========================================================================= */}
+          {/* SECTION 6: HOW A READING WORKS (SIMPLE 3-STEP PROCESS) */}
           {/* ========================================================================= */}
           <ScrollReveal variant="fade-up">
             <section className="bg-surface p-8 sm:p-12 rounded-2xl border border-gold/30 space-y-8 shadow-2xl">
@@ -170,21 +156,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           {/* ========================================================================= */}
-          {/* SECTION 6: MYSTIC BENTO BOOKING ENGINE (PRIMARY CONVERSION MACHINE) */}
-          {/* ========================================================================= */}
-          <ScrollReveal variant="fade-up">
-            <MysticBookingEngine />
-          </ScrollReveal>
-
-          {/* ========================================================================= */}
-          {/* SECTION 7: SPECIALIZED FOCUS 3-SLIDE VIDEO CAROUSEL */}
-          {/* ========================================================================= */}
-          <ScrollReveal variant="fade-up">
-            <SpecializedFocusCarousel />
-          </ScrollReveal>
-
-          {/* ========================================================================= */}
-          {/* SECTION 8: QUICK FREQUENTLY ASKED QUESTIONS (FAQ) ACCORDION */}
+          {/* SECTION 7: QUICK FREQUENTLY ASKED QUESTIONS (FAQ) ACCORDION */}
           {/* ========================================================================= */}
           <ScrollReveal variant="fade-up">
             <section className="text-center max-w-3xl mx-auto space-y-6">
@@ -199,89 +171,6 @@ export default function HomePage() {
                   <FaqAccordion key={index} question={faq.question} answer={faq.answer} />
                 ))}
               </div>
-            </section>
-          </ScrollReveal>
-
-          {/* ========================================================================= */}
-          {/* SECTION 9: CLEAR OFFERINGS SUMMARY GRID & FOOTER HOOK */}
-          {/* ========================================================================= */}
-          <ScrollReveal variant="fade-up">
-            <section className="text-center space-y-8">
-              <div>
-                <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">Frictionless Booking</span>
-                <h2 className="font-editorial text-3xl sm:text-4xl font-normal text-gold mt-1">
-                  Choose Your Guidance Session
-                </h2>
-                <p className="mt-3 font-sans text-foreground/80 max-w-xl mx-auto text-base sm:text-lg">
-                  Available in-person in Downtown Austin or via Phone/Video worldwide.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                {/* Card 1: 30-Min */}
-                <div className="bg-surface/80 p-8 rounded-2xl border border-white/10 flex flex-col justify-between hover:border-gold/40 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-[1.02]">
-                  <div>
-                    <span className="text-gold font-mono text-xs uppercase tracking-wider font-semibold">Quick Answers</span>
-                    <h3 className="font-editorial text-2xl font-bold text-foreground mt-1">Focused Reading</h3>
-                    <div className="mt-3 flex items-baseline gap-2">
-                      <span className="font-mono text-3xl font-bold text-gold">$55.00</span>
-                      <span className="font-mono text-xs text-foreground/60">/ 30 minutes</span>
-                    </div>
-                    <p className="mt-4 font-sans text-sm text-foreground/80 leading-relaxed">
-                      Designed to bring quick, sharp insight into 1–2 pressing questions or immediate crossroads in your life.
-                    </p>
-                  </div>
-                  <div className="mt-8">
-                    <a href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/QYUIGU2PGLAKP5QCBA22BIKU" target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-surface-elevated border border-gold/40 text-gold hover:bg-gold hover:text-obsidian font-bold py-3 px-6 rounded-xl text-base transition-colors duration-300 font-sans active:scale-95">
-                      Book 30-Min ($55) ↗
-                    </a>
-                  </div>
-                </div>
-
-                {/* Card 2: 60-Min (MOST POPULAR) */}
-                <div className="bg-surface p-8 rounded-2xl border-2 border-gold shadow-2xl shadow-gold/15 flex flex-col justify-between relative transform md:-translate-y-2 hover:scale-[1.02] transition-all duration-300">
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gold text-obsidian text-xs font-bold font-mono uppercase px-3 py-1 rounded-full tracking-wider shadow-md">
-                    Most Popular
-                  </div>
-                  <div>
-                    <span className="text-gold font-mono text-xs uppercase tracking-wider font-semibold">Deep Clarity</span>
-                    <h3 className="font-editorial text-2xl font-bold text-foreground mt-1">In-Depth Reading</h3>
-                    <div className="mt-3 flex items-baseline gap-2">
-                      <span className="font-mono text-3xl font-bold text-gold">$85.00</span>
-                      <span className="font-mono text-xs text-foreground/60">/ 60 minutes</span>
-                    </div>
-                    <p className="mt-4 font-sans text-sm text-foreground/90 leading-relaxed">
-                      An extended 15-card spread covering your Love Life, Career, Twin Flame journey, or overall spiritual path.
-                    </p>
-                  </div>
-                  <div className="mt-8">
-                    <a href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/BF72ZKQM74NPNZ3FTYZLARXT" target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-gold text-obsidian font-bold py-3 px-6 rounded-xl text-base hover:bg-gold-light transition-opacity duration-300 font-sans shadow-md active:scale-95">
-                      Book 60-Min ($85) ↗
-                    </a>
-                  </div>
-                </div>
-
-                {/* Card 3: Coaching */}
-                <div className="bg-surface/80 p-8 rounded-2xl border border-white/10 flex flex-col justify-between hover:border-gold/40 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-[1.02]">
-                  <div>
-                    <span className="text-gold font-mono text-xs uppercase tracking-wider font-semibold">Tarot + Life Coaching</span>
-                    <h3 className="font-editorial text-2xl font-bold text-foreground mt-1">Intuitive Coaching</h3>
-                    <div className="mt-3 flex items-baseline gap-2">
-                      <span className="font-mono text-3xl font-bold text-gold">$85.00</span>
-                      <span className="font-mono text-xs text-foreground/60">/ 60 minutes</span>
-                    </div>
-                    <p className="mt-4 font-sans text-sm text-foreground/80 leading-relaxed">
-                      Combines intuitive tarot insight with structured life coaching to map out real action steps for transformation.
-                    </p>
-                  </div>
-                  <div className="mt-8">
-                    <a href="https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/SK53OJ3ZTPXWAEZOF3SK4P4A" target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-surface-elevated border border-gold/40 text-gold hover:bg-gold hover:text-obsidian font-bold py-3 px-6 rounded-xl text-base transition-colors duration-300 font-sans active:scale-95">
-                      Book Coaching ($85) ↗
-                    </a>
-                  </div>
-                </div>
-              </div>
-
               <div className="pt-4">
                 <Link href="/services" className="font-sans text-base text-gold hover:underline inline-flex items-center gap-1 font-semibold active:scale-95">
                   <span>Explore all specialized reading topics (Love, Career, Twin Flame)</span>
