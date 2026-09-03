@@ -72,21 +72,16 @@ export function HeroFiveCardBanner() {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="relative z-10 w-full text-center py-10 sm:py-16 px-4 sm:px-8 space-y-6"
+        className="relative z-10 w-full text-center py-12 sm:py-18 px-4 sm:px-8 space-y-6"
       >
         <div className="max-w-4xl mx-auto space-y-6">
-          {/* Sleek Minimal Trust Line */}
-          <div className="text-gold text-sm sm:text-base font-sans font-semibold tracking-wide drop-shadow-md">
-            ⭐ 5.0 Google Rated Reader
-          </div>
-
           {/* Bold, Larger Hero Title */}
           <h1 className="font-editorial text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight text-balance text-white max-w-4xl mx-auto leading-[1.05] [text-shadow:_0_4px_20px_rgba(0,0,0,0.95),_0_2px_8px_rgba(11,15,25,1)]">
             The Cards Already Know.
           </h1>
 
-          {/* Punchy Subheader */}
-          <p className="font-sans text-lg sm:text-2xl text-balance text-gold font-medium max-w-xl mx-auto leading-relaxed [text-shadow:_0_3px_12px_rgba(0,0,0,0.95)]">
+          {/* Brighter Yellow Punchy Subheader with Intense Shadow */}
+          <p className="font-sans text-lg sm:text-2xl text-balance text-[#FFDF00] font-semibold max-w-xl mx-auto leading-relaxed [text-shadow:_0_4px_24px_rgba(0,0,0,1),_0_2px_12px_rgba(11,15,25,1),_0_0_20px_rgba(255,223,0,0.5)]">
             Intuitive tarot guidance for love, career, and destiny.
           </p>
 

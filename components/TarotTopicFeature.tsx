@@ -39,39 +39,47 @@ export function TarotTopicFeature({
         isLeft ? '' : 'md:flex-row-reverse'
       }`}
     >
-      {/* Visual Stimulus: High-Impact Tarot Card Graphic */}
+      {/* Visual Stimulus: 25% Larger Tarot Card Graphic + SMS Text Button Underneath */}
       <div
-        className={`md:col-span-4 flex flex-col items-center justify-center ${
+        className={`md:col-span-5 flex flex-col items-center justify-center ${
           isLeft ? 'order-1' : 'order-1 md:order-2'
         }`}
       >
         <motion.div
-          whileHover={{ rotateY: 10, scale: 1.05, y: -4 }}
+          whileHover={{ rotateY: 10, scale: 1.03, y: -4 }}
           whileTap={{ scale: 0.97 }}
           transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-          className="relative w-40 h-64 sm:w-48 sm:h-76 md:w-52 md:h-80 rounded-xl overflow-hidden shadow-2xl shadow-black/70 border-2 border-gold/40 cursor-pointer group"
+          className="relative w-52 h-80 sm:w-60 sm:h-96 md:w-64 md:h-[26rem] rounded-2xl overflow-hidden shadow-2xl shadow-black/80 border-2 border-gold/40 cursor-pointer group"
         >
           <Image
             src={cardSrc}
             alt={`${cardName} Tarot Card - ${title}`}
             fill
-            sizes="(max-width: 768px) 192px, 208px"
+            sizes="(max-width: 768px) 240px, 256px"
             style={{ objectFit: 'cover' }}
             className="transition-transform duration-500 group-hover:scale-105"
           />
           {/* Subtle Ambient Shimmer Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute bottom-2 left-2 right-2 text-center bg-obsidian/85 backdrop-blur-md py-1 px-2 rounded border border-gold/30">
-            <span className="font-editorial text-xs font-bold text-gold tracking-wide">
+          <div className="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute bottom-2.5 left-2.5 right-2.5 text-center bg-obsidian/90 backdrop-blur-md py-1.5 px-3 rounded-lg border border-gold/40 shadow-md">
+            <span className="font-editorial text-xs sm:text-sm font-bold text-gold tracking-wide">
               {cardName}
             </span>
           </div>
         </motion.div>
+
+        {/* SMS Texting Button Directly Underneath Image Container */}
+        <a
+          href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading."
+          className="mt-3.5 w-full max-w-[256px] bg-surface-elevated text-gold border border-gold/40 font-bold py-3 px-4 rounded-xl text-xs sm:text-sm hover:bg-surface-overlay transition-colors duration-300 font-sans active:scale-95 text-center shadow-lg block"
+        >
+          💬 Text Daniel for Today&apos;s Openings
+        </a>
       </div>
 
       {/* Copy Fulfillment: Engaging Hook & Persuasive Copy */}
       <div
-        className={`md:col-span-8 text-center md:text-left space-y-4 ${
+        className={`md:col-span-7 text-center md:text-left space-y-4 ${
           isLeft ? 'order-2' : 'order-2 md:order-1'
         }`}
       >
@@ -94,7 +102,7 @@ export function TarotTopicFeature({
           <div className="pt-2 text-center md:text-left">
             <a
               href={ctaHref}
-              className="inline-block bg-gold hover:bg-gold-light text-obsidian font-bold py-3 px-7 rounded-xl text-base transition-all font-sans shadow-lg shadow-gold/20 active:scale-95"
+              className="inline-block bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-8 rounded-xl text-base transition-all font-sans shadow-lg shadow-gold/20 active:scale-95"
             >
               {ctaText}
             </a>

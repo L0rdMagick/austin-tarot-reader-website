@@ -19,7 +19,7 @@ const SLIDES: FocusSlide[] = [
     badge: "Specialized Focus",
     title: "Tarot for Love & Relationships",
     description:
-      "Uncover the unseen spiritual threads of your romantic path. The cards act as mirrors, revealing hidden partner motivations, dissolving emotional obstacles, and illuminating your 1-year romantic outlook with clarity.",
+      "Uncover the unseen spiritual threads of your romantic path. The cards act as sacred mirrors, revealing partner motivations, dissolving blocks, and illuminating your 1-year romantic outlook.",
     videoSrc: "/videos/love-tarot-reading-questions.mp4",
     bookingUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ",
     buttonText: "Book a Love Reading ($85) ↗",
@@ -29,7 +29,7 @@ const SLIDES: FocusSlide[] = [
     badge: "Specialized Focus",
     title: "Tarot for Career Questions",
     description:
-      "At a professional crossroads? Combine analytical perception with esoteric intuition to evaluate business shifts, uncover colleague intentions, dissolve abundance blocks, and navigate future career outcomes confidently.",
+      "At a professional crossroads? Combine analytical perception with esoteric intuition to evaluate business shifts, uncover colleague intentions, dissolve blocks, and navigate future career outcomes.",
     videoSrc: "/videos/tarot-career-reading-questions.mp4",
     bookingUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/Y35MKZALF3RNQPE6OSOUDG5Q",
     buttonText: "Book a Career Reading ($85) ↗",
@@ -39,7 +39,7 @@ const SLIDES: FocusSlide[] = [
     badge: "Specialized Focus",
     title: "Tarot for Life Path & Destiny",
     description:
-      "Decode universal messages and signs meant for your soul. Understand how your past informs the present, dissolve karmic blocks, and step into your true destiny with unshakeable spiritual guidance and peace.",
+      "Decode universal messages and signs meant for your soul. Understand how your past informs the present, dissolve karmic blocks, and step into your true destiny with unshakeable spiritual clarity.",
     videoSrc: "/videos/tarot-life-path-questions.mp4",
     bookingUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/BF72ZKQM74NPNZ3FTYZLARXT",
     buttonText: "Book a Life Path Reading ($85) ↗",
@@ -157,7 +157,7 @@ export function SpecializedFocusCarousel() {
             </div>
           </div>
 
-          {/* Slide Text Content with Fixed Min Height to Prevent Layout Shift */}
+          {/* Slide Text Content with Locked Height to Eliminate Layout Shift */}
           <div className="text-center md:text-left space-y-4 flex flex-col justify-center min-h-[220px]">
             <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">
               {currentSlide.badge}
@@ -165,9 +165,11 @@ export function SpecializedFocusCarousel() {
             <h3 className="hidden md:block font-editorial text-3xl sm:text-4xl font-normal text-gold leading-tight">
               {currentSlide.title}
             </h3>
-            <p className="font-sans text-base sm:text-lg text-foreground/90 leading-relaxed min-h-[80px]">
-              {currentSlide.description}
-            </p>
+            <div className="h-[80px] flex items-center">
+              <p className="font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
+                {currentSlide.description}
+              </p>
+            </div>
             <div className="pt-2 text-center md:text-left">
               <a
                 href={currentSlide.bookingUrl}

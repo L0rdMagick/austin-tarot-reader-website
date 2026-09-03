@@ -62,10 +62,21 @@ export default function HomePage() {
         {/* ========================================================================= */}
         <HeroFiveCardBanner />
 
+        {/* ========================================================================= */}
+        {/* SECTION 1.5: STANDALONE STYLISH 5.0 RATING BADGE DIVIDER */}
+        {/* ========================================================================= */}
+        <ScrollReveal variant="fade-up">
+          <div className="w-full flex items-center justify-center pt-8 pb-2 px-4">
+            <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-surface-elevated border-2 border-gold/40 text-gold text-sm sm:text-base font-sans font-bold shadow-xl shadow-gold/15 tracking-wide transform hover:scale-105 transition-all">
+              <span>⭐ 5.0 Google Rated Reader</span>
+            </div>
+          </div>
+        </ScrollReveal>
+
         <div className="w-full max-w-5xl mx-auto space-y-12 md:space-y-16 px-4 sm:px-8 md:px-12 pb-16 pt-6">
           
           {/* ========================================================================= */}
-          {/* SECTION 2: ABOUT DANIEL (VISUAL STIMULUS + PERSUASIVE COPY) */}
+          {/* SECTION 2: ABOUT DANIEL (25% LARGER IMAGE + SMS BUTTON UNDERNEATH) */}
           {/* ========================================================================= */}
           <ScrollReveal variant="fade-up">
             <TarotTopicFeature
