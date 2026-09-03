@@ -124,19 +124,13 @@ const PACKAGES: SessionPackage[] = [
 ];
 
 export function MysticBookingEngine() {
-  const [selectedFormat, setSelectedFormat] = useState<"in-person" | "virtual">("in-person");
   const [selectedCategory, setSelectedCategory] = useState<"love" | "career" | "general">("love");
   const [selectedDuration, setSelectedDuration] = useState<30 | 60>(60);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   // Find exact matching package based on category + duration
   const activePackage =
     PACKAGES.find((p) => p.category === selectedCategory && p.durationMinutes === selectedDuration) ||
     PACKAGES[0];
-
-  const handleOpenSquareModal = (url: string) => {
-    setIsModalOpen(true);
-  };
 
   return (
     <section id="booking-engine" className="w-full max-w-4xl mx-auto px-4 py-12 md:py-16 relative z-10">
@@ -149,37 +143,11 @@ export function MysticBookingEngine() {
           Reserve Your Reading Session
         </h2>
         <p className="font-sans text-foreground/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          Select your format, topic, and duration below for instant confirmation via Daniel&apos;s Squareup calendar.
+          Select your topic and duration below for instant appointment confirmation via Daniel&apos;s Squareup calendar.
         </p>
-
-        {/* 1. FORMAT SELECTOR FILTER (In-Person vs Virtual) */}
-        <div className="pt-2 flex flex-wrap items-center justify-center gap-2">
-          <button
-            type="button"
-            onClick={() => setSelectedFormat("in-person")}
-            className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-sans font-bold transition-all duration-200 border ${
-              selectedFormat === "in-person"
-                ? "bg-gold text-obsidian border-gold shadow-lg shadow-gold/20"
-                : "bg-surface/80 text-foreground/80 border-white/10 hover:border-gold/40"
-            }`}
-          >
-            📍 In-Person (Downtown Austin, TX)
-          </button>
-          <button
-            type="button"
-            onClick={() => setSelectedFormat("virtual")}
-            className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-sans font-bold transition-all duration-200 border ${
-              selectedFormat === "virtual"
-                ? "bg-gold text-obsidian border-gold shadow-lg shadow-gold/20"
-                : "bg-surface/80 text-foreground/80 border-white/10 hover:border-gold/40"
-            }`}
-          >
-            💻 Virtual (Phone / Video Worldwide)
-          </button>
-        </div>
       </div>
 
-      {/* 2. TOPIC CATEGORY FILTERS */}
+      {/* 1. TOPIC CATEGORY FILTERS */}
       <div className="space-y-4 mb-8">
         <div className="flex flex-wrap items-center justify-center gap-3">
           {CATEGORIES.map((cat) => {
@@ -201,7 +169,7 @@ export function MysticBookingEngine() {
           })}
         </div>
 
-        {/* 3. DURATION FILTERS (Half Hour vs Full Hour) */}
+        {/* 2. DURATION FILTERS (Half Hour vs Full Hour) */}
         <div className="flex items-center justify-center gap-3 pt-1">
           <button
             type="button"
@@ -228,10 +196,10 @@ export function MysticBookingEngine() {
         </div>
       </div>
 
-      {/* 4. CONSOLIDATED SINGLE PRODUCT SHOWCASE CARD */}
+      {/* 3. CONSOLIDATED SINGLE PRODUCT SHOWCASE CARD */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={`${selectedCategory}-${selectedDuration}-${selectedFormat}`}
+          key={`${selectedCategory}-${selectedDuration}`}
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -15 }}
@@ -265,17 +233,13 @@ export function MysticBookingEngine() {
             </div>
           </div>
 
-          {/* Description & Format Info */}
+          {/* Description */}
           <p className="font-sans text-sm sm:text-base text-foreground/90 leading-relaxed">
             {activePackage.tagline}
           </p>
 
           {/* Feature Highlights Checklist */}
           <div className="bg-obsidian/60 p-5 rounded-xl border border-gold/20 space-y-2.5 text-xs sm:text-sm font-sans text-foreground/90">
-            <div className="flex items-center gap-2 text-gold">
-              <span>✦</span>
-              <span><strong>Format:</strong> {selectedFormat === "in-person" ? "In-Person in Downtown Austin, TX" : "Virtual via Phone or Zoom Video Worldwide"}</span>
-            </div>
             {activePackage.highlights.map((item, idx) => (
               <div key={idx} className="flex items-center gap-2">
                 <span className="text-gold">✦</span>
@@ -288,8 +252,8 @@ export function MysticBookingEngine() {
             </div>
           </div>
 
-          {/* CTA Action Buttons */}
-          <div className="space-y-3 pt-2">
+          {/* Direct CTA Action Button */}
+          <div className="pt-2">
             <a
               href={activePackage.squareUrl}
               target="_blank"
@@ -299,14 +263,6 @@ export function MysticBookingEngine() {
               <span>Book {activePackage.title} (${activePackage.price}) on Square</span>
               <span className="text-lg">↗</span>
             </a>
-
-            <button
-              type="button"
-              onClick={() => handleOpenSquareModal(activePackage.squareUrl)}
-              className="w-full bg-surface hover:bg-surface-elevated border border-gold/30 text-gold font-bold py-2.5 px-6 rounded-xl text-xs font-mono uppercase tracking-wider text-center block transition-colors"
-            >
-              Preview Live Square Calendar Overlay ✦
-            </button>
           </div>
 
           {/* Direct SMS Help Footer */}
@@ -314,47 +270,6 @@ export function MysticBookingEngine() {
             💬 Questions? <a href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="text-gold hover:underline font-bold">Text Daniel directly at 512-547-7129</a>
           </div>
         </motion.div>
-      </AnimatePresence>
-
-      {/* FULLSCREEN / MODAL SQUARE APPOINTMENTS DRAWER */}
-      <AnimatePresence>
-        {isModalOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 pt-20 sm:pt-24 pb-6 bg-obsidian/90 backdrop-blur-lg overflow-y-auto">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 10 }}
-              className="bg-surface p-4 sm:p-6 rounded-2xl border-2 border-gold/50 max-w-4xl w-full h-[85vh] shadow-2xl flex flex-col relative z-[101]"
-            >
-              {/* Modal Header */}
-              <div className="flex items-center justify-between border-b border-white/15 pb-3 mb-3 shrink-0">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="font-editorial text-lg sm:text-xl font-bold text-gold">
-                    Square Appointments: Live Booking
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="bg-gold text-obsidian font-bold px-4 py-2 rounded-xl text-xs font-mono tracking-wider shadow-lg hover:bg-gold-light transition-all flex items-center gap-1.5 border border-gold"
-                >
-                  <span>Close Window</span>
-                  <span className="text-sm font-bold">✕</span>
-                </button>
-              </div>
-
-              {/* Full Interactive iFrame Container */}
-              <div className="flex-grow w-full rounded-xl overflow-hidden bg-white border border-white/20">
-                <iframe
-                  src={activePackage.squareUrl}
-                  title="Full Square Appointments Booking"
-                  className="w-full h-full border-0"
-                />
-              </div>
-            </motion.div>
-          </div>
-        )}
       </AnimatePresence>
     </section>
   );
