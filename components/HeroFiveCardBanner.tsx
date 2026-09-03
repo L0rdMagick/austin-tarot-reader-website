@@ -82,9 +82,9 @@ export function HeroFiveCardBanner() {
             <span>In-Person Austin, TX & Virtual</span>
           </div>
 
-          {/* Hero Title with Crisp White Color & Deep Dark Halo Shadow for Extreme Legibility */}
+          {/* Hero Title with Uniform Crisp White Color & Deep Dark Halo Shadow */}
           <h1 className="font-editorial text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-balance text-white max-w-4xl mx-auto leading-[1.08] [text-shadow:_0_4px_16px_rgba(0,0,0,0.95),_0_2px_6px_rgba(11,15,25,1)]">
-            Step into the Circle. <span className="text-gold">The Cards Already Know.</span>
+            Step into the Circle. The Cards Already Know.
           </h1>
 
           {/* Subtitle */}
