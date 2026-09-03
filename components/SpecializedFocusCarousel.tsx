@@ -19,7 +19,7 @@ const SLIDES: FocusSlide[] = [
     badge: "Specialized Focus",
     title: "Tarot for Love & Relationships",
     description:
-      "Uncover the unseen spiritual threads of your romantic path. The cards act as mirrors, revealing hidden partner motivations, dissolving emotional obstacles, and illuminating your 1-year romantic outlook.",
+      "Uncover the unseen spiritual threads of your romantic path. The cards act as mirrors, revealing hidden partner motivations, dissolving emotional obstacles, and illuminating your 1-year romantic outlook with clarity.",
     videoSrc: "/videos/love-tarot-reading-questions.mp4",
     bookingUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/MTY5Q7OG2SPMK6S5AUMAUPUJ",
     buttonText: "Book a Love Reading ($85) ↗",
@@ -29,7 +29,7 @@ const SLIDES: FocusSlide[] = [
     badge: "Specialized Focus",
     title: "Tarot for Career Questions",
     description:
-      "At a professional crossroads? Combine analytical perception with esoteric intuition to evaluate business shifts, uncover colleague intentions, dissolve abundance blocks, and navigate future outcomes.",
+      "At a professional crossroads? Combine analytical perception with esoteric intuition to evaluate business shifts, uncover colleague intentions, dissolve abundance blocks, and navigate future career outcomes confidently.",
     videoSrc: "/videos/tarot-career-reading-questions.mp4",
     bookingUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/Y35MKZALF3RNQPE6OSOUDG5Q",
     buttonText: "Book a Career Reading ($85) ↗",
@@ -39,7 +39,7 @@ const SLIDES: FocusSlide[] = [
     badge: "Specialized Focus",
     title: "Tarot for Life Path & Destiny",
     description:
-      "Decode universal messages and signs meant for your soul. Understand how your past informs the present, dissolve karmic blocks, and step into your true destiny with unshakeable clarity.",
+      "Decode universal messages and signs meant for your soul. Understand how your past informs the present, dissolve karmic blocks, and step into your true destiny with unshakeable spiritual guidance and peace.",
     videoSrc: "/videos/tarot-life-path-questions.mp4",
     bookingUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/BF72ZKQM74NPNZ3FTYZLARXT",
     buttonText: "Book a Life Path Reading ($85) ↗",
@@ -81,9 +81,9 @@ export function SpecializedFocusCarousel() {
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           exit={{ opacity: 0, scale: 0.98, filter: "blur(6px)" }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-center"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-center min-h-[480px]"
         >
-          {/* Vertical 9:16 Video Player Container */}
+          {/* Vertical 9:16 Video Player Container with Reverted Overlays */}
           <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/60 border-2 border-gold/40 bg-obsidian relative group">
             <video
               key={currentSlide.videoSrc}
@@ -98,27 +98,82 @@ export function SpecializedFocusCarousel() {
               Your browser does not support video playback.
             </video>
 
-            {/* Subtle Gradient Backdrop */}
-            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent pointer-events-none" />
+            {/* TOP OVERLAY: Dark Semi-Transparent Backdrop Behind Category Pills & Mobile Title */}
+            <div className="absolute top-0 left-0 right-0 p-3 pt-3.5 pb-3.5 bg-black/55 backdrop-blur-md border-b border-white/10 z-10 flex flex-col items-center gap-2 rounded-t-[10px]">
+              <div className="flex items-center justify-center gap-1.5 flex-wrap">
+                {SLIDES.map((slide, idx) => (
+                  <button
+                    key={slide.id}
+                    onClick={() => setActiveSlideIndex(idx)}
+                    className={`px-3 py-1 rounded-full font-mono text-[11px] transition-all ${
+                      activeSlideIndex === idx
+                        ? "bg-gold text-obsidian font-bold shadow-md"
+                        : "bg-black/40 text-white/90 hover:text-gold border border-white/20"
+                    }`}
+                  >
+                    {idx + 1}. {slide.id === "love" ? "Love" : slide.id === "career" ? "Career" : "Life Path"}
+                  </button>
+                ))}
+              </div>
+
+              {/* Mobile Title Overlay */}
+              <h3 className="md:hidden font-editorial text-lg font-normal text-gold text-center leading-tight drop-shadow-md pt-0.5">
+                {currentSlide.title}
+              </h3>
+            </div>
+
+            {/* BOTTOM OVERLAY: Left Arrow, Centered Pause/Resume, Right Arrow */}
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 via-black/35 to-transparent z-10 flex items-center justify-between gap-2 font-sans rounded-b-[10px]">
+              {/* Left Arrow Button */}
+              <button
+                onClick={handlePrev}
+                aria-label="Previous Slide"
+                className="w-8 h-8 shrink-0 rounded-full border border-gold/40 bg-black/55 text-gold hover:bg-gold hover:text-obsidian flex items-center justify-center text-2xl font-bold leading-none transition-all shadow-md backdrop-blur-md select-none"
+              >
+                <span className="relative -top-[1px] -left-[0.5px]">‹</span>
+              </button>
+
+              {/* Centered Pause/Resume Button */}
+              <button
+                onClick={() => setIsPlaying(!isPlaying)}
+                className={`px-3 py-1.5 rounded-lg border transition-all flex items-center justify-center gap-1.5 text-xs font-semibold backdrop-blur-md mx-auto ${
+                  isPlaying
+                    ? "bg-black/55 border-gold/50 text-gold hover:bg-gold/20"
+                    : "bg-black/55 border-white/40 text-white hover:bg-white/20"
+                }`}
+              >
+                <span className="text-sm">{isPlaying ? "⏸" : "▶"}</span>
+                <span>{isPlaying ? "Pause Rotation" : "Resume Rotation"}</span>
+              </button>
+
+              {/* Right Arrow Button */}
+              <button
+                onClick={handleNext}
+                aria-label="Next Slide"
+                className="w-8 h-8 shrink-0 rounded-full border border-gold/40 bg-black/55 text-gold hover:bg-gold hover:text-obsidian flex items-center justify-center text-2xl font-bold leading-none transition-all shadow-md backdrop-blur-md select-none"
+              >
+                <span className="relative -top-[1px] -right-[0.5px]">›</span>
+              </button>
+            </div>
           </div>
 
-          {/* Text Content */}
-          <div className="space-y-4 text-left flex flex-col justify-center">
+          {/* Slide Text Content with Fixed Min Height to Prevent Layout Shift */}
+          <div className="text-center md:text-left space-y-4 flex flex-col justify-center min-h-[220px]">
             <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">
               {currentSlide.badge}
             </span>
-            <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-foreground">
+            <h3 className="hidden md:block font-editorial text-3xl sm:text-4xl font-normal text-gold leading-tight">
               {currentSlide.title}
             </h3>
-            <p className="font-sans text-sm sm:text-base text-foreground/80 leading-relaxed">
+            <p className="font-sans text-base sm:text-lg text-foreground/90 leading-relaxed min-h-[80px]">
               {currentSlide.description}
             </p>
-            <div className="pt-2">
+            <div className="pt-2 text-center md:text-left">
               <a
                 href={currentSlide.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-gold hover:bg-gold-light text-obsidian font-bold py-3 px-6 rounded-xl text-sm transition-all duration-300 shadow-md active:scale-95 font-sans"
+                className="inline-block bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-8 rounded-xl text-base transition-all font-sans shadow-lg shadow-gold/20 transform hover:scale-[1.02] active:scale-95"
               >
                 {currentSlide.buttonText}
               </a>
@@ -127,45 +182,16 @@ export function SpecializedFocusCarousel() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Carousel Controls */}
-      <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          {SLIDES.map((slide, index) => (
-            <button
-              key={slide.id}
-              onClick={() => setActiveSlideIndex(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === activeSlideIndex ? "w-8 bg-gold" : "w-2 bg-white/20"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="p-2 rounded-lg bg-surface-elevated text-gold border border-white/10 text-xs font-mono hover:bg-surface-overlay transition-colors"
-          >
-            {isPlaying ? "Pause ⏸" : "Play ▶"}
-          </button>
-
-          <button
-            onClick={handlePrev}
-            className="p-2 rounded-lg bg-surface-elevated text-gold border border-white/10 hover:bg-surface-overlay transition-colors"
-            aria-label="Previous slide"
-          >
-            ←
-          </button>
-          <button
-            onClick={handleNext}
-            className="p-2 rounded-lg bg-surface-elevated text-gold border border-white/10 hover:bg-surface-overlay transition-colors"
-            aria-label="Next slide"
-          >
-            →
-          </button>
-        </div>
-      </div>
+      {/* Progress Bar Indicator */}
+      {isPlaying && (
+        <motion.div
+          key={`bar-${activeSlideIndex}`}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 5, ease: "linear" }}
+          className="absolute bottom-0 left-0 right-0 h-1 bg-gold origin-left"
+        />
+      )}
     </section>
   );
 }
