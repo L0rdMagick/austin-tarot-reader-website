@@ -81,7 +81,7 @@ export function SpecializedFocusCarousel() {
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           exit={{ opacity: 0, scale: 0.98, filter: "blur(6px)" }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-center min-h-[480px]"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center"
         >
           {/* Vertical 9:16 Video Player Container with Reverted Overlays */}
           <div className="w-full max-w-xs mx-auto aspect-[9/16] rounded-xl overflow-hidden shadow-2xl shadow-black/60 border-2 border-gold/40 bg-obsidian relative group">
@@ -98,8 +98,8 @@ export function SpecializedFocusCarousel() {
               Your browser does not support video playback.
             </video>
 
-            {/* TOP OVERLAY: Dark Semi-Transparent Backdrop Behind Category Pills & Mobile Title */}
-            <div className="absolute top-0 left-0 right-0 p-3 pt-3.5 pb-3.5 bg-black/55 backdrop-blur-md border-b border-white/10 z-10 flex flex-col items-center gap-2 rounded-t-[10px]">
+            {/* TOP OVERLAY: Dark Semi-Transparent Backdrop Behind Category Pills */}
+            <div className="absolute top-0 left-0 right-0 p-3 pt-3.5 pb-3.5 bg-black/55 backdrop-blur-md border-b border-white/10 z-10 flex items-center justify-center rounded-t-[10px]">
               <div className="flex items-center justify-center gap-1.5 flex-wrap">
                 {SLIDES.map((slide, idx) => (
                   <button
@@ -115,11 +115,6 @@ export function SpecializedFocusCarousel() {
                   </button>
                 ))}
               </div>
-
-              {/* Mobile Title Overlay */}
-              <h3 className="md:hidden font-editorial text-lg font-normal text-gold text-center leading-tight drop-shadow-md pt-0.5">
-                {currentSlide.title}
-              </h3>
             </div>
 
             {/* BOTTOM OVERLAY: Left Arrow, Centered Pause/Resume, Right Arrow */}
@@ -157,19 +152,17 @@ export function SpecializedFocusCarousel() {
             </div>
           </div>
 
-          {/* Slide Text Content with Locked Height to Eliminate Layout Shift */}
-          <div className="text-center md:text-left space-y-4 flex flex-col justify-center min-h-[220px]">
-            <span className="text-gold uppercase tracking-widest text-xs font-mono font-semibold">
+          {/* Clean Flexible Text Stack with Zero Overlapping */}
+          <div className="text-center md:text-left space-y-4 sm:space-y-5 flex flex-col justify-center py-2">
+            <span className="inline-block text-gold uppercase tracking-widest text-xs font-mono font-semibold">
               {currentSlide.badge}
             </span>
-            <h3 className="hidden md:block font-editorial text-3xl sm:text-4xl font-normal text-gold leading-tight">
+            <h3 className="font-editorial text-2xl sm:text-3xl md:text-4xl font-normal text-gold leading-snug">
               {currentSlide.title}
             </h3>
-            <div className="h-[80px] flex items-center">
-              <p className="font-sans text-base sm:text-lg text-foreground/90 leading-relaxed">
-                {currentSlide.description}
-              </p>
-            </div>
+            <p className="font-sans text-sm sm:text-base md:text-lg text-foreground/90 leading-relaxed">
+              {currentSlide.description}
+            </p>
             <div className="pt-2 text-center md:text-left">
               <a
                 href={currentSlide.bookingUrl}
