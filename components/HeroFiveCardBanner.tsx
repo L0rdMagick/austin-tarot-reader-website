@@ -39,17 +39,17 @@ const HERO_CARDS = [
 
 export function HeroFiveCardBanner() {
   return (
-    <section className="w-full relative pt-4 pb-10 sm:pb-14 flex flex-col items-center justify-center overflow-hidden">
-      {/* 5-CARD TAROT SPREAD BACKGROUND ACCENT - STRICTLY CONTAINED INSIDE HERO HEIGHT */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden opacity-75">
-        <div className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8 h-[92%] w-full max-w-7xl px-4 py-2">
+    <section className="w-full relative pt-0 pb-0 flex flex-col items-center justify-center overflow-hidden bg-[#0B0F19]/30 backdrop-blur-sm border-b border-gold/30">
+      {/* 5-CARD TAROT SPREAD BACKGROUND ACCENT - 100% CONTAINED INSIDE HERO BORDERS */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden opacity-75 py-4">
+        <div className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8 h-full w-full max-w-7xl px-4">
           {HERO_CARDS.map((card, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20, rotate: 0 }}
               animate={{ opacity: 1, y: 0, rotate: card.rotate }}
               transition={{ duration: 0.8, delay: idx * 0.1, ease: 'easeOut' }}
-              className={`relative h-full aspect-[2/3] max-h-[500px] rounded-2xl overflow-hidden border border-gold/40 shadow-2xl shadow-gold/20 shrink-0 ${
+              className={`relative h-full aspect-[2/3] max-h-[460px] rounded-2xl overflow-hidden border border-gold/40 shadow-2xl shadow-gold/20 shrink-0 ${
                 card.mobileHide ? 'hidden sm:block' : 'block'
               }`}
             >
@@ -67,12 +67,12 @@ export function HeroFiveCardBanner() {
         </div>
       </div>
 
-      {/* FOREGROUND FULL-WIDTH 30% OPAQUE SEMI-INDIGO BACKDROP CARD */}
+      {/* FOREGROUND FULL-WIDTH CONTENT */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        className="relative z-10 w-full text-center bg-[#0B0F19]/30 backdrop-blur-sm border-y border-gold/30 py-8 sm:py-12 px-4 sm:px-8 shadow-2xl space-y-6"
+        className="relative z-10 w-full text-center py-10 sm:py-14 px-4 sm:px-8 space-y-6"
       >
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Trust Badge - Darker High Contrast Backdrop */}
