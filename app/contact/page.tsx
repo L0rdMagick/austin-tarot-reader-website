@@ -19,10 +19,10 @@ const CONTACT_BG_CARDS: BgCard[] = [
 
 const contactDetails = [
   { 
-    name: 'Email', 
-    value: 'info@austintarotreader.com', 
-    href: 'mailto:info@austintarotreader.com?subject=Tarot%20Reading%20Inquiry',
-    cta: 'Email Now'
+    name: 'Text Daniel', 
+    value: '(512) 547-7129', 
+    href: "sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20a%20tarot%20reading.",
+    cta: 'Text Now'
   },
   { 
     name: 'Phone', 
@@ -31,10 +31,10 @@ const contactDetails = [
     cta: 'Call Now'
   },
   { 
-    name: 'Location', 
-    value: 'Downtown Austin, Texas', 
-    href: '#',
-    cta: null
+    name: 'Email', 
+    value: 'info@austintarotreader.com', 
+    href: 'mailto:info@austintarotreader.com?subject=Tarot%20Reading%20Inquiry',
+    cta: 'Email Now'
   },
 ];
 
@@ -64,7 +64,7 @@ export default function ContactPage() {
                   <div className="mb-4 sm:mb-0">
                     <h2 className="font-editorial text-2xl font-bold text-gold">{item.name}</h2>
                     <p className="font-sans text-lg text-foreground/80 mt-1">
-                      {item.name === 'Email' ? (
+                      {item.href ? (
                         <a href={item.href} className="hover:text-gold transition-colors">{item.value}</a>
                       ) : (
                         item.value
