@@ -146,13 +146,13 @@ export function MysticBookingEngine() {
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-10 space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-sans font-semibold uppercase tracking-widest">
-          <span>✦ Live Square Calendar Reservation ✦</span>
+          <span>✦ Reserve Your Consultation ✦</span>
         </div>
         <h2 className="font-editorial text-4xl sm:text-5xl font-normal tracking-tight text-gold">
           Reserve Your Reading Session
         </h2>
         <p className="font-sans text-foreground/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          Select your topic and duration below for instant appointment confirmation via Daniel&apos;s Squareup calendar.
+          Select your topic and duration below for instant calendar appointment confirmation.
         </p>
       </div>
 
@@ -268,7 +268,7 @@ export function MysticBookingEngine() {
             })}
             <div className="flex items-center gap-2 text-emerald-400 pt-2 border-t border-white/10">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <span><strong>Real-Time Sync:</strong> Synchronized with Squareup Calendar (100% Confidential)</span>
+              <span><strong>Confidentiality:</strong> 100% Private, Compassionate & Sacred Consultation Space</span>
             </div>
           </div>
 
@@ -280,7 +280,7 @@ export function MysticBookingEngine() {
               rel="noopener noreferrer"
               className="w-full bg-gold hover:bg-gold-light text-obsidian font-bold py-4 px-6 rounded-xl text-base transition-all transform hover:scale-[1.01] shadow-xl shadow-gold/20 flex items-center justify-center gap-2 text-center font-sans"
             >
-              <span>Book {activePackage.title} (${activePackage.price}) on Square</span>
+              <span>Book {activePackage.title} (${activePackage.price})</span>
               <span className="text-lg">↗</span>
             </a>
           </div>

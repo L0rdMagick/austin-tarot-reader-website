@@ -41,7 +41,7 @@ const SLIDES: FocusSlide[] = [
     description:
       "Decode universal messages and signs meant for your soul. Understand how your past informs the present, dissolve karmic blocks, and step into your true destiny with unshakeable clarity.",
     videoSrc: "/videos/tarot-life-path-questions.mp4",
-    bookingUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/YB8VMMKGCHGN0/services/BF72ZKQM74NPNZ3FTYZLARXT",
+    bookingUrl: "https://book.squareup.com/appointments/nsc0u2gmu4vhoy/location/BF72ZKQM74NPNZ3FTYZLARXT",
     buttonText: "Book a Life Path Reading ($85) ↗",
   },
 ];
@@ -73,14 +73,14 @@ export function SpecializedFocusCarousel() {
 
   return (
     <section className="bg-surface p-6 sm:p-10 md:p-12 rounded-2xl border border-gold/20 shadow-2xl relative overflow-hidden">
-      {/* Animated Slide Content Viewport - PURE FADE ANIMATION WITHOUT SLIDE MOTION */}
+      {/* MAGICKAL SCRYING GLASS DISSOLVE TRANSITION */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide.id}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
+          initial={{ opacity: 0, scale: 0.98, filter: "blur(6px)" }}
+          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, scale: 0.98, filter: "blur(6px)" }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-center"
         >
           {/* Vertical 9:16 Video Player Container */}
@@ -118,7 +118,7 @@ export function SpecializedFocusCarousel() {
                 href={currentSlide.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-gold hover:bg-gold-light text-obsidian font-bold py-3 px-6 rounded-xl text-sm transition-all duration-300 shadow-md active:scale-95"
+                className="inline-block bg-gold hover:bg-gold-light text-obsidian font-bold py-3 px-6 rounded-xl text-sm transition-all duration-300 shadow-md active:scale-95 font-sans"
               >
                 {currentSlide.buttonText}
               </a>
