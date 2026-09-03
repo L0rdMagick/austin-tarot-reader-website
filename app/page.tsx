@@ -62,7 +62,7 @@ export default function HomePage() {
         {/* ========================================================================= */}
         <ScrollReveal variant="fade-up">
           <section className="w-full text-center pt-12 pb-6 md:pt-16 md:pb-8 flex flex-col items-center justify-center px-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-mono font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs sm:text-sm font-sans font-semibold mb-6">
               <span>⭐ 5.0 Google Rated Tarot Reader</span>
               <span className="text-foreground/40">•</span>
               <span>In-Person Austin, TX & Virtual</span>
@@ -74,12 +74,12 @@ export default function HomePage() {
             <p className="mt-6 font-sans text-lg sm:text-xl text-balance max-w-2xl mx-auto text-foreground/90 leading-relaxed">
               Find immediate clarity for love, purpose, and life's crossroads with Austin's premier intuitive reader.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
-              <a href="#booking-engine" className="w-full sm:w-auto bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-8 rounded-xl text-lg transition-all duration-300 font-sans shadow-xl shadow-gold/20 transform hover:scale-[1.02] active:scale-95">
-                Reserve Your Reading Below ↓
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <a href="#booking-engine" className="w-full sm:w-auto bg-gold hover:bg-gold-light text-obsidian font-bold py-3.5 px-10 rounded-xl text-lg transition-all duration-300 font-sans shadow-xl shadow-gold/20 transform hover:scale-[1.02] active:scale-95">
+                Book Your Reading ↓
               </a>
-              <a href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="w-full sm:w-auto bg-surface-elevated text-gold border border-gold/40 font-bold py-3.5 px-6 rounded-xl text-base hover:bg-surface-overlay transition-colors duration-300 font-sans active:scale-95">
-                💬 Text Daniel for Today's Openings
+              <a href="sms:15125477129?body=Hi%20Daniel,%20I'd%20like%20to%20ask%20about%20booking%20a%20tarot%20reading." className="font-sans text-sm text-foreground/75 hover:text-gold transition-colors duration-200 mt-1">
+                Need same-day? <span className="underline font-medium">Text (512) 547-7129</span>
               </a>
             </div>
           </section>

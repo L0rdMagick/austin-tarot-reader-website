@@ -33,7 +33,7 @@ export function AmbientBackgroundCards({ cards = HOMEPAGE_BG_CARDS }: AmbientBac
           <motion.div
             key={`${card.name}-${idx}`}
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 0.15, y: 0 }}
+            whileInView={{ opacity: 0.05, y: 0 }}
             viewport={{ once: false, amount: 0.1 }}
             transition={{ duration: 1, ease: 'easeOut', delay: (idx % 3) * 0.15 }}
             style={{
@@ -41,7 +41,7 @@ export function AmbientBackgroundCards({ cards = HOMEPAGE_BG_CARDS }: AmbientBac
               left: isLeft ? '1%' : 'auto',
               right: isLeft ? 'auto' : '1%',
             }}
-            className="absolute"
+            className="absolute hidden lg:block"
           >
             {/* Tilted Floating Container */}
             <motion.div
